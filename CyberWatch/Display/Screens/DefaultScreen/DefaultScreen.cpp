@@ -19,7 +19,7 @@ class DefaultScreen {
     }
 
     void render() {
-      TTGOClass::getWatch()->tft->drawString(APP_FULL_NAME, 30, 18);
+      //_renderLogo();
       _time->render();
       _date->render();
       _infoPanel->render();
@@ -41,6 +41,7 @@ class DefaultScreen {
         _date = new Date();
         _infoPanel = new InfoPanel();
       }
+
 };
 
 DefaultScreen* DefaultScreen::_inst;

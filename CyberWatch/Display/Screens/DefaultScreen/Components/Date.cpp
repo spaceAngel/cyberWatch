@@ -33,7 +33,7 @@ class Date {
 
     protected:
     
-      const uint POS_Y = 102;
+      const uint POS_Y = 32;
 
       uint _prevDay = 99;
 

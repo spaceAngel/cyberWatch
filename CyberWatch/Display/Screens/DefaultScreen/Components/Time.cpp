@@ -11,7 +11,7 @@ class Time {
       ) {
         char timeStr[6];
         snprintf(timeStr, sizeof(timeStr), "%02d:%02d", currentTime.hour, currentTime.minute);       
-        TTGOClass::getWatch()->tft->setTextSize(2);
+        TTGOClass::getWatch()->tft->setTextSize(3);
         TTGOClass::getWatch()->tft->fillRect(
           0,
           POS_Y,
@@ -35,6 +35,6 @@ class Time {
 
   protected:
     uint _prevMinute = 99;
-    const uint POS_Y = 54;
+    const uint POS_Y = 62;
 
 };
