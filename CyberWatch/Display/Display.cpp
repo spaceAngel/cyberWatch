@@ -16,7 +16,9 @@ class Display {
         return Display::_inst;
     }
 
-    void showSplashscreen() {
+    void showSplashScreen() {
+      SplashScreen *screen = new SplashScreen();
+      screen->show();
     }
 
     void init() {

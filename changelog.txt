@@ -1,5 +1,6 @@
 cyberWatch 0.1
 ========================
+ - shows splashscreen
  - shows current time & date
  - shows battery capacity (with battery icon "progressbar")
  - show charging state (plug icon)
