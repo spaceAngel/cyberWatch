@@ -16,25 +16,22 @@ class Time {
           0,
           POS_Y,
           TTGOClass::getWatch()->tft->width(),
-          TTGOClass::getWatch()->tft->fontHeight() + 1,
+          TTGOClass::getWatch()->tft->fontHeight() - 14,
           TFT_BLACK
         );
 
         TTGOClass::getWatch()->tft->drawString(
           timeStr,
           (TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(timeStr)) / 2,
-          POS_Y + 3
+          POS_Y
         );
         TTGOClass::getWatch()->tft->setTextSize(1); // reset size to default
         _prevMinute = currentTime.minute;
       }
     }
 
-    void rerender() {
-    } 
-
   protected:
     uint _prevMinute = 99;
-    const uint POS_Y = 62;
+    const uint POS_Y = 72;
 
 };

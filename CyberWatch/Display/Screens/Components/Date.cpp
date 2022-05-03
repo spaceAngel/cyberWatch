@@ -28,9 +28,6 @@ class Date {
       }
     }
 
-    void rerender() {
-    } 
-
     protected:
     
       const uint POS_Y = 32;

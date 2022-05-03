@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Components/Battery.cpp"
+#include "InfoPanelComponents/Battery.cpp"
 
 class InfoPanel {
   public:

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <LilyGoWatch.h>
-#include "Screens/DefaultScreen/DefaultScreen.cpp"
+#include "Screens/MainScreen.cpp"
 #include "Screens/SplashScreen.cpp"
 
 class Display {
@@ -25,16 +25,13 @@ class Display {
       TTGOClass::getWatch()->openBL();
       TTGOClass::getWatch()->bl->adjust(DISPLAY_ADJUST);
       TTGOClass::getWatch()->tft->setTextColor(TFT_DARKGREEN);
-      _currentScreen = Display::SCREEN_DEFAULT;
     }
 
     void render() {
       if (!isDisplayOn()) {
         return;
       }
-      if (_currentScreen == Display::SCREEN_DEFAULT) {
-         DefaultScreen::getInstance()->render();
-      }
+      MainScreen::getInstance()->render();
     }
 
     bool isDisplayOn() {
@@ -58,11 +55,7 @@ class Display {
 
       static Display *_inst;
 
-      const static uint SCREEN_DEFAULT = 11;
-
       const uint DISPLAY_ADJUST = 130;
-
-      uint _currentScreen;
 
       bool _displayOn = true;
 

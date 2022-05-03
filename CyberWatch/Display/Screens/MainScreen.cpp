@@ -2,20 +2,20 @@
 
 #include "Components/Time.cpp"
 #include "Components/Date.cpp"
-#include "Components/InfoPanel/InfoPanel.cpp"
+#include "Components/InfoPanel.cpp"
 
 #include <LilyGoWatch.h>
 
-class DefaultScreen {
+class MainScreen {
 
   public:
 
-    static DefaultScreen *getInstance()
+    static MainScreen *getInstance()
     {
-        if (DefaultScreen::_inst == nullptr) {
-            DefaultScreen::_inst = new DefaultScreen();
+        if (MainScreen::_inst == nullptr) {
+            MainScreen::_inst = new MainScreen();
         }
-        return DefaultScreen::_inst;
+        return MainScreen::_inst;
     }
 
     void render() {
@@ -30,13 +30,13 @@ class DefaultScreen {
 
     protected:
 
-      static DefaultScreen *_inst;
+      static MainScreen *_inst;
 
       Time *_time;
       Date *_date;
       InfoPanel *_infoPanel;
 
-      DefaultScreen() {
+      MainScreen() {
         _time = new Time();
         _date = new Date();
         _infoPanel = new InfoPanel();
@@ -44,4 +44,4 @@ class DefaultScreen {
 
 };
 
-DefaultScreen* DefaultScreen::_inst;
+MainScreen* MainScreen::_inst;
