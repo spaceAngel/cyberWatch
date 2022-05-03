@@ -19,8 +19,6 @@ class DefaultScreen {
     }
 
     void render() {
-      TTGOClass::getWatch()->tft->setTextFont(4);
-      TTGOClass::getWatch()->tft->setTextColor(TFT_DARKGREEN);
       TTGOClass::getWatch()->tft->drawString(APP_FULL_NAME, 30, 18);
       _time->render();
       _date->render();

@@ -11,12 +11,22 @@ class Time {
       ) {
         char timeStr[6];
         snprintf(timeStr, sizeof(timeStr), "%02d:%02d", currentTime.hour, currentTime.minute);       
-        TTGOClass::getWatch()->tft->setTextFont(6);
-        TTGOClass::getWatch()->tft->setTextColor(TFT_DARKGREEN);
-        TTGOClass::getWatch()->tft->fillRect(POS_X, POS_Y, 140, 48, TFT_BLACK);
-        TTGOClass::getWatch()->tft->drawString(timeStr, POS_X + 10, POS_Y + 3);
+        TTGOClass::getWatch()->tft->setTextSize(2);
+        TTGOClass::getWatch()->tft->fillRect(
+          0,
+          POS_Y,
+          TTGOClass::getWatch()->tft->width(),
+          TTGOClass::getWatch()->tft->fontHeight() + 1,
+          TFT_BLACK
+        );
+
+        TTGOClass::getWatch()->tft->drawString(
+          timeStr,
+          (TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(timeStr)) / 2,
+          POS_Y + 3
+        );
+        TTGOClass::getWatch()->tft->setTextSize(1); // reset size to default
         _prevMinute = currentTime.minute;
-        Serial.print("Karel");
       }
     }
 
@@ -25,7 +35,6 @@ class Time {
 
   protected:
     uint _prevMinute = 99;
-    const uint POS_X = 45;
     const uint POS_Y = 54;
 
 };

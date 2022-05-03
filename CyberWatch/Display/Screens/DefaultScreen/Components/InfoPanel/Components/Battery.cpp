@@ -16,7 +16,6 @@ class Battery {
         char battery[6];
         snprintf(battery, sizeof(battery), "%d%%", capacity);
         TTGOClass::getWatch()->tft->fillRect(POS_X, POS_Y, 109, 26, TFT_BLACK);
-        TTGOClass::getWatch()->tft->setTextFont(4);
         TTGOClass::getWatch()->tft->drawString(battery, POS_X + 46, POS_Y + 3);
         _renderBatteryIcon(capacity);
         _prevCapacity = capacity;

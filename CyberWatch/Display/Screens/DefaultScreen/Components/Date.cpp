@@ -5,17 +5,26 @@
 class Date {
   public:
     void render() {
-      RTC_Date cas = TTGOClass::getWatch()->rtc->getDateTime();
+      RTC_Date currentDate = TTGOClass::getWatch()->rtc->getDateTime();
       char dateStr[11];
-      snprintf(dateStr, sizeof(dateStr), "%02d/%02d/%02d", cas.day, cas.month, cas.year);       
+      snprintf(dateStr, sizeof(dateStr), "%02d/%02d/%02d", currentDate.day, currentDate.month, currentDate.year);       
       if (
-        _prevDay != cas.day
+        _prevDay != currentDate.day
       ) {
-        TTGOClass::getWatch()->tft->setTextFont(4);
-        TTGOClass::getWatch()->tft->setTextColor(TFT_DARKGREEN);
-        TTGOClass::getWatch()->tft->fillRect(45, POS_Y, 140, 28, TFT_BLACK);
-        TTGOClass::getWatch()->tft->drawString(dateStr, POS_X + 10, POS_Y + 3);
-        _prevDay = cas.day;
+        TTGOClass::getWatch()->tft->fillRect(
+          0,
+          POS_Y,
+          TTGOClass::getWatch()->tft->width(),
+          TTGOClass::getWatch()->tft->fontHeight() + 1,
+          TFT_BLACK
+        );
+
+        TTGOClass::getWatch()->tft->drawString(
+          dateStr,
+          (TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(dateStr)) / 2,
+          POS_Y + 3
+        );
+        _prevDay = currentDate.day;
       }
     }
 
@@ -24,8 +33,7 @@ class Date {
 
     protected:
     
-      const uint POS_X = 45;
-      const uint POS_Y = 100;
+      const uint POS_Y = 102;
 
       uint _prevDay = 99;
 

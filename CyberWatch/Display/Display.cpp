@@ -2,6 +2,7 @@
 
 #include <LilyGoWatch.h>
 #include "Screens/DefaultScreen/DefaultScreen.cpp"
+#include "Screens/SplashScreen.cpp"
 
 class Display {
 
@@ -19,9 +20,9 @@ class Display {
     }
 
     void init() {
-      TTGOClass *watches = TTGOClass::getWatch();
-      watches->openBL();
-      watches->bl->adjust(DISPLAY_ADJUST);
+      TTGOClass::getWatch()->openBL();
+      TTGOClass::getWatch()->bl->adjust(DISPLAY_ADJUST);
+      TTGOClass::getWatch()->tft->setTextColor(TFT_DARKGREEN);
       _currentScreen = Display::SCREEN_DEFAULT;
     }
 
