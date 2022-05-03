@@ -5,8 +5,6 @@
 #include <LilyGoWatch.h>
 #include <WiFi.h>
 
-
-
 class CyberWatch {
 
   public:
@@ -18,19 +16,19 @@ class CyberWatch {
         }
         return CyberWatch::_inst;
     }
-  
 
     void init() {
       Serial.begin(9600);
       Serial.println("cyberWatch starting");
 
       TTGOClass::getWatch()->begin();
+      TTGOClass::getWatch()->motor_begin();
       Display::getInstance()->init();
          
       _setBatteryConsumptionSaving();
       _initInterrupts();
+      Display::getInstance()->showSplashScreen();
     };
-
 
     void loop() {
       int16_t x, y;
