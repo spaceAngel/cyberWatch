@@ -1,7 +1,5 @@
 #pragma once
 
-#include "../Display/Display.cpp"
-
 class BatteryManager {
 
   public:
@@ -21,6 +19,15 @@ class BatteryManager {
 
     bool isCharging() {
       return TTGOClass::getWatch()->power->isChargeing();
+    }
+
+    bool handleCabelPlugIRQ() {
+      return (
+        TTGOClass::getWatch()->power->isVbusRemoveIRQ()
+        || TTGOClass::getWatch()->power->isVbusPlugInIRQ()
+        || TTGOClass::getWatch()->power->isAcinRemoveIRQ()
+        || TTGOClass::getWatch()->power->isAcinPlugInIRQ()
+      );
     }
 
   protected:

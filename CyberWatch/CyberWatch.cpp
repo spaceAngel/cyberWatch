@@ -6,6 +6,8 @@
 #include <WiFi.h>
 #include "soc/rtc_wdt.h"
 
+bool esp32IRQ = false;
+
 class CyberWatch {
 
   public:
@@ -27,7 +29,7 @@ class CyberWatch {
       Display::getInstance()->init();
          
       _setBatteryConsumptionSaving();
-      _initInterrupts();
+      _initEsp32Interrupts();
       _initStepCounter();
       Display::getInstance()->showSplashScreen();
     };
@@ -36,6 +38,12 @@ class CyberWatch {
       int16_t x, y;
       uint unused = 0;
       while(1) {
+        if (esp32IRQ) {
+          esp32IRQ = false;
+          TTGOClass::getWatch()->power->readIRQ();
+          _handleBatteryIRQ();
+          TTGOClass::getWatch()->power->clearIRQ();
+        }
         InactivityWatcher::getInstance()->checkInactivity();
         if (TTGOClass::getWatch()->getTouch(x, y)) {
           InactivityWatcher::getInstance()->markActivity();
@@ -58,16 +66,23 @@ class CyberWatch {
       WiFi.mode(WIFI_OFF);      // Switch WiFi off //not need to wifi on -> power saving
     }
 
-    void _initInterrupts() {
+    void _initEsp32Interrupts() {
       pinMode(AXP202_INT, INPUT_PULLUP);
       attachInterrupt(
         AXP202_INT, 
-        [] {},
+        [] {
+          esp32IRQ = true;
+        },
         FALLING
       );
-      TTGOClass::getWatch()->power->enableIRQ(AXP202_PEK_SHORTPRESS_IRQ, true);
+      TTGOClass::getWatch()->power->enableIRQ(
+        AXP202_PEK_SHORTPRESS_IRQ &
+        AXP202_VBUS_REMOVED_IRQ & AXP202_VBUS_CONNECT_IRQ &
+        AXP202_ACIN_REMOVED_IRQ & AXP202_ACIN_CONNECT_IRQ,
+        true
+      );
       TTGOClass::getWatch()->power->clearIRQ();
-      pinMode(TOUCH_INT, INPUT);
+      pinMode(TOUCH_INT, INPUT);;
     }
 
     void _initStepCounter() {
@@ -86,6 +101,13 @@ class CyberWatch {
       ); //It must be a rising edge
       TTGOClass::getWatch()->bma->enableFeature(BMA423_STEP_CNTR, true);
       TTGOClass::getWatch()->bma->enableStepCountInterrupt();
+    }
+
+    void _handleBatteryIRQ() {
+      if (BatteryManager::getInstance()->handleCabelPlugIRQ()) {
+        TTGOClass::getWatch()->motor->onec();
+        InactivityWatcher::getInstance()->markActivity();
+      }
     }
     
 };
