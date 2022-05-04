@@ -23,6 +23,7 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - shows current date
  - shows battery status
  - step counter
+ - for full list of features, see [changelog.txt](changelog.txt)
  
 ## Future features :-)
  - alarm
