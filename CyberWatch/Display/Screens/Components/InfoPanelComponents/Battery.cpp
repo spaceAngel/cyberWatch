@@ -1,16 +1,18 @@
 #pragma once
 
+#include "../../../../System/BatteryManager.cpp"
+
 class Battery {
 
   public:
 
     void render() {
-      int capacity = TTGOClass::getWatch()->power->getBattPercentage();
+      int capacity = BatteryManager::getInstance()->getCapacity();
       if (
         capacity < _prevCapacity //avoid blinking cause percentage is oscilating e.g. 94 - 96
         || (
           capacity != _prevCapacity
-          && TTGOClass::getWatch()->power->isChargeing()
+          && BatteryManager::getInstance()->isCharging()
         )
       ) {
         char battery[6];
@@ -21,13 +23,13 @@ class Battery {
         _prevCapacity = capacity;
       }
 
-      if (TTGOClass::getWatch()->power->isChargeing() != _prevChargingState) {
-        if (TTGOClass::getWatch()->power->isChargeing()) {
+      if (BatteryManager::getInstance()->isCharging() != _prevChargingState) {
+        if (BatteryManager::getInstance()->isCharging()) {
           _renderChargingIcon();
         } else {
           TTGOClass::getWatch()->tft->fillRect(128, 144, 36, 20, TFT_BLACK); 
         }
-        _prevChargingState = TTGOClass::getWatch()->power->isChargeing();
+        _prevChargingState = BatteryManager::getInstance()->isCharging();
       }
     }
 
