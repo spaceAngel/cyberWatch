@@ -5,3 +5,4 @@ cyberWatch 0.1
  - shows battery capacity (with battery icon "progressbar")
  - show charging state (plug icon)
  - turn off display and cpu goes light sleep on inactivity (battery savings) - wake up by display touch
+ - step counter

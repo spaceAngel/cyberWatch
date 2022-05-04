@@ -22,9 +22,9 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - shows current time
  - shows current date
  - shows battery status
+ - step counter
  
 ## Future features :-)
- - step counter
  - alarm
  - simple calendar
  - conection vith phone via BT (require app for android)
