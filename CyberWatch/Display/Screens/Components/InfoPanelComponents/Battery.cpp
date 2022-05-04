@@ -15,8 +15,8 @@ class Battery {
       ) {
         char battery[6];
         snprintf(battery, sizeof(battery), "%d%%", capacity);
-        TTGOClass::getWatch()->tft->fillRect(POS_X, POS_Y, 109, 26, TFT_BLACK);
-        TTGOClass::getWatch()->tft->drawString(battery, POS_X + 46, POS_Y + 3);
+        TTGOClass::getWatch()->tft->fillRect(POS_X, POS_Y, 115, 26, TFT_BLACK);
+        TTGOClass::getWatch()->tft->drawString(battery, POS_X + 51, POS_Y + 3);
         _renderBatteryIcon(capacity);
         _prevCapacity = capacity;
       }
@@ -25,7 +25,7 @@ class Battery {
         if (TTGOClass::getWatch()->power->isChargeing()) {
           _renderChargingIcon();
         } else {
-          TTGOClass::getWatch()->tft->fillRect(123, 143, 34, 20, TFT_BLACK); 
+          TTGOClass::getWatch()->tft->fillRect(128, 144, 36, 20, TFT_BLACK); 
         }
         _prevChargingState = TTGOClass::getWatch()->power->isChargeing();
       }
@@ -70,7 +70,7 @@ class Battery {
     }
 
     void _renderChargingIcon() {
-      int posX = 140;
+      int posX = 146;
       int posY = POS_Y + 12;
       TTGOClass::getWatch()->tft->fillCircle(posX + 4, posY, 8, TFT_DARKGREEN); 
       TTGOClass::getWatch()->tft->fillRect(posX - 15, posY - 2, 11, 4, TFT_DARKGREEN); 
