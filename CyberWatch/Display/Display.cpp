@@ -23,7 +23,7 @@ class Display {
 
     void init() {
       TTGOClass::getWatch()->openBL();
-      TTGOClass::getWatch()->bl->adjust(DISPLAY_ADJUST);
+      TTGOClass::getWatch()->bl->adjust(100);
       TTGOClass::getWatch()->tft->setTextColor(TFT_DARKGREEN);
     }
 
@@ -40,12 +40,12 @@ class Display {
 
     void turnDisplayOff() {
       TTGOClass::getWatch()->displaySleep();
-      TTGOClass::getWatch()->bl->adjust(0);
+      TTGOClass::getWatch()->bl->off();
       _displayOn = false;
     }
 
     void turnDisplayOn() {
-      TTGOClass::getWatch()->bl->adjust(DISPLAY_ADJUST);
+      TTGOClass::getWatch()->bl->on();
       TTGOClass::getWatch()->displayWakeup();
       render();
       _displayOn = true;
@@ -54,8 +54,6 @@ class Display {
     protected:
 
       static Display *_inst;
-
-      const uint DISPLAY_ADJUST = 130;
 
       bool _displayOn = true;
 
