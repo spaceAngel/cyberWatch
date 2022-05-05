@@ -1,5 +1,7 @@
 #pragma once
 
+#include <WiFi.h>
+
 class BatteryManager {
 
   public:
@@ -30,11 +32,14 @@ class BatteryManager {
       );
     }
 
+    void energyConsumptionSavingsSettings() {
+      WiFi.disconnect(true);  // Disconnect from the network
+      WiFi.mode(WIFI_OFF);      // Switch WiFi off //not need to wifi on -> power saving
+    }
+
   protected:
 
       static BatteryManager *_inst;
-
-      const long INACTIVITY_TRESHOLD = 5000;
 
       long _lastActivity;
 

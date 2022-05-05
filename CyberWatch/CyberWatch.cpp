@@ -3,7 +3,6 @@
 #include "Display/Display.cpp"
 #include "System/InactivityWatcher.cpp"
 #include <LilyGoWatch.h>
-#include <WiFi.h>
 #include "soc/rtc_wdt.h"
 
 bool esp32IRQ = false;
@@ -28,7 +27,7 @@ class CyberWatch {
       TTGOClass::getWatch()->motor_begin();
       Display::getInstance()->init();
          
-      _setBatteryConsumptionSaving();
+      BatteryManager::getInstance()->energyConsumptionSavingsSettings();
       _initEsp32Interrupts();
       _initStepCounter();
       Display::getInstance()->showSplashScreen();
@@ -59,11 +58,6 @@ class CyberWatch {
     const float TICK = 10;
 
     CyberWatch() {
-    }
-
-    void _setBatteryConsumptionSaving() {
-      WiFi.disconnect(true);  // Disconnect from the network
-      WiFi.mode(WIFI_OFF);      // Switch WiFi off //not need to wifi on -> power saving
     }
 
     void _initEsp32Interrupts() {
