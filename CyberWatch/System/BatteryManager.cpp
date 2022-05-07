@@ -1,3 +1,4 @@
+#include <sys/_stdint.h>
 #pragma once
 
 #include <WiFi.h>
@@ -18,9 +19,11 @@ class BatteryManager {
         return BatteryManager::_inst;
     }
 
-    uint getCapacity() {
-      return (int)
-        (TTGOClass::getWatch()->power->getBattVoltage()  - BATTERY_LOW_CAPACITY) * 100 / (BATTERY_FULL_CAPACITY - BATTERY_LOW_CAPACITY) ;
+    uint8_t getCapacity() {
+      int capacity = (int)(TTGOClass::getWatch()->power->getBattVoltage()  - BATTERY_LOW_CAPACITY) * 100 / (BATTERY_FULL_CAPACITY - BATTERY_LOW_CAPACITY);
+      capacity = min(100, capacity);  //prevent to return capacity over 100% (calculation inaccurancy)
+      capacity = max(0, capacity); //prevent to return capacity less then 0 (calculation inaccurancy)
+      return (uint8_t)capacity;
     }
 
     bool isCharging() {
