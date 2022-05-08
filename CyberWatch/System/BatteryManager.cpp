@@ -5,6 +5,7 @@
 
 #define  BATTERY_FULL_CAPACITY 4200
 #define  BATTERY_LOW_CAPACITY 3300
+#define  CPU_FREQUENCY 40
 
 class BatteryManager {
 
@@ -42,6 +43,7 @@ class BatteryManager {
     void energyConsumptionSavingsSettings() {
       WiFi.disconnect(true);  // Disconnect from the network
       WiFi.mode(WIFI_OFF);      // Switch WiFi off //not need to wifi on -> power saving
+      setCpuFrequencyMhz(CPU_FREQUENCY);
     }
 
   protected:
