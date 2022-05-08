@@ -17,7 +17,8 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  
  - cool splashscreen :-)
  - battery consumption saving
-   - turn off display(adjust 0 + display sleep) and sleep processor(esp light sleep mode) after 5 seconds of inactivity
+   - turn off display after 5 seconds of inactivity
+   - use cpu light sleep mode cycles (200ms) in main loop
    - turn off unused subcomponents (WI-FI chip)
  - shows current time
  - shows current date

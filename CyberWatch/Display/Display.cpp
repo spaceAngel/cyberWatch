@@ -4,6 +4,8 @@
 #include "Screens/MainScreen.cpp"
 #include "Screens/SplashScreen.cpp"
 
+#define DISPLAY_ADJUST 220
+
 class Display {
 
   public:
@@ -23,14 +25,11 @@ class Display {
 
     void init() {
       TTGOClass::getWatch()->openBL();
-      TTGOClass::getWatch()->bl->adjust(100);
+      TTGOClass::getWatch()->bl->adjust(DISPLAY_ADJUST);
       TTGOClass::getWatch()->tft->setTextColor(TFT_DARKGREEN);
     }
 
     void render() {
-      if (!isDisplayOn()) {
-        return;
-      }
       MainScreen::getInstance()->render();
     }
 
@@ -39,16 +38,13 @@ class Display {
     }
 
     void turnDisplayOff() {
-      TTGOClass::getWatch()->displaySleep();
+      //TTGOClass::getWatch()->displaySleep();
       TTGOClass::getWatch()->bl->off();
-      _displayOn = false;
     }
 
     void turnDisplayOn() {
-      TTGOClass::getWatch()->bl->on();
-      TTGOClass::getWatch()->displayWakeup();
-      render();
-      _displayOn = true;
+        TTGOClass::getWatch()->bl->on();
+        render();
     }
 
     protected:

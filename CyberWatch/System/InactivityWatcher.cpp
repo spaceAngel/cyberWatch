@@ -13,27 +13,12 @@ class InactivityWatcher {
         return InactivityWatcher::_inst;
     }
 
-    void checkInactivity() {
-      if (_lastActivity + INACTIVITY_TRESHOLD < millis()) {
-        Display::getInstance()->turnDisplayOff();
-
-        TTGOClass::getWatch()->power->setPowerOutPut(AXP202_LDO3, false);
-        TTGOClass::getWatch()->power->setPowerOutPut(AXP202_LDO4, false);
-        TTGOClass::getWatch()->power->setPowerOutPut(AXP202_EXTEN, false);
-        TTGOClass::getWatch()->power->setPowerOutPut(AXP202_DCDC2, false);
-
-        esp_sleep_enable_ext1_wakeup(
-          GPIO_SEL_37 & GPIO_SEL_38,
-          ESP_EXT1_WAKEUP_ALL_LOW
-        );
-        TTGOClass::getWatch()->power->clearIRQ();
-        esp_light_sleep_start();
-      }
+    bool isInactive() {
+      return _lastActivity + INACTIVITY_TRESHOLD < millis();
     }
 
     void markActivity() {
       _lastActivity = millis();
-      Display::getInstance()->turnDisplayOn();
     }
 
     protected:

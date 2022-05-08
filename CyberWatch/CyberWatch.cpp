@@ -2,8 +2,11 @@
 
 #include "Display/Display.cpp"
 #include "System/InactivityWatcher.cpp"
+#include "System/Esp32.cpp"
 #include <LilyGoWatch.h>
-#include "soc/rtc_wdt.h"
+
+#define TICK_SLEEP 200
+#define TICK_WAKEUP 10
 
 bool esp32IRQ = false;
 
@@ -28,55 +31,51 @@ class CyberWatch {
       Display::getInstance()->init();
          
       BatteryManager::getInstance()->energyConsumptionSavingsSettings();
-      _initEsp32Interrupts();
+      Esp32::getInstance()->initIRQ();
       _initStepCounter();
       Display::getInstance()->showSplashScreen();
     };
 
     void loop() {
       int16_t x, y;
-      uint unused = 0;
+
       while(1) {
-        if (esp32IRQ) {
-          esp32IRQ = false;
+        bool PEKshort = false;
+
+        if (Esp32::getInstance()->isIRQ()) {
           TTGOClass::getWatch()->power->readIRQ();
-          _handleBatteryIRQ();
-          TTGOClass::getWatch()->power->clearIRQ();
+          _handleEsp32IRQ();
+          if(TTGOClass::getWatch()->power->isPEKShortPressIRQ()) {
+            PEKshort = true;
+          }
+          Esp32::getInstance()->cleanIRQ();
         }
-        InactivityWatcher::getInstance()->checkInactivity();
-        if (TTGOClass::getWatch()->getTouch(x, y)) {
+
+        if (
+          (
+            TTGOClass::getWatch()->getTouch(x, y)
+            && (x != 257 && y != 2) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
+          )
+          || PEKshort
+        ) {
           InactivityWatcher::getInstance()->markActivity();
         }
-        Display::getInstance()->render();
-        delay(TICK);      
+        if (InactivityWatcher::getInstance()->isInactive()) {
+          Display::getInstance()->turnDisplayOff();
+          esp_sleep_enable_timer_wakeup(TICK_SLEEP); 
+          esp_light_sleep_start();
+        } else {
+          Display::getInstance()->turnDisplayOn();
+          Display::getInstance()->render();
+          delay(TICK_WAKEUP);
+        }
       }
     };
 
   protected:
     static CyberWatch *_inst;
 
-    const float TICK = 10;
-
     CyberWatch() {
-    }
-
-    void _initEsp32Interrupts() {
-      pinMode(AXP202_INT, INPUT_PULLUP);
-      attachInterrupt(
-        AXP202_INT, 
-        [] {
-          esp32IRQ = true;
-        },
-        FALLING
-      );
-      TTGOClass::getWatch()->power->enableIRQ(
-        AXP202_PEK_SHORTPRESS_IRQ &
-        AXP202_VBUS_REMOVED_IRQ & AXP202_VBUS_CONNECT_IRQ &
-        AXP202_ACIN_REMOVED_IRQ & AXP202_ACIN_CONNECT_IRQ,
-        true
-      );
-      TTGOClass::getWatch()->power->clearIRQ();
-      pinMode(TOUCH_INT, INPUT);;
     }
 
     void _initStepCounter() {
@@ -97,10 +96,16 @@ class CyberWatch {
       TTGOClass::getWatch()->bma->enableStepCountInterrupt();
     }
 
-    void _handleBatteryIRQ() {
+    void _handleCabelConnection() {
       if (BatteryManager::getInstance()->handleCabelPlugIRQ()) {
         TTGOClass::getWatch()->motor->onec();
         InactivityWatcher::getInstance()->markActivity();
+      }
+    }
+
+    void _handleEsp32IRQ() {
+      if (BatteryManager::getInstance()->handleCabelPlugIRQ()) {
+        _handleCabelConnection();
       }
     }
     
