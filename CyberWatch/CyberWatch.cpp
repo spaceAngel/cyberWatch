@@ -8,8 +8,6 @@
 
 #include "../config.h"
 
-bool esp32IRQ = false;
-
 class CyberWatch {
 
   public:

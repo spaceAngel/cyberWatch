@@ -1,4 +1,3 @@
-#include <sys/_stdint.h>
 #pragma once
 
 #include <WiFi.h>
