@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../../../System/BatteryManager.cpp"
+#include "../../../../../config.h"
 
 class Battery {
 
@@ -18,9 +19,13 @@ class Battery {
         char battery[6];
         snprintf(battery, sizeof(battery), "%d%%", capacity);
         TTGOClass::getWatch()->tft->fillRect(POS_X, POS_Y, 115, 26, TFT_BLACK);
+        TTGOClass::getWatch()->tft->setTextColor(
+          capacity <= BATTERY_VERY_LOW ? TFT_RED : TFT_DARKGREEN
+        );
         TTGOClass::getWatch()->tft->drawString(battery, POS_X + 51, POS_Y + 3);
         _renderBatteryIcon(capacity);
         _prevCapacity = capacity;
+        TTGOClass::getWatch()->tft->setTextColor(TFT_DARKGREEN);
       }
 
       if (BatteryManager::getInstance()->isCharging() != _prevChargingState) {
@@ -51,14 +56,14 @@ class Battery {
       uint width = 36;
       uint innerWidth = width - 6 - 2 * thick;
 
-      TTGOClass::getWatch()->tft->fillRect(x, y, width, height, TFT_DARKGREEN); 
+      TTGOClass::getWatch()->tft->fillRect(x, y, width, height, capacity <= BATTERY_VERY_LOW ? TFT_RED : TFT_DARKGREEN); 
       TTGOClass::getWatch()->tft->fillRect(x + thick, y + thick, width - 2 * thick , height - 2 * thick, TFT_BLACK); // inner box
       TTGOClass::getWatch()->tft->fillRect(
         x + width - 1,
         y + 4,
         6,
         height  - 8,
-        TFT_DARKGREEN
+        capacity <= BATTERY_VERY_LOW ? TFT_RED : TFT_DARKGREEN
       );
 
       float percentageBarWidth = ((float)capacity / (float)100) * (float)innerWidth ;
@@ -67,7 +72,7 @@ class Battery {
         y + thick + 2,
         (int) percentageBarWidth,
         height - 4 - thick * 2,
-        TFT_DARKGREEN
+        capacity <= BATTERY_LOW ? TFT_RED : TFT_DARKGREEN
       );
     }
 

@@ -3,10 +3,13 @@
 #include "Display/Display.cpp"
 #include "System/InactivityWatcher.cpp"
 #include "System/Esp32.cpp"
+#include "System/MotorController.cpp"
 #include <LilyGoWatch.h>
 
 #define TICK_SLEEP 200
 #define TICK_WAKEUP 10
+
+#include "../config.h"
 
 bool esp32IRQ = false;
 
@@ -41,6 +44,8 @@ class CyberWatch {
 
       while(1) {
         bool PEKshort = false;
+
+        _handleBatteryLowActions();
 
         if (Esp32::getInstance()->isIRQ()) {
           TTGOClass::getWatch()->power->readIRQ();
@@ -108,6 +113,33 @@ class CyberWatch {
     void _handleEsp32IRQ() {
       if (BatteryManager::getInstance()->handleCabelPlugIRQ()) {
         _handleCabelConnection();
+      }
+    }
+
+    uint8_t _batteryLowWarnVibrateOnLevel = 101;
+
+    void _handleBatteryLowActions() {
+      uint8_t vibrationCount = 0;
+      uint8_t capacity = BatteryManager::getInstance()->getCapacity();
+      if (BatteryManager::getInstance()->isCharging()) {
+        _batteryLowWarnVibrateOnLevel = 101;
+        return;
+      }
+      if (capacity == BATTERY_LOW) {
+        vibrationCount = 1;
+      }
+
+      if (capacity == BATTERY_VERY_LOW) {
+        vibrationCount = 2;
+      }
+
+      if (
+        vibrationCount > 0
+        && capacity < _batteryLowWarnVibrateOnLevel
+      ) {
+        InactivityWatcher::getInstance()->markActivity();
+        MotorController::vibrate(vibrationCount);
+        _batteryLowWarnVibrateOnLevel = capacity;
       }
     }
     

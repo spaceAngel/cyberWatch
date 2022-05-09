@@ -21,6 +21,7 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
    - use cpu light sleep mode cycles (200ms) in main loop
    - turn off unused subcomponents (WI-FI chip)
    - set CPU frequency to 40MHz
+ - warns (vibrate, turn display on) when battery reach low levels(30% / 20%)
  - shows current time
  - shows current date
  - shows battery status
