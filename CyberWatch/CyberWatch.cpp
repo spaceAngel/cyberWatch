@@ -65,7 +65,9 @@ class CyberWatch {
           esp_sleep_enable_timer_wakeup(TICK_SLEEP); 
           esp_light_sleep_start();
         } else {
-          Display::getInstance()->turnDisplayOn();
+          if (!Display::getInstance()->isDisplayOn()) {
+            Display::getInstance()->turnDisplayOn();
+          }
           Display::getInstance()->render();
           delay(TICK_WAKEUP);
         }

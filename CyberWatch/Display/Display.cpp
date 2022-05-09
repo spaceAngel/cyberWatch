@@ -3,6 +3,7 @@
 #include <LilyGoWatch.h>
 #include "Screens/MainScreen.cpp"
 #include "Screens/SplashScreen.cpp"
+#include "../Utils/TimeUtil.cpp"
 
 #define DISPLAY_ADJUST 220
 
@@ -34,27 +35,36 @@ class Display {
     }
 
     bool isDisplayOn() {
-      return _displayOn;
+      return _lastOn > 0;
     }
 
     void turnDisplayOff() {
-      //TTGOClass::getWatch()->displaySleep();
-      TTGOClass::getWatch()->bl->off();
+
+      if (isDisplayOn()) {
+        TTGOClass::getWatch()->displaySleep();
+        TTGOClass::getWatch()->bl->off();
+        _lastOn = 0;
+      }
     }
 
     void turnDisplayOn() {
-        TTGOClass::getWatch()->bl->on();
+      if (!isDisplayOn()) {
         render();
+        TTGOClass::getWatch()->bl->on();
+        TTGOClass::getWatch()->displayWakeup();
+        _lastOn = TimeUtil::getCurrentTimeInSeconds();
+      }
     }
 
     protected:
 
       static Display *_inst;
 
-      bool _displayOn = true;
+      uint _lastOn = TimeUtil::getCurrentTimeInSeconds();
 
       Display() {
       }
+
 };
 
 Display* Display::_inst;
