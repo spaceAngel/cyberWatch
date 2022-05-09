@@ -1,20 +1,19 @@
 #pragma once
 
+#include "../../System/MotorController.cpp"
+
 class SplashScreen {
 
   public:
 
     void show() {
-      TTGOClass::getWatch()->motor->onec();
+      MotorController::vibrate();
       
       _renderLogo();
       _renderLoadingBar();
-
       _resetToDefault();
-      TTGOClass::getWatch()->motor->onec();
+      MotorController::vibrate();
       delay(200);
-      TTGOClass::getWatch()->tft->setTextFont(4); //reset to default
-      TTGOClass::getWatch()->tft->setTextSize(1); //reset to default
     }
 
   protected:
