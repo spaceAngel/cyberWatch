@@ -21,7 +21,7 @@ class Esp32 {
         FALLING
       );
       TTGOClass::getWatch()->power->enableIRQ(
-        AXP202_PEK_SHORTPRESS_IRQ |
+        AXP202_PEK_SHORTPRESS_IRQ | AXP202_PEK_LONGPRESS_IRQ |
         AXP202_VBUS_REMOVED_IRQ | AXP202_VBUS_CONNECT_IRQ |
         AXP202_ACIN_REMOVED_IRQ | AXP202_ACIN_CONNECT_IRQ,
         true

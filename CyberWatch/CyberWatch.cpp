@@ -49,6 +49,9 @@ class CyberWatch {
 
         if (Esp32::getInstance()->isIRQ()) {
           TTGOClass::getWatch()->power->readIRQ();
+          if( TTGOClass::getWatch()->power->isPEKLongtPressIRQ()) {
+            turnOff();
+          }
           _handleEsp32IRQ();
           if(TTGOClass::getWatch()->power->isPEKShortPressIRQ()) {
             PEKshort = true;
@@ -78,6 +81,13 @@ class CyberWatch {
         }
       }
     };
+
+    void turnOff() {
+      Display::getInstance()->turnDisplayOn();
+      MotorController::vibrate(2);
+      delay(200);
+      TTGOClass::getWatch()->shutdown();
+    }
 
   protected:
     static CyberWatch *_inst;
