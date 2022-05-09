@@ -15,7 +15,7 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  
 ## Features
  
- - cool splashscreen :-)
+ - cool splashscreen and exit screen :-)
  - battery consumption saving
    - turn off display after 5 seconds of inactivity
    - use cpu light sleep mode cycles (200ms) in main loop

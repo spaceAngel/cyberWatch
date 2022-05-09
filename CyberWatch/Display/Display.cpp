@@ -3,6 +3,7 @@
 #include <LilyGoWatch.h>
 #include "Screens/MainScreen.cpp"
 #include "Screens/SplashScreen.cpp"
+#include "Screens/ExitScreen.cpp"
 #include "../Utils/TimeUtil.cpp"
 
 #define DISPLAY_ADJUST 220
@@ -21,6 +22,11 @@ class Display {
 
     void showSplashScreen() {
       SplashScreen *screen = new SplashScreen();
+      screen->show();
+    }
+
+    void showExitScreen() {
+      ExitScreen *screen = new ExitScreen();
       screen->show();
     }
 

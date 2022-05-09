@@ -1,6 +1,7 @@
 cyberWatch 0.1
 ========================
  - shows splashscreen
+ - shows "exit screen"
  - shows current time & date (include day of week)
  - shows battery capacity (with battery icon "progressbar")
  - warn on baterry low/very low (vibrate / double vibrate), turn on display and render battery icon with red color

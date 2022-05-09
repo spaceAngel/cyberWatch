@@ -84,8 +84,9 @@ class CyberWatch {
 
     void turnOff() {
       Display::getInstance()->turnDisplayOn();
+      Display::getInstance()->showExitScreen();
       MotorController::vibrate(2);
-      delay(200);
+      delay(2000);
       TTGOClass::getWatch()->shutdown();
     }
 
