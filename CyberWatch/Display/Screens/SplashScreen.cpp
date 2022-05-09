@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../System/MotorController.cpp"
+#include "Components/Logo.cpp"
 
 class SplashScreen {
 
@@ -9,7 +10,8 @@ class SplashScreen {
     void show() {
       MotorController::vibrate();
       
-      _renderLogo();
+      Logo *logo = new Logo();
+      logo->render();
       _renderLoadingBar();
       _resetToDefault();
       MotorController::vibrate();
@@ -46,21 +48,5 @@ class SplashScreen {
       }
     }
 
-    void _renderLogo() {
-      TTGOClass::getWatch()->tft->setTextFont(2);
-      TTGOClass::getWatch()->tft->setTextSize(3);
-
-      TTGOClass::getWatch()->tft->drawString(
-        APP_NAME,
-        (TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(APP_NAME)) / 2,
-        TTGOClass::getWatch()->tft->height() / 2 - TTGOClass::getWatch()->tft->fontHeight()
-      );
-
-      TTGOClass::getWatch()->tft->setTextSize(2);
-      TTGOClass::getWatch()->tft->drawString(
-        APP_VERSION,
-        (TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(APP_VERSION)) / 2,
-        TTGOClass::getWatch()->tft->height() / 2
-      );
-    }
+   
 };
