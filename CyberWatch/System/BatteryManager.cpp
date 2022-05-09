@@ -2,10 +2,7 @@
 #pragma once
 
 #include <WiFi.h>
-
-#define  BATTERY_FULL_CAPACITY 4200
-#define  BATTERY_LOW_CAPACITY 3300
-#define  CPU_FREQUENCY 40
+#include "../../config.h"
 
 class BatteryManager {
 

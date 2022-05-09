@@ -6,9 +6,6 @@
 #include "System/MotorController.cpp"
 #include <LilyGoWatch.h>
 
-#define TICK_SLEEP 200
-#define TICK_WAKEUP 10
-
 #include "../config.h"
 
 bool esp32IRQ = false;

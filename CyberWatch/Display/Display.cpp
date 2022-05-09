@@ -5,8 +5,7 @@
 #include "Screens/SplashScreen.cpp"
 #include "Screens/ExitScreen.cpp"
 #include "../Utils/TimeUtil.cpp"
-
-#define DISPLAY_ADJUST 220
+#include "../../config.h"
 
 class Display {
 
