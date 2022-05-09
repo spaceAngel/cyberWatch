@@ -41,18 +41,7 @@ class CyberWatch {
         bool PEKshort = false;
 
         _handleBatteryLowActions();
-
-        if (Esp32::getInstance()->isIRQ()) {
-          TTGOClass::getWatch()->power->readIRQ();
-          if( TTGOClass::getWatch()->power->isPEKLongtPressIRQ()) {
-            turnOff();
-          }
-          _handleEsp32IRQ();
-          if(TTGOClass::getWatch()->power->isPEKShortPressIRQ()) {
-            PEKshort = true;
-          }
-          Esp32::getInstance()->cleanIRQ();
-        }
+        _handleEsp32IRQ(PEKshort);
 
         if (
           (
@@ -121,8 +110,18 @@ class CyberWatch {
       }
     }
 
-    void _handleEsp32IRQ() {
+    void _handleEsp32IRQ(bool &PEKshort) {
+      if (Esp32::getInstance()->isIRQ()) {
+        TTGOClass::getWatch()->power->readIRQ();
+        if( TTGOClass::getWatch()->power->isPEKLongtPressIRQ()) {
+          turnOff();
+        }
         _handleCabelConnection();
+        if(TTGOClass::getWatch()->power->isPEKShortPressIRQ()) {
+          PEKshort = true;
+        }
+        Esp32::getInstance()->cleanIRQ();
+      }
     }
 
     uint8_t _batteryLowWarnVibrateOnLevel = 101;
