@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Utils/TimeUtil.cpp"
+
 class InactivityWatcher {
 
   public:
@@ -14,23 +16,23 @@ class InactivityWatcher {
     }
 
     bool isInactive() {
-      return _lastActivity + INACTIVITY_TRESHOLD < millis();
+      return _lastActivity + INACTIVITY_TRESHOLD < TimeUtil::getCurrentTimeInSeconds();
     }
 
     void markActivity() {
-      _lastActivity = millis();
+      _lastActivity = TimeUtil::getCurrentTimeInSeconds();
     }
 
     protected:
 
       static InactivityWatcher *_inst;
 
-      const long INACTIVITY_TRESHOLD = 5000;
+      const long INACTIVITY_TRESHOLD = 5;
 
       long _lastActivity;
 
       InactivityWatcher() {
-        _lastActivity = millis();
+        _lastActivity = TimeUtil::getCurrentTimeInSeconds();
       }
 
 };
