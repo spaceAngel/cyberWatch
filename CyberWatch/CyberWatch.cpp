@@ -104,16 +104,19 @@ class CyberWatch {
     }
 
     void _handleCabelConnection() {
-      if (BatteryManager::getInstance()->handleCabelPlugIRQ()) {
-        TTGOClass::getWatch()->motor->onec();
+      if (BatteryManager::getInstance()->handleCabelPlugInIRQ()) {
+        MotorController::vibrate();
+      }
+      if (
+        BatteryManager::getInstance()->handleCabelPlugInIRQ()
+        || BatteryManager::getInstance()->handleCabelPlugRemoveIRQ()
+      ) {
         InactivityWatcher::getInstance()->markActivity();
       }
     }
 
     void _handleEsp32IRQ() {
-      if (BatteryManager::getInstance()->handleCabelPlugIRQ()) {
         _handleCabelConnection();
-      }
     }
 
     uint8_t _batteryLowWarnVibrateOnLevel = 101;

@@ -31,12 +31,17 @@ class BatteryManager {
       return TTGOClass::getWatch()->power->isChargeing();
     }
 
-    bool handleCabelPlugIRQ() {
+    bool handleCabelPlugInIRQ() {
+      return (
+        TTGOClass::getWatch()->power->isVbusPlugInIRQ()
+        || TTGOClass::getWatch()->power->isAcinPlugInIRQ()
+      );
+    }
+
+    bool handleCabelPlugRemoveIRQ() {
       return (
         TTGOClass::getWatch()->power->isVbusRemoveIRQ()
-        || TTGOClass::getWatch()->power->isVbusPlugInIRQ()
         || TTGOClass::getWatch()->power->isAcinRemoveIRQ()
-        || TTGOClass::getWatch()->power->isAcinPlugInIRQ()
       );
     }
 
