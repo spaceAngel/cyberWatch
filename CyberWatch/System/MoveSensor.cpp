@@ -29,19 +29,26 @@ class MoveSensor {
         RISING
       ); //It must be a rising edge
       TTGOClass::getWatch()->bma->enableFeature(BMA423_STEP_CNTR, true);
-      TTGOClass::getWatch()->bma->enableStepCountInterrupt();
-    }
-
-    bool isIRQ() {
-      return _IRQ;
+      TTGOClass::getWatch()->bma->enableFeature(BMA423_TILT, true);
+      TTGOClass::getWatch()->bma->enableTiltInterrupt();
+      TTGOClass::getWatch()->bma->enableWakeupInterrupt();
     }
 
     void cleanIRQ() {
       _IRQ = false;
       TTGOClass::getWatch()->power->clearIRQ();
     }
+
     void setIsIRQ() {
       _IRQ = true;
+    }
+
+    bool isTilt() {
+      if (_IRQ) {
+        MoveSensor::getInstance()->cleanIRQ();
+        return true;
+      }
+      return false;
     }
     
   protected:
@@ -50,13 +57,9 @@ class MoveSensor {
 
     bool _IRQ = false;
 
-
     MoveSensor() {  
     }
-
 
 };
 
 MoveSensor* MoveSensor::_inst;
-
-

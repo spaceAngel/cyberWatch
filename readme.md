@@ -21,6 +21,10 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
    - use cpu light sleep mode cycles (200ms) in main loop
    - turn off unused subcomponents (WI-FI chip)
    - set CPU frequency to 40MHz
+   - activate by:
+     - touching display
+     - short press button
+     - "tilt up" maneuver
  - warns (vibrate, turn display on) when battery reach low levels(30% / 20%)
  - shows current time
  - shows current date
@@ -28,6 +32,9 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - step counter
  - for full list of features, see [changelog.txt](changelog.txt)
  
+## Known bugs
+ - "tilt up" maneuver sometimes doesn't activate display (maybe will be solved by tuning BMA423 sensor)
+
 ## Future features :-)
  - alarm
  - simple calendar

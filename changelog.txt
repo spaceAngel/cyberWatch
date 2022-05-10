@@ -4,6 +4,9 @@ cyberWatch 0.1
  - shows "exit screen"
  - shows current time & date (include day of week)
  - shows battery capacity (with battery icon "progressbar")
+ - activate by touching display
+ - activate by shortpress pek
+ - activate by tilt up maneuver
  - warn on baterry low/very low (vibrate / double vibrate), turn on display and render battery icon with red color
  - show charging state (plug icon)
  - turn off display and cpu goes light sleep on inactivity (battery savings) - wake up by display touch

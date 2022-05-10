@@ -45,6 +45,12 @@ class CyberWatch {
         _handleEsp32IRQ(PEKshort);
 
         if (
+          InactivityWatcher::getInstance()->isInactive()
+          && MoveSensor::getInstance()->isTilt()
+        ) {
+          InactivityWatcher::getInstance()->markActivity();
+        }
+        if (
           (
             TTGOClass::getWatch()->getTouch(x, y)
             && (x != 257 && y != 2) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
@@ -55,7 +61,8 @@ class CyberWatch {
         }
         if (InactivityWatcher::getInstance()->isInactive()) {
           Display::getInstance()->turnDisplayOff();
-          esp_sleep_enable_timer_wakeup(TICK_SLEEP); 
+          esp_sleep_enable_timer_wakeup(TICK_SLEEP);
+              esp_sleep_enable_ext1_wakeup(GPIO_SEL_39, ESP_EXT1_WAKEUP_ANY_HIGH);
           esp_light_sleep_start();
         } else {
           if (!Display::getInstance()->isDisplayOn()) {
