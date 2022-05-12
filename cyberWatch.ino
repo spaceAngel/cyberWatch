@@ -8,9 +8,9 @@
 #include "CyberWatch/CyberWatch.cpp"
 
 void setup() {
-  CyberWatch::getInstance()->init();
+	CyberWatch::getInstance()->init();
 }
 
 void loop() {
-  CyberWatch::getInstance()->loop();
+	CyberWatch::getInstance()->loop();
 }

@@ -8,39 +8,39 @@
 
 class MainScreen {
 
-  public:
+	public:
 
-    static MainScreen *getInstance()
-    {
-        if (MainScreen::_inst == nullptr) {
-            MainScreen::_inst = new MainScreen();
-        }
-        return MainScreen::_inst;
-    }
+		static MainScreen *getInstance()
+		{
+				if (MainScreen::_inst == nullptr) {
+						MainScreen::_inst = new MainScreen();
+				}
+				return MainScreen::_inst;
+		}
 
-    void render() {
-      //_renderLogo();
-      _time->render();
-      _date->render();
-      _infoPanel->render();
-    }
+		void render() {
+			//_renderLogo();
+			_time->render();
+			_date->render();
+			_infoPanel->render();
+		}
 
-    void rerender() {      
-    }
+		void rerender() {			
+		}
 
-    protected:
+		protected:
 
-      static MainScreen *_inst;
+			static MainScreen *_inst;
 
-      Time *_time;
-      Date *_date;
-      InfoPanel *_infoPanel;
+			Time *_time;
+			Date *_date;
+			InfoPanel *_infoPanel;
 
-      MainScreen() {
-        _time = new Time();
-        _date = new Date();
-        _infoPanel = new InfoPanel();
-      }
+			MainScreen() {
+				_time = new Time();
+				_date = new Date();
+				_infoPanel = new InfoPanel();
+			}
 
 };
 
