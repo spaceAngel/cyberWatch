@@ -18,7 +18,6 @@ class StepCounter {
 		const uint8_t POS_X = 20;
 		const uint8_t POS_Y = 170;
 		uint8_t _prevStepCount = 0;
-		uint _iconRendered = false;
 
 		void _clearDisplay();
 		void _renderIcon();
