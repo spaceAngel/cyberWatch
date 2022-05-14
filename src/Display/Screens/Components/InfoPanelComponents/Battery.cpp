@@ -6,7 +6,7 @@
 #include "System/BatteryManager.h"
 
 void Battery::render() {
-	int capacity = BatteryManager::getInstance()->getCapacity();
+	uint8_t capacity = BatteryManager::getInstance()->getCapacity();
 	if (
 		capacity < _prevCapacity //avoid blinking cause percentage is oscilating e.g. 94 - 96
 		|| (
@@ -36,7 +36,7 @@ void Battery::render() {
 	}
 }
 
-void Battery::_renderBatteryIcon(int capacity) {
+void Battery::_renderBatteryIcon(uint8_t capacity) {
 	uint y = POS_Y + 4;
 	uint x = POS_X + 3;
 	uint thick = 2;

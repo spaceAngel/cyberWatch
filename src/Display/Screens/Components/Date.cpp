@@ -44,7 +44,7 @@ void Date::_renderDayInWeek(RTC_Date currentDate) {
 }
 
 // calculation of weekday used from here https://forum.arduino.cc/t/rtc-clock-with-days-of-week/426045/4
-void Date::_weekday(char *dayInWeekStr, int year, int month, int day) {
+void Date::_weekday(char *dayInWeekStr, uint year, uint8_t month, uint8_t day) {
 	int adjustment, mm, yy;
 	if (year<2000) year+=2000;
 	adjustment = (14 - month) / 12;

@@ -10,7 +10,7 @@ class Time {
 
 	protected:
 
-		uint _prevMinute = 99;
-		const uint POS_Y = 72;
+		uint8_t _prevMinute = 99;
+		const uint8_t POS_Y = 72;
 
 };
