@@ -4,12 +4,13 @@
 
 #include "CyberWatch.h"
 
-#include "Display/Display.h"
+#include "System/Display.h"
 #include "System/InactivityWatcher.h"
 #include "System/Esp32.h"
 #include "System/BatteryManager.h"
 #include "System/MoveSensor.h"
 #include "System/MotorController.h"
+#include "UserInterface/UserInterfaceManager.h"
 
 CyberWatch* CyberWatch::_inst;
 
@@ -31,7 +32,7 @@ void CyberWatch::init() {
 	BatteryManager::getInstance()->energyConsumptionSavingsSettings();
 	Esp32::getInstance()->initIRQ();
 	MoveSensor::getInstance()->initIRQ();
-	Display::getInstance()->showSplashScreen();
+	UserInterfaceManager::getInstance()->showSplashScreen();
 };
 
 void CyberWatch::loop() {
@@ -67,7 +68,7 @@ void CyberWatch::loop() {
 		if (!Display::getInstance()->isDisplayOn()) {
 			Display::getInstance()->turnDisplayOn();
 		}
-		Display::getInstance()->render();
+		UserInterfaceManager::getInstance()->render();
 		delay(TICK_WAKEUP);
 		}
 	}
@@ -75,7 +76,7 @@ void CyberWatch::loop() {
 
 void CyberWatch::turnOff() {
 	Display::getInstance()->turnDisplayOn();
-	Display::getInstance()->showExitScreen();
+	UserInterfaceManager::getInstance()->showExitScreen();
 	MotorController::vibrate(2);
 	delay(2000);
 	TTGOClass::getWatch()->shutdown();

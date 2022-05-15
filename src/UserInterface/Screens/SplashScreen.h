@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Components/Logo.h"
-
 class SplashScreen {
 
   public:

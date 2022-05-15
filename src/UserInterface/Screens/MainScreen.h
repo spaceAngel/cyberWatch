@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Components/Time.h"
-#include "Components/Date.h"
-#include "Components/InfoPanel.h"
+#include "UserInterface/Components/Time.h"
+#include "UserInterface/Components/Date.h"
+#include "UserInterface/Components/InfoPanel.h"
 
 class MainScreen {
 

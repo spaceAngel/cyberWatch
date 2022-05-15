@@ -4,7 +4,7 @@
 
 #include "SplashScreen.h"
 #include "System/MotorController.h"
-#include "Components/Logo.h"
+#include "UserInterface/Components/Logo.h"
 
 void SplashScreen::show() {
 	MotorController::vibrate();

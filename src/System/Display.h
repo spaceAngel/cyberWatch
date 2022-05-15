@@ -8,13 +8,7 @@ class Display {
 
 		static Display *getInstance();
 
-		void showSplashScreen();
-
-		void showExitScreen();
-
 		void init();
-
-		void render();
 
 		bool isDisplayOn();
 

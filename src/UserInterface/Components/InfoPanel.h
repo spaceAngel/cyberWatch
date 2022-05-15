@@ -1,7 +1,7 @@
 #pragma once
 
-#include "InfoPanelComponents/StepCounter.h"
-#include "InfoPanelComponents/Battery.h"
+#include "UserInterface/Components/InfoPanel/StepCounter.h"
+#include "UserInterface/Components/InfoPanel/Battery.h"
 
 class InfoPanel {
 

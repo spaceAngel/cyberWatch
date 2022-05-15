@@ -4,7 +4,7 @@
 
 #include <LilyGoWatch.h>
 
-#include "Components/Logo.h"
+#include "UserInterface/Components/Logo.h"
 
 void ExitScreen::show() {
 
