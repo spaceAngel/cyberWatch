@@ -2,8 +2,7 @@
 
 #include "MainScreen.h"
 
-#include "UserInterface/Components/Time.h"
-#include "UserInterface/Components/Date.h"
+#include "UserInterface/Components/DateTime.h"
 #include "UserInterface/Components/InfoPanel.h"
 
 MainScreen* MainScreen::_inst;
@@ -16,13 +15,11 @@ MainScreen *MainScreen::getInstance() {
 }
 
 void MainScreen::render() {
-	_time->render();
-	_date->render();
+	_dateTime->render();
 	_infoPanel->render();
 }
 
 MainScreen::MainScreen() {
-	_time = new Time();
-	_date = new Date();
+	_dateTime = new DateTime();
 	_infoPanel = new InfoPanel();
 }
