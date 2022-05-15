@@ -12,6 +12,8 @@ class UserInterfaceManager {
 
 		void render();
 
+		bool handleTouch();
+
 		protected:
 
 			static UserInterfaceManager *_inst;

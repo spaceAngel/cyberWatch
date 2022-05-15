@@ -32,3 +32,14 @@ void UserInterfaceManager::showExitScreen() {
 void UserInterfaceManager::render() {
 	MainScreen::getInstance()->render();
 }
+
+bool UserInterfaceManager::handleTouch() {
+	int16_t x, y;
+	if (
+		TTGOClass::getWatch()->getTouch(x, y)
+		&& (x != 257 && y != 2) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
+	) {
+		return true;
+	}
+	return false;
+}

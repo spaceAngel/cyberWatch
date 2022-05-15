@@ -36,8 +36,6 @@ void CyberWatch::init() {
 };
 
 void CyberWatch::loop() {
-	int16_t x, y;
-
 	while(1) {
 		bool PEKshort = false;
 
@@ -51,10 +49,7 @@ void CyberWatch::loop() {
 			InactivityWatcher::getInstance()->markActivity();
 		}
 		if (
-			(
-				TTGOClass::getWatch()->getTouch(x, y)
-				&& (x != 257 && y != 2) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
-			)
+			UserInterfaceManager::getInstance()->handleTouch()
 			|| PEKshort
 		) {
 			InactivityWatcher::getInstance()->markActivity();
