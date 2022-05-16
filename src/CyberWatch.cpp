@@ -22,7 +22,7 @@ CyberWatch::_inst = new CyberWatch();
 }
 
 void CyberWatch::init() {
-	Serial.begin(9600);
+	Serial.begin(SERIAL_RATE);
 	Serial.println("cyberWatch starting");
 
 	TTGOClass::getWatch()->begin();
