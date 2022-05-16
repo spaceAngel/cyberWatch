@@ -16,7 +16,7 @@ class Battery {
 		bool _prevChargingState = false;
 
 		const uint POS_X = 15;
-		const uint POS_Y = 140;
+		const uint POS_Y = 150;
 
 		void _renderBatteryIcon(uint8_t capacity);
 		void _renderChargingIcon();

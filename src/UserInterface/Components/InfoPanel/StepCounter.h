@@ -16,7 +16,7 @@ class StepCounter {
 	protected:
 
 		const uint8_t POS_X = 20;
-		const uint8_t POS_Y = 170;
+		const uint8_t POS_Y = 180;
 
 		uint _prevStepCount = 0;
 
