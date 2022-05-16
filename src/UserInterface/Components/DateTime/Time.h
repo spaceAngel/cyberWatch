@@ -2,7 +2,9 @@
 
 #include <Arduino.h>
 
-class Time {
+#include "UserInterface/Components/MainComponent.h"
+
+class Time : public MainComponent {
 
 	public:
 

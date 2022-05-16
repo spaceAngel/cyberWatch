@@ -8,6 +8,7 @@ void Time::render() {
 	RTC_Date currentTime = TTGOClass::getWatch()->rtc->getDateTime();
 	if (
 		_prevMinute != currentTime.minute
+		|| shouldReRender()
 	) {
 		char timeStr[6];
 		snprintf(timeStr, sizeof(timeStr), "%02d:%02d", currentTime.hour, currentTime.minute);
@@ -27,5 +28,6 @@ void Time::render() {
 		);
 		TTGOClass::getWatch()->tft->setTextSize(1); // reset size to default
 		_prevMinute = currentTime.minute;
+		setShouldReRender(false);
 	}
 }

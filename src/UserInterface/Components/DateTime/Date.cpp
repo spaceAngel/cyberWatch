@@ -8,6 +8,7 @@ void Date::render() {
 	RTC_Date currentDate = TTGOClass::getWatch()->rtc->getDateTime();
 	if (
 		_prevDay != currentDate.day
+		|| shouldReRender()
 	) {
 		TTGOClass::getWatch()->tft->fillRect(
 			0,
@@ -20,6 +21,7 @@ void Date::render() {
 		_renderDate(currentDate);
 		_renderDayInWeek(currentDate);
 		_prevDay = currentDate.day;
+		setShouldReRender(false);
 	}
 }
 
