@@ -3,6 +3,7 @@
 #include <LilyGoWatch.h>
 
 #include "Date.h"
+#include "Utils/DateUtil.h"
 
 void Date::render() {
 	RTC_Date currentDate = TTGOClass::getWatch()->rtc->getDateTime();
@@ -47,12 +48,7 @@ void Date::_renderDayInWeek(RTC_Date currentDate) {
 
 // calculation of weekday used from here https://forum.arduino.cc/t/rtc-clock-with-days-of-week/426045/4
 void Date::_weekday(char *dayInWeekStr, uint year, uint8_t month, uint8_t day) {
-	int adjustment, mm, yy;
-	if (year < 2000) year += 2000;
-	adjustment = (14 - month) / 12;
-	mm = month + 12 * adjustment - 2;
-	yy = year - adjustment;
-	uint8_t dayInWeek = (day + (13 * mm - 1) / 5 + yy + yy / 4 - yy / 100 + yy / 400) % 7;
+	uint8_t dayInWeek = DateUtil::weekday(year, month, day);
 	switch (dayInWeek) {
 		case 0: strcpy(dayInWeekStr, "Sunday"); break;
 		case 1: strcpy(dayInWeekStr, "Monday"); break;
