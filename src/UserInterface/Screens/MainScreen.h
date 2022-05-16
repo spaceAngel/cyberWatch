@@ -1,6 +1,6 @@
 #pragma once
 
-#include "UserInterface/Components/DateTime.h"
+#include "UserInterface/Components/MainPanel.h"
 #include "UserInterface/Components/InfoPanel.h"
 
 class MainScreen {
@@ -11,11 +11,13 @@ class MainScreen {
 
 		void render();
 
+		void handleSwipe(int vector);
+
 		protected:
 
 			static MainScreen *_inst;
 
-			DateTime *_dateTime;
+			MainPanel *_mainPanel;
 			InfoPanel *_infoPanel;
 
 			MainScreen();

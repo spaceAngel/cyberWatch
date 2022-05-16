@@ -73,7 +73,9 @@ void UserInterfaceManager::_handleSwipe(uint x) {
 		}
 	}
 	if (_swipeCounter == 2) {
-		Serial.print("swipe \n\n\n");
+		MainScreen::getInstance()->handleSwipe(
+			_swipeVector == VECTOR_LEFT ? -1 : 1
+		);
 		//TO-DO: handle swipe
 	}
 }

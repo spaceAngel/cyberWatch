@@ -2,7 +2,7 @@
 
 #include "MainScreen.h"
 
-#include "UserInterface/Components/DateTime.h"
+#include "UserInterface/Components/MainPanel.h"
 #include "UserInterface/Components/InfoPanel.h"
 
 MainScreen* MainScreen::_inst;
@@ -15,11 +15,15 @@ MainScreen *MainScreen::getInstance() {
 }
 
 void MainScreen::render() {
-	_dateTime->render();
+	_mainPanel->render();
 	_infoPanel->render();
 }
 
 MainScreen::MainScreen() {
-	_dateTime = new DateTime();
+	_mainPanel = new MainPanel();
 	_infoPanel = new InfoPanel();
+}
+
+void MainScreen::handleSwipe(int vector) {
+	_mainPanel->switchScreen(vector);
 }
