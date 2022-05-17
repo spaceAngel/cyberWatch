@@ -41,49 +41,49 @@ bool UserInterfaceManager::handleTouch() {
 		&& (x != 257 && y != 2) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
 	) {
 		if (_swipeEnabled) {
-			_handleSwipe(x);
+			_handleSwipeHorizontal(x);
 		}
 		return true;
 	}
 
-	_stopSwipeHandler();
+	_stopSwipeHandlerHorizontal();
 	return false;
 }
 
-void UserInterfaceManager::_handleSwipe(uint x) {
-	if (_swipeVector == 0) {
+void UserInterfaceManager::_handleSwipeHorizontal(uint x) {
+	if (_swipeVectorHorizontal == 0) {
 		if (_swipeLastX == 0) {
 			_swipeLastX = 0 + x;
 		} else {
 			if (_swipeLastX < x) {
-				_swipeVector = VECTOR_RIGHT;
+				_swipeVectorHorizontal = VECTOR_RIGHT;
 			 } else {
-				_swipeVector = VECTOR_LEFT;
+				_swipeVectorHorizontal = VECTOR_LEFT;
 			}
 		}
 	} else {
 
 		if (
-			(_swipeVector == VECTOR_RIGHT && _swipeLastX < x)
-			|| (_swipeVector == VECTOR_LEFT &&  _swipeLastX > x)
+			(_swipeVectorHorizontal == VECTOR_RIGHT && _swipeLastX < x)
+			|| (_swipeVectorHorizontal == VECTOR_LEFT &&  _swipeLastX > x)
 		) {
-			_swipeCounter++;
+			_swipeCounterHorizontal++;
 		} else {
-			_stopSwipeHandler();
+			_stopSwipeHandlerHorizontal();
 		}
 	}
-	if (_swipeCounter == 2) {
-		MainScreen::getInstance()->handleSwipe(
-			_swipeVector == VECTOR_LEFT ? -1 : 1
+	if (_swipeCounterHorizontal == 3) {
+		MainScreen::getInstance()->handleSwipeHorizontal(
+			_swipeVectorHorizontal == VECTOR_LEFT ? -1 : 1
 		);
 		//TO-DO: handle swipe
 	}
 }
 
-void UserInterfaceManager::_stopSwipeHandler() {
-	_swipeCounter = 0;
+void UserInterfaceManager::_stopSwipeHandlerHorizontal() {
+	_swipeCounterHorizontal = 0;
 	_swipeLastX = 0;
-	_swipeVector = 0;
+	_swipeVectorHorizontal = 0;
 	if (Display::getInstance()->isDisplayOn()) {
 		_swipeEnabled = true;
 	} else {

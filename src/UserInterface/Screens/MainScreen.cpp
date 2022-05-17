@@ -24,6 +24,6 @@ MainScreen::MainScreen() {
 	_infoPanel = new InfoPanel();
 }
 
-void MainScreen::handleSwipe(int vector) {
+void MainScreen::handleSwipeHorizontal(int vector) {
 	_mainPanel->switchScreen(vector);
 }

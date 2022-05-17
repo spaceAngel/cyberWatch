@@ -19,8 +19,8 @@ class UserInterfaceManager {
 			const uint8_t VECTOR_LEFT = 1;
 			const uint8_t VECTOR_RIGHT = 2;
 			uint16_t _swipeLastX = 0;
-			uint8_t _swipeCounter = 0;
-			int8_t _swipeVector = 0;
+			uint8_t _swipeCounterHorizontal = 0;
+			int8_t _swipeVectorHorizontal = 0;
 
 			bool _swipeEnabled = false;
 
@@ -30,8 +30,8 @@ class UserInterfaceManager {
 			UserInterfaceManager() {
 			}
 
-			void _stopSwipeHandler();
+			void _stopSwipeHandlerHorizontal();
 
-			void _handleSwipe(uint x);
+			void _handleSwipeHorizontal(uint x);
 
 };
