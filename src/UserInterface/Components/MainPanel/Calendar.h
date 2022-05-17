@@ -8,6 +8,8 @@ class Calendar : public MainComponent {
 
 	public:
 
+		void prevMonth();
+		void nextMonth();
 		void setYearMonth(uint16_t year, uint8_t month);
 		void render();
 		Calendar();

@@ -89,3 +89,21 @@ void Calendar::_renderMonthYearLabel() {
 	TTGOClass::getWatch()->tft->drawString(year, 120, 125);
 
 }
+
+void Calendar::prevMonth() {
+	_month--;
+	if (_month == 0) {
+		_month = 12;
+		_year--;
+	}
+	setShouldReRender(true);
+}
+
+void Calendar::nextMonth() {
+	_month++;
+	if (_month == 13) {
+		_month = 1;
+		_year++;
+	}
+	setShouldReRender(true);
+}

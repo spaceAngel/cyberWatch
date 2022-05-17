@@ -12,6 +12,7 @@ class MainScreen {
 		void render();
 
 		void handleSwipeHorizontal(int vector);
+		void handleSwipeVertical(int vector);
 
 		protected:
 

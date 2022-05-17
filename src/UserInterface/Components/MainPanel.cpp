@@ -31,6 +31,18 @@ void MainPanel::switchScreen(int vector) {
 	render();
 }
 
+void MainPanel::handleSwipeVertical(int vector) {
+	if (_currentComponent == COMPONENT_CALENDAR) {
+		if (vector == -1) {
+			_calendar->nextMonth();
+		} else {
+			_calendar->prevMonth();
+		}
+		_clear();
+		_calendar->setShouldReRender(true);
+	}
+}
+
 void MainPanel::_clear() {
 	TTGOClass::getWatch()->tft->fillRect(
 		0,

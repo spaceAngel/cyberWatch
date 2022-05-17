@@ -31,7 +31,9 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - shows current date
  - shows battery status
  - step counter
- - horizontal swipe (current time|date; simple calendar (current month) )
+ - horizontal swipe - switching between mainPanel components/miniapps
+ - vertical swipe - control components
+ - calendar with prev/next month feature
  - for full list of features, see [changelog.txt](changelog.txt)
 
 ## Known bugs
@@ -39,7 +41,6 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
 
 ## Future features :-)
  - alarm
- - simple calendar
  - conection vith phone via BT (require app for android)
    - SMS notification icon
    - missed call icon

@@ -27,3 +27,7 @@ MainScreen::MainScreen() {
 void MainScreen::handleSwipeHorizontal(int vector) {
 	_mainPanel->switchScreen(vector);
 }
+
+void MainScreen::handleSwipeVertical(int vector) {
+	_mainPanel->handleSwipeVertical(vector);
+}

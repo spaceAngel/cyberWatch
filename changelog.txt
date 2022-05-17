@@ -14,6 +14,7 @@ cyberWatch 0.1
  - cpu frequency set to 40MHz (energy saving)
  - wakeup (and vibrate) on USB / power connect / disconnect
  - step counter
- - horizontal swipe
- - simple calendar(current year/month)
+ - horizontal swipe - switching betweenmainPanel components
+ - vertical swipe - control components
+ - simple calendar with horizontal swipe (prev/next month)
 

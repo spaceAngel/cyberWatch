@@ -16,6 +16,7 @@ class MainPanel {
 
 		void render();
 		void switchScreen(int vector);
+		void handleSwipeVertical(int vector);
 
 	protected:
 
