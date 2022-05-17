@@ -8,6 +8,8 @@ void MainPanel::render() {
 	if (_currentComponent == COMPONENT_DATETIME) {
 		_date->render();
 		_time->render();
+	} else if (_currentComponent == COMPONENT_CALENDAR) {
+		_calendar->render();
 	}
 };
 
@@ -22,6 +24,8 @@ void MainPanel::switchScreen(int vector) {
 	if (_currentComponent == COMPONENT_DATETIME) {
 		_date->setShouldReRender(true);
 		_time->setShouldReRender(true);
+	} else if (_currentComponent == COMPONENT_CALENDAR) {
+		_calendar->setShouldReRender(true);
 	}
 	_clear();
 	render();
@@ -30,9 +34,9 @@ void MainPanel::switchScreen(int vector) {
 void MainPanel::_clear() {
 	TTGOClass::getWatch()->tft->fillRect(
 		0,
-		18,
+		0,
 		TTGOClass::getWatch()->tft->width(),
-		116,
+		150,
 		TFT_BLACK
 	);
 }
