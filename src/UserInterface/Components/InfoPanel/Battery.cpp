@@ -30,7 +30,7 @@ void Battery::render() {
 		if (BatteryManager::getInstance()->isCharging()) {
 			_renderChargingIcon();
 		} else {
-			TTGOClass::getWatch()->tft->fillRect(128, 144, 36, 20, TFT_BLACK);
+			TTGOClass::getWatch()->tft->fillRect(128, POS_Y + 3, 36, 20, TFT_BLACK);
 		}
 		_prevChargingState = BatteryManager::getInstance()->isCharging();
 	}
