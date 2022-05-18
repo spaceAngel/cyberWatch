@@ -52,6 +52,12 @@ void CyberWatch::loop() {
 			UserInterfaceManager::getInstance()->handleTouch()
 			|| PEKshort
 		) {
+			if (
+				!InactivityWatcher::getInstance()->isInactive()
+				&& PEKshort
+			) {
+				UserInterfaceManager::getInstance()->handlePEKShort();
+			}
 			InactivityWatcher::getInstance()->markActivity();
 		}
 		if (InactivityWatcher::getInstance()->isInactive()) {

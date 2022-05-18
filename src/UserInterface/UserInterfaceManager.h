@@ -14,6 +14,8 @@ class UserInterfaceManager {
 
 		bool handleTouch();
 
+		void handlePEKShort();
+
 		protected:
 
 			const uint8_t VECTOR_LEFT = 1;

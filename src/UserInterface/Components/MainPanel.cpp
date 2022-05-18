@@ -52,3 +52,7 @@ void MainPanel::_clear() {
 		TFT_BLACK
 	);
 }
+
+void MainPanel::handlePEKShort() {
+	Serial.print("\n\nPEK\n\n");
+}

@@ -13,6 +13,7 @@ class MainScreen {
 
 		void handleSwipeHorizontal(int vector);
 		void handleSwipeVertical(int vector);
+		void handlePEKShort();
 
 		protected:
 

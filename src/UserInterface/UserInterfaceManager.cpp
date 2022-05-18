@@ -137,3 +137,7 @@ void UserInterfaceManager::_stopSwipeHandlerVertical() {
 		_swipeEnabled = false;
 	}
 }
+
+void UserInterfaceManager::handlePEKShort() {
+	MainScreen::getInstance()->handlePEKShort();
+}

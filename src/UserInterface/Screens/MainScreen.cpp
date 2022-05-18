@@ -31,3 +31,7 @@ void MainScreen::handleSwipeHorizontal(int vector) {
 void MainScreen::handleSwipeVertical(int vector) {
 	_mainPanel->handleSwipeVertical(vector);
 }
+
+void MainScreen::handlePEKShort() {
+	_mainPanel->handlePEKShort();
+}
