@@ -8,6 +8,7 @@ class Calendar : public MainComponent {
 
 	public:
 
+		bool handleVerticalSwipe(int8_t vector);
 		void prevMonth();
 		void nextMonth();
 		void setYearMonth(uint16_t year, uint8_t month);
@@ -24,7 +25,5 @@ class Calendar : public MainComponent {
 		void _renderDelimiter(uint8_t day, uint8_t row, uint8_t dayInWeek);
 		void _renderIsNowBox(uint8_t day, uint8_t row, uint8_t dayInWeek);
 		void _renderMonthYearLabel();
-
-
 
 };

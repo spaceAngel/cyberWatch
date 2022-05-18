@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Arduino.h>
+
 class MainComponent {
 
 	public:
@@ -9,6 +11,7 @@ class MainComponent {
 		bool shouldReRender();
 
 		virtual void render() {};
+		virtual bool handleVerticalSwipe(int8_t vector) {return false;}
 
 	private:
 

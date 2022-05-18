@@ -3,6 +3,7 @@
 #include <LilyGoWatch.h>
 
 #include "Calendar.h"
+#include "UserInterface/Components/MainPanel.h"
 #include "Utils/DateUtil.h"
 
 Calendar::Calendar() {
@@ -106,4 +107,14 @@ void Calendar::nextMonth() {
 		_year++;
 	}
 	setShouldReRender(true);
+}
+
+bool Calendar::handleVerticalSwipe(int8_t vector) {
+	if (vector == -1) {
+		nextMonth();
+	} else {
+		prevMonth();
+	}
+	setShouldReRender(true);
+	return true;
 }

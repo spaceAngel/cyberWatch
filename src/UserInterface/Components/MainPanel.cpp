@@ -32,14 +32,14 @@ void MainPanel::switchScreen(int vector) {
 }
 
 void MainPanel::handleSwipeVertical(int vector) {
-	if (_currentComponent == COMPONENT_CALENDAR) {
-		if (vector == -1) {
-			_calendar->nextMonth();
-		} else {
-			_calendar->prevMonth();
+	MainComponent *component;
+	bool handle = false;
+	if (_currentComponent == COMPONENT_CALENDAR) { handle = true; component = _calendar;}
+
+	if (handle) {
+		if (component->handleVerticalSwipe(vector)) {
+			_clear();
 		}
-		_clear();
-		_calendar->setShouldReRender(true);
 	}
 }
 
