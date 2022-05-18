@@ -54,5 +54,13 @@ void MainPanel::_clear() {
 }
 
 void MainPanel::handlePEKShort() {
-	Serial.print("\n\nPEK\n\n");
+	MainComponent *component;
+	bool handle = false;
+	if (_currentComponent == COMPONENT_CALENDAR) { handle = true; component = _calendar;}
+
+	if (handle) {
+		if (component->handlePEKShort()) {
+			_clear();
+		}
+	}
 }

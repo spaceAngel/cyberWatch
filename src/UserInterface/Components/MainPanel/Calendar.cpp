@@ -118,3 +118,11 @@ bool Calendar::handleVerticalSwipe(int8_t vector) {
 	setShouldReRender(true);
 	return true;
 }
+
+bool Calendar::handlePEKShort() {
+	RTC_Date currentDate = TTGOClass::getWatch()->rtc->getDateTime();
+	_year = currentDate.year;
+	_month = currentDate.month;
+	setShouldReRender(true);
+	return true;
+}

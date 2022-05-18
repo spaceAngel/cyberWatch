@@ -12,6 +12,7 @@ class MainComponent {
 
 		virtual void render() {};
 		virtual bool handleVerticalSwipe(int8_t vector) {return false;}
+		virtual bool handlePEKShort() {return false;};
 
 	private:
 
