@@ -10,6 +10,8 @@ void MainPanel::render() {
 		_time->render();
 	} else if (_currentComponent == COMPONENT_CALENDAR) {
 		_calendar->render();
+	} else if (_currentComponent == COMPONENT_STOPWATCH) {
+		_stopWatch->render();
 	}
 };
 
@@ -26,6 +28,8 @@ void MainPanel::switchScreen(int vector) {
 		_time->setShouldReRender(true);
 	} else if (_currentComponent == COMPONENT_CALENDAR) {
 		_calendar->setShouldReRender(true);
+	} else if (_currentComponent == COMPONENT_STOPWATCH) {
+		_stopWatch->setShouldReRender(true);
 	}
 	_clear();
 	render();
@@ -57,6 +61,7 @@ void MainPanel::handlePEKShort() {
 	MainComponent *component;
 	bool handle = false;
 	if (_currentComponent == COMPONENT_CALENDAR) { handle = true; component = _calendar;}
+	if (_currentComponent == COMPONENT_STOPWATCH) { handle = true; component = _stopWatch;}
 
 	if (handle) {
 		if (component->handlePEKShort()) {

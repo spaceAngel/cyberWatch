@@ -34,6 +34,7 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - horizontal swipe - switching between mainPanel components/miniapps
  - vertical swipe - control components
  - calendar with prev/next month feature
+ - simple stop watch
  - for full list of features, see [changelog.txt](changelog.txt)
 
 ## Known bugs

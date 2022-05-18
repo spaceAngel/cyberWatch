@@ -17,4 +17,5 @@ cyberWatch 0.1
  - horizontal swipe - switching betweenmainPanel components
  - vertical swipe - control components
  - simple calendar with horizontal swipe (prev/next month)
+ - simple stop watch
 
