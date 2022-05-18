@@ -66,15 +66,19 @@ void UserInterfaceManager::_handleSwipeHorizontal(uint x) {
 	} else {
 
 		if (
-			(_swipeVectorHorizontal == VECTOR_RIGHT && _swipeLastX < x)
-			|| (_swipeVectorHorizontal == VECTOR_LEFT &&  _swipeLastX > x)
+			(
+				_swipeVectorHorizontal == VECTOR_RIGHT && _swipeLastX < x - CROSS_SWIPE_TOLERANCE
+			) || (
+				_swipeVectorHorizontal == VECTOR_LEFT &&  _swipeLastX > x + CROSS_SWIPE_TOLERANCE
+			)
 		) {
 			_swipeCounterHorizontal++;
+			_stopSwipeHandlerVertical();
 		} else {
 			_stopSwipeHandlerHorizontal();
 		}
 	}
-	if (_swipeCounterHorizontal == 4) {
+	if (_swipeCounterHorizontal == 3) {
 		MainScreen::getInstance()->handleSwipeHorizontal(
 			_swipeVectorHorizontal == VECTOR_LEFT ? -1 : 1
 		);
@@ -111,6 +115,7 @@ void UserInterfaceManager::_handleSwipeVertical(uint y) {
 			|| (_swipeVectorVertical == VECTOR_DOWN &&  _swipeLastY < y)
 		) {
 			_swipeCounterVertical++;
+			_stopSwipeHandlerHorizontal();
 		} else {
 			_stopSwipeHandlerVertical();
 		}
