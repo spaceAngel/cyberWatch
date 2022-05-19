@@ -69,3 +69,9 @@ void MainPanel::handlePEKShort() {
 		}
 	}
 }
+
+bool MainPanel::isSleepForbidden() {
+	return
+		_currentComponent == COMPONENT_STOPWATCH
+	;
+}

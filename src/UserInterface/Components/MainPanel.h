@@ -20,6 +20,7 @@ class MainPanel {
 		void switchScreen(int vector);
 		void handleSwipeVertical(int vector);
 		void handlePEKShort();
+		bool isSleepForbidden();
 
 	protected:
 

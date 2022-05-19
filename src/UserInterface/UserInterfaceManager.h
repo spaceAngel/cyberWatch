@@ -16,6 +16,8 @@ class UserInterfaceManager {
 
 		void handlePEKShort();
 
+		bool isSleepForbidden();
+
 		protected:
 
 			const uint8_t VECTOR_LEFT = 1;

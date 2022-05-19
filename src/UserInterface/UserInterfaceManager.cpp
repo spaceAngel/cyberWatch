@@ -141,3 +141,7 @@ void UserInterfaceManager::_stopSwipeHandlerVertical() {
 void UserInterfaceManager::handlePEKShort() {
 	MainScreen::getInstance()->handlePEKShort();
 }
+
+bool UserInterfaceManager::isSleepForbidden() {
+	return MainScreen::getInstance()->isSleepForbidden();
+}

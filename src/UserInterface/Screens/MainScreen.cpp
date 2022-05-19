@@ -35,3 +35,7 @@ void MainScreen::handleSwipeVertical(int vector) {
 void MainScreen::handlePEKShort() {
 	_mainPanel->handlePEKShort();
 }
+
+bool MainScreen::isSleepForbidden() {
+	return _mainPanel->isSleepForbidden();
+}

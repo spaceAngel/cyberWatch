@@ -41,7 +41,9 @@ void CyberWatch::loop() {
 
 		_handleBatteryLowActions();
 		_handleEsp32IRQ(PEKshort);
-
+		if(UserInterfaceManager::getInstance()->isSleepForbidden()) {
+			InactivityWatcher::getInstance()->markActivity();
+		}
 		if (
 			InactivityWatcher::getInstance()->isInactive()
 			&& MoveSensor::getInstance()->isTilt()
@@ -60,7 +62,9 @@ void CyberWatch::loop() {
 			}
 			InactivityWatcher::getInstance()->markActivity();
 		}
-		if (InactivityWatcher::getInstance()->isInactive()) {
+		if (
+			InactivityWatcher::getInstance()->isInactive()
+		) {
 			Display::getInstance()->turnDisplayOff();
 			esp_sleep_enable_timer_wakeup(TICK_SLEEP);
 			esp_sleep_enable_ext1_wakeup(GPIO_SEL_39, ESP_EXT1_WAKEUP_ANY_HIGH);
