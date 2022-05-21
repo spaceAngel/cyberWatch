@@ -4,6 +4,8 @@
 
 #include <LilyGoWatch.h>
 
+#include "System/AppsStatusMonitor.h"
+
 void StopWatch::render() {
 	long stopTime;
 	if (_isRunning) {
@@ -72,7 +74,8 @@ void StopWatch::_renderTime(long stopTime) {
 		POS_Y
 	);
 	TTGOClass::getWatch()->tft->setTextSize(1); // reset size to default
+}
 
-
-
+bool StopWatch::isRunning() {
+	return _isRunning;
 }
