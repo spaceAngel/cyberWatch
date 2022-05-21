@@ -55,7 +55,7 @@ void StopWatch::_renderTime(long stopTime) {
 	hours = stopTime / 3600000;
 	stopTime = stopTime  - hours * 3600000;
 	minutes = stopTime / 60000;
-	stopTime = stopTime - minutes * 6000;
+	stopTime = stopTime - minutes * 60000;
 	seconds = stopTime / 1000;
 	stopTime = stopTime - seconds * 1000;
 	stopTime = stopTime / 10;
