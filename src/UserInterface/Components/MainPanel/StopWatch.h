@@ -14,6 +14,8 @@ class StopWatch : public MainComponent {
 		bool handleVerticalSwipe(int8_t vector) {return false;}
 		bool isRunning();
 
+		StopWatch();
+
 		protected:
 
 			const uint8_t POS_Y = 48;

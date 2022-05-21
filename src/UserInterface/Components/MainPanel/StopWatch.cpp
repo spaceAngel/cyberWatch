@@ -79,3 +79,7 @@ void StopWatch::_renderTime(long stopTime) {
 bool StopWatch::isRunning() {
 	return _isRunning;
 }
+
+StopWatch::StopWatch() {
+	AppsStatusMonitor::getInstance()->registerStopWatchComponent(this);
+}
