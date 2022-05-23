@@ -6,8 +6,7 @@
 
 void MainPanel::render() {
 	if (_currentComponent == COMPONENT_DATETIME) {
-		_date->render();
-		_time->render();
+		_dateTime->render();
 	} else if (_currentComponent == COMPONENT_CALENDAR) {
 		_calendar->render();
 	} else if (_currentComponent == COMPONENT_STOPWATCH) {
@@ -24,8 +23,7 @@ void MainPanel::switchScreen(int vector) {
 		_currentComponent = COMPONENTS;
 	}
 	if (_currentComponent == COMPONENT_DATETIME) {
-		_date->setShouldReRender(true);
-		_time->setShouldReRender(true);
+		_dateTime->setShouldReRender(true);
 	} else if (_currentComponent == COMPONENT_CALENDAR) {
 		_calendar->setShouldReRender(true);
 	} else if (_currentComponent == COMPONENT_STOPWATCH) {

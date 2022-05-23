@@ -1,7 +1,6 @@
 #pragma once
 
-#include "UserInterface/Components/MainPanel/Date.h"
-#include "UserInterface/Components/MainPanel/Time.h"
+#include "UserInterface/Components/MainPanel/DateTime.h"
 #include "UserInterface/Components/MainPanel/Calendar.h"
 #include "UserInterface/Components/MainPanel/StopWatch.h"
 
@@ -10,8 +9,7 @@ class MainPanel {
 	public:
 
 		MainPanel() {
-			_date = new Date();
-			_time = new Time();
+			_dateTime = new DateTime();
 			_calendar = new Calendar();
 			_stopWatch = new StopWatch();
 		}
@@ -32,8 +30,7 @@ class MainPanel {
 
 		uint _currentComponent = COMPONENT_DATETIME;
 
-		Date *_date;
-		Time *_time;
+		DateTime *_dateTime;
 		Calendar *_calendar;
 		StopWatch *_stopWatch;
 
