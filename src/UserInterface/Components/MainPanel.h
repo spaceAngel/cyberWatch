@@ -3,6 +3,7 @@
 #include "UserInterface/Components/MainPanel/DateTime.h"
 #include "UserInterface/Components/MainPanel/Calendar.h"
 #include "UserInterface/Components/MainPanel/StopWatch.h"
+#include "UserInterface/Components/MainComponent.h"
 
 class MainPanel {
 
@@ -19,6 +20,7 @@ class MainPanel {
 		void handleSwipeVertical(int vector);
 		void handlePEKShort();
 		bool isSleepForbidden();
+		MainComponent *getCurrentComponent();
 
 	protected:
 

@@ -5,13 +5,7 @@
 #include "MainPanel.h"
 
 void MainPanel::render() {
-	if (_currentComponent == COMPONENT_DATETIME) {
-		_dateTime->render();
-	} else if (_currentComponent == COMPONENT_CALENDAR) {
-		_calendar->render();
-	} else if (_currentComponent == COMPONENT_STOPWATCH) {
-		_stopWatch->render();
-	}
+	getCurrentComponent()->render();
 };
 
 void MainPanel::switchScreen(int vector) {
@@ -22,13 +16,8 @@ void MainPanel::switchScreen(int vector) {
 	if (_currentComponent == 0) {
 		_currentComponent = COMPONENTS;
 	}
-	if (_currentComponent == COMPONENT_DATETIME) {
-		_dateTime->setShouldReRender(true);
-	} else if (_currentComponent == COMPONENT_CALENDAR) {
-		_calendar->setShouldReRender(true);
-	} else if (_currentComponent == COMPONENT_STOPWATCH) {
-		_stopWatch->setShouldReRender(true);
-	}
+
+	getCurrentComponent()->setShouldReRender(true);
 	_clear();
 	render();
 }
@@ -72,4 +61,12 @@ bool MainPanel::isSleepForbidden() {
 	return
 		_currentComponent == COMPONENT_STOPWATCH
 	;
+}
+
+MainComponent *MainPanel::getCurrentComponent() {
+	MainComponent *component;
+	if (_currentComponent == COMPONENT_DATETIME) { component = _dateTime; }
+	if (_currentComponent == COMPONENT_CALENDAR) { component = _calendar; }
+	if (_currentComponent == COMPONENT_STOPWATCH) { component = _stopWatch; }
+	return component;
 }

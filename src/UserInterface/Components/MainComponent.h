@@ -6,7 +6,7 @@ class MainComponent {
 
 	public:
 
-		void setShouldReRender(bool shouldReRender);
+		virtual void setShouldReRender(bool shouldReRender);
 
 		bool shouldReRender();
 
