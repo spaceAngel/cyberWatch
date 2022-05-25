@@ -3,6 +3,7 @@ cyberWatch 0.1
  - shows splashscreen
  - shows "exit screen"
  - shows current time & date (include day of week)
+ - or analog watch as second "clock face"
  - shows battery capacity (with battery icon "progressbar")
  - activate by touching display
  - activate by shortpress pek

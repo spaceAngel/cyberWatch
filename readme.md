@@ -29,6 +29,7 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - warns (vibrate, turn display on) when battery reach low levels(30% / 20%)
  - shows current time
  - shows current date
+ - show analog clocks (instead of digital date & time) - change by swipe vertical on datetime "miniapp"
  - shows battery status
  - step counter
  - horizontal swipe - switching between mainPanel components/miniapps

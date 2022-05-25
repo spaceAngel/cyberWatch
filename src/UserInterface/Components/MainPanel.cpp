@@ -26,6 +26,7 @@ void MainPanel::handleSwipeVertical(int vector) {
 	MainComponent *component;
 	bool handle = false;
 	if (_currentComponent == COMPONENT_CALENDAR) { handle = true; component = _calendar;}
+	if (_currentComponent == COMPONENT_DATETIME) { handle = true; component = _dateTime;}
 
 	if (handle) {
 		if (component->handleVerticalSwipe(vector)) {
@@ -42,6 +43,7 @@ void MainPanel::_clear() {
 		150,
 		TFT_BLACK
 	);
+
 }
 
 void MainPanel::handlePEKShort() {
