@@ -3,30 +3,26 @@
 #include <LilyGoWatch.h>
 
 #include "DateTime.h"
-#include "UserInterface/Components/MainPanel/DateTime/Date.h"
-#include "UserInterface/Components/MainPanel/DateTime/Time.h"
+#include "UserInterface/Components/MainPanel/DateTime/DigitalClocks.h"
 #include "UserInterface/Components/MainPanel/DateTime/AnalogClocks.h"
 
 void DateTime::render() {
 	if (_isDigital) {
-		_date->render();
-		_time->render();
+		_digital->render();
 	} else {
 		_clocks->render();
 	}
 }
 
 void DateTime::setShouldReRender(bool shouldReRender) {
-	_date->setShouldReRender(shouldReRender);
-	_time->setShouldReRender(shouldReRender);
+	_digital->setShouldReRender(shouldReRender);
 	_clocks->setShouldReRender(shouldReRender);
 }
 
 bool DateTime::handleVerticalSwipe(int8_t vector) {
 	_isDigital = !_isDigital;
 	if (_isDigital) {
-		_date->setShouldReRender(true);
-		_time->setShouldReRender(true);
+		_digital->setShouldReRender(true);
 	} else {
 		_clocks->setShouldReRender(true);
 	}
@@ -34,8 +30,7 @@ bool DateTime::handleVerticalSwipe(int8_t vector) {
 }
 
 DateTime::DateTime() {
-	_date = new Date();
-	_time = new Time();
+	_digital = new DigitalClocks();
 	_clocks = new AnalogClocks();
 }
 

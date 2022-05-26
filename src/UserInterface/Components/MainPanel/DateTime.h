@@ -3,9 +3,8 @@
 #include <Arduino.h>
 
 #include "UserInterface/Components/MainComponent.h"
-#include "UserInterface/Components/MainPanel/DateTime/Date.h"
-#include "UserInterface/Components/MainPanel/DateTime/Time.h"
 #include "UserInterface/Components/MainPanel/DateTime/AnalogClocks.h"
+#include "UserInterface/Components/MainPanel/DateTime/DigitalClocks.h"
 
 class DateTime : public MainComponent {
 
@@ -21,6 +20,7 @@ class DateTime : public MainComponent {
 		Date *_date;
 		Time *_time;
 		AnalogClocks *_clocks;
+		DigitalClocks *_digital;;
 
 		bool _isDigital = false;
 
