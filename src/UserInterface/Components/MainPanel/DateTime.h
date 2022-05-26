@@ -12,6 +12,7 @@ class DateTime : public MainComponent {
 
 		bool handleVerticalSwipe(int8_t vector);
 		void setShouldReRender(bool shouldReRender);
+		MainComponent *getCurrentFace();
 		void render();
 		DateTime();
 
@@ -22,6 +23,11 @@ class DateTime : public MainComponent {
 		AnalogClocks *_clocks;
 		DigitalClocks *_digital;;
 
-		bool _isDigital = false;
+		const uint8_t FACE_DIGITAL = 1;
+		const uint8_t FACE_ANALOG = 2;
+
+		const uint8_t FACES = 2;
+
+		uint _currentFace = FACE_DIGITAL;
 
 };

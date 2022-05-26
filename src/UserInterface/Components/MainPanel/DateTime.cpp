@@ -5,13 +5,10 @@
 #include "DateTime.h"
 #include "UserInterface/Components/MainPanel/DateTime/DigitalClocks.h"
 #include "UserInterface/Components/MainPanel/DateTime/AnalogClocks.h"
+#include "UserInterface/Components/MainComponent.h"
 
 void DateTime::render() {
-	if (_isDigital) {
-		_digital->render();
-	} else {
-		_clocks->render();
-	}
+	getCurrentFace()->render();
 }
 
 void DateTime::setShouldReRender(bool shouldReRender) {
@@ -20,13 +17,23 @@ void DateTime::setShouldReRender(bool shouldReRender) {
 }
 
 bool DateTime::handleVerticalSwipe(int8_t vector) {
-	_isDigital = !_isDigital;
-	if (_isDigital) {
-		_digital->setShouldReRender(true);
-	} else {
-		_clocks->setShouldReRender(true);
+	_currentFace += vector;
+	if (_currentFace > FACES) {
+		_currentFace = 1;
 	}
+	if (_currentFace == 0) {
+		_currentFace = FACES;
+	}
+
+	getCurrentFace()->setShouldReRender(true);
 	return true;
+}
+
+MainComponent *DateTime::getCurrentFace() {
+	MainComponent *component;
+	if (_currentFace == FACE_ANALOG) { component = _clocks; }
+	if (_currentFace == FACE_DIGITAL) { component = _digital; }
+	return component;
 }
 
 DateTime::DateTime() {
