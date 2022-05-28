@@ -22,13 +22,13 @@ CyberWatch::_inst = new CyberWatch();
 }
 
 void CyberWatch::init() {
+
 	Serial.begin(SERIAL_RATE);
 	Serial.println("cyberWatch starting");
 
 	TTGOClass::getWatch()->begin();
 	TTGOClass::getWatch()->motor_begin();
 	Display::getInstance()->init();
-
 	BatteryManager::getInstance()->energyConsumptionSavingsSettings();
 	Esp32::getInstance()->initIRQ();
 	MoveSensor::getInstance()->initIRQ();
