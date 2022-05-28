@@ -15,22 +15,18 @@ class DateTime : public MainComponent {
 		void setShouldReRender(bool shouldReRender);
 		MainComponent *getCurrentFace();
 		void render();
-		DateTime();
+
+		DateTime() {
+			_clockFaces[0] = new DigitalClocks();
+			_clockFaces[1] = new AnalogClocks();
+			_clockFaces[2] = new Planetoid();
+		};
 
 	protected:
 
-		Date *_date;
-		Time *_time;
-		AnalogClocks *_clocks;
-		Planetoid *_planetoid;
-		DigitalClocks *_digital;
+		const int FACES = 2;
 
-		const uint8_t FACE_DIGITAL = 1;
-		const uint8_t FACE_ANALOG = 2;
-		const uint8_t FACE_PLANETOID = 3;
-
-		const uint8_t FACES = 3;
-
-		uint _currentFace = FACE_PLANETOID;
+		MainComponent *_clockFaces[3];
+		int8_t _currentFace = 2;
 
 };

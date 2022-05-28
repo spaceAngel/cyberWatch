@@ -13,17 +13,17 @@ void DateTime::render() {
 }
 
 void DateTime::setShouldReRender(bool shouldReRender) {
-	_digital->setShouldReRender(shouldReRender);
-	_clocks->setShouldReRender(shouldReRender);
-	_planetoid->setShouldReRender(shouldReRender);
+	for (uint8_t i = 0; i <= FACES; i++) {
+		_clockFaces[i]->setShouldReRender(shouldReRender);
+	}
 }
 
 bool DateTime::handleVerticalSwipe(int8_t vector) {
 	_currentFace += vector;
 	if (_currentFace > FACES) {
-		_currentFace = 1;
+		_currentFace = 0;
 	}
-	if (_currentFace == 0) {
+	if (_currentFace < 0) {
 		_currentFace = FACES;
 	}
 
@@ -32,16 +32,5 @@ bool DateTime::handleVerticalSwipe(int8_t vector) {
 }
 
 MainComponent *DateTime::getCurrentFace() {
-	MainComponent *component;
-	if (_currentFace == FACE_ANALOG) { component = _clocks; }
-	if (_currentFace == FACE_DIGITAL) { component = _digital; }
-	if (_currentFace == FACE_PLANETOID) { component = _planetoid; }
-	return component;
+	return _clockFaces[_currentFace];
 }
-
-DateTime::DateTime() {
-	_digital = new DigitalClocks();
-	_clocks = new AnalogClocks();
-	_planetoid = new Planetoid();
-}
-
