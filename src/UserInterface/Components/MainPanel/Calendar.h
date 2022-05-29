@@ -18,13 +18,13 @@ class Calendar : public MainComponent {
 
 	protected:
 
-		uint8_t _day;
-		uint8_t _month;
-		uint16_t _year;
+		uint8_t day;
+		uint8_t month;
+		uint16_t year;
 
-		void _renderDay(uint8_t day, uint8_t row, uint8_t dayInWeek);
-		void _renderDelimiter(uint8_t day, uint8_t row, uint8_t dayInWeek);
-		void _renderIsNowBox(uint8_t day, uint8_t row, uint8_t dayInWeek);
-		void _renderMonthYearLabel();
+		void renderDay(uint8_t day, uint8_t row, uint8_t dayInWeek);
+		void renderDelimiter(uint8_t day, uint8_t row, uint8_t dayInWeek);
+		void renderIsNowBox(uint8_t day, uint8_t row, uint8_t dayInWeek);
+		void renderMonthYearLabel();
 
 };

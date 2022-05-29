@@ -14,17 +14,17 @@ void DateTime::render() {
 
 void DateTime::setShouldReRender(bool shouldReRender) {
 	for (uint8_t i = 0; i <= FACES; i++) {
-		_clockFaces[i]->setShouldReRender(shouldReRender);
+		this->clockFaces[i]->setShouldReRender(shouldReRender);
 	}
 }
 
 bool DateTime::handleVerticalSwipe(int8_t vector) {
-	_currentFace += vector;
-	if (_currentFace > FACES) {
-		_currentFace = 0;
+	this->currentFace += vector;
+	if (this->currentFace > FACES) {
+		this->currentFace = 0;
 	}
-	if (_currentFace < 0) {
-		_currentFace = FACES;
+	if (this->currentFace < 0) {
+		this->currentFace = FACES;
 	}
 
 	getCurrentFace()->setShouldReRender(true);
@@ -32,5 +32,5 @@ bool DateTime::handleVerticalSwipe(int8_t vector) {
 }
 
 MainComponent *DateTime::getCurrentFace() {
-	return _clockFaces[_currentFace];
+	return this->clockFaces[this->currentFace];
 }

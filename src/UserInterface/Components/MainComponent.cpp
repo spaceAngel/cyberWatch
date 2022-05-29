@@ -1,9 +1,9 @@
 #include "MainComponent.h"
 
 void MainComponent::setShouldReRender(bool shouldReRender = true) {
-	_shouldReRender = shouldReRender;
+	this->shouldRerender = shouldReRender;
 }
 
 bool MainComponent::shouldReRender() {
-	return _shouldReRender;
+	return this->shouldRerender;
 }

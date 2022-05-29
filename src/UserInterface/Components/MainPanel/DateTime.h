@@ -19,18 +19,18 @@ class DateTime : public MainComponent {
 		void render();
 
 		DateTime() {
-			_clockFaces[0] = new DigitalClocks();
-			_clockFaces[1] = new AnalogClocks();
-			_clockFaces[2] = new Planetoid();
-			_clockFaces[3] = new ProgressBars();
-			_clockFaces[4] = new NeonCircles();
+			clockFaces[0] = new DigitalClocks();
+			clockFaces[1] = new AnalogClocks();
+			clockFaces[2] = new Planetoid();
+			clockFaces[3] = new ProgressBars();
+			clockFaces[4] = new NeonCircles();
 		};
 
 	protected:
 
 		const int FACES = 4;
 
-		MainComponent *_clockFaces[5];
-		int8_t _currentFace = 4;
+		MainComponent *clockFaces[5];
+		int8_t currentFace = 4;
 
 };

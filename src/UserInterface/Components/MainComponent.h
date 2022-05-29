@@ -16,6 +16,6 @@ class MainComponent {
 
 	private:
 
-		bool _shouldReRender = true;
+		bool shouldRerender = true;
 
 };

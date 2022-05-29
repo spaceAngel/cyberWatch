@@ -8,40 +8,40 @@
 
 Calendar::Calendar() {
 	RTC_Date currentDate = TTGOClass::getWatch()->rtc->getDateTime();
-	_year = currentDate.year;
-	_month = currentDate.month;
-	_day = currentDate.day;
+	year = currentDate.year;
+	month = currentDate.month;
+	day = currentDate.day;
 }
 
 void Calendar::render() {
-	if (shouldReRender()) {
-		uint8_t dayInWeek = DateUtil::weekday(_year, _month, 1);
+	if (this->shouldReRender()) {
+		uint8_t dayInWeek = DateUtil::weekday(this->year, this->month, 1);
 		uint8_t day = 0;
 		uint8_t row = 0;
-		while (day < DateUtil::getDaysInMonth(_year, _month)) {
+		while (day < DateUtil::getDaysInMonth(this->year, this->month)) {
 
 			if (dayInWeek == 0) {
 				dayInWeek = 7;
 			}
 			day++;
-			_renderDay(day, row, dayInWeek);
-			_renderIsNowBox(day, row, dayInWeek);
-			_renderDelimiter(day, row, dayInWeek);
+			this->renderDay(day, row, dayInWeek);
+			this->renderIsNowBox(day, row, dayInWeek);
+			this->renderDelimiter(day, row, dayInWeek);
 			if (dayInWeek % 7 == 0) {
 				dayInWeek = 0;
 				row++;
 			}
 			dayInWeek++;
 		}
-		_renderMonthYearLabel();
-		setShouldReRender(false);
+		this->renderMonthYearLabel();
+		this->setShouldReRender(false);
 	}
 }
 
-void Calendar::_renderDelimiter(uint8_t day, uint8_t row, uint8_t dayInWeek) {
+void Calendar::renderDelimiter(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 	if (
 		dayInWeek < 7
-		&& day < DateUtil::getDaysInMonth(_year, _month)
+		&& day < DateUtil::getDaysInMonth(this->year, this->month)
 	) {
 		TTGOClass::getWatch()->tft->drawLine(
 			dayInWeek * 34,
@@ -53,11 +53,11 @@ void Calendar::_renderDelimiter(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 	}
 }
 
-void Calendar::_renderIsNowBox(uint8_t day, uint8_t row, uint8_t dayInWeek) {
+void Calendar::renderIsNowBox(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 	RTC_Date currentDate = TTGOClass::getWatch()->rtc->getDateTime();
 	if (
-		_year == currentDate.year
-		&& _month == currentDate.month
+		this->year == currentDate.year
+		&& this->month == currentDate.month
 		&& day == currentDate.day
 	) {
 		TTGOClass::getWatch()->tft->drawRect(
@@ -70,7 +70,7 @@ void Calendar::_renderIsNowBox(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 	}
 }
 
-void Calendar::_renderDay(uint8_t day, uint8_t row, uint8_t dayInWeek) {
+void Calendar::renderDay(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 	char str[4];
 	snprintf(str, sizeof(str), "%d", day);
 
@@ -81,48 +81,48 @@ void Calendar::_renderDay(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 	);
 }
 
-void Calendar::_renderMonthYearLabel() {
+void Calendar::renderMonthYearLabel() {
 	char month[3];
-	DateUtil::monthNameShort(month, _month);
+	DateUtil::monthNameShort(month, this->month);
 	TTGOClass::getWatch()->tft->drawString(month, 182, 125);
 	char year[5];
-	snprintf(year, sizeof(year), "%d", _year);
+	snprintf(year, sizeof(year), "%d", this->year);
 	TTGOClass::getWatch()->tft->drawString(year, 120, 125);
 
 }
 
 void Calendar::prevMonth() {
-	_month--;
-	if (_month == 0) {
-		_month = 12;
-		_year--;
+	this->month--;
+	if (this->month == 0) {
+		this->month = 12;
+		this->year--;
 	}
 	setShouldReRender(true);
 }
 
 void Calendar::nextMonth() {
-	_month++;
-	if (_month == 13) {
-		_month = 1;
-		_year++;
+	this->month++;
+	if (this->month == 13) {
+		this->month = 1;
+		this->year++;
 	}
 	setShouldReRender(true);
 }
 
 bool Calendar::handleVerticalSwipe(int8_t vector) {
 	if (vector == -1) {
-		nextMonth();
+		this->nextMonth();
 	} else {
-		prevMonth();
+		this->prevMonth();
 	}
-	setShouldReRender(true);
+	this->setShouldReRender(true);
 	return true;
 }
 
 bool Calendar::handlePEKShort() {
 	RTC_Date currentDate = TTGOClass::getWatch()->rtc->getDateTime();
-	_year = currentDate.year;
-	_month = currentDate.month;
-	setShouldReRender(true);
+	this->year = currentDate.year;
+	this->month = currentDate.month;
+	this->setShouldReRender(true);
 	return true;
 }

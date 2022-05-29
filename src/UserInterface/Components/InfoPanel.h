@@ -9,17 +9,17 @@ class InfoPanel {
 	public:
 
 		InfoPanel() {
-			_battery = new Battery();
-			_stepCounter = new StepCounter();
-			_runningStopWatch = new RunningStopWatch();
+			this->battery = new Battery();
+			this->stepCounter = new StepCounter();
+			this->runningStopWatch = new RunningStopWatch();
 		}
 
 		void render();
 
 	protected:
 
-		Battery *_battery;
-		StepCounter *_stepCounter;
-		RunningStopWatch *_runningStopWatch;
+		Battery *battery;
+		StepCounter *stepCounter;
+		RunningStopWatch *runningStopWatch;
 
 };

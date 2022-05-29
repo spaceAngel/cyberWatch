@@ -8,17 +8,17 @@
 
 void StopWatch::render() {
 	long stopTime;
-	if (_isRunning) {
-		stopTime = millis() - _startAt;
+	if (this->running) {
+		stopTime = millis() - this->startAt;
 	} else {
-		stopTime = _stopAt - _startAt;
+		stopTime = this->stopAt - this->startAt;
 	}
 	if (
-		stopTime != _prevTime
-		|| shouldReRender()
+		stopTime != this->prevTime
+		|| this->shouldReRender()
 	) {
 		TTGOClass::getWatch()->tft->setTextSize(2);
-		if (shouldReRender()) {
+		if (this->shouldReRender()) {
 			TTGOClass::getWatch()->tft->fillRect(
 				0,
 				POS_Y,
@@ -32,32 +32,32 @@ void StopWatch::render() {
 				POS_Y
 			);
 		}
-		_renderTime(stopTime > 0 ? stopTime : 0);
+		this->renderTime(stopTime > 0 ? stopTime : 0);
 		TTGOClass::getWatch()->tft->setTextSize(1);
-		_prevTime = stopTime;
-		setShouldReRender(false);
+		this->prevTime = stopTime;
+		this->setShouldReRender(false);
 	}
 
 }
 
 
 bool StopWatch::handlePEKShort() {
-	if (_isRunning) { //is running, PEK means stop
-		_isRunning = false;
-		_stopAt = millis();
+	if (this->running) { //is running, PEK means stop
+		this->running = false;
+		this->stopAt = millis();
 	} else {
-		if (_startAt == 0) { //no start value, start
-			_startAt = millis();
-			_isRunning = true;
+		if (this->startAt == 0) { //no start value, start
+			this->startAt = millis();
+			this->running = true;
 		} else { //reset
-			_startAt = 0;
-			_stopAt = 0;
+			this->startAt = 0;
+			this->stopAt = 0;
 		}
 	}
 	return false;
 }
 
-void StopWatch::_renderTime(long stopTime) {
+void StopWatch::renderTime(long stopTime) {
 	uint8_t hours = 0;
 	uint8_t minutes = 0;
 	uint8_t seconds = 0;
@@ -76,21 +76,21 @@ void StopWatch::_renderTime(long stopTime) {
 	//	"%d:%02d:%02d.%02d",
 	//	hours, minutes, seconds, stopTime
 	//);
-	_renderHour(hours);
-	_renderMinutes(minutes);
-	_renderSeconds(seconds);
-	_renderMillis(stopTime);
+	this->renderHour(hours);
+	this->renderMinutes(minutes);
+	this->renderSeconds(seconds);
+	this->renderMillis(stopTime);
 
 }
 
 bool StopWatch::isRunning() {
-	return _isRunning;
+	return this->running;
 }
 
-void StopWatch::_renderHour(uint8_t hours) {
+void StopWatch::renderHour(uint8_t hours) {
 	if (
-		hours != _prevHour
-		|| shouldReRender()
+		hours != this->prevHour
+		|| this->shouldReRender()
 	) {
 		TTGOClass::getWatch()->tft->fillRect(0, POS_Y, 28, 40, TFT_BLACK);
 		char txt[3];
@@ -99,33 +99,33 @@ void StopWatch::_renderHour(uint8_t hours) {
 	}
 }
 
-void StopWatch::_renderSeconds(uint8_t seconds) {
+void StopWatch::renderSeconds(uint8_t seconds) {
 	if (
-		seconds != _prevSecond
-		|| shouldReRender()
+		seconds != this->prevSecond
+		|| this->shouldReRender()
 	) {
 		TTGOClass::getWatch()->tft->fillRect(113, POS_Y, 56, 40, TFT_BLACK);
 		char txt[3];
 		snprintf(txt, sizeof(txt), "%02d", seconds);
 		TTGOClass::getWatch()->tft->drawString(txt, 113, POS_Y);
-		_prevSecond = seconds;
+		this->prevSecond = seconds;
 	}
 }
 
-void StopWatch::_renderMinutes(uint8_t minutes) {
+void StopWatch::renderMinutes(uint8_t minutes) {
 	if (
-		minutes != _prevMinute
-		|| shouldReRender()
+		minutes != this->prevMinute
+		|| this->shouldReRender()
 	) {
 		TTGOClass::getWatch()->tft->fillRect(42, POS_Y, 56, 40, TFT_BLACK);
 		char txt[3];
 		snprintf(txt, sizeof(txt), "%02d", minutes);
 		TTGOClass::getWatch()->tft->drawString(txt, 42, POS_Y);
-		_prevMinute = minutes;
+		this->prevMinute = minutes;
 	}
 }
 
-void StopWatch::_renderMillis(uint8_t millis) {
+void StopWatch::renderMillis(uint8_t millis) {
 	TTGOClass::getWatch()->tft->fillRect(180, POS_Y, 56, 40, TFT_BLACK);
 	char txt[3];
 	snprintf(txt, sizeof(txt), "%02d", millis);

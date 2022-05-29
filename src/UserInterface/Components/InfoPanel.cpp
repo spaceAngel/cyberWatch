@@ -3,7 +3,7 @@
 #include "InfoPanel.h"
 
 void InfoPanel::render() {
-	_battery->render();
-	_stepCounter->render();
-	_runningStopWatch->render();
+	this->battery->render();
+	this->stepCounter->render();
+	this->runningStopWatch->render();
 };

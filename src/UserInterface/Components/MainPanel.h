@@ -10,9 +10,9 @@ class MainPanel {
 	public:
 
 		MainPanel() {
-			_dateTime = new DateTime();
-			_calendar = new Calendar();
-			_stopWatch = new StopWatch();
+			this->dateTime = new DateTime();
+			this->calendar = new Calendar();
+			this->stopWatch = new StopWatch();
 		}
 
 		void render();
@@ -30,12 +30,12 @@ class MainPanel {
 
 		const uint8_t COMPONENTS = 3;
 
-		uint _currentComponent = COMPONENT_DATETIME;
+		uint currentComponent = COMPONENT_DATETIME;
 
-		DateTime *_dateTime;
-		Calendar *_calendar;
-		StopWatch *_stopWatch;
+		DateTime *dateTime;
+		Calendar *calendar;
+		StopWatch *stopWatch;
 
-		void _clear();
+		void clear();
 
 };
