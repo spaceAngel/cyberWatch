@@ -7,6 +7,7 @@
 #include "UserInterface/Components/MainPanel/DateTime/Planetoid.h"
 #include "UserInterface/Components/MainPanel/DateTime/DigitalClocks.h"
 #include "UserInterface/Components/MainPanel/DateTime/ProgressBars.h"
+#include "UserInterface/Components/MainPanel/DateTime/NeonCircles.h"
 
 class DateTime : public MainComponent {
 
@@ -22,13 +23,14 @@ class DateTime : public MainComponent {
 			_clockFaces[1] = new AnalogClocks();
 			_clockFaces[2] = new Planetoid();
 			_clockFaces[3] = new ProgressBars();
+			_clockFaces[4] = new NeonCircles();
 		};
 
 	protected:
 
-		const int FACES = 3;
+		const int FACES = 4;
 
-		MainComponent *_clockFaces[4];
-		int8_t _currentFace = 3;
+		MainComponent *_clockFaces[5];
+		int8_t _currentFace = 4;
 
 };
