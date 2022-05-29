@@ -14,10 +14,10 @@ class Date : public MainComponent {
 
 			const uint8_t POS_Y = 18;
 
-			uint8_t _prevDay = 99;
+			uint8_t prevDay = 99;
 
-			void _renderDate(RTC_Date currentDate);
-			void _renderDayInWeek(RTC_Date currentDate);
-			void _weekday(char *dayInWeekStr, uint year, uint8_t month, uint8_t day);
+			void renderDate(RTC_Date currentDate);
+			void renderDayInWeek(RTC_Date currentDate);
+			void weekday(char *dayInWeekStr, uint year, uint8_t month, uint8_t day);
 
 };

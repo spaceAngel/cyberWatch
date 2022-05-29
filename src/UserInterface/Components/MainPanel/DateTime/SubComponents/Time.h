@@ -12,7 +12,7 @@ class Time : public MainComponent {
 
 	protected:
 
-		uint8_t _prevMinute = 99;
+		uint8_t prevMinute = 99;
 		const uint8_t POS_Y = 72;
 
 };

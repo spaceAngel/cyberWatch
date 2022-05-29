@@ -17,8 +17,8 @@ class DigitalClocks : public MainComponent {
 
 	protected:
 
-		Date *_date;
-		Time *_time;
+		Date *date;
+		Time *time;
 
 
 };

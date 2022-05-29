@@ -11,9 +11,9 @@ class NeonCircle : public MainComponent {
 
 	protected:
 
-		uint8_t _x, _y;
-		long _color;
-		uint8_t _prevValue;
-		uint8_t _maxValue;
+		uint8_t x, y;
+		long color;
+		uint8_t prevValue;
+		uint8_t maxValue;
 
 };

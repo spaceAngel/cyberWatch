@@ -13,6 +13,6 @@ class NeonCircles : public MainComponent {
 
 	protected:
 
-		NeonCircle *_circles [2];
+		NeonCircle *circles [2];
 
 };

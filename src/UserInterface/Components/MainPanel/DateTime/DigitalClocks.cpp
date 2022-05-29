@@ -4,16 +4,16 @@
 #include "UserInterface/Components/MainPanel/DateTime/SubComponents/Time.h"
 
 void DigitalClocks::render() {
-	_date->render();
-	_time->render();
+	this->date->render();
+	this->time->render();
 }
 
 void DigitalClocks::setShouldReRender(bool shouldReRender) {
-	_date->setShouldReRender(shouldReRender);
-	_time->setShouldReRender(shouldReRender);
+	this->date->setShouldReRender(shouldReRender);
+	this->time->setShouldReRender(shouldReRender);
 }
 
 DigitalClocks::DigitalClocks() {
-	_time = new Time();
-	_date = new Date();
+	this->time = new Time();
+	this->date = new Date();
 }

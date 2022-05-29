@@ -13,6 +13,6 @@ class ProgressBars : public MainComponent {
 
 	protected:
 
-		ProgressBar *_bars[3];
+		ProgressBar *bars[3];
 
 };

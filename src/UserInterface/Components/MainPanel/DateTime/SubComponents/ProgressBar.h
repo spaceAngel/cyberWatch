@@ -15,10 +15,10 @@ class ProgressBar : public MainComponent {
 		uint8_t const BAR_START = 92;
 		uint8_t const BAR_HEIGHT = 14;
 
-		uint8_t _y;
-		uint8_t _maxValue;
-		uint8_t _prevValue;
-		long _color;
+		uint8_t y;
+		uint8_t maxValue;
+		uint8_t prevValue;
+		long color;
 
 };
 
