@@ -12,7 +12,7 @@ class Date : public MainComponent {
 
 		protected:
 
-			const uint8_t POS_Y = 18;
+			const int32_t POS_Y = 18;
 
 			uint8_t prevDay = 99;
 

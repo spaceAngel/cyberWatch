@@ -12,8 +12,8 @@ class Geometry {
 			uint8_t y,
 			int16_t angle,
 			uint8_t radius,
-			uint8_t &x1,
-			uint8_t &y1
+			int32_t &x1,
+			int32_t &y1
 		);
 
 };

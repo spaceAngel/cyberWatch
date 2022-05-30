@@ -6,18 +6,18 @@ class ProgressBar : public MainComponent {
 
 	public:
 
-		void render(uint8_t value);
+		void render(int32_t value);
 
 		ProgressBar(uint8_t y, uint8_t maxValue, long color);
 
 	protected:
 
-		uint8_t const BAR_START = 92;
-		uint8_t const BAR_HEIGHT = 14;
+		int32_t const BAR_START = 92;
+		int32_t const BAR_HEIGHT = 14;
 
-		uint8_t y;
-		uint8_t maxValue;
-		uint8_t prevValue;
+		int32_t y;
+		int32_t maxValue;
+		int32_t prevValue;
 		long color;
 
 };

@@ -10,10 +10,10 @@ ProgressBar::ProgressBar(uint8_t y, uint8_t maxValue, long color) {
 	this->y = y;
 }
 
-void ProgressBar::render(uint8_t value) {
+void ProgressBar::render(int32_t value) {
 	if (
 		this->shouldReRender()
-		|| this->prevValue != value
+		|| (this->prevValue != value)
 	) {
 		TTGOClass::getWatch()->tft->fillRect(
 			0,
@@ -30,24 +30,24 @@ void ProgressBar::render(uint8_t value) {
 		TTGOClass::getWatch()->tft->setTextColor(TFT_DARKGREEN);
 		TTGOClass::getWatch()->tft->setTextSize(1);
 		TTGOClass::getWatch()->tft->fillCircle(BAR_START, this->y + 20, BAR_HEIGHT / 2, this->color);
-		uint8_t width = TTGOClass::getWatch()->tft->width() - BAR_START - 20;
+		int32_t width = TTGOClass::getWatch()->tft->width() - BAR_START - 20;
 		TTGOClass::getWatch()->tft->fillRect(
 			BAR_START + 2,
 			this->y + BAR_HEIGHT - 1,
-			(width / this->maxValue) * (value > this->maxValue ? value % this->maxValue : value),
+			(width / this->maxValue) * ((value > this->maxValue) ? (value % this->maxValue) : value),
 			BAR_HEIGHT + 1,
 			this->color
 		);
 		TTGOClass::getWatch()->tft->fillCircle(
-			BAR_START + (width / this->maxValue) * (value > this->maxValue ? value % this->maxValue : value),
+			BAR_START + (width / this->maxValue) * ((value > this->maxValue) ? (value % this->maxValue) : value),
 			this->y + 20,
 			BAR_HEIGHT / 2,
 			this->color
 		);
 		this->prevValue = value;
-		for (uint8_t i = 0; i< 6; i++) {
+		for (int32_t i = 0; i< 6; i++) {
 			TTGOClass::getWatch()->tft->fillRect(
-				BAR_START + 2 + i * (width / 6),
+				BAR_START + 2 + (i * (width / 6)),
 				this->y,
 				2,
 				35,

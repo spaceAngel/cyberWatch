@@ -39,7 +39,7 @@ void Planetoid::renderFace() {
 }
 
 void Planetoid::renderPoint(uint16_t angle, uint8_t radius, uint8_t size, int color) {
-	uint8_t x1, y1;
+	int32_t x1, y1;
 	uint8_t x = TTGOClass::getWatch()->tft->width() / 2;
 	uint8_t y = 75;
 	Geometry::calculatePointOnCircle(

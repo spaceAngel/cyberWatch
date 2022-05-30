@@ -12,9 +12,9 @@ NeonCircle::NeonCircle(uint8_t x, uint8_t y, uint8_t maxValue, long color) {
 	this->maxValue = maxValue;
 }
 
-void NeonCircle::render(uint8_t value) {
+void NeonCircle::render(int32_t value) {
 	if (
-		this->prevValue != value
+		(this->prevValue != value)
 		|| this->shouldReRender()
 	) {
 		TTGOClass::getWatch()->tft->setTextColor(this->color);
@@ -23,20 +23,22 @@ void NeonCircle::render(uint8_t value) {
 		TTGOClass::getWatch()->tft->fillCircle(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, 34, TFT_BLACK);
 		TTGOClass::getWatch()->tft->drawCircle(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, 49, this->color);
 		TTGOClass::getWatch()->tft->drawCircle(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, 50, this->color);
-		uint8_t step = 360 / this->maxValue;
-		for (uint8_t i = 0; i < 12; i++) {
-			uint8_t x, y;
-			Geometry::calculatePointOnCircle(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, i * 30, 44, x, y);
-			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, x, y, TFT_BLACK);
-			Geometry::calculatePointOnCircle(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, i * 30 + 1, 44, x, y);
-			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, x, y, TFT_BLACK);
+		int32_t step = 360 / this->maxValue;
+		for (int32_t i = 0; i < 12; i++) {
+			int32_t pointX;
+			int32_t pointY;
+			Geometry::calculatePointOnCircle(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, (i * 30), 44, pointX, pointY);
+			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, pointX, pointY, TFT_BLACK);
+			Geometry::calculatePointOnCircle(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, (i * 30) + 1, 44, pointX, pointY);
+			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, pointX, pointY, TFT_BLACK);
 		}
-		for (uint16_t i = (value < this->maxValue ? value : value % this->maxValue) * step; i < this->maxValue * step; i++) {
-			uint8_t x, y;
-			Geometry::calculatePointOnCircle(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, i, 44, x, y);
-			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, x, y, TFT_BLACK);
-			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, x, y+1, TFT_BLACK);
-			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, x, y-1, TFT_BLACK);
+		for (int32_t i = ((value < this->maxValue) ? value : (value % this->maxValue)) * step; i < (this->maxValue * step); i++) {
+			int32_t pointX;
+			int32_t pointY;
+			Geometry::calculatePointOnCircle(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, i, 44, pointX, pointY);
+			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, pointX, pointY, TFT_BLACK);
+			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, pointX, pointY+1, TFT_BLACK);
+			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, pointX, pointY-1, TFT_BLACK);
 		}
 		char txt[3];
 		snprintf(txt, sizeof(txt), "%02d", value);
