@@ -23,7 +23,7 @@ void ProgressBar::render(int32_t value) {
 			TFT_BLACK
 		);
 		char txt[3];
-		snprintf(txt, sizeof(txt), "%02d", value);
+		(void)snprintf(txt, sizeof(txt), "%02d", value);
 		TTGOClass::getWatch()->tft->setTextColor(this->color);
 		TTGOClass::getWatch()->tft->setTextSize(2);
 		TTGOClass::getWatch()->tft->drawString(txt, 15, this->y);

@@ -41,7 +41,7 @@ void NeonCircle::render(int32_t value) {
 			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, pointX, pointY-1, TFT_BLACK);
 		}
 		char txt[3];
-		snprintf(txt, sizeof(txt), "%02d", value);
+		(void)snprintf(txt, sizeof(txt), "%02d", value);
 		TTGOClass::getWatch()->tft->drawString(
 			txt,
 			this->x - TTGOClass::getWatch()->tft->textWidth(txt) / 2,

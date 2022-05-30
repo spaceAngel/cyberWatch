@@ -28,7 +28,7 @@ void Date::render() {
 
 void Date::renderDate(RTC_Date currentDate) {
 	char dateStr[11];
-	snprintf(dateStr, sizeof(dateStr), "%02d/%02d/%02d", currentDate.day, currentDate.month, currentDate.year);
+	(void)snprintf(dateStr, sizeof(dateStr), "%02d/%02d/%02d", currentDate.day, currentDate.month, currentDate.year);
 	TTGOClass::getWatch()->tft->drawString(
 		dateStr,
 		(TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(dateStr)) / 2,
@@ -50,12 +50,12 @@ void Date::renderDayInWeek(RTC_Date currentDate) {
 void Date::weekday(char *dayInWeekStr, uint year, uint8_t month, uint8_t day) {
 	uint8_t dayInWeek = DateUtil::weekday(year, month, day);
 	switch (dayInWeek) {
-		case 0: strcpy(dayInWeekStr, "Sunday"); break;
-		case 1: strcpy(dayInWeekStr, "Monday"); break;
-		case 2: strcpy(dayInWeekStr, "Tuesday"); break;
-		case 3: strcpy(dayInWeekStr, "Wednesday"); break;
-		case 4: strcpy(dayInWeekStr, "Thursday"); break;
-		case 5: strcpy(dayInWeekStr, "Friday"); break;
-		case 6: strcpy(dayInWeekStr, "Saturday"); break;
+		case 0: (void)strcpy(dayInWeekStr, "Sunday"); break;
+		case 1: (void)strcpy(dayInWeekStr, "Monday"); break;
+		case 2: (void)strcpy(dayInWeekStr, "Tuesday"); break;
+		case 3: (void)strcpy(dayInWeekStr, "Wednesday"); break;
+		case 4: (void)strcpy(dayInWeekStr, "Thursday"); break;
+		case 5: (void)strcpy(dayInWeekStr, "Friday"); break;
+		case 6: (void)strcpy(dayInWeekStr, "Saturday"); break;
 	}
 }
