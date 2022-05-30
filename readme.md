@@ -14,6 +14,9 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - compile and upload via your favorite IDE
  - __have a fun!__
 
+## Code quality & standards
+ - [Misra C++ standards](https://www.misra.org.uk/) (98% and still improving)
+
 ## Features
 
  - cool splashscreen and exit screen :-)
