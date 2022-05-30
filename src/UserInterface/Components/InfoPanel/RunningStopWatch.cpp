@@ -10,13 +10,13 @@ void RunningStopWatch::render() {
 	Serial.print("\n\n\nKarel\n\n");
 
 	bool state = AppsStatusMonitor::getInstance()->isStopWatchRunning();
-	if (state != _wasRunning) {
+	if (state != this->wasRunning) {
 		if (state == false) {
-			_clear();
+			this->clear();
 		} else {
-			_renderIcon();
+			this->renderIcon();
 		}
-		this->_wasRunning = state;
+		this->wasRunning = state;
 
 	}
 
@@ -25,50 +25,50 @@ void RunningStopWatch::render() {
 }
 
 
-void RunningStopWatch::_clear() {
+void RunningStopWatch::clear() {
 	TTGOClass::getWatch()->tft->fillRect(
-		POS_X - 3,
-		POS_Y - 3,
+		(int32_t)POS_X - 3,
+		(int32_t)POS_Y - 3,
 		24,
 		24,
 		TFT_BLACK
 	);
 }
 
-void RunningStopWatch::_renderIcon() {
+void RunningStopWatch::renderIcon() {
 	TTGOClass::getWatch()->tft->drawCircle(
-		POS_X + 9,
-		POS_Y + 9,
+		(int32_t)POS_X + 9,
+		(int32_t)POS_Y + 9,
 		10,
 		TFT_DARKGREEN
 	);
 
 	TTGOClass::getWatch()->tft->drawCircle(
-		POS_X + 9,
-		POS_Y + 9,
+		(int32_t)POS_X + 9,
+		(int32_t)POS_Y + 9,
 		9,
 		TFT_DARKGREEN
 	);
 
 	TTGOClass::getWatch()->tft->drawLine(
-		POS_X + 9,
-		POS_Y + 9,
-		POS_X + 9,
-		POS_Y,
+		(int32_t)POS_X + 9,
+		(int32_t)POS_Y + 9,
+		(int32_t)POS_X + 9,
+		(int32_t)POS_Y,
 		TFT_DARKGREEN
 	);
 
 	TTGOClass::getWatch()->tft->drawLine(
-		POS_X + 9,
-		POS_Y + 9,
-		POS_X + 16,
-		POS_Y + 4,
+		(int32_t)POS_X + 9,
+		(int32_t)POS_Y + 9,
+		(int32_t)POS_X + 16,
+		(int32_t)POS_Y + 4,
 		TFT_DARKGREEN
 	);
 
 	TTGOClass::getWatch()->tft->fillRect(
-		POS_X + 8,
-		POS_Y - 3,
+		(int32_t)POS_X + 8,
+		(int32_t)POS_Y - 3,
 		4,
 		4,
 		TFT_DARKGREEN

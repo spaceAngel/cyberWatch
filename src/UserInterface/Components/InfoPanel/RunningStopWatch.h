@@ -11,9 +11,9 @@ class RunningStopWatch {
 		const uint8_t POS_X = 180;
 		const uint8_t POS_Y = 180;
 
-		bool _wasRunning = false;
+		bool wasRunning = false;
 
-		void _clear();
-		void _renderIcon();
+		void clear();
+		void renderIcon();
 
 };

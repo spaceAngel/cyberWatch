@@ -11,7 +11,6 @@ class StopWatch : public MainComponent {
 
 		void render();
 		bool handlePEKShort();
-		bool handleSwipeVertical(int8_t vector);
 		bool isRunning();
 
 		StopWatch();

@@ -12,12 +12,12 @@ class Battery {
 
 	protected:
 
-		uint8_t _prevCapacity = 101;
-		bool _prevChargingState = false;
+		uint8_t prevCapacity = 101;
+		bool prevChargingState = false;
 
 		const uint POS_X = 15;
 		const uint POS_Y = 150;
 
-		void _renderBatteryIcon(uint8_t capacity);
-		void _renderChargingIcon();
+		void renderBatteryIcon(uint8_t capacity);
+		void renderChargingIcon();
 };

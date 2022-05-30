@@ -1,6 +1,6 @@
 #include "MainComponent.h"
 
-void MainComponent::setShouldReRender(bool shouldReRender = true) {
+void MainComponent::setShouldReRender(bool shouldReRender) {
 	this->shouldRerender = shouldReRender;
 }
 

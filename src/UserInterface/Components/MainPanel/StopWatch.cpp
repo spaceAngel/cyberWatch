@@ -124,11 +124,6 @@ void StopWatch::renderMillis(uint8_t millis) {
 	TTGOClass::getWatch()->tft->drawString(txt, 180, POS_Y);
 }
 
-
-bool StopWatch::handleSwipeVertical(int8_t vector) {
-	return false;
-}
-
 StopWatch::StopWatch() {
 	AppsStatusMonitor::getInstance()->registerStopWatchComponent(this);
 }

@@ -66,7 +66,7 @@ bool MainPanel::isSleepForbidden() {
 }
 
 MainComponent *MainPanel::getCurrentComponent() {
-	MainComponent *component;
+	MainComponent *component = new MainComponent();
 	if (this->currentComponent == COMPONENT_DATETIME) { component = this->dateTime; }
 	if (this->currentComponent == COMPONENT_CALENDAR) { component = this->calendar; }
 	if (this->currentComponent == COMPONENT_STOPWATCH) { component = this->stopWatch; }
