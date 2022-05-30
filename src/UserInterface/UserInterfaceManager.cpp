@@ -10,14 +10,14 @@
 #include "Utils/TimeUtil.h"
 #include "System/Display.h"
 
-UserInterfaceManager *UserInterfaceManager::_inst;
+UserInterfaceManager *UserInterfaceManager::inst;
 
 
 UserInterfaceManager *UserInterfaceManager::getInstance() {
-	if (UserInterfaceManager::_inst == nullptr) {
-		UserInterfaceManager::_inst = new UserInterfaceManager();
+	if (UserInterfaceManager::inst == nullptr) {
+		UserInterfaceManager::inst = new UserInterfaceManager();
 	}
-	return UserInterfaceManager::_inst;
+	return UserInterfaceManager::inst;
 }
 
 void UserInterfaceManager::showSplashScreen() {
@@ -40,101 +40,101 @@ bool UserInterfaceManager::handleTouch() {
 		TTGOClass::getWatch()->getTouch(x, y)
 		&& (x != 257 && y != 2) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
 	) {
-		if (_swipeEnabled) {
-			_handleSwipeHorizontal(x);
-			_handleSwipeVertical(y);
+		if (this->swipeEnabled) {
+			this->handleSwipeHorizontal(x);
+			this->handleSwipeVertical(y);
 		}
 		return true;
 	}
 
-	_stopSwipeHandlerHorizontal();
-	_stopSwipeHandlerVertical();
+	this->stopSwipeHandlerHorizontal();
+	this->stopSwipeHandlerVertical();
 	return false;
 }
 
-void UserInterfaceManager::_handleSwipeHorizontal(uint x) {
-	if (_swipeVectorHorizontal == 0) {
-		if (_swipeLastX == 0) {
-			_swipeLastX = 0 + x;
+void UserInterfaceManager::handleSwipeHorizontal(uint x) {
+	if (this->swipeVectorHorizontal == 0) {
+		if (this->swipeLastX == 0) {
+			this->swipeLastX = 0 + x;
 		} else {
-			if (_swipeLastX < x) {
-				_swipeVectorHorizontal = VECTOR_RIGHT;
+			if (this->swipeLastX < x) {
+				this->swipeVectorHorizontal = VECTOR_RIGHT;
 			 } else {
-				_swipeVectorHorizontal = VECTOR_LEFT;
+				this->swipeVectorHorizontal = VECTOR_LEFT;
 			}
 		}
 	} else {
 
 		if (
 			(
-				_swipeVectorHorizontal == VECTOR_RIGHT && _swipeLastX < x - CROSS_SWIPE_TOLERANCE
+				this->swipeVectorHorizontal == VECTOR_RIGHT && this->swipeLastX < x - CROSS_SWIPE_TOLERANCE
 			) || (
-				_swipeVectorHorizontal == VECTOR_LEFT &&  _swipeLastX > x + CROSS_SWIPE_TOLERANCE
+				this->swipeVectorHorizontal == VECTOR_LEFT &&  this->swipeLastX > x + CROSS_SWIPE_TOLERANCE
 			)
 		) {
-			_swipeCounterHorizontal++;
-			_stopSwipeHandlerVertical();
+			this->swipeCounterHorizontal++;
+			this->stopSwipeHandlerVertical();
 		} else {
-			_stopSwipeHandlerHorizontal();
+			this->stopSwipeHandlerHorizontal();
 		}
 	}
-	if (_swipeCounterHorizontal == 3) {
+	if (this->swipeCounterHorizontal == 3) {
 		MainScreen::getInstance()->handleSwipeHorizontal(
-			_swipeVectorHorizontal == VECTOR_LEFT ? -1 : 1
+			this->swipeVectorHorizontal == VECTOR_LEFT ? -1 : 1
 		);
 	}
 }
 
-void UserInterfaceManager::_stopSwipeHandlerHorizontal() {
-	_swipeCounterHorizontal = 0;
-	_swipeLastX = 0;
-	_swipeVectorHorizontal = 0;
+void UserInterfaceManager::stopSwipeHandlerHorizontal() {
+	this->swipeCounterHorizontal = 0;
+	this->swipeLastX = 0;
+	this->swipeVectorHorizontal = 0;
 	if (Display::getInstance()->isDisplayOn()) {
-		_swipeEnabled = true;
+		this->swipeEnabled = true;
 	} else {
-		_swipeEnabled = false;
+		this->swipeEnabled = false;
 	}
 }
 
 
-void UserInterfaceManager::_handleSwipeVertical(uint y) {
-	if (_swipeVectorVertical == 0) {
-		if (_swipeLastY == 0) {
-			_swipeLastY = 0 + y;
+void UserInterfaceManager::handleSwipeVertical(uint y) {
+	if (this->swipeVectorVertical == 0) {
+		if (this->swipeLastY == 0) {
+			this->swipeLastY = 0 + y;
 		} else {
-			if (_swipeLastY < y) {
-				_swipeVectorVertical = VECTOR_DOWN;
+			if (this->swipeLastY < y) {
+				this->swipeVectorVertical = VECTOR_DOWN;
 			 } else {
-				_swipeVectorVertical = VECTOR_UP;
+				this->swipeVectorVertical = VECTOR_UP;
 			}
 		}
 	} else {
 
 		if (
-			(_swipeVectorVertical == VECTOR_UP && _swipeLastY > y)
-			|| (_swipeVectorVertical == VECTOR_DOWN &&  _swipeLastY < y)
+			(this->swipeVectorVertical == VECTOR_UP && this->swipeLastY > y)
+			|| (this->swipeVectorVertical == VECTOR_DOWN &&  this->swipeLastY < y)
 		) {
-			_swipeCounterVertical++;
-			_stopSwipeHandlerHorizontal();
+			this->swipeCounterVertical++;
+			this->stopSwipeHandlerHorizontal();
 		} else {
-			_stopSwipeHandlerVertical();
+			this->stopSwipeHandlerVertical();
 		}
 	}
-	if (_swipeCounterVertical == 3) {
+	if (this->swipeCounterVertical == 3) {
 		MainScreen::getInstance()->handleSwipeVertical(
-			_swipeVectorVertical == VECTOR_UP ? -1 : 1
+			this->swipeVectorVertical == VECTOR_UP ? -1 : 1
 		);
 	}
 }
 
-void UserInterfaceManager::_stopSwipeHandlerVertical() {
-	_swipeCounterVertical = 0;
-	_swipeLastY = 0;
-	_swipeVectorVertical = 0;
+void UserInterfaceManager::stopSwipeHandlerVertical() {
+	this->swipeCounterVertical = 0;
+	this->swipeLastY = 0;
+	this->swipeVectorVertical = 0;
 	if (Display::getInstance()->isDisplayOn()) {
-		_swipeEnabled = true;
+		this->swipeEnabled = true;
 	} else {
-		_swipeEnabled = false;
+		this->swipeEnabled = false;
 	}
 }
 

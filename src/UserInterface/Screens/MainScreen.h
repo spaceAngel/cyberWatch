@@ -18,10 +18,10 @@ class MainScreen {
 
 		protected:
 
-			static MainScreen *_inst;
+			static MainScreen *inst;
 
-			MainPanel *_mainPanel;
-			InfoPanel *_infoPanel;
+			MainPanel *mainPanel;
+			InfoPanel *infoPanel;
 
 			MainScreen();
 

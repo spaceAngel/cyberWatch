@@ -11,13 +11,13 @@ void SplashScreen::show() {
 
 	Logo *logo = new Logo();
 	logo->render();
-	_renderLoadingBar();
-	_resetToDefault();
+	this->renderLoadingBar();
+	this->resetToDefault();
 	MotorController::vibrate();
 	delay(200);
 }
 
-void SplashScreen::_resetToDefault() {
+void SplashScreen::resetToDefault() {
 	TTGOClass::getWatch()->tft->setTextFont(4); //reset to default
 	TTGOClass::getWatch()->tft->setTextSize(1); //reset to default
 	//clear display
@@ -30,7 +30,7 @@ void SplashScreen::_resetToDefault() {
 	);
 }
 
-void SplashScreen::_renderLoadingBar() {
+void SplashScreen::renderLoadingBar() {
 	uint margin = 20;
 	//"loading effect" progressbar
 	for (uint i = margin; i < TTGOClass::getWatch()->tft->width() - margin * 2; i++) {

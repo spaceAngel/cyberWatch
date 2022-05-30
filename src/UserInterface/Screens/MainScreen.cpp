@@ -5,37 +5,37 @@
 #include "UserInterface/Components/MainPanel.h"
 #include "UserInterface/Components/InfoPanel.h"
 
-MainScreen* MainScreen::_inst;
+MainScreen* MainScreen::inst;
 
 MainScreen *MainScreen::getInstance() {
-	if (MainScreen::_inst == nullptr) {
-		MainScreen::_inst = new MainScreen();
+	if (MainScreen::inst == nullptr) {
+		MainScreen::inst = new MainScreen();
 	}
-	return MainScreen::_inst;
+	return MainScreen::inst;
 }
 
 void MainScreen::render() {
-	_mainPanel->render();
-	_infoPanel->render();
+	this->mainPanel->render();
+	this->infoPanel->render();
 }
 
 MainScreen::MainScreen() {
-	_mainPanel = new MainPanel();
-	_infoPanel = new InfoPanel();
+	this->mainPanel = new MainPanel();
+	this->infoPanel = new InfoPanel();
 }
 
 void MainScreen::handleSwipeHorizontal(int vector) {
-	_mainPanel->switchScreen(vector);
+	this->mainPanel->switchScreen(vector);
 }
 
 void MainScreen::handleSwipeVertical(int vector) {
-	_mainPanel->handleSwipeVertical(vector);
+	this->mainPanel->handleSwipeVertical(vector);
 }
 
 void MainScreen::handlePEKShort() {
-	_mainPanel->handlePEKShort();
+	this->mainPanel->handlePEKShort();
 }
 
 bool MainScreen::isSleepForbidden() {
-	return _mainPanel->isSleepForbidden();
+	return this->mainPanel->isSleepForbidden();
 }

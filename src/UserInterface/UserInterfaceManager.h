@@ -25,28 +25,28 @@ class UserInterfaceManager {
 			const uint8_t VECTOR_UP = 1;
 			const uint8_t VECTOR_DOWN = 2;
 
-			uint16_t _swipeLastX = 0;
-			uint8_t _swipeCounterHorizontal = 0;
-			int8_t _swipeVectorHorizontal = 0;
+			uint16_t swipeLastX = 0;
+			uint8_t swipeCounterHorizontal = 0;
+			int8_t swipeVectorHorizontal = 0;
 
-			uint16_t _swipeLastY = 0;
-			uint8_t _swipeCounterVertical = 0;
-			int8_t _swipeVectorVertical = 0;
+			uint16_t swipeLastY = 0;
+			uint8_t swipeCounterVertical = 0;
+			int8_t swipeVectorVertical = 0;
 
-			bool _swipeEnabled = false;
+			bool swipeEnabled = false;
 
-			static UserInterfaceManager *_inst;
+			static UserInterfaceManager *inst;
 
 
 			UserInterfaceManager() {
 			}
 
-			void _stopSwipeHandlerHorizontal();
+			void stopSwipeHandlerHorizontal();
 
-			void _handleSwipeHorizontal(uint x);
+			void handleSwipeHorizontal(uint x);
 
-			void _stopSwipeHandlerVertical();
+			void stopSwipeHandlerVertical();
 
-			void _handleSwipeVertical(uint y);
+			void handleSwipeVertical(uint y);
 
 };

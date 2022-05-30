@@ -2,14 +2,13 @@
 
 class SplashScreen {
 
-  public:
+	public:
 
-    void show();
+		void show();
 
-  protected:
+	protected:
 
-    void _resetToDefault();
-
-    void _renderLoadingBar();
+		void renderLoadingBar();
+		void resetToDefault();
 
 };
