@@ -12,8 +12,8 @@ void Geometry::calculatePointOnCircle(
 	int32_t &x1,
 	int32_t &y1
 ) {
-	angle = angle - 90;
-	float a = angle * M_PI / 180;
-	x1 = x + cos(a) * radius;
-    y1 = y + sin(a) * radius;
+	int16_t derivatedAngle = angle - 90;
+	float a = derivatedAngle * (M_PI / 180);
+	x1 = x + (cos(a) * radius);
+    y1 = y + (sin(a) * radius);
 }
