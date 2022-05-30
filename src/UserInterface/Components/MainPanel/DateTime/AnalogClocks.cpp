@@ -11,14 +11,14 @@ void AnalogClocks::render() {
 	RTC_Date currentTime = TTGOClass::getWatch()->rtc->getDateTime();
 	if (
 		this->shouldReRender()
-		|| this->prevSecond != currentTime.second
+		|| (this->prevSecond != currentTime.second)
 	) {
 		if (this->shouldReRender()) {
 			this->renderFace();
 		}
 		this->clear();
 		this->drawLine(
-			(currentTime.hour % 12 ) * 5 + currentTime.minute / 12,
+			((currentTime.hour % 12 ) * 5) + (currentTime.minute / 12),
 			36,
 			TFT_DARKGREEN
 		);
@@ -29,14 +29,15 @@ void AnalogClocks::render() {
 	}
 }
 
-void AnalogClocks::drawLine(uint8_t time, uint8_t radius, uint32_t color) {
-	int32_t x1, y1;
+void AnalogClocks::drawLine(int32_t time, uint8_t radius, uint32_t color) {
+	int32_t x1;
+	int32_t y1;
 	uint8_t x = TTGOClass::getWatch()->tft->width() / 2;
 	uint8_t y = 75;
 	Geometry::calculatePointOnCircle(
 		x,
 		y,
-		6 * time,
+		(6 * time),
 		radius,
 		x1,
 		y1
@@ -58,18 +59,20 @@ void AnalogClocks::clear() {
 }
 
 void AnalogClocks::renderFace() {
-	for (uint8_t i = 1; i<= 60; i++) {
-		int32_t x1, y1;
+	for (int32_t i = 1; i <= 60; i++) {
+		int32_t x1;
+		int32_t y1;
 		Geometry::calculatePointOnCircle(
 			TTGOClass::getWatch()->tft->width() / 2,
 			75,
 			6 * i,
-			i % 5 == 0 ? 60 : 66,
+			((i % 5) == 0) ? 60 : 66,
 			x1,
 			y1
 		);
 
-		int32_t x2, y2;
+		int32_t x2;
+		int32_t y2;
 		Geometry::calculatePointOnCircle(
 			TTGOClass::getWatch()->tft->width() / 2,
 			75,

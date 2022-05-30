@@ -16,7 +16,7 @@ class AnalogClocks : public MainComponent {
 
 		uint prevSecond = 0;
 
-		void drawLine(uint8_t time, uint8_t radius, uint32_t color);
+		void drawLine(int32_t time, uint8_t radius, uint32_t color);
 		void clear();
 		void renderFace();
 
