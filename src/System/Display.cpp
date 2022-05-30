@@ -7,13 +7,13 @@
 #include "UserInterface/UserInterfaceManager.h"
 #include "Utils/TimeUtil.h"
 
-Display *Display::_inst;
+Display *Display::inst;
 
 Display *Display::getInstance() {
-	if (Display::_inst == nullptr) {
-		Display::_inst = new Display();
+	if (Display::inst == nullptr) {
+		Display::inst = new Display();
 	}
-	return Display::_inst;
+	return Display::inst;
 }
 
 void Display::init() {
@@ -23,14 +23,14 @@ void Display::init() {
 }
 
 bool Display::isDisplayOn() {
-	return _lastOn > 0;
+	return this->lastOn > 0;
 }
 
 void Display::turnDisplayOff() {
 	if (isDisplayOn()) {
 		TTGOClass::getWatch()->displaySleep();
 		TTGOClass::getWatch()->bl->off();
-		_lastOn = 0;
+		this->lastOn = 0;
 	}
 }
 
@@ -39,6 +39,6 @@ void Display::turnDisplayOn() {
 		UserInterfaceManager::getInstance()->render();
 		TTGOClass::getWatch()->bl->on();
 		TTGOClass::getWatch()->displayWakeup();
-		_lastOn = TimeUtil::getCurrentTimeInSeconds();
+		this->lastOn = TimeUtil::getCurrentTimeInSeconds();
 	}
 }

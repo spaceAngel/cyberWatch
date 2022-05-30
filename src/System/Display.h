@@ -18,9 +18,9 @@ class Display {
 
 		protected:
 
-			static Display *_inst;
+			static Display *inst;
 
-			uint _lastOn = TimeUtil::getCurrentTimeInSeconds();
+			uint lastOn = TimeUtil::getCurrentTimeInSeconds();
 
 			Display() {
 			}

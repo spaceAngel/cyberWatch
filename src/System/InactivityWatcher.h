@@ -11,11 +11,11 @@ class InactivityWatcher {
 
 	protected:
 
-		static InactivityWatcher *_inst;
+		static InactivityWatcher *inst;
 
 		const long INACTIVITY_TRESHOLD = 5;
 
-		long _lastActivity;
+		long lastActivity;
 
 		InactivityWatcher();
 

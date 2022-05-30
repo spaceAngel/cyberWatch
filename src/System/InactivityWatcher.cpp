@@ -4,23 +4,23 @@
 
 #include "Utils/TimeUtil.h"
 
-InactivityWatcher* InactivityWatcher::_inst;
+InactivityWatcher* InactivityWatcher::inst;
 
 InactivityWatcher *InactivityWatcher::getInstance() {
-	if (InactivityWatcher::_inst == nullptr) {
-		InactivityWatcher::_inst = new InactivityWatcher();
+	if (InactivityWatcher::inst == nullptr) {
+		InactivityWatcher::inst = new InactivityWatcher();
 	}
-	return InactivityWatcher::_inst;
+	return InactivityWatcher::inst;
 }
 
 bool InactivityWatcher::isInactive() {
-	return _lastActivity + INACTIVITY_TRESHOLD < TimeUtil::getCurrentTimeInSeconds();
+	return this->lastActivity + INACTIVITY_TRESHOLD < TimeUtil::getCurrentTimeInSeconds();
 }
 
 void InactivityWatcher::markActivity() {
-	_lastActivity = TimeUtil::getCurrentTimeInSeconds();
+	this->lastActivity = TimeUtil::getCurrentTimeInSeconds();
 }
 
 InactivityWatcher::InactivityWatcher() {
-	_lastActivity = TimeUtil::getCurrentTimeInSeconds();
+	this->lastActivity = TimeUtil::getCurrentTimeInSeconds();
 }

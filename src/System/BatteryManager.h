@@ -20,9 +20,7 @@ class BatteryManager {
 
 	protected:
 
-			static BatteryManager *_inst;
-
-			long _lastActivity;
+			static BatteryManager *inst;
 
 			BatteryManager();
 };

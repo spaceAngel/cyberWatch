@@ -5,14 +5,14 @@
 #include <LilyGoWatch.h>
 #include <WiFi.h>
 
-BatteryManager* BatteryManager::_inst;
+BatteryManager* BatteryManager::inst;
 
 BatteryManager *BatteryManager::getInstance() {
 
-	if (BatteryManager::_inst == nullptr) {
-		BatteryManager::_inst = new BatteryManager();
+	if (BatteryManager::inst == nullptr) {
+		BatteryManager::inst = new BatteryManager();
 	}
-	return BatteryManager::_inst;
+	return BatteryManager::inst;
 }
 
 uint8_t BatteryManager::getCapacity() {

@@ -16,9 +16,9 @@ class MoveSensor {
 
 	protected:
 
-		static MoveSensor *_inst;
+		static MoveSensor *inst;
 
-		bool _IRQ = false;
+		bool IRQ = false;
 
 		MoveSensor();
 

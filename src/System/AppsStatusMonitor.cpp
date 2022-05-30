@@ -7,20 +7,20 @@
 #include "UserInterface/Components/MainPanel/StopWatch.h"
 
 
-AppsStatusMonitor* AppsStatusMonitor::_inst;
+AppsStatusMonitor* AppsStatusMonitor::inst;
 
 AppsStatusMonitor *AppsStatusMonitor::getInstance() {
 
-	if (AppsStatusMonitor::_inst == nullptr) {
-		AppsStatusMonitor::_inst = new AppsStatusMonitor();
+	if (AppsStatusMonitor::inst == nullptr) {
+		AppsStatusMonitor::inst = new AppsStatusMonitor();
 	}
-	return AppsStatusMonitor::_inst;
+	return AppsStatusMonitor::inst;
 }
 
 void AppsStatusMonitor::registerStopWatchComponent(StopWatch *stopWatch) {
-	_stopWatch = stopWatch;
+	this->stopWatch = stopWatch;
 }
 
 bool AppsStatusMonitor::isStopWatchRunning() {
-	return _stopWatch->isRunning();
+	return this->stopWatch->isRunning();
 }

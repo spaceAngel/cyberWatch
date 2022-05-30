@@ -15,9 +15,9 @@ class Esp32 {
 
 	protected:
 
-		static Esp32 *_inst;
+		static Esp32 *inst;
 
-		bool _IRQ = false;
+		bool IRQ = false;
 
 		Esp32() {
 		}

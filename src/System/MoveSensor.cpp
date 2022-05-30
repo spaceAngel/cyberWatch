@@ -4,13 +4,13 @@
 
 #include "MoveSensor.h"
 
-MoveSensor* MoveSensor::_inst;
+MoveSensor* MoveSensor::inst;
 
 MoveSensor *MoveSensor::getInstance() {
-	if (MoveSensor::_inst == nullptr) {
-		MoveSensor::_inst = new MoveSensor();
+	if (MoveSensor::inst == nullptr) {
+		MoveSensor::inst = new MoveSensor();
 	}
-	return MoveSensor::_inst;
+	return MoveSensor::inst;
 }
 
 void MoveSensor::initIRQ() {
@@ -35,17 +35,17 @@ void MoveSensor::initIRQ() {
 	TTGOClass::getWatch()->bma->enableWakeupInterrupt();
 	}
 
-	void MoveSensor::cleanIRQ() {
-	_IRQ = false;
+void MoveSensor::cleanIRQ() {
+	this->IRQ = false;
 	TTGOClass::getWatch()->power->clearIRQ();
 }
 
 void MoveSensor::setIsIRQ() {
-	_IRQ = true;
+	this->IRQ = true;
 }
 
 bool MoveSensor::isTilt() {
-	if (_IRQ) {
+	if (this->IRQ) {
 		MoveSensor::getInstance()->cleanIRQ();
 		return true;
 	}

@@ -4,13 +4,13 @@
 
 #include "Esp32.h"
 
-Esp32* Esp32::_inst;
+Esp32* Esp32::inst;
 
 Esp32 *Esp32::getInstance() {
-	if (Esp32::_inst == nullptr) {
-		Esp32::_inst = new Esp32();
+	if (Esp32::inst == nullptr) {
+		Esp32::inst = new Esp32();
 	}
-	return Esp32::_inst;
+	return Esp32::inst;
 }
 
 void Esp32::initIRQ() {
@@ -33,14 +33,14 @@ void Esp32::initIRQ() {
 }
 
 bool Esp32::isIRQ() {
-	return _IRQ;
+	return this->IRQ;
 }
 
 void Esp32::cleanIRQ() {
-	_IRQ = false;
+	this->IRQ = false;
 	TTGOClass::getWatch()->power->clearIRQ();
 }
 
 void Esp32::setIsIRQ() {
-	_IRQ = true;
+	this->IRQ = true;
 }

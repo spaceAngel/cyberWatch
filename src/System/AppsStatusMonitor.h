@@ -14,9 +14,9 @@ class AppsStatusMonitor {
 
 	protected:
 
-		static AppsStatusMonitor *_inst;
+		static AppsStatusMonitor *inst;
 
-		StopWatch *_stopWatch;
+		StopWatch *stopWatch;
 
 		AppsStatusMonitor() {
 
