@@ -14,7 +14,7 @@ InactivityWatcher *InactivityWatcher::getInstance() {
 }
 
 bool InactivityWatcher::isInactive() {
-	return this->lastActivity + INACTIVITY_TRESHOLD < TimeUtil::getCurrentTimeInSeconds();
+	return (this->lastActivity + INACTIVITY_TRESHOLD) < TimeUtil::getCurrentTimeInSeconds();
 }
 
 void InactivityWatcher::markActivity() {

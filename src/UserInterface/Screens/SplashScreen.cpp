@@ -7,13 +7,13 @@
 #include "UserInterface/Components/Logo.h"
 
 void SplashScreen::show() {
-	MotorController::vibrate();
+	MotorController::vibrate(1);
 
 	Logo *logo = new Logo();
 	logo->render();
 	this->renderLoadingBar();
 	this->resetToDefault();
-	MotorController::vibrate();
+	MotorController::vibrate(1);
 	delay(200);
 }
 

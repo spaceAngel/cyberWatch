@@ -6,6 +6,6 @@ class MotorController {
 
 	public:
 
-		static void vibrate(uint8_t count = 1);
+		static void vibrate(uint8_t count);
 
 };

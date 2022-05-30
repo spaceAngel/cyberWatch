@@ -41,7 +41,7 @@ void CyberWatch::loop() {
 
 		this->handleBatteryLowActions();
 		this->handleEsp32IRQ(PEKshort);
-		if(UserInterfaceManager::getInstance()->isSleepForbidden()) {
+		if(UserInterfaceManager::getInstance()->isSleepForbidden() == true) {
 			InactivityWatcher::getInstance()->markActivity();
 		}
 		if (
@@ -90,25 +90,25 @@ void CyberWatch::turnOff() {
 
 
 void CyberWatch::handleCabelConnection() {
-	if (BatteryManager::getInstance()->handleCabelPlugInIRQ()) {
-		MotorController::vibrate();
+	if (BatteryManager::getInstance()->handleCabelPlugInIRQ() == true) {
+		MotorController::vibrate(1);
 	}
 	if (
-		BatteryManager::getInstance()->handleCabelPlugInIRQ()
-		|| BatteryManager::getInstance()->handleCabelPlugRemoveIRQ()
+		(BatteryManager::getInstance()->handleCabelPlugInIRQ() == true)
+		|| (BatteryManager::getInstance()->handleCabelPlugRemoveIRQ() == true)
 	) {
 		InactivityWatcher::getInstance()->markActivity();
 	}
 }
 
 void CyberWatch::handleEsp32IRQ(bool &PEKshort) {
-	if (Esp32::getInstance()->isIRQ()) {
+	if (Esp32::getInstance()->isIRQ() == true) {
 		TTGOClass::getWatch()->power->readIRQ();
-		if( TTGOClass::getWatch()->power->isPEKLongtPressIRQ()) {
+		if (TTGOClass::getWatch()->power->isPEKLongtPressIRQ() == true) {
 			this->turnOff();
 		}
 		this->handleCabelConnection();
-		if(TTGOClass::getWatch()->power->isPEKShortPressIRQ()) {
+		if (TTGOClass::getWatch()->power->isPEKShortPressIRQ() == true) {
 			PEKshort = true;
 		}
 		Esp32::getInstance()->cleanIRQ();
@@ -117,27 +117,27 @@ void CyberWatch::handleEsp32IRQ(bool &PEKshort) {
 
 
 void CyberWatch::handleBatteryLowActions() {
-	uint8_t vibrationCount = 0;
+	int32_t vibrationCount = 0;
 	uint8_t capacity = BatteryManager::getInstance()->getCapacity();
-	if (BatteryManager::getInstance()->isCharging()) {
+	if (BatteryManager::getInstance()->isCharging() == true) {
 		this->batteryLowWarnVibrateOnLevel = 101;
-		return;
-	}
-	if (capacity == BATTERY_LOW) {
-		vibrationCount = 1;
-	}
+	} else {
+		if (capacity == BATTERY_LOW) {
+			vibrationCount = 1;
+		}
 
-	if (capacity == BATTERY_VERY_LOW) {
-		vibrationCount = 2;
-	}
+		if (capacity == BATTERY_VERY_LOW) {
+			vibrationCount = 2;
+		}
 
-	if (
-		vibrationCount > 0
-		&& capacity < this->batteryLowWarnVibrateOnLevel
-	) {
-		InactivityWatcher::getInstance()->markActivity();
-		MotorController::vibrate(vibrationCount);
-		this->batteryLowWarnVibrateOnLevel = capacity;
+		if (
+			(vibrationCount > 0)
+			&& (capacity < this->batteryLowWarnVibrateOnLevel)
+		) {
+			InactivityWatcher::getInstance()->markActivity();
+			MotorController::vibrate(vibrationCount);
+			this->batteryLowWarnVibrateOnLevel = capacity;
+		}
 	}
 }
 

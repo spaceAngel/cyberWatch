@@ -45,11 +45,12 @@ void MoveSensor::setIsIRQ() {
 }
 
 bool MoveSensor::isTilt() {
+	bool isTilt = false;
 	if (this->IRQ) {
 		MoveSensor::getInstance()->cleanIRQ();
-		return true;
+		isTilt = true;
 	}
-	return false;
+	return isTilt;
 }
 
 MoveSensor::MoveSensor() {

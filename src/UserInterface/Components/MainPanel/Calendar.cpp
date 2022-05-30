@@ -82,9 +82,9 @@ void Calendar::renderDay(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 }
 
 void Calendar::renderMonthYearLabel() {
-	char month[3];
-	DateUtil::monthNameShort(month, this->month);
-	TTGOClass::getWatch()->tft->drawString(month, 182, 125);
+	char monthNameShort[4];
+	DateUtil::monthNameShort(monthNameShort, this->month);
+	TTGOClass::getWatch()->tft->drawString(monthNameShort, 182, 125);
 	char year[5];
 	(void)snprintf(year, sizeof(year), "%d", this->year);
 	TTGOClass::getWatch()->tft->drawString(year, 120, 125);
