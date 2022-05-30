@@ -20,10 +20,10 @@ class UserInterfaceManager {
 
 		protected:
 
-			const uint8_t VECTOR_LEFT = 1;
-			const uint8_t VECTOR_RIGHT = 2;
-			const uint8_t VECTOR_UP = 1;
-			const uint8_t VECTOR_DOWN = 2;
+			const int8_t VECTOR_LEFT = 1;
+			const int8_t VECTOR_RIGHT = 2;
+			const int8_t VECTOR_UP = 1;
+			const int8_t VECTOR_DOWN = 2;
 
 			uint16_t swipeLastX = 0;
 			uint8_t swipeCounterHorizontal = 0;
