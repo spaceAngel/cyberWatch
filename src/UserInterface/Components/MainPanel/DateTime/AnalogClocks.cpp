@@ -10,10 +10,10 @@
 void AnalogClocks::render() {
 	RTC_Date currentTime = TTGOClass::getWatch()->rtc->getDateTime();
 	if (
-		this->shouldReRender()
+		(this->shouldReRender() == true)
 		|| (this->prevSecond != currentTime.second)
 	) {
-		if (this->shouldReRender()) {
+		if (this->shouldReRender() == true) {
 			this->renderFace();
 		}
 		this->clear();

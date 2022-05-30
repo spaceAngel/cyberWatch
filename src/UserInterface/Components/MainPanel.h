@@ -17,7 +17,7 @@ class MainPanel {
 
 		void render();
 		void switchScreen(int vector);
-		void handleSwipeVertical(int vector);
+		void handleSwipeVertical(int8_t vector);
 		void handlePEKShort();
 		bool isSleepForbidden();
 		MainComponent *getCurrentComponent();

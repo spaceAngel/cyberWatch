@@ -5,7 +5,7 @@
 #include "MainPanel.h"
 
 void MainPanel::render() {
-	getCurrentComponent()->render();
+	this->getCurrentComponent()->render();
 };
 
 void MainPanel::switchScreen(int vector) {
@@ -22,14 +22,14 @@ void MainPanel::switchScreen(int vector) {
 	this->render();
 }
 
-void MainPanel::handleSwipeVertical(int vector) {
+void MainPanel::handleSwipeVertical(int8_t vector) {
 	MainComponent *component;
 	bool handle = false;
 	if (this->currentComponent == COMPONENT_CALENDAR) { handle = true; component = this->calendar;}
 	if (this->currentComponent == COMPONENT_DATETIME) { handle = true; component = this->dateTime;}
 
 	if (handle) {
-		if (component->handleVerticalSwipe(vector)) {
+		if (component->handleSwipeVertical(vector) == true) {
 			this->clear();
 		}
 	}
@@ -53,7 +53,7 @@ void MainPanel::handlePEKShort() {
 	if (this->currentComponent == COMPONENT_STOPWATCH) { handle = true; component = this->stopWatch;}
 
 	if (handle) {
-		if (component->handlePEKShort()) {
+		if (component->handlePEKShort() == true) {
 			this->clear();
 		}
 	}

@@ -13,12 +13,12 @@ void DateTime::render() {
 }
 
 void DateTime::setShouldReRender(bool shouldReRender) {
-	for (uint8_t i = 0; i <= FACES; i++) {
+	for (int32_t i = 0; i <= FACES; i++) {
 		this->clockFaces[i]->setShouldReRender(shouldReRender);
 	}
 }
 
-bool DateTime::handleVerticalSwipe(int8_t vector) {
+bool DateTime::handleSwipeVertical(int8_t vector) {
 	this->currentFace += vector;
 	if (this->currentFace > FACES) {
 		this->currentFace = 0;

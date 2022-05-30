@@ -8,7 +8,7 @@ class Calendar : public MainComponent {
 
 	public:
 
-		bool handleVerticalSwipe(int8_t vector);
+		bool handleSwipeVertical(int8_t vector);
 		bool handlePEKShort();
 		void prevMonth();
 		void nextMonth();

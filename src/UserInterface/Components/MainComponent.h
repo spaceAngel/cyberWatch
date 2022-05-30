@@ -11,7 +11,11 @@ class MainComponent {
 		bool shouldReRender();
 
 		virtual void render() {};
-		virtual bool handleVerticalSwipe(int8_t vector) {return false;}
+
+		virtual bool handleSwipeVertical(int8_t vector) {
+			return false;
+		}
+
 		virtual bool handlePEKShort() {return false;};
 
 	private:

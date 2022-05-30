@@ -11,7 +11,7 @@ class StopWatch : public MainComponent {
 
 		void render();
 		bool handlePEKShort();
-		bool handleVerticalSwipe(int8_t vector) {return false;}
+		bool handleSwipeVertical(int8_t vector);
 		bool isRunning();
 
 		StopWatch();
@@ -20,15 +20,15 @@ class StopWatch : public MainComponent {
 
 			const uint8_t POS_Y = 48;
 
-			uint64_t startAt = 0;
-			uint64_t stopAt = 0;
-			uint64_t prevTime;
+			int64_t startAt = 0;
+			int64_t stopAt = 0;
+			int64_t prevTime;
 			bool running = false;
 			uint8_t prevHour = 0;
 			uint8_t prevSecond = 0;
 			uint8_t prevMinute = 0;
 
-			void renderTime(long stopTime);
+			void renderTime(int64_t stopTime);
 			void renderHour(uint8_t hour);
 			void renderSeconds(uint8_t seconds);
 			void renderMinutes(uint8_t minutes);

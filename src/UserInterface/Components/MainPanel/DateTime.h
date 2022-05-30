@@ -13,7 +13,7 @@ class DateTime : public MainComponent {
 
 	public:
 
-		bool handleVerticalSwipe(int8_t vector);
+		bool handleSwipeVertical(int8_t vector);
 		void setShouldReRender(bool shouldReRender);
 		MainComponent *getCurrentFace();
 		void render();
