@@ -12,13 +12,13 @@
 #include "System/MotorController.h"
 #include "UserInterface/UserInterfaceManager.h"
 
-CyberWatch* CyberWatch::_inst;
+CyberWatch* CyberWatch::inst;
 
 CyberWatch *CyberWatch::getInstance() {
-	if (CyberWatch::_inst == nullptr) {
-CyberWatch::_inst = new CyberWatch();
+	if (CyberWatch::inst == nullptr) {
+CyberWatch::inst = new CyberWatch();
 	}
-	return CyberWatch::_inst;
+	return CyberWatch::inst;
 }
 
 void CyberWatch::init() {
@@ -39,8 +39,8 @@ void CyberWatch::loop() {
 	while(1) {
 		bool PEKshort = false;
 
-		_handleBatteryLowActions();
-		_handleEsp32IRQ(PEKshort);
+		this->handleBatteryLowActions();
+		this->handleEsp32IRQ(PEKshort);
 		if(UserInterfaceManager::getInstance()->isSleepForbidden()) {
 			InactivityWatcher::getInstance()->markActivity();
 		}
@@ -89,7 +89,7 @@ void CyberWatch::turnOff() {
 
 
 
-void CyberWatch::_handleCabelConnection() {
+void CyberWatch::handleCabelConnection() {
 	if (BatteryManager::getInstance()->handleCabelPlugInIRQ()) {
 		MotorController::vibrate();
 	}
@@ -101,13 +101,13 @@ void CyberWatch::_handleCabelConnection() {
 	}
 }
 
-void CyberWatch::_handleEsp32IRQ(bool &PEKshort) {
+void CyberWatch::handleEsp32IRQ(bool &PEKshort) {
 	if (Esp32::getInstance()->isIRQ()) {
 		TTGOClass::getWatch()->power->readIRQ();
 		if( TTGOClass::getWatch()->power->isPEKLongtPressIRQ()) {
-			turnOff();
+			this->turnOff();
 		}
-		_handleCabelConnection();
+		this->handleCabelConnection();
 		if(TTGOClass::getWatch()->power->isPEKShortPressIRQ()) {
 			PEKshort = true;
 		}
@@ -116,11 +116,11 @@ void CyberWatch::_handleEsp32IRQ(bool &PEKshort) {
 }
 
 
-void CyberWatch::_handleBatteryLowActions() {
+void CyberWatch::handleBatteryLowActions() {
 	uint8_t vibrationCount = 0;
 	uint8_t capacity = BatteryManager::getInstance()->getCapacity();
 	if (BatteryManager::getInstance()->isCharging()) {
-		_batteryLowWarnVibrateOnLevel = 101;
+		this->batteryLowWarnVibrateOnLevel = 101;
 		return;
 	}
 	if (capacity == BATTERY_LOW) {
@@ -133,11 +133,11 @@ void CyberWatch::_handleBatteryLowActions() {
 
 	if (
 		vibrationCount > 0
-		&& capacity < _batteryLowWarnVibrateOnLevel
+		&& capacity < this->batteryLowWarnVibrateOnLevel
 	) {
 		InactivityWatcher::getInstance()->markActivity();
 		MotorController::vibrate(vibrationCount);
-		_batteryLowWarnVibrateOnLevel = capacity;
+		this->batteryLowWarnVibrateOnLevel = capacity;
 	}
 }
 

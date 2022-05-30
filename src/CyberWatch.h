@@ -14,18 +14,18 @@ class CyberWatch {
 
 		void turnOff();
 	protected:
-		static CyberWatch *_inst;
+		static CyberWatch *inst;
 
 		CyberWatch();
 
-		void _handleCabelConnection();
+		void handleCabelConnection();
 
-		void _handleEsp32IRQ(bool &PEKshort);
+		void handleEsp32IRQ(bool &PEKshort);
 
-		uint8_t _batteryLowWarnVibrateOnLevel = 101;
+		uint8_t batteryLowWarnVibrateOnLevel = 101;
 
-		void _handleBatteryLowActions();
-		
+		void handleBatteryLowActions();
+
 };
 
 
