@@ -63,7 +63,7 @@ void CyberWatch::loop() {
 			InactivityWatcher::getInstance()->markActivity();
 		}
 		if (
-			InactivityWatcher::getInstance()->isInactive()
+			InactivityWatcher::getInstance()->isInactive() == true
 		) {
 			Display::getInstance()->turnDisplayOff();
 			esp_sleep_enable_timer_wakeup(TICK_SLEEP);

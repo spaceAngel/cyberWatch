@@ -4,16 +4,22 @@
 #include <math.h>
 #include <LilyGoWatch.h>
 
-void Geometry::calculatePointOnCircle(
+int32_t Geometry::getCalculatedXPointOnCircle(
 	uint8_t x,
+	int16_t angle,
+	uint8_t radius
+) {
+	int16_t derivatedAngle = angle - (int16_t)90;
+	float a = derivatedAngle * (M_PI / 180);
+	return x + (cos(a) * radius);
+}
+
+uint32_t Geometry::getCalculatedYPointOnCircle(
 	uint8_t y,
 	int16_t angle,
-	uint8_t radius,
-	int32_t &x1,
-	int32_t &y1
+	uint8_t radius
 ) {
-	int16_t derivatedAngle = angle - 90;
+	int16_t derivatedAngle = angle - (int16_t)90;
 	float a = derivatedAngle * (M_PI / 180);
-	x1 = x + (cos(a) * radius);
-    y1 = y + (sin(a) * radius);
+    return y + (sin(a) * radius);
 }

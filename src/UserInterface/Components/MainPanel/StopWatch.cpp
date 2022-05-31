@@ -58,21 +58,22 @@ bool StopWatch::handlePEKShort() {
 }
 
 void StopWatch::renderTime(int64_t stopTime) {
+	int64_t stopTimeMs = stopTime;
 	int64_t hours = 0;
 	int64_t minutes = 0;
 	int64_t seconds = 0;
-	hours = stopTime / 3600000;
-	stopTime = stopTime - (hours * 3600000);
-	minutes = stopTime / 60000;
-	stopTime = stopTime - (minutes * 60000);
-	seconds = stopTime / 1000;
-	stopTime = stopTime - (seconds * 1000);
-	stopTime = stopTime / 10;
+	hours = stopTimeMs / 3600000;
+	stopTimeMs = stopTimeMs - (hours * 3600000);
+	minutes = stopTimeMs / 60000;
+	stopTimeMs = stopTimeMs - (minutes * 60000);
+	seconds = stopTimeMs / 1000;
+	stopTimeMs = stopTimeMs - (seconds * 1000);
+	stopTimeMs = stopTimeMs / 10;
 
 	this->renderHour(hours);
 	this->renderMinutes(minutes);
 	this->renderSeconds(seconds);
-	this->renderMillis(stopTime);
+	this->renderMillis(stopTimeMs);
 }
 
 bool StopWatch::isRunning() {

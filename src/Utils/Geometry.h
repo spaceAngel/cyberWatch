@@ -7,13 +7,16 @@ class Geometry {
 
 	public:
 
-		static void calculatePointOnCircle(
+		static int32_t getCalculatedXPointOnCircle(
 			uint8_t x,
-			uint8_t y,
 			int16_t angle,
-			uint8_t radius,
-			int32_t &x1,
-			int32_t &y1
+			uint8_t radius
+		);
+
+		static uint32_t getCalculatedYPointOnCircle(
+			uint8_t yPoint,
+			int16_t angle,
+			uint8_t radius
 		);
 
 };
