@@ -2,12 +2,14 @@
 #include "StepCounter.h"
 
 #include <LilyGoWatch.h>
-
-StepCounter::StepCounter() {
-	this->renderIcon();
-}
+#include "UserInterface/Icons/FootPrints.h"
 
 void StepCounter::render() {
+	if (iconIsRendered == false) {
+		TTGOClass::getWatch()->tft->setSwapBytes(true);
+		TTGOClass::getWatch()->tft->pushImage(POS_X + 7, POS_Y, 22, 22, iconFootPrints);
+		iconIsRendered = true;
+	}
 	TTGOClass::getWatch()->bma->readInterrupt();
 	uint stepCount = TTGOClass::getWatch()->bma->getCounter();
 
@@ -21,7 +23,7 @@ void StepCounter::render() {
 			stepCount
 		);
 
-		TTGOClass::getWatch()->tft->drawString(steps, (int32_t)POS_X + 46, (int32_t)POS_Y + 1);
+		TTGOClass::getWatch()->tft->drawString(steps, (int32_t)POS_X + 43, (int32_t)POS_Y + 1);
 		this->prevStepCount = stepCount;
 	}
 }
@@ -35,11 +37,4 @@ void StepCounter::clearDisplay() {
 		TTGOClass::getWatch()->tft->fontHeight(),
 		COLOR_BACKGROUND
 	);
-}
-
-void StepCounter::renderIcon() {
-	TTGOClass::getWatch()->tft->fillEllipse((int32_t)POS_X + 24, (int32_t)POS_Y + 10, 14, 8, COLOR_MAIN_1);
-	TTGOClass::getWatch()->tft->fillCircle((int32_t)POS_X + 4, (int32_t)POS_Y + 10, 8, COLOR_MAIN_1);
-	TTGOClass::getWatch()->tft->fillRect((int32_t)POS_X + 6, (int32_t)POS_Y + 2, 2, 18, COLOR_MAIN_1);
-	TTGOClass::getWatch()->tft->fillRect((int32_t)POS_X + 10, (int32_t)POS_Y, 3, 16, COLOR_BACKGROUND);
 }

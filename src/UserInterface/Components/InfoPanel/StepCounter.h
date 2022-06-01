@@ -6,11 +6,6 @@ class StepCounter {
 
 	public:
 
-		enum {
-
-		};
-
-		StepCounter();
 		void render();
 
 	protected:
@@ -19,8 +14,8 @@ class StepCounter {
 		const uint8_t POS_Y = 180;
 
 		uint prevStepCount = 0;
+		bool iconIsRendered = false;
 
 		void clearDisplay();
-		void renderIcon();
 
 };

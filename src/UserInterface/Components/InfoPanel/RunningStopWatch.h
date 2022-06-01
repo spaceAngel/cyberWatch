@@ -14,6 +14,5 @@ class RunningStopWatch {
 		bool wasRunning = false;
 
 		void clear();
-		void renderIcon();
 
 };

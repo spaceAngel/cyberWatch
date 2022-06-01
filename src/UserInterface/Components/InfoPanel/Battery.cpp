@@ -5,6 +5,8 @@
 #include "Battery.h"
 #include "System/BatteryManager.h"
 
+#include "UserInterface/Icons/Charging.h"
+
 void Battery::render() {
 	uint8_t capacity = BatteryManager::getInstance()->getCapacity();
 	if (
@@ -20,7 +22,7 @@ void Battery::render() {
 		TTGOClass::getWatch()->tft->setTextColor(
 			(capacity <= BATTERY_VERY_LOW) ? COLOR_WARN : COLOR_MAIN_1
 		);
-		TTGOClass::getWatch()->tft->drawString(battery, POS_X + 51, POS_Y + 3);
+		TTGOClass::getWatch()->tft->drawString(battery, POS_X + 48, POS_Y + 3);
 		this->renderBatteryIcon(capacity);
 		this->prevCapacity = capacity;
 		TTGOClass::getWatch()->tft->setTextColor(COLOR_MAIN_1);
@@ -30,18 +32,18 @@ void Battery::render() {
 		if (BatteryManager::getInstance()->isCharging() == true) {
 			this->renderChargingIcon();
 		} else {
-			TTGOClass::getWatch()->tft->fillRect(128, POS_Y + 3, 36, 20, COLOR_BACKGROUND);
+			TTGOClass::getWatch()->tft->fillRect(140, POS_Y, 24, 24, COLOR_BACKGROUND);
 		}
 		this->prevChargingState = BatteryManager::getInstance()->isCharging();
 	}
 }
 
 void Battery::renderBatteryIcon(uint8_t capacity) {
-	uint y = POS_Y + 4;
+	uint y = POS_Y + 5;
 	uint x = POS_X + 3;
 	uint thick = 2;
-	uint height = 18;
-	uint width = 36;
+	uint height = 17;
+	uint width = 32;
 	uint innerWidth = (width - 6) - (2 * thick);
 
 	TTGOClass::getWatch()->tft->fillRect(x, y, width, height, (capacity <= BATTERY_VERY_LOW) ? COLOR_WARN : COLOR_MAIN_1);
@@ -72,11 +74,6 @@ void Battery::renderBatteryIcon(uint8_t capacity) {
 }
 
 	void Battery::renderChargingIcon() {
-		int posX = 146;
-		int posY = POS_Y + 12;
-		TTGOClass::getWatch()->tft->fillCircle(posX + 4, posY, 8, COLOR_MAIN_1);
-		TTGOClass::getWatch()->tft->fillRect(posX - 15, posY - 2, 11, 4, COLOR_MAIN_1);
-		TTGOClass::getWatch()->tft->fillRect(posX + 8, posY - 6, 4, 16, COLOR_BACKGROUND);
-		TTGOClass::getWatch()->tft->fillRect(posX + 7, posY - 5, 9, 2, COLOR_MAIN_1);
-		TTGOClass::getWatch()->tft->fillRect(posX + 7, posY + 3, 9, 2, COLOR_MAIN_1);
+	    TTGOClass::getWatch()->tft->setSwapBytes(true);
+		TTGOClass::getWatch()->tft->pushImage(140, POS_Y, 22, 22, iconCharging);
 	}
