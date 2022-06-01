@@ -18,7 +18,7 @@ void Time::render() {
 			POS_Y,
 			TTGOClass::getWatch()->tft->width(),
 			TTGOClass::getWatch()->tft->fontHeight() - 14,
-			TFT_BLACK
+			COLOR_BACKGROUND
 		);
 
 		TTGOClass::getWatch()->tft->drawString(

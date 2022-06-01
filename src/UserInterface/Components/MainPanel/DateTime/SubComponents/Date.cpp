@@ -16,7 +16,7 @@ void Date::render() {
 			POS_Y,
 			TTGOClass::getWatch()->tft->width(),
 			(TTGOClass::getWatch()->tft->fontHeight() - 1) * 2,
-			TFT_BLACK
+			COLOR_BACKGROUND
 		);
 
 		this->renderDate(currentDate);

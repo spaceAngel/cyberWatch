@@ -41,7 +41,7 @@ void MainPanel::clear() {
 		0,
 		TTGOClass::getWatch()->tft->width(),
 		150,
-		TFT_BLACK
+		COLOR_BACKGROUND
 	);
 
 }

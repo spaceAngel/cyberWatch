@@ -24,7 +24,7 @@ void StopWatch::render() {
 				POS_Y,
 				TTGOClass::getWatch()->tft->width(),
 				70,
-				TFT_BLACK
+				COLOR_BACKGROUND
 			);
 			TTGOClass::getWatch()->tft->drawString(
 				"0:00:00.00",
@@ -85,7 +85,7 @@ void StopWatch::renderHour(uint8_t hours) {
 		(hours != this->prevHour)
 		|| this->shouldReRender() == true
 	) {
-		TTGOClass::getWatch()->tft->fillRect(0, POS_Y, 28, 40, TFT_BLACK);
+		TTGOClass::getWatch()->tft->fillRect(0, POS_Y, 28, 40, COLOR_BACKGROUND);
 		char txt[3];
 		(void)snprintf(txt, sizeof(txt), "%01d", hours);
 		TTGOClass::getWatch()->tft->drawString(txt, 3, POS_Y);
@@ -97,7 +97,7 @@ void StopWatch::renderSeconds(uint8_t seconds) {
 		(seconds != this->prevSecond)
 		|| this->shouldReRender() == true
 	) {
-		TTGOClass::getWatch()->tft->fillRect(113, POS_Y, 56, 40, TFT_BLACK);
+		TTGOClass::getWatch()->tft->fillRect(113, POS_Y, 56, 40, COLOR_BACKGROUND);
 		char txt[3];
 		(void)snprintf(txt, sizeof(txt), "%02d", seconds);
 		TTGOClass::getWatch()->tft->drawString(txt, 113, POS_Y);
@@ -110,7 +110,7 @@ void StopWatch::renderMinutes(uint8_t minutes) {
 		(minutes != this->prevMinute)
 		|| this->shouldReRender() == true
 	) {
-		TTGOClass::getWatch()->tft->fillRect(42, POS_Y, 56, 40, TFT_BLACK);
+		TTGOClass::getWatch()->tft->fillRect(42, POS_Y, 56, 40, COLOR_BACKGROUND);
 		char txt[3];
 		(void)snprintf(txt, sizeof(txt), "%02d", minutes);
 		TTGOClass::getWatch()->tft->drawString(txt, 42, POS_Y);
@@ -119,7 +119,7 @@ void StopWatch::renderMinutes(uint8_t minutes) {
 }
 
 void StopWatch::renderMillis(uint8_t millis) {
-	TTGOClass::getWatch()->tft->fillRect(180, POS_Y, 56, 40, TFT_BLACK);
+	TTGOClass::getWatch()->tft->fillRect(180, POS_Y, 56, 40, COLOR_BACKGROUND);
 	char txt[3];
 	(void)snprintf(txt, sizeof(txt), "%02d", millis);
 	TTGOClass::getWatch()->tft->drawString(txt, 180, POS_Y);

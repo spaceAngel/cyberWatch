@@ -15,9 +15,9 @@ void Planetoid::render() {
 	) {
 		this->clear();
 		this->renderFace();
-		this->renderPoint(6 * (((currentTime.hour % 12 ) * 5) + (currentTime.minute / 12)), 38, 5, TFT_RED);
-		this->renderPoint(6 * currentTime.minute, 60, 5, TFT_RED);
-		this->renderPoint(6 * currentTime.second, 30, 4, TFT_BLUE);
+		this->renderPoint(6 * (((currentTime.hour % 12 ) * 5) + (currentTime.minute / 12)), 38, 5, COLOR_WARN);
+		this->renderPoint(6 * currentTime.minute, 60, 5, COLOR_WARN);
+		this->renderPoint(6 * currentTime.second, 30, 4, COLOR_MAIN_1);
 		this->prevSecond = currentTime.second;
 		setShouldReRender(false);
 	}
@@ -28,13 +28,13 @@ void Planetoid::clear() {
 		TTGOClass::getWatch()->tft->width() / 2,
 		75,
 		68,
-		TFT_BLACK
+		COLOR_BACKGROUND
 	);
 }
 
 void Planetoid::renderFace() {
 	for (int32_t i = 0; i < 60; i += 5) {
-		this->renderPoint(6 * i, 48, 2, TFT_DARKGREEN);
+		this->renderPoint(6 * i, 48, 2, COLOR_MAIN_1);
 	}
 }
 

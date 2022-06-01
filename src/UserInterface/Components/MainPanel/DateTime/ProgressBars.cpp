@@ -14,9 +14,9 @@ void ProgressBars::render() {
 }
 
 ProgressBars::ProgressBars() {
-	this->bars[0] = new ProgressBar(10, 12, TFT_DARKGREEN);
-	this->bars[1] = new ProgressBar(55, 60, TFT_BLUE);
-	this->bars[2] = new ProgressBar(100, 60, TFT_DARKCYAN);
+	this->bars[0] = new ProgressBar(10, 12, COLOR_MAIN_1);
+	this->bars[1] = new ProgressBar(55, 60, COLOR_MAIN_2);
+	this->bars[2] = new ProgressBar(100, 60, COLOR_MAIN_3);
 }
 
 void ProgressBars::setShouldReRender(bool shouldReRender) {

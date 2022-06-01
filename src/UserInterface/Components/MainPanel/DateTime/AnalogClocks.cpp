@@ -20,10 +20,10 @@ void AnalogClocks::render() {
 		this->drawLine(
 			((currentTime.hour % 12 ) * 5) + (currentTime.minute / 12),
 			36,
-			TFT_DARKGREEN
+			COLOR_MAIN_1
 		);
-		this->drawLine(currentTime.minute, 52, TFT_DARKGREEN);
-		this->drawLine(currentTime.second, 52, TFT_DARKGREY);
+		this->drawLine(currentTime.minute, 52, COLOR_MAIN_1);
+		this->drawLine(currentTime.second, 52, COLOR_MAIN_3);
 		this->prevSecond = currentTime.second;
 		setShouldReRender(false);
 	}
@@ -47,7 +47,7 @@ void AnalogClocks::clear() {
 		TTGOClass::getWatch()->tft->width() / 2,
 		75,
 		55,
-		TFT_BLACK
+		COLOR_BACKGROUND
 	);
 }
 
@@ -59,6 +59,6 @@ void AnalogClocks::renderFace() {
 		int32_t x2 = Geometry::getCalculatedXPointOnCircle(TTGOClass::getWatch()->tft->width() / 2, 6 * i, 68);
 		int32_t y2 = Geometry::getCalculatedYPointOnCircle(75, 6 * i, 68);
 
-		TTGOClass::getWatch()->tft->drawLine(x1, y1, x2, y2, TFT_DARKGREEN);
+		TTGOClass::getWatch()->tft->drawLine(x1, y1, x2, y2, COLOR_MAIN_1);
 	}
 }

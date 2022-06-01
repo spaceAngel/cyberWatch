@@ -20,14 +20,14 @@ void ProgressBar::render(int32_t value) {
 			this->y,
 			TTGOClass::getWatch()->tft->width(),
 			40,
-			TFT_BLACK
+			COLOR_BACKGROUND
 		);
 		char txt[3];
 		(void)snprintf(txt, sizeof(txt), "%02d", value);
 		TTGOClass::getWatch()->tft->setTextColor(this->color);
 		TTGOClass::getWatch()->tft->setTextSize(2);
 		TTGOClass::getWatch()->tft->drawString(txt, 15, this->y);
-		TTGOClass::getWatch()->tft->setTextColor(TFT_DARKGREEN);
+		TTGOClass::getWatch()->tft->setTextColor(COLOR_MAIN_1);
 		TTGOClass::getWatch()->tft->setTextSize(1);
 		TTGOClass::getWatch()->tft->fillCircle(BAR_START, this->y + 20, BAR_HEIGHT / 2, this->color);
 		int32_t width = TTGOClass::getWatch()->tft->width() - BAR_START - 20;
@@ -51,7 +51,7 @@ void ProgressBar::render(int32_t value) {
 				this->y,
 				2,
 				35,
-				TFT_BLACK
+				COLOR_BACKGROUND
 			);
 		}
 		setShouldReRender(false);

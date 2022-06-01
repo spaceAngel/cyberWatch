@@ -26,7 +26,7 @@ void SplashScreen::resetToDefault() {
 		0,
 		TTGOClass::getWatch()->tft->width(),
 		TTGOClass::getWatch()->tft->height(),
-		TFT_BLACK
+		COLOR_BACKGROUND
 	);
 }
 
@@ -39,7 +39,7 @@ void SplashScreen::renderLoadingBar() {
 			TTGOClass::getWatch()->tft->height() - 60,
 			i,
 			10,
-			TFT_DARKGREEN
+			COLOR_MAIN_1
 		);
 		delay(25);
 	}

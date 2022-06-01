@@ -13,7 +13,7 @@ void ExitScreen::show() {
 		0,
 		TTGOClass::getWatch()->tft->width(),
 		TTGOClass::getWatch()->tft->height(),
-		TFT_BLACK
+		COLOR_BACKGROUND
 	);
 
 	Logo *logo = new Logo();

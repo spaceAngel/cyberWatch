@@ -48,7 +48,7 @@ void Calendar::renderDelimiter(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 			(2 + ((int32_t)row * 23)),
 			((int32_t)dayInWeek * 34),
 			2 + (((int32_t)row + 1) * 23),
-			TFT_DARKGREEN
+			COLOR_MAIN_1
 		);
 	}
 }
@@ -65,7 +65,7 @@ void Calendar::renderIsNowBox(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 			(4 + ((int32_t)row * 23)),
 			33,
 			24,
-			TFT_RED
+			COLOR_WARN
 		);
 	}
 }

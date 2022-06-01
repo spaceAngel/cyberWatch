@@ -33,13 +33,13 @@ void StepCounter::clearDisplay() {
 		(int32_t)POS_Y,
 		100,
 		TTGOClass::getWatch()->tft->fontHeight(),
-		TFT_BLACK
+		COLOR_BACKGROUND
 	);
 }
 
 void StepCounter::renderIcon() {
-	TTGOClass::getWatch()->tft->fillEllipse((int32_t)POS_X + 24, (int32_t)POS_Y + 10, 14, 8, TFT_DARKGREEN);
-	TTGOClass::getWatch()->tft->fillCircle((int32_t)POS_X + 4, (int32_t)POS_Y + 10, 8, TFT_DARKGREEN);
-	TTGOClass::getWatch()->tft->fillRect((int32_t)POS_X + 6, (int32_t)POS_Y + 2, 2, 18, TFT_DARKGREEN);
-	TTGOClass::getWatch()->tft->fillRect((int32_t)POS_X + 10, (int32_t)POS_Y, 3, 16, TFT_BLACK);
+	TTGOClass::getWatch()->tft->fillEllipse((int32_t)POS_X + 24, (int32_t)POS_Y + 10, 14, 8, COLOR_MAIN_1);
+	TTGOClass::getWatch()->tft->fillCircle((int32_t)POS_X + 4, (int32_t)POS_Y + 10, 8, COLOR_MAIN_1);
+	TTGOClass::getWatch()->tft->fillRect((int32_t)POS_X + 6, (int32_t)POS_Y + 2, 2, 18, COLOR_MAIN_1);
+	TTGOClass::getWatch()->tft->fillRect((int32_t)POS_X + 10, (int32_t)POS_Y, 3, 16, COLOR_BACKGROUND);
 }

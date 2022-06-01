@@ -31,7 +31,7 @@ void RunningStopWatch::clear() {
 		(int32_t)POS_Y - 3,
 		24,
 		24,
-		TFT_BLACK
+		COLOR_BACKGROUND
 	);
 }
 
@@ -40,14 +40,14 @@ void RunningStopWatch::renderIcon() {
 		(int32_t)POS_X + 9,
 		(int32_t)POS_Y + 9,
 		10,
-		TFT_DARKGREEN
+		COLOR_MAIN_1
 	);
 
 	TTGOClass::getWatch()->tft->drawCircle(
 		(int32_t)POS_X + 9,
 		(int32_t)POS_Y + 9,
 		9,
-		TFT_DARKGREEN
+		COLOR_MAIN_1
 	);
 
 	TTGOClass::getWatch()->tft->drawLine(
@@ -55,7 +55,7 @@ void RunningStopWatch::renderIcon() {
 		(int32_t)POS_Y + 9,
 		(int32_t)POS_X + 9,
 		(int32_t)POS_Y,
-		TFT_DARKGREEN
+		COLOR_MAIN_1
 	);
 
 	TTGOClass::getWatch()->tft->drawLine(
@@ -63,7 +63,7 @@ void RunningStopWatch::renderIcon() {
 		(int32_t)POS_Y + 9,
 		(int32_t)POS_X + 16,
 		(int32_t)POS_Y + 4,
-		TFT_DARKGREEN
+		COLOR_MAIN_1
 	);
 
 	TTGOClass::getWatch()->tft->fillRect(
@@ -71,6 +71,6 @@ void RunningStopWatch::renderIcon() {
 		(int32_t)POS_Y - 3,
 		4,
 		4,
-		TFT_DARKGREEN
+		COLOR_MAIN_1
 	);
 }

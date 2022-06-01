@@ -19,7 +19,7 @@ Display *Display::getInstance() {
 void Display::init() {
 	TTGOClass::getWatch()->openBL();
 	TTGOClass::getWatch()->bl->adjust(DISPLAY_ADJUST);
-	TTGOClass::getWatch()->tft->setTextColor(TFT_DARKGREEN);
+	TTGOClass::getWatch()->tft->setTextColor(COLOR_MAIN_1);
 }
 
 bool Display::isDisplayOn() {
