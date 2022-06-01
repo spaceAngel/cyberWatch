@@ -65,7 +65,7 @@ void Calendar::renderIsNowBox(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 			(4 + ((int32_t)row * 23)),
 			33,
 			24,
-			COLOR_WARN
+			COLOR_MAIN_2
 		);
 	}
 }
