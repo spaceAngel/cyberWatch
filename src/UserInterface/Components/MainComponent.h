@@ -17,9 +17,16 @@ class MainComponent {
 		}
 
 		virtual bool handlePEKShort() {return false;};
+		void setIsActive(bool active);
+		bool getIsActive();
+		virtual bool isSystemSleepForbidden() {
+			return false;
+		}
 
 	private:
 
 		bool shouldRerender = true;
+
+		bool isActive = false;
 
 };

@@ -8,30 +8,26 @@ void MainPanel::render() {
 	this->getCurrentComponent()->render();
 };
 
-void MainPanel::switchScreen(int vector) {
-	this->currentComponent += vector;
-	if (this->currentComponent > COMPONENTS) {
-		this->currentComponent = 1;
+void MainPanel::switchApp(int vector) {
+	this->getCurrentComponent()->setIsActive(false);
+	this->currentApp += vector;
+	if (this->currentApp > APPS) {
+		this->currentApp = 0;
 	}
-	if (this->currentComponent == 0) {
-		this->currentComponent = COMPONENTS;
+
+	if (this->currentApp < 0) {
+		this->currentApp = APPS;
 	}
 
 	this->getCurrentComponent()->setShouldReRender(true);
+	this->getCurrentComponent()->setIsActive(true);
 	this->clear();
 	this->render();
 }
 
 void MainPanel::handleSwipeVertical(int8_t vector) {
-	MainComponent *component;
-	bool handle = false;
-	if (this->currentComponent == COMPONENT_CALENDAR) { handle = true; component = this->calendar;}
-	if (this->currentComponent == COMPONENT_DATETIME) { handle = true; component = this->dateTime;}
-
-	if (handle) {
-		if (component->handleSwipeVertical(vector) == true) {
-			this->clear();
-		}
+	if (this->getCurrentComponent()->handleSwipeVertical(vector) == true) {
+		this->clear();
 	}
 }
 
@@ -47,28 +43,21 @@ void MainPanel::clear() {
 }
 
 void MainPanel::handlePEKShort() {
-	MainComponent *component;
-	bool handle = false;
-	if (this->currentComponent == COMPONENT_CALENDAR) { handle = true; component = this->calendar;}
-	if (this->currentComponent == COMPONENT_STOPWATCH) { handle = true; component = this->stopWatch;}
-
-	if (handle) {
-		if (component->handlePEKShort() == true) {
-			this->clear();
-		}
+	if (this->getCurrentComponent()->handlePEKShort() == true) {
+		this->clear();
 	}
 }
 
 bool MainPanel::isSleepForbidden() {
-	return
-		this->currentComponent == COMPONENT_STOPWATCH
-	;
+	bool rslt = false;
+	for (int8_t i = 0; i <= APPS; i++) {
+		if (apps[i]->isSystemSleepForbidden() == true) {
+			rslt = true;
+		}
+	}
+	return rslt;
 }
 
 MainComponent *MainPanel::getCurrentComponent() {
-	MainComponent *component = new MainComponent();
-	if (this->currentComponent == COMPONENT_DATETIME) { component = this->dateTime; }
-	if (this->currentComponent == COMPONENT_CALENDAR) { component = this->calendar; }
-	if (this->currentComponent == COMPONENT_STOPWATCH) { component = this->stopWatch; }
-	return component;
+	return this->apps[this->currentApp];
 }

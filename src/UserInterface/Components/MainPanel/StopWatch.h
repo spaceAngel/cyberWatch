@@ -12,6 +12,7 @@ class StopWatch : public MainComponent {
 		void render();
 		bool handlePEKShort();
 		bool isRunning();
+		bool isSystemSleepForbidden();
 
 		StopWatch();
 

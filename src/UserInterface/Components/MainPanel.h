@@ -10,13 +10,13 @@ class MainPanel {
 	public:
 
 		MainPanel() {
-			this->dateTime = new DateTime();
-			this->calendar = new Calendar();
-			this->stopWatch = new StopWatch();
+			this->apps[0] = new DateTime();
+			this->apps[1] = new Calendar();
+			this->apps[2] = new StopWatch();
 		}
 
 		void render();
-		void switchScreen(int vector);
+		void switchApp(int vector);
 		void handleSwipeVertical(int8_t vector);
 		void handlePEKShort();
 		bool isSleepForbidden();
@@ -24,17 +24,10 @@ class MainPanel {
 
 	protected:
 
-		const uint8_t COMPONENT_DATETIME = 1;
-		const uint8_t COMPONENT_STOPWATCH = 2;
-		const uint8_t COMPONENT_CALENDAR = 3;
+		const int8_t APPS = 2;
 
-		const uint8_t COMPONENTS = 3;
-
-		uint currentComponent = COMPONENT_DATETIME;
-
-		DateTime *dateTime;
-		Calendar *calendar;
-		StopWatch *stopWatch;
+		MainComponent *apps[3];
+		int8_t currentApp = 0;
 
 		void clear();
 

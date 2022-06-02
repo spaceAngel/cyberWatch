@@ -128,3 +128,8 @@ void StopWatch::renderMillis(uint8_t millis) {
 StopWatch::StopWatch() {
 	AppsStatusMonitor::getInstance()->registerStopWatchComponent(this);
 }
+
+
+bool StopWatch::isSystemSleepForbidden() {
+	return this->getIsActive();
+}
