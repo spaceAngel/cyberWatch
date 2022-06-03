@@ -17,6 +17,8 @@ class DateTime : public MainComponent {
 		void setShouldReRender(bool shouldReRender);
 		MainComponent *getCurrentFace();
 		void render();
+		bool handlePEKShort();
+		bool isSystemSleepForbidden();
 
 		DateTime() {
 			clockFaces[0] = new DigitalClocks();
@@ -32,5 +34,7 @@ class DateTime : public MainComponent {
 
 		MainComponent *clockFaces[5];
 		int8_t currentFace = 4;
+
+		bool alwaysOn = false;
 
 };

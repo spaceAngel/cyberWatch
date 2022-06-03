@@ -4,15 +4,20 @@
 #include "UserInterface/Components/MainPanel/Calendar.h"
 #include "UserInterface/Components/MainPanel/StopWatch.h"
 #include "UserInterface/Components/MainComponent.h"
+#include "System/AppsStatusMonitor.h"
 
 class MainPanel {
 
 	public:
 
 		MainPanel() {
-			this->apps[0] = new DateTime();
+			DateTime *dt = new DateTime();
+			AppsStatusMonitor::getInstance()->registerDateTimeComponent(dt);
+			this->apps[0] = dt;
 			this->apps[1] = new Calendar();
 			this->apps[2] = new StopWatch();
+
+
 		}
 
 		void render();

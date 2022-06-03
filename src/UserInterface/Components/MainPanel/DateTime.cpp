@@ -34,3 +34,12 @@ bool DateTime::handleSwipeVertical(int8_t vector) {
 MainComponent *DateTime::getCurrentFace() {
 	return this->clockFaces[this->currentFace];
 }
+
+bool DateTime::handlePEKShort() {
+	this->alwaysOn = !this->alwaysOn;
+	return false;
+}
+
+bool DateTime::isSystemSleepForbidden() {
+	return this->alwaysOn == true;
+}

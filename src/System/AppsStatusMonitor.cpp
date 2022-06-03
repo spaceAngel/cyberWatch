@@ -21,6 +21,14 @@ void AppsStatusMonitor::registerStopWatchComponent(StopWatch *stopWatch) {
 	this->stopWatch = stopWatch;
 }
 
+void AppsStatusMonitor::registerDateTimeComponent(DateTime *dateTime) {
+	this->dateTime = dateTime;
+}
+
 bool AppsStatusMonitor::isStopWatchRunning() {
 	return this->stopWatch->isRunning();
+}
+
+bool AppsStatusMonitor::isDateTimeAlwaysOn() {
+	return this->dateTime->isSystemSleepForbidden();
 }
