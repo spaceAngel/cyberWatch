@@ -1,5 +1,7 @@
 #pragma once
 
+#include "UserInterface/Icons/IconStruct.h"
+
 class UserInterfaceManager {
 
 	public:
@@ -17,6 +19,8 @@ class UserInterfaceManager {
 		void handlePEKShort();
 
 		bool isSleepForbidden();
+
+		void renderIcon(IconStruct icon, uint8_t x, uint8_t y);
 
 		protected:
 

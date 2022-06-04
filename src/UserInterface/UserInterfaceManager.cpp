@@ -7,6 +7,7 @@
 #include "UserInterface/Screens/MainScreen.h"
 #include "UserInterface/Screens/SplashScreen.h"
 #include "UserInterface/Screens/ExitScreen.h"
+#include "UserInterface/Icons/IconStruct.h"
 #include "Utils/TimeUtil.h"
 #include "System/Display.h"
 
@@ -147,4 +148,9 @@ void UserInterfaceManager::handlePEKShort() {
 
 bool UserInterfaceManager::isSleepForbidden() {
 	return MainScreen::getInstance()->isSleepForbidden();
+}
+
+void UserInterfaceManager::renderIcon(IconStruct icon, uint8_t x, uint8_t y) {
+	TTGOClass::getWatch()->tft->setSwapBytes(true);
+	TTGOClass::getWatch()->tft->pushImage(x, y, icon.width, icon.heigth, icon.data);
 }

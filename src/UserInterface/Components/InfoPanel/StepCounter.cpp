@@ -3,12 +3,11 @@
 
 #include <LilyGoWatch.h>
 #include "UserInterface/Icons/FootPrints.h"
+#include "UserInterface/UserInterfaceManager.h"
 
 void StepCounter::render() {
 	if (iconIsRendered == false) {
-		TTGOClass::getWatch()->tft->setSwapBytes(true);
-		TTGOClass::getWatch()->tft->pushImage(POS_X + 7, POS_Y, 22, 22, iconFootPrints);
-		iconIsRendered = true;
+		UserInterfaceManager::getInstance()->renderIcon(iconFootPrints, POS_X + 7, POS_Y);
 	}
 	TTGOClass::getWatch()->bma->readInterrupt();
 	uint stepCount = TTGOClass::getWatch()->bma->getCounter();

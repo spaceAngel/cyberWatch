@@ -6,6 +6,7 @@
 
 #include "System/AppsStatusMonitor.h"
 #include "UserInterface/Icons/StopWatch.h"
+#include "UserInterface/UserInterfaceManager.h"
 
 void RunningStopWatch::render() {
 	bool state = AppsStatusMonitor::getInstance()->isStopWatchRunning();
@@ -13,8 +14,7 @@ void RunningStopWatch::render() {
 		if (state == false) {
 			this->clear();
 		} else {
-			TTGOClass::getWatch()->tft->setSwapBytes(true);
-			TTGOClass::getWatch()->tft->pushImage(POS_X, POS_Y, 22, 22, iconStopWatch);
+			UserInterfaceManager::getInstance()->renderIcon(iconStopWatch, POS_X, POS_Y);
 		}
 		this->wasRunning = state;
 	}

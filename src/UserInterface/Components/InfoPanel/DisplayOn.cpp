@@ -6,13 +6,13 @@
 
 #include "System/AppsStatusMonitor.h"
 #include "UserInterface/Icons/LightBulb.h"
+#include "UserInterface/UserInterfaceManager.h"
 
 void DisplayOn::render() {
 
 	if (AppsStatusMonitor::getInstance()->isDateTimeAlwaysOn() != this->prevState) {
 		if (AppsStatusMonitor::getInstance()->isDateTimeAlwaysOn() == true) {
-			TTGOClass::getWatch()->tft->setSwapBytes(true);
-			TTGOClass::getWatch()->tft->pushImage(POS_X, POS_Y, 18, 22, iconLightBulb);
+			UserInterfaceManager::getInstance()->renderIcon(iconLightBulb, POS_X, POS_Y);
 		} else {
 			TTGOClass::getWatch()->tft->fillRect(POS_X, POS_Y, 18, 22, COLOR_BACKGROUND);
 		}

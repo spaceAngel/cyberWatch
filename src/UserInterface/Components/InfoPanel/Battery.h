@@ -19,5 +19,4 @@ class Battery {
 		const uint POS_Y = 150;
 
 		void renderBatteryIcon(uint8_t capacity);
-		void renderChargingIcon();
 };

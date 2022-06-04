@@ -6,6 +6,7 @@
 #include "System/BatteryManager.h"
 
 #include "UserInterface/Icons/Charging.h"
+#include "UserInterface/UserInterfaceManager.h"
 
 void Battery::render() {
 	uint8_t capacity = BatteryManager::getInstance()->getCapacity();
@@ -30,7 +31,7 @@ void Battery::render() {
 
 	if (BatteryManager::getInstance()->isCharging() != this->prevChargingState) {
 		if (BatteryManager::getInstance()->isCharging() == true) {
-			this->renderChargingIcon();
+			UserInterfaceManager::getInstance()->renderIcon(iconCharging, 140, POS_Y);
 		} else {
 			TTGOClass::getWatch()->tft->fillRect(140, POS_Y, 24, 24, COLOR_BACKGROUND);
 		}
@@ -72,8 +73,3 @@ void Battery::renderBatteryIcon(uint8_t capacity) {
 		(capacity <= BATTERY_LOW) ? COLOR_WARN : COLOR_MAIN_1
 	);
 }
-
-	void Battery::renderChargingIcon() {
-	    TTGOClass::getWatch()->tft->setSwapBytes(true);
-		TTGOClass::getWatch()->tft->pushImage(140, POS_Y, 22, 22, iconCharging);
-	}
