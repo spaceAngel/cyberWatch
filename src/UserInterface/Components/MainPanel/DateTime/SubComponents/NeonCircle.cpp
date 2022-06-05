@@ -25,17 +25,20 @@ void NeonCircle::render(int32_t value) {
 		TTGOClass::getWatch()->tft->drawCircle(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, 50, this->color);
 		int32_t step = 360 / this->maxValue;
 		for (int32_t i = 0; i < 12; i++) {
-			int32_t pointX = Geometry::getCalculatedXPointOnCircle(this->x, (i * 30), 44);
-			int32_t pointY = Geometry::getCalculatedYPointOnCircle(this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, (i * 30), 44);
-			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, pointX, pointY, COLOR_BACKGROUND);
+			TTGOClass::getWatch()->tft->fillTriangle(
+				this->x,
+				this->y + TTGOClass::getWatch()->tft->fontHeight() / 2,
+				Geometry::getCalculatedXPointOnCircle(this->x, (i * 30) + 3, 44),
+				Geometry::getCalculatedYPointOnCircle(this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, (i * 30) + 2, 44),
+				Geometry::getCalculatedXPointOnCircle(this->x, (i * 30) - 2, 44),
+				Geometry::getCalculatedYPointOnCircle(this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, (i * 30) - 3, 44),
+				TFT_BLACK
+			);
 
-			pointX = Geometry::getCalculatedXPointOnCircle(this->x, (i * 30) + 1, 44);
-			pointY = Geometry::getCalculatedYPointOnCircle(this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, (i * 30) + 1, 44);
-			// TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, pointX, pointY, COLOR_BACKGROUND);
 		}
 		for (int32_t i = ((value < this->maxValue) ? value : (value % this->maxValue)) * step; i < (this->maxValue * step); i++) {
-			int32_t pointX = Geometry::getCalculatedXPointOnCircle(this->x, i, 44);
-			int32_t pointY = Geometry::getCalculatedYPointOnCircle(this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, i, 44);
+			int32_t pointX = Geometry::getCalculatedXPointOnCircle(this->x, i, 45 );
+			int32_t pointY = Geometry::getCalculatedYPointOnCircle(this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, i, 45);
 
 			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, pointX, pointY, COLOR_BACKGROUND);
 			TTGOClass::getWatch()->tft->drawLine(this->x, this->y + TTGOClass::getWatch()->tft->fontHeight() / 2, pointX, pointY+1, COLOR_BACKGROUND);
