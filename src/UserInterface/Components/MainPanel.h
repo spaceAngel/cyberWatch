@@ -10,15 +10,7 @@ class MainPanel {
 
 	public:
 
-		MainPanel() {
-			DateTime *dt = new DateTime();
-			AppsStatusMonitor::getInstance()->registerDateTimeComponent(dt);
-			this->apps[0] = dt;
-			this->apps[1] = new Calendar();
-			this->apps[2] = new StopWatch();
-
-
-		}
+		MainPanel();
 
 		void render();
 		void switchApp(int vector);
@@ -35,5 +27,13 @@ class MainPanel {
 		int8_t currentApp = 0;
 
 		void clear();
+
+		void createApps() {
+			DateTime *dt = new DateTime();
+			AppsStatusMonitor::getInstance()->registerDateTimeComponent(dt);
+			this->apps[0] = dt;
+			this->apps[1] = new Calendar();
+			this->apps[2] = new StopWatch();
+		}
 
 };

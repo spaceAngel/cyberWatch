@@ -3,6 +3,7 @@
 #include <LilyGoWatch.h>
 
 #include "MainPanel.h"
+#include "System/Registry.h"
 
 void MainPanel::render() {
 	this->getCurrentComponent()->render();
@@ -21,6 +22,7 @@ void MainPanel::switchApp(int vector) {
 
 	this->getCurrentComponent()->setShouldReRender(true);
 	this->getCurrentComponent()->setIsActive(true);
+	Registry::getInstance()->setValue(Registry::NAME_APP, this->currentApp);
 	this->clear();
 	this->render();
 }
@@ -61,3 +63,15 @@ bool MainPanel::isSleepForbidden() {
 MainComponent *MainPanel::getCurrentComponent() {
 	return this->apps[this->currentApp];
 }
+
+MainPanel::MainPanel() {
+	this->createApps();
+	uint currentApp = Registry::getInstance()->getValue(Registry::NAME_APP);
+	if (
+		(currentApp >= 0)
+		&& (currentApp <= APPS)
+	) {
+		this->currentApp = currentApp;
+	}
+}
+

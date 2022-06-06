@@ -7,6 +7,7 @@
 #include "UserInterface/Components/MainPanel/DateTime/AnalogClocks.h"
 #include "UserInterface/Components/MainPanel/DateTime/Planetoid.h"
 #include "UserInterface/Components/MainComponent.h"
+#include "System/Registry.h"
 
 void DateTime::render() {
 	getCurrentFace()->render();
@@ -27,7 +28,8 @@ bool DateTime::handleSwipeVertical(int8_t vector) {
 		this->currentFace = FACES;
 	}
 
-	getCurrentFace()->setShouldReRender(true);
+	Registry::getInstance()->setValue(Registry::NAME_WATCH_FACE, this->currentFace);
+	this->getCurrentFace()->setShouldReRender(true);
 	return true;
 }
 
@@ -42,4 +44,15 @@ bool DateTime::handlePEKShort() {
 
 bool DateTime::isSystemSleepForbidden() {
 	return this->alwaysOn == true;
+}
+
+DateTime::DateTime() {
+	this->createFaces();
+	uint currentFace = Registry::getInstance()->getValue(Registry::NAME_WATCH_FACE);
+	if (
+		(currentFace >= 0)
+		&& (currentFace <= FACES)
+	) {
+		this->currentFace = currentFace;
+	}
 }

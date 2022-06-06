@@ -20,13 +20,7 @@ class DateTime : public MainComponent {
 		bool handlePEKShort();
 		bool isSystemSleepForbidden();
 
-		DateTime() {
-			clockFaces[0] = new DigitalClocks();
-			clockFaces[1] = new AnalogClocks();
-			clockFaces[2] = new Planetoid();
-			clockFaces[3] = new ProgressBars();
-			clockFaces[4] = new NeonCircles();
-		};
+		DateTime();
 
 	protected:
 
@@ -36,5 +30,13 @@ class DateTime : public MainComponent {
 		int8_t currentFace = 4;
 
 		bool alwaysOn = false;
+
+		void createFaces() {
+			clockFaces[0] = new DigitalClocks();
+			clockFaces[1] = new AnalogClocks();
+			clockFaces[2] = new Planetoid();
+			clockFaces[3] = new ProgressBars();
+			clockFaces[4] = new NeonCircles();
+		}
 
 };
