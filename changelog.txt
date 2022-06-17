@@ -3,7 +3,7 @@ cyberWatch 0.1
  - shows splashscreen
  - shows "exit screen"
  - shows current time & date (include day of week)
- - or analog watch as second "clock face"
+ - or multiple other watch faces
  - shows battery capacity (with battery icon "progressbar")
  - activate by touching display
  - activate by shortpress pek
@@ -11,6 +11,7 @@ cyberWatch 0.1
  - warn on baterry low/very low (vibrate / double vibrate), turn on display and render battery icon with red color
  - show charging state (plug icon)
  - turn off display and cpu goes light sleep on inactivity (battery savings) - wake up by display touch
+ - allows "display always on" functionality
  - use CPU light sleep  200ms during main loop (energy saving)
  - cpu frequency set to 40MHz (energy saving)
  - wakeup (and vibrate) on USB / power connect / disconnect
