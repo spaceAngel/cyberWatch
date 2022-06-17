@@ -1,6 +1,6 @@
 #pragma once
 
-#include "UserInterface/Components/MainPanel/DateTime/SubComponents/ProgressBar.h"
+#include "UserInterface/Components/MainPanel/WatchFaces/SubComponents/ProgressBar.h"
 
 class ProgressBars : public MainComponent {
 

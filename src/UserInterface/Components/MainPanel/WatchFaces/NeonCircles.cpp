@@ -4,7 +4,7 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/Components/MainPanel/DateTime/SubComponents/NeonCircle.h"
+#include "UserInterface/Components/MainPanel/WatchFaces/SubComponents/NeonCircle.h"
 
 NeonCircles::NeonCircles() {
 	int32_t width = TTGOClass::getWatch()->tft->width() / 4;

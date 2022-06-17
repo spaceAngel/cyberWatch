@@ -5,8 +5,8 @@
 #include <LilyGoWatch.h>
 
 #include "UserInterface/Components/MainComponent.h"
-#include "UserInterface/Components/MainPanel/DateTime/SubComponents/Date.h"
-#include "UserInterface/Components/MainPanel/DateTime/SubComponents/Time.h"
+#include "UserInterface/Components/MainPanel/WatchFaces/SubComponents/Date.h"
+#include "UserInterface/Components/MainPanel/WatchFaces/SubComponents/Time.h"
 
 class DigitalClocks : public MainComponent {
 

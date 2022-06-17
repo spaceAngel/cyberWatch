@@ -4,7 +4,7 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/Components/MainPanel/DateTime/SubComponents/ProgressBar.h"
+#include "UserInterface/Components/MainPanel/WatchFaces/SubComponents/ProgressBar.h"
 
 void ProgressBars::render() {
 	RTC_Date currentTime = TTGOClass::getWatch()->rtc->getDateTime();

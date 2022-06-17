@@ -3,11 +3,11 @@
 #include <Arduino.h>
 
 #include "UserInterface/Components/MainComponent.h"
-#include "UserInterface/Components/MainPanel/DateTime/AnalogClocks.h"
-#include "UserInterface/Components/MainPanel/DateTime/Planetoid.h"
-#include "UserInterface/Components/MainPanel/DateTime/DigitalClocks.h"
-#include "UserInterface/Components/MainPanel/DateTime/ProgressBars.h"
-#include "UserInterface/Components/MainPanel/DateTime/NeonCircles.h"
+#include "UserInterface/Components/MainPanel/WatchFaces/AnalogClocks.h"
+#include "UserInterface/Components/MainPanel/WatchFaces/Planetoid.h"
+#include "UserInterface/Components/MainPanel/WatchFaces/DigitalClocks.h"
+#include "UserInterface/Components/MainPanel/WatchFaces/ProgressBars.h"
+#include "UserInterface/Components/MainPanel/WatchFaces/NeonCircles.h"
 
 class DateTime : public MainComponent {
 

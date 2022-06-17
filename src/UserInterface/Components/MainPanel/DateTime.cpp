@@ -3,9 +3,6 @@
 #include <LilyGoWatch.h>
 
 #include "DateTime.h"
-#include "UserInterface/Components/MainPanel/DateTime/DigitalClocks.h"
-#include "UserInterface/Components/MainPanel/DateTime/AnalogClocks.h"
-#include "UserInterface/Components/MainPanel/DateTime/Planetoid.h"
 #include "UserInterface/Components/MainComponent.h"
 #include "System/Registry.h"
 
