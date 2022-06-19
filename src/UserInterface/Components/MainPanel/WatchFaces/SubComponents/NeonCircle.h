@@ -16,4 +16,6 @@ class NeonCircle : public MainComponent {
 		int32_t prevValue;
 		int32_t maxValue;
 
+		void renderCircle(int32_t value);
+
 };

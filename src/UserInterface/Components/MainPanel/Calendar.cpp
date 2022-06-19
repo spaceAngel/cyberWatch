@@ -5,6 +5,7 @@
 #include "Calendar.h"
 #include "UserInterface/Components/MainPanel.h"
 #include "Utils/DateUtil.h"
+#include "System/Esp32.h"
 
 Calendar::Calendar() {
 	RTC_Date currentDate = TTGOClass::getWatch()->rtc->getDateTime();
@@ -15,24 +16,30 @@ Calendar::Calendar() {
 
 void Calendar::render() {
 	if (this->shouldReRender() == true) {
-		uint8_t dayInWeek = DateUtil::weekday(this->year, this->month, 1);
-		uint8_t day = 0;
-		uint8_t row = 0;
-		while (day < DateUtil::getDaysInMonth(this->year, this->month)) {
 
-			if ((int32_t)dayInWeek == 0) {
-				dayInWeek = 7;
+		Esp32::getInstance()->runWithCpuSpeedHigh(
+			[this] {
+
+				uint8_t dayInWeek = DateUtil::weekday(this->year, this->month, 1);
+				uint8_t day = 0;
+				uint8_t row = 0;
+				while (day < DateUtil::getDaysInMonth(this->year, this->month)) {
+
+					if ((int32_t)dayInWeek == 0) {
+						dayInWeek = 7;
+					}
+					day++;
+					this->renderDay(day, row, dayInWeek);
+					this->renderIsNowBox(day, row, dayInWeek);
+					this->renderDelimiter(day, row, dayInWeek);
+					if (((int32_t)dayInWeek % 7) == 0) {
+						dayInWeek = 0;
+						row++;
+					}
+					dayInWeek++;
+				}
 			}
-			day++;
-			this->renderDay(day, row, dayInWeek);
-			this->renderIsNowBox(day, row, dayInWeek);
-			this->renderDelimiter(day, row, dayInWeek);
-			if (((int32_t)dayInWeek % 7) == 0) {
-				dayInWeek = 0;
-				row++;
-			}
-			dayInWeek++;
-		}
+		);
 		this->renderMonthYearLabel();
 		this->setShouldReRender(false);
 	}
