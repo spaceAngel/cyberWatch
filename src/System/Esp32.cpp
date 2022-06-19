@@ -44,3 +44,9 @@ void Esp32::cleanIRQ() {
 void Esp32::setIsIRQ() {
 	this->IRQ = true;
 }
+
+void Esp32::runWithCpuSpeedHigh(std::function<void(void)> f) {
+	setCpuFrequencyMhz(CPU_FREQUENCY_HIGH);
+	f();
+	setCpuFrequencyMhz(CPU_FREQUENCY_LOW);
+}

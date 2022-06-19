@@ -13,6 +13,8 @@ class Esp32 {
 		void cleanIRQ();
 		void setIsIRQ();
 
+		void runWithCpuSpeedHigh(std::function<void(void)> f);
+
 	protected:
 
 		static Esp32 *inst;

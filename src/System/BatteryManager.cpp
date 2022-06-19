@@ -43,7 +43,7 @@ bool BatteryManager::handleCabelPlugRemoveIRQ() {
 void BatteryManager::energyConsumptionSavingsSettings() {
 	WiFi.disconnect(true);	// Disconnect from the network
 	WiFi.mode(WIFI_OFF);			// Switch WiFi off //not need to wifi on -> power saving
-	setCpuFrequencyMhz(CPU_FREQUENCY);
+	setCpuFrequencyMhz(CPU_FREQUENCY_LOW);
 }
 
 
