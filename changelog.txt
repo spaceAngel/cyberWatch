@@ -1,3 +1,7 @@
+cyberWatch 0.2
+========================
+ - partially support for TTGO Watch V2 (motor operation only if LILYGO_WATCH_HAS_MOTOR)
+
 cyberWatch 0.1
 ========================
  - shows splashscreen

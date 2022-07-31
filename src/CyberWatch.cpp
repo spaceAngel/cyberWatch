@@ -27,7 +27,11 @@ void CyberWatch::init() {
 	Serial.println("cyberWatch starting");
 
 	TTGOClass::getWatch()->begin();
-	TTGOClass::getWatch()->motor_begin();
+
+	#ifdef LILYGO_WATCH_HAS_MOTOR
+		TTGOClass::getWatch()->motor_begin();
+	#endif
+
 	Display::getInstance()->init();
 	BatteryManager::getInstance()->energyConsumptionSavingsSettings();
 	Esp32::getInstance()->initIRQ();
