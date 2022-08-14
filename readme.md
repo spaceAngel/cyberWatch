@@ -41,6 +41,7 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - calendar with prev/next month feature
  - simple stop watch
  - for full list of features, see [changelog.txt](changelog.txt)
+ - synchronize date & time with computer during compile/upload
 
 ## Known bugs
  - "tilt up" maneuver sometimes doesn't activate display (maybe will be solved by tuning BMA423 sensor)

@@ -1,6 +1,9 @@
+#include "config.h"
+
 #include <SPIFFS.h>
 #include <FS.h>
 #include <string.h>
+#include <LilyGoWatch.h>
 
 #include "RunAfterCompilation.h"
 
@@ -32,6 +35,9 @@ bool RunAfterCompilation::isFirstRun() {
 }
 
 void RunAfterCompilation::afterFirstRunOperations() {
+	//set date & time
+	#include "BuildDateTime.h"
+	TTGOClass::getWatch()->rtc->setDateTime(BUILD_YEAR, BUILD_MONTH, BUILD_DAY, BUILD_HOUR, BUILD_MIN, BUILD_SEC);
 }
 
 void RunAfterCompilation::markFirstRunIsOver() {

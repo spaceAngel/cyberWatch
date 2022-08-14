@@ -1,6 +1,7 @@
 cyberWatch 0.2
 ========================
  - partially support for TTGO Watch V2 (motor operation only if LILYGO_WATCH_HAS_MOTOR)
+ - synchronize date & time with computer during compile/upload
 
 cyberWatch 0.1
 ========================
