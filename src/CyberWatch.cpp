@@ -1,6 +1,7 @@
 #include "config.h"
 
 #include <LilyGoWatch.h>
+#include <SPIFFS.h>
 
 #include "CyberWatch.h"
 
@@ -11,6 +12,7 @@
 #include "System/MoveSensor.h"
 #include "System/MotorController.h"
 #include "UserInterface/UserInterfaceManager.h"
+#include "Environment/RunAfterCompilation.h"
 
 CyberWatch* CyberWatch::inst;
 
@@ -32,6 +34,8 @@ void CyberWatch::init() {
 		TTGOClass::getWatch()->motor_begin();
 	#endif
 
+	SPIFFS.begin();
+	RunAfterCompilation::handle();
 	Display::getInstance()->init();
 	BatteryManager::getInstance()->energyConsumptionSavingsSettings();
 	Esp32::getInstance()->initIRQ();
