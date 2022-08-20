@@ -44,48 +44,50 @@ void CyberWatch::init() {
 };
 
 void CyberWatch::loop() {
-	while(1) {
-		bool PEKshort = false;
-
-		this->handleBatteryLowActions();
-		this->handleEsp32IRQ(PEKshort);
-		if(UserInterfaceManager::getInstance()->isSleepForbidden() == true) {
-			InactivityWatcher::getInstance()->markActivity();
-		}
+	bool PEKshort = false;
+	this->handleBatteryLowActions();
+	this->handleEsp32IRQ(PEKshort);
+	if(UserInterfaceManager::getInstance()->isSleepForbidden() == true) {
+		InactivityWatcher::getInstance()->markActivity();
+	}
+	if (
+		InactivityWatcher::getInstance()->isInactive()
+		&& MoveSensor::getInstance()->isTilt()
+	) {
+		InactivityWatcher::getInstance()->markActivity();
+	}
+	if (
+		UserInterfaceManager::getInstance()->handleTouch() || PEKshort
+	) {
 		if (
-			InactivityWatcher::getInstance()->isInactive()
-			&& MoveSensor::getInstance()->isTilt()
+			!InactivityWatcher::getInstance()->isInactive() && PEKshort
 		) {
-			InactivityWatcher::getInstance()->markActivity();
+			UserInterfaceManager::getInstance()->handlePEKShort();
 		}
-		if (
-			UserInterfaceManager::getInstance()->handleTouch()
-			|| PEKshort
-		) {
-			if (
-				!InactivityWatcher::getInstance()->isInactive()
-				&& PEKshort
-			) {
-				UserInterfaceManager::getInstance()->handlePEKShort();
-			}
-			InactivityWatcher::getInstance()->markActivity();
-		}
-		if (
-			InactivityWatcher::getInstance()->isInactive() == true
-		) {
-			Display::getInstance()->turnDisplayOff();
-			esp_sleep_enable_timer_wakeup(TICK_SLEEP);
-			esp_sleep_enable_ext1_wakeup(GPIO_SEL_39, ESP_EXT1_WAKEUP_ANY_HIGH);
-			esp_light_sleep_start();
-		} else {
-		if (!Display::getInstance()->isDisplayOn()) {
-			Display::getInstance()->turnDisplayOn();
-		}
-		UserInterfaceManager::getInstance()->render();
-		delay(TICK_WAKEUP);
-		}
+		InactivityWatcher::getInstance()->markActivity();
+	}
+	if (
+		InactivityWatcher::getInstance()->isInactive() == true
+	) {
+		this->sleep();
+	} else {
+		this->handleWakeupTick();
 	}
 };
+
+void CyberWatch::handleWakeupTick() {
+	if (!Display::getInstance()->isDisplayOn()) {
+		Display::getInstance()->turnDisplayOn();
+	}
+	UserInterfaceManager::getInstance()->render();
+	delay(TICK_WAKEUP);
+}
+
+void CyberWatch::sleep() {
+	Display::getInstance()->turnDisplayOff();
+	esp_sleep_enable_timer_wakeup(TICK_SLEEP);
+	esp_light_sleep_start();
+}
 
 void CyberWatch::turnOff() {
 	Display::getInstance()->turnDisplayOn();

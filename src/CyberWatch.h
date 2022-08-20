@@ -26,6 +26,10 @@ class CyberWatch {
 
 		void handleBatteryLowActions();
 
+		void sleep();
+
+		void handleWakeupTick();
+
 };
 
 
