@@ -17,6 +17,5 @@ class Registry {
 
 		static Registry *inst;
 
-
 		Registry();
 };

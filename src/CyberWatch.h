@@ -1,5 +1,4 @@
-#ifndef CYBERWATCH
-#define CYBERWATCH
+#pragma once
 
 #include "config.h"
 
@@ -13,7 +12,9 @@ class CyberWatch {
 		void loop();
 
 		void turnOff();
+
 	protected:
+
 		static CyberWatch *inst;
 
 		CyberWatch();
@@ -31,6 +32,3 @@ class CyberWatch {
 		void handleWakeupTick();
 
 };
-
-
-#endif
