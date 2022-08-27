@@ -13,6 +13,7 @@
 #include "System/MotorController.h"
 #include "UserInterface/UserInterfaceManager.h"
 #include "Environment/RunAfterCompilation.h"
+#include "Environment/AppSettings.h"
 
 CyberWatch* CyberWatch::inst;
 
@@ -47,7 +48,10 @@ void CyberWatch::loop() {
 	bool PEKshort = false;
 	this->handleBatteryLowActions();
 	this->handleEsp32IRQ(PEKshort);
-	if(UserInterfaceManager::getInstance()->isSleepForbidden() == true) {
+	if(
+		UserInterfaceManager::getInstance()->isSleepForbidden() == true
+		|| AppSettings::getInstance()->getAlwaysOn()
+	) {
 		InactivityWatcher::getInstance()->markActivity();
 	}
 	if (

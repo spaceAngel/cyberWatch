@@ -5,6 +5,7 @@
 #include "DateTime.h"
 #include "UserInterface/Components/MainComponent.h"
 #include "System/Registry.h"
+#include "Environment/AppSettings.h"
 
 void DateTime::render() {
 	getCurrentFace()->render();
@@ -35,12 +36,10 @@ MainComponent *DateTime::getCurrentFace() {
 }
 
 bool DateTime::handlePEKShort() {
-	this->alwaysOn = !this->alwaysOn;
+	AppSettings::getInstance()->setAlwaysOn(
+		!AppSettings::getInstance()->getAlwaysOn()
+	);
 	return false;
-}
-
-bool DateTime::isSystemSleepForbidden() {
-	return this->alwaysOn == true;
 }
 
 DateTime::DateTime() {

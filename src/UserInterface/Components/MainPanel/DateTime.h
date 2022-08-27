@@ -18,7 +18,6 @@ class DateTime : public MainComponent {
 		MainComponent *getCurrentFace();
 		void render();
 		bool handlePEKShort();
-		bool isSystemSleepForbidden();
 
 		DateTime();
 
@@ -28,8 +27,6 @@ class DateTime : public MainComponent {
 
 		MainComponent *clockFaces[5];
 		int8_t currentFace = 4;
-
-		bool alwaysOn = false;
 
 		void createFaces() {
 			clockFaces[0] = new DigitalClocks();
