@@ -13,13 +13,14 @@ class AppSettings {
 		uint8_t getSettingsByteMask();
 
 		void setAlwaysOn(bool alwaysOn);
+		void switchAlwaysOn();
 		bool getAlwaysOn();
 
 		protected:
 
 			static AppSettings *inst;
 
-			uint8_t bits;
+			uint8_t bits = 0;
 
 			AppSettings();
 
