@@ -41,6 +41,7 @@ class UserInterfaceManager {
 
 			static UserInterfaceManager *inst;
 
+			bool touchReleased = true;
 
 			UserInterfaceManager() {
 			}
