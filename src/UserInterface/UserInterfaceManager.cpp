@@ -43,6 +43,7 @@ bool UserInterfaceManager::handleTouch() {
 		TTGOClass::getWatch()->getTouch(x, y)
 		&& ((x != 257) && (y != 2)) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
 	) {
+		MainScreen::getInstance()->handleTouch(x, y);
 		if (this->swipeEnabled == true) {
 			this->handleSwipeHorizontal(x);
 			this->handleSwipeVertical(y);

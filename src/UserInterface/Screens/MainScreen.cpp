@@ -39,3 +39,7 @@ void MainScreen::handlePEKShort() {
 bool MainScreen::isSleepForbidden() {
 	return this->mainPanel->isSleepForbidden();
 }
+
+void MainScreen::handleTouch(uint8_t x, uint8_t y) {
+	this->mainPanel->handleTouch(x, y);
+}

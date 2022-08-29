@@ -15,6 +15,7 @@ class MainScreen {
 		void handleSwipeVertical(int vector);
 		void handlePEKShort();
 		bool isSleepForbidden();
+		void handleTouch(uint8_t x, uint8_t y);
 
 		protected:
 

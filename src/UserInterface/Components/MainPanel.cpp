@@ -59,6 +59,13 @@ bool MainPanel::isSleepForbidden() {
 	}
 	return rslt;
 }
+void MainPanel::handleTouch(uint8_t x, uint8_t y) {
+	if (this->getCurrentComponent()->controlModeIsTouch()) {
+		if (this->getCurrentComponent()->handleTouch(x, y) == true) {
+			this->clear();
+		}
+	}
+}
 
 MainComponent *MainPanel::getCurrentComponent() {
 	return this->apps[this->currentApp];
