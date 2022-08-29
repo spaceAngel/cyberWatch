@@ -17,7 +17,6 @@ class DateTime : public MainComponent {
 		void setShouldReRender(bool shouldReRender);
 		MainComponent *getCurrentFace();
 		void render();
-		bool handlePEKShort();
 
 		DateTime();
 

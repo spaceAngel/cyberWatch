@@ -35,13 +35,6 @@ MainComponent *DateTime::getCurrentFace() {
 	return this->clockFaces[this->currentFace];
 }
 
-bool DateTime::handlePEKShort() {
-	AppSettings::getInstance()->setAlwaysOn(
-		!AppSettings::getInstance()->getAlwaysOn()
-	);
-	return false;
-}
-
 DateTime::DateTime() {
 	this->createFaces();
 	uint currentFace = Registry::getInstance()->getValue(Registry::NAME_WATCH_FACE);
