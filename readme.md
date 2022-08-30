@@ -45,6 +45,7 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
 
 ## Known bugs
  - "tilt up" maneuver sometimes doesn't activate display (maybe will be solved by tuning BMA423 sensor)
+ - activated by touch (when display is off) also do "touch event" on component on touch coords (e.g. when current screen is watch settings, activation also can activated display on, when display activation touch is at left top corner of display )
 
 ## Future features :-)
  - alarm
