@@ -28,7 +28,7 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
    - activate by:
      - touching display
      - short press button
-     - "tilt up" maneuver
+     - "tilt up" maneuver (can be turn off on settings screen)
  - possibility of enabled "display always on" to show cool clockfaces
  - warns (vibrate, turn display on) when battery reach low levels(30% / 20%)
  - shows current time

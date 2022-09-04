@@ -56,6 +56,7 @@ void CyberWatch::loop() {
 	}
 	if (
 		InactivityWatcher::getInstance()->isInactive()
+		&& AppSettings::getInstance()->get(APPSETTINGS_TILT_ON)
 		&& MoveSensor::getInstance()->isTilt()
 	) {
 		InactivityWatcher::getInstance()->markActivity();

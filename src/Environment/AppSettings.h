@@ -3,6 +3,7 @@
 #include <Arduino.h>
 
 #define APPSETTINGS_ALWAYS_ON 1
+#define APPSETTINGS_TILT_ON 2
 
 class AppSettings {
 
