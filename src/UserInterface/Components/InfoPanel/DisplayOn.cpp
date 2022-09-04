@@ -10,12 +10,12 @@
 
 void DisplayOn::render() {
 
-	if (AppSettings::getInstance()->getAlwaysOn() != this->prevState) {
-		if (AppSettings::getInstance()->getAlwaysOn() == true) {
+	if (AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON) != this->prevState) {
+		if (AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON) == true) {
 			UserInterfaceManager::getInstance()->renderIcon(iconLightBulb, POS_X, POS_Y);
 		} else {
 			TTGOClass::getWatch()->tft->fillRect(POS_X, POS_Y, 18, 22, COLOR_BACKGROUND);
 		}
-		this->prevState = AppSettings::getInstance()->getAlwaysOn();
+		this->prevState = AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON);
 	}
 }

@@ -12,9 +12,10 @@ class AppSettings {
 
 		uint8_t getSettingsByteMask();
 
-		void setAlwaysOn(bool alwaysOn);
-		void switchAlwaysOn();
-		bool getAlwaysOn();
+		void set(uint8_t bit, bool value);
+		void toggle(uint8_t bit);
+		bool get(uint8_t bit);
+
 
 		protected:
 

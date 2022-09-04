@@ -50,7 +50,7 @@ void CyberWatch::loop() {
 	this->handleEsp32IRQ(PEKshort);
 	if(
 		UserInterfaceManager::getInstance()->isSleepForbidden() == true
-		|| AppSettings::getInstance()->getAlwaysOn()
+		|| AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON)
 	) {
 		InactivityWatcher::getInstance()->markActivity();
 	}

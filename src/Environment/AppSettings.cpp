@@ -12,24 +12,25 @@ AppSettings *AppSettings::getInstance() {
 	return AppSettings::inst;
 }
 
-void AppSettings::setAlwaysOn(bool alwaysOn) {
-	if (alwaysOn == true) {
-		this->bits |= APPSETTINGS_ALWAYS_ON;
-	} else {
-		this->bits &= ~APPSETTINGS_ALWAYS_ON;
-	}
-}
-
-void AppSettings::switchAlwaysOn() {
-	this->setAlwaysOn(
-		!this->getAlwaysOn()
-	);
-}
-
 uint8_t AppSettings::getSettingsByteMask() {
 	return this->bits;
 }
 
-bool AppSettings::getAlwaysOn() {
-	return (this->bits & APPSETTINGS_ALWAYS_ON) == APPSETTINGS_ALWAYS_ON;
+void AppSettings::set(uint8_t bit, bool value) {
+	if (value == true) {
+		this->bits |= bit;
+	} else {
+		this->bits &= ~bit;
+	}
+}
+
+void AppSettings::toggle(uint8_t bit) {
+	this->set(
+		bit,
+		!this->get(bit)
+	);
+}
+
+bool AppSettings::get(uint8_t bit) {
+	return (this->bits & bit) == bit;
 }
