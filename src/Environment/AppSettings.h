@@ -4,6 +4,7 @@
 
 #define APPSETTINGS_ALWAYS_ON 1
 #define APPSETTINGS_TILT_ON 2
+#define APPSETTINGS_VIBRATE 4
 
 class AppSettings {
 

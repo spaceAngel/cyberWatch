@@ -26,7 +26,11 @@ class SettingsPanel : public MainComponent {
 				[]() {return AppSettings::getInstance()->get(APPSETTINGS_TILT_ON);},
 				[]() {AppSettings::getInstance()->toggle(APPSETTINGS_TILT_ON);return true;}
 			);
-			this->buttons[2] = new SettingsPanelButton("Vibrate", 1, 2, []() {return true;}, [this]() {return false;});
+			this->buttons[2] = new SettingsPanelButton(
+				"Vibrate", 1, 2,
+				[]() {return AppSettings::getInstance()->get(APPSETTINGS_VIBRATE);},
+				[]() {AppSettings::getInstance()->toggle(APPSETTINGS_VIBRATE);return true;}
+			);
 			this->buttons[3] = new SettingsPanelButton("Sound", 2, 2, []() {return false;}, [this]() {return false;});
 
 		}
