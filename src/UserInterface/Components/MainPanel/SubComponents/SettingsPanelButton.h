@@ -13,7 +13,7 @@ class SettingsPanelButton : public MainComponent {
 			uint8_t col,
 			uint8_t row,
 			std::function<bool(void)> isActiveFunc,
-			std::function<bool()> handleTouchFunc
+			std::function<void()> handleTouchFunc
 		);
 
 		uint8_t getX();
@@ -22,14 +22,14 @@ class SettingsPanelButton : public MainComponent {
 		uint8_t getHeight();
 
 		void render();
-		bool handleTouch();
+		void handleTouch();
 
 	protected:
 
 		uint8_t col;
 		uint8_t row;
 		std::function<bool()> isActiveFunc;
-		std::function<bool()> handleTouchFunc;
+		std::function<void()> handleTouchFunc;
 
 		char *btnText;
 };

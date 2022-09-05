@@ -49,15 +49,15 @@ void CyberWatch::loop() {
 	this->handleBatteryLowActions();
 	this->handleEsp32IRQ(PEKshort);
 	if(
-		UserInterfaceManager::getInstance()->isSleepForbidden() == true
-		|| AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON)
+		(UserInterfaceManager::getInstance()->isSleepForbidden() == true)
+		|| (AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON) == true)
 	) {
 		InactivityWatcher::getInstance()->markActivity();
 	}
 	if (
 		InactivityWatcher::getInstance()->isInactive()
-		&& AppSettings::getInstance()->get(APPSETTINGS_TILT_ON)
-		&& MoveSensor::getInstance()->isTilt()
+		&& AppSettings::getInstance()->get(APPSETTINGS_TILT_ON) == true
+		&& MoveSensor::getInstance()->isTilt() == true
 	) {
 		InactivityWatcher::getInstance()->markActivity();
 	}
@@ -137,11 +137,11 @@ void CyberWatch::handleBatteryLowActions() {
 	if (BatteryManager::getInstance()->isCharging() == true) {
 		this->batteryLowWarnVibrateOnLevel = 101;
 	} else {
-		if (capacity == BATTERY_LOW) {
+		if (capacity == (uint8_t)BATTERY_LOW) {
 			vibrationCount = 1;
 		}
 
-		if (capacity == BATTERY_VERY_LOW) {
+		if (capacity == (uint8_t)BATTERY_VERY_LOW) {
 			vibrationCount = 2;
 		}
 

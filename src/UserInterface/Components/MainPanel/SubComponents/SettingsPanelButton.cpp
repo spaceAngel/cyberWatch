@@ -9,7 +9,7 @@ SettingsPanelButton::SettingsPanelButton(
 	uint8_t col,
 	uint8_t row,
 	std::function<bool(void)> isActiveFunc,
-	std::function<bool(void)> handleTouchFunc
+	std::function<void(void)> handleTouchFunc
 ) {
 	this->btnText = btnText;
 	this->col = col;
@@ -19,11 +19,11 @@ SettingsPanelButton::SettingsPanelButton(
 }
 
 uint8_t SettingsPanelButton::getX() {
-	return 5 + (col == 1 ? 0 : (TTGOClass::getWatch()->tft->width() / 2));
+	return 5 + (this->col == (uint8_t) 1 ? 0 : (TTGOClass::getWatch()->tft->width() / 2));
 }
 
 uint8_t SettingsPanelButton::getY() {
-	return 13 + (row - 1) * 71;
+	return 13 + (((int32_t)this->row - 1) * 71);
 }
 
 uint8_t SettingsPanelButton::getWidth() {
@@ -51,6 +51,6 @@ void SettingsPanelButton::render() {
 	TTGOClass::getWatch()->tft->setTextColor(COLOR_MAIN_1);
 }
 
-bool SettingsPanelButton::handleTouch() {
-	return this->handleTouchFunc();
+void SettingsPanelButton::handleTouch() {
+	this->handleTouchFunc();
 }

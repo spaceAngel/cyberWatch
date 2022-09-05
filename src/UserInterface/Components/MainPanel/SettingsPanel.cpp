@@ -20,7 +20,6 @@ void SettingsPanel::render() {
 		}
 		this->setShouldReRender(false);
 		this->lastMask = AppSettings::getInstance()->getSettingsByteMask();
-		return;
 	}
 }
 
@@ -35,10 +34,10 @@ bool SettingsPanel::controlModeIsTouch() {
 bool SettingsPanel::handleTouch(uint8_t x, uint8_t y) {
 	for (int32_t i = 0; i <= BUTTONS; i++) {
 		if (
-			x > this->buttons[i]->getX()
-			&& x < this->buttons[i]->getX() + this->buttons[i]->getWidth()
-			&& y > this->buttons[i]->getY()
-			&& y < this->buttons[i]->getY() + this->buttons[i]->getHeight()
+			(x > this->buttons[i]->getX())
+			&& (x < this->buttons[i]->getX() + this->buttons[i]->getWidth())
+			&& (y > this->buttons[i]->getY())
+			&& (y < this->buttons[i]->getY() + this->buttons[i]->getHeight())
 		) {
 			this->buttons[i]->handleTouch();
 		}

@@ -7,7 +7,7 @@
 
 void StepCounter::render() {
 	if (iconIsRendered == false) {
-		UserInterfaceManager::getInstance()->renderIcon(iconFootPrints, POS_X + 7, POS_Y);
+		UserInterfaceManager::getInstance()->renderIcon(iconFootPrints, (int32_t)POS_X + 7,  POS_Y);
 	}
 	TTGOClass::getWatch()->bma->readInterrupt();
 	uint stepCount = TTGOClass::getWatch()->bma->getCounter();

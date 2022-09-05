@@ -19,19 +19,19 @@ class SettingsPanel : public MainComponent {
 			this->buttons[0] = new SettingsPanelButton(
 				"Display", 1, 1,
 				[]() {return AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON);},
-				[]() {AppSettings::getInstance()->toggle(APPSETTINGS_ALWAYS_ON);return true;}
+				[]() {AppSettings::getInstance()->toggle(APPSETTINGS_ALWAYS_ON);}
 			);
 			this->buttons[1] = new SettingsPanelButton(
 				"Tilt", 2, 1,
 				[]() {return AppSettings::getInstance()->get(APPSETTINGS_TILT_ON);},
-				[]() {AppSettings::getInstance()->toggle(APPSETTINGS_TILT_ON);return true;}
+				[]() {AppSettings::getInstance()->toggle(APPSETTINGS_TILT_ON);}
 			);
 			this->buttons[2] = new SettingsPanelButton(
 				"Vibrate", 1, 2,
 				[]() {return AppSettings::getInstance()->get(APPSETTINGS_VIBRATE);},
-				[]() {AppSettings::getInstance()->toggle(APPSETTINGS_VIBRATE);return true;}
+				[]() {AppSettings::getInstance()->toggle(APPSETTINGS_VIBRATE);}
 			);
-			this->buttons[3] = new SettingsPanelButton("Sound", 2, 2, []() {return false;}, [this]() {return false;});
+			this->buttons[3] = new SettingsPanelButton("Sound", 2, 2, []() {return false;}, []() {});
 
 		}
 		bool controlModeIsTouch();
