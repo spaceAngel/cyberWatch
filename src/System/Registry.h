@@ -16,6 +16,8 @@ class Registry {
 
 	protected:
 
+		static const uint8_t REGISTRY_SIZE = 3;
+
 		static Registry *inst;
 
 		Registry();
