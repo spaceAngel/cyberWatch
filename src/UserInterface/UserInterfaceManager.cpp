@@ -10,6 +10,7 @@
 #include "UserInterface/Icons/IconStruct.h"
 #include "Utils/TimeUtil.h"
 #include "System/Display.h"
+#include "System/InactivityWatcher.h"
 
 UserInterfaceManager *UserInterfaceManager::inst;
 
@@ -44,6 +45,7 @@ bool UserInterfaceManager::handleTouch() {
 		|| ((x == 257) && (y == 2)) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
 	) {
 		this->touchReleased = true;
+		this->touchFromInactivity = InactivityWatcher::getInstance()->isInactive();
 	}
 
 	if (
@@ -51,7 +53,10 @@ bool UserInterfaceManager::handleTouch() {
 		&& ((x != 257) && (y != 2)) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
 	) {
 		if (this->touchReleased == true) {
-			MainScreen::getInstance()->handleTouch(x, y);
+			if (this->touchFromInactivity == false)  {
+				MainScreen::getInstance()->handleTouch(x, y);
+			}
+			this->touchFromInactivity = InactivityWatcher::getInstance()->isInactive();
 			this->touchReleased = false;
 		}
 		if (this->swipeEnabled == true) {
