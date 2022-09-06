@@ -26,11 +26,9 @@ void StopWatch::render() {
 				70,
 				COLOR_BACKGROUND
 			);
-			TTGOClass::getWatch()->tft->drawString(
-				"0:00:00.00",
-				0,
-				POS_Y
-			);
+			TTGOClass::getWatch()->tft->drawString(":",	30, POS_Y - 3);
+			TTGOClass::getWatch()->tft->drawString(":",	99, POS_Y - 3);
+			TTGOClass::getWatch()->tft->drawString(".",	168, POS_Y);
 		}
 		this->renderTime((stopTime > 0) ? stopTime : 0);
 		TTGOClass::getWatch()->tft->setTextSize(1);

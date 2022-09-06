@@ -5,6 +5,7 @@ cyberWatch 0.2
  - FEATURE: screen for settings (with touch control - on/off display on, on/off tilt activation, on/off vibrations)
  - REFACTORING: settings class for alwaysOn feature (instead alwaysOn boolean on DateTime component)
  - REDESIGN: remove turning on "display always on" by PEKShort on date now controlling from PanelSettings app
+ - BUGFIX: avoid blinking when swipe to stopwatch screen
 
 cyberWatch 0.1
 ========================
