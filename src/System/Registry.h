@@ -6,6 +6,7 @@ class Registry {
 
 		static const uint NAME_WATCH_FACE = 0;
 		static const uint NAME_APP = 1;
+		static const uint NAME_SETTINGS = 2;
 
 		static Registry *getInstance();
 

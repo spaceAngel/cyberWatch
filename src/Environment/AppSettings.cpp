@@ -1,8 +1,11 @@
 #include "AppSettings.h"
+#include "System/Registry.h"
 
 AppSettings *AppSettings::inst;
 
 AppSettings::AppSettings() {
+	uint value = Registry::getInstance()->getValue(Registry::NAME_SETTINGS);
+	this->bits = value;
 }
 
 AppSettings *AppSettings::getInstance() {
@@ -22,6 +25,10 @@ void AppSettings::set(uint8_t bit, bool value) {
 	} else {
 		this->bits &= ~bit;
 	}
+	Registry::getInstance()->setValue(
+		Registry::NAME_SETTINGS,
+		this->bits
+	);
 }
 
 void AppSettings::toggle(uint8_t bit) {

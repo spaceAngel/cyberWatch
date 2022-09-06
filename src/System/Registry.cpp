@@ -16,7 +16,7 @@ Registry *Registry::getInstance() {
 }
 
 Registry::Registry() {
-	EEPROM.begin(2);
+	EEPROM.begin(3);
 }
 
 uint Registry::getValue(uint address) {
