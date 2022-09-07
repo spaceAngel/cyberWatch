@@ -55,12 +55,7 @@ bool UserInterfaceManager::handleTouch() {
 		this->swipeWasHandled = false;
 		this->touchFromInactivity = InactivityWatcher::getInstance()->isInactive();
 
-	}
-
-	if (
-		TTGOClass::getWatch()->getTouch(x, y)
-		&& ((x != 257) && (y != 2)) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
-	) {
+	} else {
 		this->lastTouchX = x;
 		this->lastTouchY = y;
 		if (this->touchReleased == true) {
@@ -91,20 +86,17 @@ void UserInterfaceManager::handleSwipeHorizontal(uint x) {
 				this->swipeVectorHorizontal = VECTOR_LEFT;
 			}
 		}
+	} else if (
+		(
+			(this->swipeVectorHorizontal == VECTOR_RIGHT) && (this->swipeLastX < (x - CROSS_SWIPE_TOLERANCE))
+		) || (
+			(this->swipeVectorHorizontal == VECTOR_LEFT) &&  (this->swipeLastX > (x + CROSS_SWIPE_TOLERANCE))
+		)
+	) {
+		this->swipeCounterHorizontal++;
+		this->stopSwipeHandlerVertical();
 	} else {
-
-		if (
-			(
-				(this->swipeVectorHorizontal == VECTOR_RIGHT) && (this->swipeLastX < (x - CROSS_SWIPE_TOLERANCE))
-			) || (
-				(this->swipeVectorHorizontal == VECTOR_LEFT) &&  (this->swipeLastX > (x + CROSS_SWIPE_TOLERANCE))
-			)
-		) {
-			this->swipeCounterHorizontal++;
-			this->stopSwipeHandlerVertical();
-		} else {
-			this->stopSwipeHandlerHorizontal();
-		}
+		this->stopSwipeHandlerHorizontal();
 	}
 	if ((int32_t)this->swipeCounterHorizontal == 3) {
 		MainScreen::getInstance()->handleSwipeHorizontal(
@@ -137,17 +129,14 @@ void UserInterfaceManager::handleSwipeVertical(uint y) {
 				this->swipeVectorVertical = VECTOR_UP;
 			}
 		}
+	} else if (
+		(((int32_t)this->swipeVectorVertical == VECTOR_UP) && (this->swipeLastY > y))
+		|| (((int32_t)this->swipeVectorVertical == VECTOR_DOWN) && (this->swipeLastY < y))
+	) {
+		this->swipeCounterVertical++;
+		this->stopSwipeHandlerHorizontal();
 	} else {
-
-		if (
-			(((int32_t)this->swipeVectorVertical == VECTOR_UP) && (this->swipeLastY > y))
-			|| (((int32_t)this->swipeVectorVertical == VECTOR_DOWN) && (this->swipeLastY < y))
-		) {
-			this->swipeCounterVertical++;
-			this->stopSwipeHandlerHorizontal();
-		} else {
-			this->stopSwipeHandlerVertical();
-		}
+		this->stopSwipeHandlerVertical();
 	}
 	if ((int32_t)this->swipeCounterVertical == 3) {
 		MainScreen::getInstance()->handleSwipeVertical(
