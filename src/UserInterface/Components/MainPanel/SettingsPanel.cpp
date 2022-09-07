@@ -15,9 +15,13 @@ void SettingsPanel::render() {
 		|| this->shouldReRender()
 	) {
 
-		for (int32_t i = 0; i <= BUTTONS; i++) {
-			this->buttons[i]->render();
-		}
+		Esp32::getInstance()->runWithCpuSpeedHigh(
+			[this]() {
+				for (int32_t i = 0; i <= BUTTONS; i++) {
+					this->buttons[i]->render();
+				}
+			}
+		);
 		this->setShouldReRender(false);
 		this->lastMask = AppSettings::getInstance()->getSettingsByteMask();
 	}
@@ -45,3 +49,8 @@ bool SettingsPanel::handleTouch(uint8_t x, uint8_t y) {
 	return false;
 }
 
+void SettingsPanel::setShouldReRender(bool shouldReRender) {
+	for (int32_t i = 0; i <= BUTTONS; i++) {
+		this->buttons[i]->setShouldReRender(shouldReRender);
+	}
+}

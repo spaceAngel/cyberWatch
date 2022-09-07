@@ -30,6 +30,7 @@ class SettingsPanelButton : public MainComponent {
 		uint8_t row;
 		std::function<bool()> isActiveFunc;
 		std::function<void()> handleTouchFunc;
+		bool prevValue = false;
 
 		char *btnText;
 };

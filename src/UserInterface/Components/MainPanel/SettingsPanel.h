@@ -36,6 +36,7 @@ class SettingsPanel : public MainComponent {
 		}
 		bool controlModeIsTouch();
 		bool handleTouch(uint8_t x, uint8_t y);
+		void setShouldReRender(bool shouldReRender);
 
 	protected:
 
