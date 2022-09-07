@@ -44,18 +44,26 @@ bool UserInterfaceManager::handleTouch() {
 		!TTGOClass::getWatch()->getTouch(x, y)
 		|| ((x == 257) && (y == 2)) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
 	) {
+		if (
+			this->touchFromInactivity == false
+			&& this->touchReleased == false
+			&& this->swipeWasHandled == false
+		)  {
+			MainScreen::getInstance()->handleTouch(this->lastTouchX, this->lastTouchY);
+		}
 		this->touchReleased = true;
+		this->swipeWasHandled = false;
 		this->touchFromInactivity = InactivityWatcher::getInstance()->isInactive();
+
 	}
 
 	if (
 		TTGOClass::getWatch()->getTouch(x, y)
 		&& ((x != 257) && (y != 2)) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
 	) {
+		this->lastTouchX = x;
+		this->lastTouchY = y;
 		if (this->touchReleased == true) {
-			if (this->touchFromInactivity == false)  {
-				MainScreen::getInstance()->handleTouch(x, y);
-			}
 			this->touchFromInactivity = InactivityWatcher::getInstance()->isInactive();
 			this->touchReleased = false;
 		}
@@ -102,6 +110,7 @@ void UserInterfaceManager::handleSwipeHorizontal(uint x) {
 		MainScreen::getInstance()->handleSwipeHorizontal(
 			(this->swipeVectorHorizontal == VECTOR_LEFT) ? -1 : 1
 		);
+		this->swipeWasHandled = true;
 	}
 }
 
@@ -144,6 +153,7 @@ void UserInterfaceManager::handleSwipeVertical(uint y) {
 		MainScreen::getInstance()->handleSwipeVertical(
 			(this->swipeVectorVertical == VECTOR_UP) ? -1 : 1
 		);
+		this->swipeWasHandled = true;
 	}
 }
 
