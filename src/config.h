@@ -4,9 +4,9 @@
 
 #define LILYGO_WATCH_2020_V3
 
-#define APP_FULL_NAME "CyberWatch 0.2"
+#define APP_FULL_NAME "CyberWatch 0.3"
 #define APP_NAME "CyberWatch"
-#define APP_VERSION "0.2"
+#define APP_VERSION "0.3"
 
 #define BATTERY_LOW 30
 #define BATTERY_VERY_LOW 20
