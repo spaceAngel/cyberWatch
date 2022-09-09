@@ -5,7 +5,7 @@
 #include "UserInterface/Components/MainComponent.h"
 #include "UserInterface/Components/MainPanel/SubComponents/SettingsPanelButton.h"
 #include "Environment/AppSettings.h"
-#include "System/MotorController.h"
+#include "Core/Hardware/MotorController.h"
 
 class SettingsPanel : public MainComponent {
 

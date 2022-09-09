@@ -5,7 +5,7 @@
 #include "UserInterface/Components/MainPanel/StopWatch.h"
 #include "UserInterface/Components/MainPanel/SettingsPanel.h"
 #include "UserInterface/Components/MainComponent.h"
-#include "System/AppsStatusMonitor.h"
+#include "Core/AppsStatusMonitor.h"
 
 class MainPanel {
 

@@ -9,8 +9,8 @@
 #include "UserInterface/Screens/ExitScreen.h"
 #include "UserInterface/Icons/IconStruct.h"
 #include "Utils/TimeUtil.h"
-#include "System/Display.h"
-#include "System/InactivityWatcher.h"
+#include "Core/Hardware/Display.h"
+#include "Core/InactivityWatcher.h"
 
 UserInterfaceManager *UserInterfaceManager::inst;
 

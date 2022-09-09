@@ -4,7 +4,7 @@
 
 #include "DateTime.h"
 #include "UserInterface/Components/MainComponent.h"
-#include "System/Registry.h"
+#include "Core/Registry.h"
 #include "Environment/AppSettings.h"
 
 void DateTime::render() {

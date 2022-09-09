@@ -3,7 +3,7 @@
 #include <LilyGoWatch.h>
 
 #include "MainPanel.h"
-#include "System/Registry.h"
+#include "Core/Registry.h"
 
 void MainPanel::render() {
 	this->getCurrentComponent()->render();

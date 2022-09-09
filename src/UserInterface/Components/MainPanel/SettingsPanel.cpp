@@ -7,7 +7,7 @@
 
 #include <LilyGoWatch.h>
 
-#include "System/Esp32.h"
+#include "Core/Hardware/Esp32.h"
 
 void SettingsPanel::render() {
 	if (

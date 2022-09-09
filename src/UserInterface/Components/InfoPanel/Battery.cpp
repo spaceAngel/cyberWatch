@@ -3,7 +3,7 @@
 #include <LilyGoWatch.h>
 
 #include "Battery.h"
-#include "System/BatteryManager.h"
+#include "Core/Hardware/BatteryManager.h"
 
 #include "UserInterface/Icons/Charging.h"
 #include "UserInterface/UserInterfaceManager.h"

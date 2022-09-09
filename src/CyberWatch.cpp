@@ -5,12 +5,12 @@
 
 #include "CyberWatch.h"
 
-#include "System/Display.h"
-#include "System/InactivityWatcher.h"
-#include "System/Esp32.h"
-#include "System/BatteryManager.h"
-#include "System/MoveSensor.h"
-#include "System/MotorController.h"
+#include "Core/Hardware/Display.h"
+#include "Core/InactivityWatcher.h"
+#include "Core/Hardware/Esp32.h"
+#include "Core/Hardware/BatteryManager.h"
+#include "Core/Hardware/MoveSensor.h"
+#include "Core/Hardware/MotorController.h"
 #include "UserInterface/UserInterfaceManager.h"
 #include "Environment/RunAfterCompilation.h"
 #include "Environment/AppSettings.h"

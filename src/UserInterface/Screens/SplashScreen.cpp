@@ -3,7 +3,7 @@
 #include <LilyGoWatch.h>
 
 #include "SplashScreen.h"
-#include "System/MotorController.h"
+#include "Core/Hardware/MotorController.h"
 #include "UserInterface/Components/Logo.h"
 
 void SplashScreen::show() {

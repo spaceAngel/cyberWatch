@@ -4,7 +4,7 @@
 
 #include <LilyGoWatch.h>
 
-#include "System/Esp32.h"
+#include "Core/Hardware/Esp32.h"
 
 SettingsPanelButton::SettingsPanelButton(
 	char *btnText,

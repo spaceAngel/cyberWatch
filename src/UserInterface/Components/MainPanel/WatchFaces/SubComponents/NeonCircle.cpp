@@ -4,7 +4,7 @@
 
 #include <LilyGoWatch.h>
 #include "Utils/Geometry.h"
-#include "System/Esp32.h"
+#include "Core/Hardware/Esp32.h"
 
 NeonCircle::NeonCircle(uint8_t x, uint8_t y, uint8_t maxValue, long color) {
 	this->x = x;

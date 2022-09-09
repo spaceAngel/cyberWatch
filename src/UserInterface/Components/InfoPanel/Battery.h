@@ -2,7 +2,7 @@
 
 #include "config.h"
 
-#include "System/BatteryManager.h"
+#include "Core/Hardware/BatteryManager.h"
 
 class Battery {
 

@@ -1,5 +1,5 @@
 #include "AppSettings.h"
-#include "System/Registry.h"
+#include "Core/Registry.h"
 
 AppSettings *AppSettings::inst;
 

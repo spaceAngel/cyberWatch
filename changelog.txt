@@ -1,3 +1,7 @@
+cyberWatch 0.4
+========================
+- REFACTORING: rename System to Core package and create Hardware subpackage
+
 cyberWatch 0.2
 ========================
  - FEATURE: partially support for TTGO Watch V2 (motor operation only if LILYGO_WATCH_HAS_MOTOR)
