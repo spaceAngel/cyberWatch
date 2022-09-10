@@ -7,6 +7,7 @@
 
 #include "Core/Hardware/Display.h"
 #include "Core/InactivityWatcher.h"
+#include "Core/SystemTicker.h"
 #include "Core/Hardware/Esp32.h"
 #include "Core/Hardware/BatteryManager.h"
 #include "Core/Hardware/MoveSensor.h"
@@ -14,6 +15,7 @@
 #include "UserInterface/UserInterfaceManager.h"
 #include "Environment/RunAfterCompilation.h"
 #include "Environment/AppSettings.h"
+#include "Core/SystemTicker.h"
 
 CyberWatch* CyberWatch::inst;
 
@@ -75,7 +77,9 @@ void CyberWatch::loop() {
 		InactivityWatcher::getInstance()->isInactive() == true
 	) {
 		this->sleep();
+		SystemTicker::getInstance()->tickSleep();
 	} else {
+		SystemTicker::getInstance()->tickWakedUp();
 		this->handleWakeupTick();
 	}
 };

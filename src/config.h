@@ -31,3 +31,5 @@
 
 #define TICK_SLEEP 200
 #define TICK_WAKEUP 10
+
+#define TICKER_BATTERY 12000
