@@ -48,7 +48,9 @@ void CyberWatch::init() {
 
 void CyberWatch::loop() {
 	bool PEKshort = false;
-	this->handleBatteryLowActions();
+	if (SystemTicker::getInstance()->isTickFor(TICKER_BATTERY)) {
+		this->handleBatteryLowActions();
+	}
 	this->handleEsp32IRQ(PEKshort);
 	if(
 		(UserInterfaceManager::getInstance()->isSleepForbidden() == true)

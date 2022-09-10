@@ -22,5 +22,7 @@ class BatteryManager {
 
 			static BatteryManager *inst;
 
+			int lastCapacity = 0;
+
 			BatteryManager();
 };
