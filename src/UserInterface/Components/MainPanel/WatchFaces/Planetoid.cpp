@@ -20,7 +20,6 @@ void Planetoid::render() {
 		this->renderPoint(6 * (((currentTime.hour % 12 ) * 5) + (currentTime.minute / 12)), 38, 5, COLOR_MAIN_2);
 		this->renderPoint(6 * currentTime.minute, 60, 5, COLOR_MAIN_2);
 		this->renderPoint(6 * currentTime.second, 30, 4, COLOR_MAIN_3);
-		this->prevSecond = currentTime.second;
 		setShouldReRender(false);
 	}
 }

@@ -26,7 +26,6 @@ void AnalogClocks::render() {
 		);
 		this->drawLine(currentTime.minute, 52, COLOR_MAIN_1);
 		this->drawLine(currentTime.second, 52, COLOR_MAIN_3);
-		this->prevSecond = currentTime.second;
 		setShouldReRender(false);
 	}
 }
