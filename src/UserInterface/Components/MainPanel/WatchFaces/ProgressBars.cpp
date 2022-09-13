@@ -11,6 +11,7 @@
 void ProgressBars::render() {
 	if (
 		SystemTicker::getInstance()->isTickFor(TICKER_CLOCKS)
+		|| this->shouldReRender()
 	) {
 		RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
 		this->bars[0]->render(currentTime.hour);
@@ -26,6 +27,7 @@ ProgressBars::ProgressBars() {
 }
 
 void ProgressBars::setShouldReRender(bool shouldReRender) {
+	MainComponent::setShouldReRender(shouldReRender);
 	this->bars[0]->setShouldReRender(shouldReRender);
 	this->bars[1]->setShouldReRender(shouldReRender);
 	this->bars[2]->setShouldReRender(shouldReRender);
