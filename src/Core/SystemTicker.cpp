@@ -24,7 +24,7 @@ void SystemTicker::tickWakedUp() {
 }
 
 void SystemTicker::tickSleep() {
-	this->ticks += (SLEEPCYCLE_MS / TICK_WAKEUP);
+	this->ticks += (uint8_t)((SLEEPCYCLE_MS / 1000) * TICK_WAKEUP);
 	if (this->ticks == USHRT_MAX) {
 		this->ticks = 0;
 	}
