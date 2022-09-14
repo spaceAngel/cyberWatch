@@ -29,7 +29,7 @@
 
 #define SERIAL_RATE 19200
 
-#define TICK_SLEEP 200
+#define SLEEPCYCLE_MS 200
 #define TICK_WAKEUP 10
 
 
