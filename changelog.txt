@@ -1,6 +1,7 @@
 cyberWatch 0.4
 ========================
 - REFACTORING: rename System to Core package and create Hardware subpackage
+- BUGIFX: milliseconds instead of microseconds in sleep method
 
 cyberWatch 0.2
 ========================

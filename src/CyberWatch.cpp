@@ -96,7 +96,7 @@ void CyberWatch::handleWakeupTick() {
 
 void CyberWatch::sleep() {
 	Display::getInstance()->turnDisplayOff();
-	esp_sleep_enable_timer_wakeup(SLEEPCYCLE_MS);
+	esp_sleep_enable_timer_wakeup(SLEEPCYCLE_MS * 1000);
 	esp_light_sleep_start();
 }
 
