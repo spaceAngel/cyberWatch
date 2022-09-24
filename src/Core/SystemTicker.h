@@ -20,6 +20,10 @@ class SystemTicker {
 
 		uint16_t ticks = 0;
 
+		uint16_t maxTicks = 0;
+
+		void setMaxTicks(uint16_t maxTicks);
+
 		SystemTicker() {
 
 		}
