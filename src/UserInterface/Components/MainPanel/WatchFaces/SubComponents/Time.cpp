@@ -3,9 +3,10 @@
 #include <LilyGoWatch.h>
 
 #include "Time.h"
+#include "Core/Hardware/RTC.h"
 
 void Time::render() {
-	RTC_Date currentTime = TTGOClass::getWatch()->rtc->getDateTime();
+	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
 	if (
 		(this->prevMinute != currentTime.minute)
 		|| (this->shouldReRender())

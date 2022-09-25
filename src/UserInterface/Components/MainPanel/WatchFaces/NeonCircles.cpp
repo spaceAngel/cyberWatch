@@ -5,6 +5,7 @@
 #include <LilyGoWatch.h>
 
 #include "UserInterface/Components/MainPanel/WatchFaces/SubComponents/NeonCircle.h"
+#include "Core/Hardware/RTC.h"
 
 NeonCircles::NeonCircles() {
 	int32_t width = TTGOClass::getWatch()->tft->width() / 4;
@@ -13,7 +14,7 @@ NeonCircles::NeonCircles() {
 }
 
 void NeonCircles::render() {
-	RTC_Date currentTime = TTGOClass::getWatch()->rtc->getDateTime();
+	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
 	this->circles[0]->render(currentTime.hour);
 	this->circles[1]->render(currentTime.minute);
 	TTGOClass::getWatch()->tft->fillCircle(TTGOClass::getWatch()->tft->width() / 2, 68, 5, ((currentTime.second % 2) == 0) ? COLOR_MAIN_2 : COLOR_MAIN_1);

@@ -5,12 +5,18 @@
 #include <LilyGoWatch.h>
 
 #include "UserInterface/Components/MainPanel/WatchFaces/SubComponents/ProgressBar.h"
+#include "Core/SystemTicker.h"
+#include "Core/Hardware/RTC.h"
 
 void ProgressBars::render() {
-	RTC_Date currentTime = TTGOClass::getWatch()->rtc->getDateTime();
-	this->bars[0]->render(currentTime.hour);
-	this->bars[1]->render(currentTime.minute);
-	this->bars[2]->render(currentTime.second);
+	if (
+		SystemTicker::getInstance()->isTickFor(TICKER_CLOCKS)
+	) {
+		RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
+		this->bars[0]->render(currentTime.hour);
+		this->bars[1]->render(currentTime.minute);
+		this->bars[2]->render(currentTime.second);
+	}
 }
 
 ProgressBars::ProgressBars() {

@@ -6,12 +6,14 @@
 #include "Utils/Geometry.h"
 
 #include "UserInterface/Screens/MainScreen.h"
+#include "Core/Hardware/RTC.h"
+#include "Core/SystemTicker.h"
 
 void AnalogClocks::render() {
-	RTC_Date currentTime = TTGOClass::getWatch()->rtc->getDateTime();
+	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
 	if (
 		(this->shouldReRender() == true)
-		|| (this->prevSecond != currentTime.second)
+		|| SystemTicker::getInstance()->isTickFor(TICKER_CLOCKS)
 	) {
 		if (this->shouldReRender() == true) {
 			this->renderFace();

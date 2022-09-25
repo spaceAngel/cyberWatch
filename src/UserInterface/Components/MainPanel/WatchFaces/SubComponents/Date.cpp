@@ -4,9 +4,10 @@
 
 #include "Date.h"
 #include "Utils/DateUtil.h"
+#include "Core/Hardware/RTC.h"
 
 void Date::render() {
-	RTC_Date currentDate = TTGOClass::getWatch()->rtc->getDateTime();
+	RTC_Date currentDate = RTC::getInstance()->getCurrentDate();
 	if (
 		(this->prevDay != currentDate.day)
 		|| this->shouldReRender()

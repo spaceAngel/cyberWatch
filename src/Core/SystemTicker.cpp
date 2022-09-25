@@ -2,6 +2,9 @@
 
 #include "config.h"
 
+
+#include "Core/Hardware/RTC.h"
+
 SystemTicker* SystemTicker::inst;
 
 SystemTicker *SystemTicker::getInstance() {
@@ -16,12 +19,14 @@ void SystemTicker::tickWakedUp() {
 	if (this->ticks == USHRT_MAX) {
 		this->ticks = 0;
 	}
+	RTC::getInstance()->getCurrentDate();
 	this->ticks++;
 }
 
 void SystemTicker::tickSleep() {
-	for (uint16_t i; i < (TICK_SLEEP / TICK_WAKEUP); i++)  {
-		this->tickWakedUp();
+	this->ticks += (TICK_SLEEP / TICK_WAKEUP);
+	if (this->ticks == USHRT_MAX) {
+		this->ticks = 0;
 	}
 }
 
