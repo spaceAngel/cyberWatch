@@ -20,6 +20,8 @@ class UserInterfaceManager {
 
 		bool isSleepForbidden();
 
+		void setToDefaultApp();
+
 		void renderIcon(IconStruct icon, uint8_t x, uint8_t y);
 
 		protected:

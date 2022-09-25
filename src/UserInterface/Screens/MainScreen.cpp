@@ -43,3 +43,7 @@ bool MainScreen::isSleepForbidden() {
 void MainScreen::handleTouch(uint8_t x, uint8_t y) {
 	this->mainPanel->handleTouch(x, y);
 }
+
+void  MainScreen::setToDefaultApp() {
+	this->mainPanel->setToDefaultApp();
+}

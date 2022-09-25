@@ -89,6 +89,7 @@ void CyberWatch::loop() {
 void CyberWatch::handleWakeupTick() {
 	if (!Display::getInstance()->isDisplayOn()) {
 		Display::getInstance()->turnDisplayOn();
+		UserInterfaceManager::getInstance()->setToDefaultApp();
 	}
 	UserInterfaceManager::getInstance()->render();
 	delay(TICK_WAKEUP);

@@ -1,3 +1,7 @@
+cyberWatch 0.4
+========================
+- FEATURE: set mainscreen to datetime app after power on / wakeup (touch)
+
 cyberWatch 0.3
 ========================
 - FEATURE: system ticker + do some operations only every Xth tick (battery savings)

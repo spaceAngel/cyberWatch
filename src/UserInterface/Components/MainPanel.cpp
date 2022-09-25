@@ -69,6 +69,14 @@ MainComponent *MainPanel::getCurrentComponent() {
 	return this->apps[this->currentApp];
 }
 
+void  MainPanel::setToDefaultApp() {
+	if (this->currentApp != 0) {
+		this->clear();
+		this->currentApp = 0;
+		this->apps[0]->setShouldReRender(true);
+	}
+}
+
 MainPanel::MainPanel() {
 	this->createApps();
 }

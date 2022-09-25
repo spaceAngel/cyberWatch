@@ -169,3 +169,7 @@ void UserInterfaceManager::renderIcon(IconStruct icon, uint8_t x, uint8_t y) {
 	TTGOClass::getWatch()->tft->setSwapBytes(true);
 	TTGOClass::getWatch()->tft->pushImage(x, y, icon.width, icon.heigth, icon.data);
 }
+
+void UserInterfaceManager::setToDefaultApp() {
+	MainScreen::getInstance()->setToDefaultApp();
+}

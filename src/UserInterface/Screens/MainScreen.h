@@ -16,6 +16,7 @@ class MainScreen {
 		void handlePEKShort();
 		bool isSleepForbidden();
 		void handleTouch(uint8_t x, uint8_t y);
+		void setToDefaultApp();
 
 		protected:
 

@@ -18,6 +18,7 @@ class MainPanel {
 		void handleSwipeVertical(int8_t vector);
 		void handleTouch(uint8_t x, uint8_t y);
 		void handlePEKShort();
+		void setToDefaultApp();
 		bool isSleepForbidden();
 		MainComponent *getCurrentComponent();
 
