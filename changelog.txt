@@ -1,5 +1,6 @@
-cyberWatch 0.4
+cyberWatch 0.3
 ========================
+- FEATURE: system ticker + do some operations only every Xth tick (battery savings)
 - REFACTORING: rename System to Core package and create Hardware subpackage
 - BUGIFX: milliseconds instead of microseconds in sleep method
 
