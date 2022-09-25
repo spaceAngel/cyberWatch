@@ -7,4 +7,5 @@ void InfoPanel::render() {
 	this->stepCounter->render();
 	this->runningStopWatch->render();
 	this->displayOn->render();
+	this->lock->render();
 };

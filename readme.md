@@ -32,6 +32,8 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - vibration can be disabled in settings screen
  - possibility of enabled "display always on" to show cool clockfaces
  - warns (vibrate, turn display on) when battery reach low levels(30% / 20%)
+ - when screen goes sleep, always set to default datetimeapp (with previously selected face)
+ - when screens wakeup by touch / PEKshort, is locked to prevent "accidentaly wakeup", could be unlocked by PEKshort
  - shows current time
  - shows current date
  - multiple clock faces - change by swipe vertical on datetime "miniapp"

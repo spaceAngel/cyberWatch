@@ -18,6 +18,9 @@ class DateTime : public MainComponent {
 		MainComponent *getCurrentFace();
 		void render();
 
+
+		bool handlePEKShort();
+
 		DateTime();
 
 	protected:

@@ -56,15 +56,17 @@ bool UserInterfaceManager::handleTouch() {
 		this->touchFromInactivity = InactivityWatcher::getInstance()->isInactive();
 
 	} else {
-		this->lastTouchX = x;
-		this->lastTouchY = y;
-		if (this->touchReleased == true) {
-			this->touchFromInactivity = InactivityWatcher::getInstance()->isInactive();
-			this->touchReleased = false;
-		}
-		if (this->swipeEnabled == true) {
-			this->handleSwipeHorizontal(x);
-			this->handleSwipeVertical(y);
+		if (this->isLocked() != true) {
+			this->lastTouchX = x;
+			this->lastTouchY = y;
+			if (this->touchReleased == true) {
+				this->touchFromInactivity = InactivityWatcher::getInstance()->isInactive();
+				this->touchReleased = false;
+			}
+			if (this->swipeEnabled == true) {
+				this->handleSwipeHorizontal(x);
+				this->handleSwipeVertical(y);
+			}
 		}
 		handled = true;
 	}
@@ -172,4 +174,12 @@ void UserInterfaceManager::renderIcon(IconStruct icon, uint8_t x, uint8_t y) {
 
 void UserInterfaceManager::setToDefaultApp() {
 	MainScreen::getInstance()->setToDefaultApp();
+}
+
+bool UserInterfaceManager::isLocked() {
+	return this->locked;
+}
+
+void UserInterfaceManager::setIsLocked(bool locked) {
+	this->locked = locked;
 }

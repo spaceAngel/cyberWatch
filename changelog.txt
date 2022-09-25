@@ -1,6 +1,7 @@
 cyberWatch 0.4
 ========================
 - FEATURE: set mainscreen to datetime app after power on / wakeup (touch)
+- FEATURE: wakeup to locked screen, unlock by PEKshort
 
 cyberWatch 0.3
 ========================

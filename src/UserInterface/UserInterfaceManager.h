@@ -24,6 +24,9 @@ class UserInterfaceManager {
 
 		void renderIcon(IconStruct icon, uint8_t x, uint8_t y);
 
+		bool isLocked();
+		void setIsLocked(bool locked);
+
 		protected:
 
 			const int8_t VECTOR_LEFT = 1;
@@ -49,6 +52,8 @@ class UserInterfaceManager {
 			int16_t lastTouchX;
 			int16_t lastTouchY;
 			bool swipeWasHandled = false;
+
+			bool locked = true;
 
 			UserInterfaceManager() {
 			}

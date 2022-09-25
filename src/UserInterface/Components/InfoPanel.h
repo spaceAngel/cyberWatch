@@ -4,6 +4,7 @@
 #include "UserInterface/Components/InfoPanel/Battery.h"
 #include "UserInterface/Components/InfoPanel/RunningStopWatch.h"
 #include "UserInterface/Components/InfoPanel/DisplayOn.h"
+#include "UserInterface/Components/InfoPanel/Lock.h"
 
 class InfoPanel {
 
@@ -14,6 +15,7 @@ class InfoPanel {
 			this->stepCounter = new StepCounter();
 			this->runningStopWatch = new RunningStopWatch();
 			this->displayOn = new DisplayOn();
+			this->lock = new Lock();
 		}
 
 		void render();
@@ -24,6 +26,7 @@ class InfoPanel {
 		StepCounter *stepCounter;
 		RunningStopWatch *runningStopWatch;
 		DisplayOn *displayOn;
+		Lock *lock;
 
 
 };

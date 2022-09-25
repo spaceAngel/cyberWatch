@@ -6,6 +6,7 @@
 #include "UserInterface/Components/MainComponent.h"
 #include "Core/Registry.h"
 #include "Environment/AppSettings.h"
+#include "UserInterface/UserInterfaceManager.h"
 
 void DateTime::render() {
 	getCurrentFace()->render();
@@ -33,6 +34,13 @@ bool DateTime::handleSwipeVertical(int8_t vector) {
 
 MainComponent *DateTime::getCurrentFace() {
 	return this->clockFaces[this->currentFace];
+}
+
+bool DateTime::handlePEKShort() {
+	UserInterfaceManager::getInstance()->setIsLocked(
+		!UserInterfaceManager::getInstance()->isLocked()
+	);
+	return false;
 }
 
 DateTime::DateTime() {
