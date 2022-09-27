@@ -17,6 +17,8 @@
 #include "Environment/AppSettings.h"
 #include "Core/SystemTicker.h"
 
+#include "Events/EventManager.h"
+
 CyberWatch* CyberWatch::inst;
 
 CyberWatch *CyberWatch::getInstance() {
@@ -110,17 +112,12 @@ void CyberWatch::turnOff() {
 	TTGOClass::getWatch()->shutdown();
 }
 
-
-
 void CyberWatch::handleCabelConnection() {
-	if (BatteryManager::getInstance()->handleCabelPlugInIRQ() == true) {
-		MotorController::vibrate(1);
-	}
 	if (
-		(BatteryManager::getInstance()->handleCabelPlugInIRQ() == true)
-		|| (BatteryManager::getInstance()->handleCabelPlugRemoveIRQ() == true)
+		BatteryManager::getInstance()->handleCabelPlugInIRQ() == true
+		|| BatteryManager::getInstance()->handleCabelPlugRemoveIRQ() == true
 	) {
-		InactivityWatcher::getInstance()->markActivity();
+		EventManager::getInstance()->fireEvent(EVENT_CABLE_PLUG);
 	}
 }
 
