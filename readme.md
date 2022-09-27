@@ -22,9 +22,9 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - cool splashscreen and exit screen :-)
  - battery consumption saving
    - turn off display after 5 seconds of inactivity
-   - use cpu light sleep mode cycles (200ms) in main loop
+   - use cpu light sleep mode cycles (100ms) in main loop
    - turn off unused subcomponents (WI-FI chip)
-   - set CPU frequency to 40MHz
+   - set CPU frequency to 20MHz
    - activate by:
      - touching display
      - short press button
