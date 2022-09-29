@@ -50,9 +50,6 @@ void CyberWatch::init() {
 
 void CyberWatch::loop() {
 	bool PEKshort = false;
-	if (SystemTicker::getInstance()->isTickFor(TICKER_BATTERY)) {
-		this->handleBatteryLowActions();
-	}
 	this->handleEsp32IRQ(PEKshort);
 	if(
 		(UserInterfaceManager::getInstance()->isSleepForbidden() == true)
@@ -132,32 +129,6 @@ void CyberWatch::handleEsp32IRQ(bool &PEKshort) {
 			PEKshort = true;
 		}
 		Esp32::getInstance()->cleanIRQ();
-	}
-}
-
-
-void CyberWatch::handleBatteryLowActions() {
-	int32_t vibrationCount = 0;
-	uint8_t capacity = BatteryManager::getInstance()->getCapacity();
-	if (BatteryManager::getInstance()->isCharging() == true) {
-		this->batteryLowWarnVibrateOnLevel = 101;
-	} else {
-		if (capacity == (uint8_t)BATTERY_LOW) {
-			vibrationCount = 1;
-		}
-
-		if (capacity == (uint8_t)BATTERY_VERY_LOW) {
-			vibrationCount = 2;
-		}
-
-		if (
-			(vibrationCount > 0)
-			&& (capacity < this->batteryLowWarnVibrateOnLevel)
-		) {
-			InactivityWatcher::getInstance()->markActivity();
-			MotorController::vibrate(vibrationCount);
-			this->batteryLowWarnVibrateOnLevel = capacity;
-		}
 	}
 }
 

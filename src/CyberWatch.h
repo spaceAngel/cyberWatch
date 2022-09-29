@@ -23,10 +23,6 @@ class CyberWatch {
 
 		void handleEsp32IRQ(bool &PEKshort);
 
-		uint8_t batteryLowWarnVibrateOnLevel = 101;
-
-		void handleBatteryLowActions();
-
 		void sleep();
 
 		void handleWakeupTick();

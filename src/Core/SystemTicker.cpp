@@ -3,6 +3,7 @@
 #include "config.h"
 
 #include "Core/Hardware/RTC.h"
+#include "Core/Hardware/BatteryManager.h"
 
 SystemTicker* SystemTicker::inst;
 
@@ -19,13 +20,13 @@ void SystemTicker::tickWakedUp() {
 		this->ticks = 0;
 	}
 	RTC::getInstance()->getCurrentDate();
+	BatteryManager::getInstance()->getCapacity();
 	this->ticks++;
 }
 
 void SystemTicker::tickSleep() {
-	this->ticks += (uint8_t)((SLEEPCYCLE_MS * CPU_FREQUENCY_LOW) / 1000);
-	if (this->ticks > this->maxTicks) {
-		this->ticks = 0;
+	for (uint16_t i = 0; i <  (uint8_t)((SLEEPCYCLE_MS * CPU_FREQUENCY_LOW) / 1000); i++) {
+		this->tickWakedUp();
 	}
 }
 
