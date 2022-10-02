@@ -25,7 +25,7 @@ void MoveSensor::initIRQ() {
 	attachInterrupt(
 		BMA423_INT1,
 		[] {
-		MoveSensor::getInstance()->setIsIRQ();
+			MoveSensor::getInstance()->setIsIRQ();
 		},
 		RISING
 	); //It must be a rising edge
@@ -51,6 +51,14 @@ bool MoveSensor::isTilt() {
 		isTilt = true;
 	}
 	return isTilt;
+}
+
+uint16_t MoveSensor::getStepsCount() {
+	return TTGOClass::getWatch()->bma->getCounter();
+}
+
+uint8_t MoveSensor::getDirection() {
+	return TTGOClass::getWatch()->bma->direction();
 }
 
 MoveSensor::MoveSensor() {

@@ -14,6 +14,10 @@ class MoveSensor {
 
 		bool isTilt();
 
+		uint16_t getStepsCount();
+
+		uint8_t getDirection();
+
 	protected:
 
 		static MoveSensor *inst;
