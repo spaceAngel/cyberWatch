@@ -52,7 +52,6 @@ void CyberWatch::loop() {
 	bool PEKshort = false;
 	this->handleEsp32IRQ(PEKshort);
 
-	this->checkIfSleepForbiddenAndMarkAsActive();
 	this->checkIfTiltIrqAndMarkAsActive();
 
 	if (
@@ -71,11 +70,12 @@ void CyberWatch::loop() {
 
 void CyberWatch::executeLoopActions() {
 	if (
-		InactivityWatcher::getInstance()->isInactive() == true
+		(InactivityWatcher::getInstance()->isInactive() == false)
+		|| (this->isSleepForbidden())
 	) {
-		this->executeLoopSleep();
-	} else {
 		this->executeLoopWakeUp();
+	} else {
+		this->executeLoopSleep();
 	}
 }
 
@@ -89,15 +89,6 @@ void CyberWatch::executeLoopWakeUp() {
 	this->handleWakeupTick();
 }
 
-void CyberWatch::checkIfSleepForbiddenAndMarkAsActive() {
-	if(
-		(UserInterfaceManager::getInstance()->isSleepForbidden() == true)
-		|| (AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON) == true)
-	) {
-		InactivityWatcher::getInstance()->markActivity();
-	}
-}
-
 void CyberWatch::checkIfTiltIrqAndMarkAsActive() {
 	if (
 		InactivityWatcher::getInstance()->isInactive()
@@ -106,6 +97,11 @@ void CyberWatch::checkIfTiltIrqAndMarkAsActive() {
 	) {
 		InactivityWatcher::getInstance()->markActivity();
 	}
+}
+
+bool CyberWatch::isSleepForbidden() {
+	return (UserInterfaceManager::getInstance()->isSleepForbidden() == true)
+	|| (AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON) == true);
 }
 
 void CyberWatch::handleWakeupTick() {

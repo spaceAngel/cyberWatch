@@ -27,8 +27,6 @@ class CyberWatch {
 
 		void handleWakeupTick();
 
-		void checkIfSleepForbiddenAndMarkAsActive();
-
 		void checkIfTiltIrqAndMarkAsActive();
 
 		void executeLoopActions();
@@ -36,5 +34,7 @@ class CyberWatch {
 		void executeLoopSleep();
 
 		void executeLoopWakeUp();
+
+		bool isSleepForbidden();
 
 };
