@@ -3,6 +3,7 @@ cyberWatch 0.4
 - FEATURE: set mainscreen to datetime app after power on / wakeup (touch)
 - FEATURE: wakeup to locked screen, unlock by PEKshort
 - FEATURE: system event subsystem
+- FEATURE: when display always on - and inactivity conditions are true, set to default screen and lock ui
 
 cyberWatch 0.3
 ========================

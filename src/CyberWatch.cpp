@@ -58,7 +58,11 @@ void CyberWatch::loop() {
 		UserInterfaceManager::getInstance()->handleTouch() || PEKshort
 	) {
 		if (
-			!InactivityWatcher::getInstance()->isInactive() && PEKshort
+			(
+				!InactivityWatcher::getInstance()->isInactive()
+				|| this->isSleepForbidden()
+			)
+			&& PEKshort
 		) {
 			UserInterfaceManager::getInstance()->handlePEKShort();
 		}
@@ -85,6 +89,15 @@ void CyberWatch::executeLoopSleep() {
 }
 
 void CyberWatch::executeLoopWakeUp() {
+	//if display is "always on" but not forbidden by any component, go to default screen and lock screen after inactivity interval
+	if (
+		(UserInterfaceManager::getInstance()->isSleepForbidden() == false)
+		&& (AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON) == true)
+		&& (InactivityWatcher::getInstance()->isInactive() == true)
+	) {
+		UserInterfaceManager::getInstance()->setToDefaultApp();
+		UserInterfaceManager::getInstance()->setIsLocked(true);
+	}
 	SystemTicker::getInstance()->tickWakedUp();
 	this->handleWakeupTick();
 }
