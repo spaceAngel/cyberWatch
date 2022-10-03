@@ -1,5 +1,7 @@
 #pragma once
 
+#include <LilyGoWatch.h>
+
 class MoveSensor {
 
 	public:
@@ -17,6 +19,8 @@ class MoveSensor {
 		uint16_t getStepsCount();
 
 		uint8_t getDirection();
+
+		Accel getAccel();
 
 	protected:
 

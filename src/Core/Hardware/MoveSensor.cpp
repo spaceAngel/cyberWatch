@@ -61,5 +61,11 @@ uint8_t MoveSensor::getDirection() {
 	return TTGOClass::getWatch()->bma->direction();
 }
 
+Accel MoveSensor::getAccel() {
+	Accel acc;
+	TTGOClass::getWatch()->bma->getAccel(acc);
+	return acc;
+}
+
 MoveSensor::MoveSensor() {
 }
