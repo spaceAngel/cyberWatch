@@ -17,8 +17,6 @@ class InactivityWatcher {
 
 		static InactivityWatcher *inst;
 
-		const long INACTIVITY_TRESHOLD = 5;
-
 		long lastActivity;
 
 		long lastOnHandActivity;
