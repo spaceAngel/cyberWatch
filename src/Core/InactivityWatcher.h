@@ -1,5 +1,7 @@
 #pragma once
 
+#include "config.h"
+
 class InactivityWatcher {
 
 	public:
@@ -9,6 +11,8 @@ class InactivityWatcher {
 		bool isInactive();
 		void markActivity();
 
+		bool isDetectedOnHand();
+
 	protected:
 
 		static InactivityWatcher *inst;
@@ -17,6 +21,7 @@ class InactivityWatcher {
 
 		long lastActivity;
 
-		InactivityWatcher();
+		long lastOnHandActivity;
 
+		InactivityWatcher();
 };

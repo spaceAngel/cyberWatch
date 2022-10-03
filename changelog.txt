@@ -4,6 +4,7 @@ cyberWatch 0.4
 - FEATURE: wakeup to locked screen, unlock by PEKshort
 - FEATURE: system event subsystem
 - FEATURE: when display always on - and inactivity conditions are true, set to default screen and lock ui
+- FEATURE: when display always on - detect if watch are off hand (and no moving e.g. on table) - goes sleep to prevent energy consumption when not on hand
 
 cyberWatch 0.3
 ========================

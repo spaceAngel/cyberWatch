@@ -75,7 +75,11 @@ void CyberWatch::loop() {
 void CyberWatch::executeLoopActions() {
 	if (
 		(InactivityWatcher::getInstance()->isInactive() == false)
-		|| (this->isSleepForbidden())
+		|| (UserInterfaceManager::getInstance()->isSleepForbidden() == true)
+		|| (
+			AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON) == true
+			&& InactivityWatcher::getInstance()->isDetectedOnHand()
+		)
 	) {
 		this->executeLoopWakeUp();
 	} else {
