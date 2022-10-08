@@ -19,6 +19,11 @@ BatteryManager *BatteryManager::getInstance() {
 }
 
 uint8_t BatteryManager::getCapacity() {
+	this->updateCapacity();
+	return (uint8_t)this->lastCapacity;
+}
+
+void BatteryManager::updateCapacity() {
 	if (
 		this->lastCapacity == 0
 		|| SystemTicker::getInstance()->isTickFor(TICKER_BATTERY)
@@ -31,9 +36,7 @@ uint8_t BatteryManager::getCapacity() {
 		if (capacity != lastCapacity) {
 			EventManager::getInstance()->fireEvent(EVENT_BATTERY_CHANGE);
 		}
-
 	}
-	return (uint8_t)this->lastCapacity;
 }
 
 bool BatteryManager::isCharging() {

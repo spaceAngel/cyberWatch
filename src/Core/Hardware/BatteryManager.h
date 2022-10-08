@@ -18,6 +18,8 @@ class BatteryManager {
 
 		void energyConsumptionSavingsSettings();
 
+		void updateCapacity();
+
 	protected:
 
 			static BatteryManager *inst;
