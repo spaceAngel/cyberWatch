@@ -21,5 +21,7 @@ class InactivityWatcher {
 
 		long lastOnHandActivity;
 
+		bool prevOnHandState = true;
+
 		InactivityWatcher();
 };
