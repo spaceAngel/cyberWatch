@@ -22,9 +22,9 @@ class SystemTicker {
 
 		uint16_t maxTicks = 0;
 
+		hw_timer_t *timer = NULL;
+
 		void setMaxTicks(uint16_t maxTicks);
 
-		SystemTicker() {
-
-		}
+		SystemTicker();
 };

@@ -46,6 +46,7 @@ void CyberWatch::init() {
 	Esp32::getInstance()->initIRQ();
 	MoveSensor::getInstance()->initIRQ();
 	UserInterfaceManager::getInstance()->showSplashScreen();
+	SystemTicker::getInstance();
 };
 
 void CyberWatch::loop() {
@@ -73,6 +74,7 @@ void CyberWatch::loop() {
 };
 
 void CyberWatch::executeLoopActions() {
+	BatteryManager::getInstance()->updateCapacity();
 	if (
 		(InactivityWatcher::getInstance()->isInactive() == false)
 		|| (UserInterfaceManager::getInstance()->isSleepForbidden() == true)
@@ -102,7 +104,7 @@ void CyberWatch::executeLoopWakeUp() {
 		UserInterfaceManager::getInstance()->setToDefaultApp();
 		UserInterfaceManager::getInstance()->setIsLocked(true);
 	}
-	SystemTicker::getInstance()->tickWakedUp();
+	//SystemTicker::getInstance()->tickWakedUp();
 	this->handleWakeupTick();
 }
 

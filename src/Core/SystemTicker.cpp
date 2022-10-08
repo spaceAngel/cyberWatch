@@ -2,10 +2,11 @@
 
 #include "config.h"
 
-#include "Core/Hardware/RTC.h"
-#include "Core/Hardware/BatteryManager.h"
-
 SystemTicker* SystemTicker::inst;
+
+void IRAM_ATTR onTickerTimer() {
+	SystemTicker::getInstance()->tickWakedUp();
+}
 
 SystemTicker *SystemTicker::getInstance() {
 
@@ -19,8 +20,6 @@ void SystemTicker::tickWakedUp() {
 	if (this->ticks > this->maxTicks) {
 		this->ticks = 0;
 	}
-	RTC::getInstance()->getCurrentDate();
-	BatteryManager::getInstance()->getCapacity();
 	this->ticks++;
 }
 
@@ -39,4 +38,11 @@ void SystemTicker::setMaxTicks(uint16_t maxTicks) {
 	if (this->maxTicks < maxTicks) {
 		this->maxTicks = maxTicks;
 	}
+}
+
+SystemTicker::SystemTicker() {
+	this->timer = timerBegin(0, CPU_FREQUENCY_LOW, true);
+	timerAttachInterrupt(this->timer, &onTickerTimer, true);
+	timerAlarmWrite(this->timer, 50000, true);
+	timerAlarmEnable(this->timer);
 }
