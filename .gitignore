@@ -2,3 +2,4 @@
 .pio
 .vscode
 src/Environment/timestamp.h
+src/Environment/compilationdata.h

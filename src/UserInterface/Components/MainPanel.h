@@ -4,6 +4,7 @@
 #include "UserInterface/Components/MainPanel/Calendar.h"
 #include "UserInterface/Components/MainPanel/StopWatch.h"
 #include "UserInterface/Components/MainPanel/SettingsPanel.h"
+#include "UserInterface/Components/MainPanel/AboutPanel.h"
 #include "UserInterface/Components/MainComponent.h"
 #include "Core/AppsStatusMonitor.h"
 
@@ -24,9 +25,9 @@ class MainPanel {
 
 	protected:
 
-		const int8_t APPS = 3;
+		const int8_t APPS = 4;
 
-		MainComponent *apps[4];
+		MainComponent *apps[5];
 		int8_t currentApp = 0;
 
 		void clear();
@@ -36,6 +37,7 @@ class MainPanel {
 			this->apps[1] = new Calendar();
 			this->apps[2] = new StopWatch();
 			this->apps[3] = new SettingsPanel();
+			this->apps[4] = new AboutPanel();
 		}
 
 };
