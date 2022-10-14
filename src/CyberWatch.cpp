@@ -15,6 +15,7 @@
 #include "UserInterface/UserInterfaceManager.h"
 #include "Environment/RunAfterCompilation.h"
 #include "Environment/AppSettings.h"
+#include "Environment/SystemInfo.h"
 #include "Core/SystemTicker.h"
 
 #include "Events/EventManager.h"
@@ -47,6 +48,7 @@ void CyberWatch::init() {
 	MoveSensor::getInstance()->initIRQ();
 	UserInterfaceManager::getInstance()->showSplashScreen();
 	SystemTicker::getInstance();
+	SystemInfo::getInstance();
 };
 
 void CyberWatch::loop() {
