@@ -15,8 +15,14 @@ class AboutPanel : public MainComponent {
 
 	protected:
 
-		uint8_t prevSecond = 0;
+		uint prevUptime = 0;
 
 		uint8_t calculatePosY(uint8_t row, bool shifted);
+
+		void secondsToString(uint totalSeconds, char (&string)[20]);
+
+		void renderCompilationData();
+
+		void renderDateDiff(uint seconds, uint8_t row);
 
 };
