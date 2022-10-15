@@ -51,7 +51,11 @@ void AboutPanel::renderCompilationData() {
 		(TTGOClass::getWatch()->tft->width() / 2) - 10,
 		this->calculatePosY(0, false)
 	);
-	TTGOClass::getWatch()->tft->drawString(compilationDate, 5, this->calculatePosY(1, false));
+	TTGOClass::getWatch()->tft->drawString(
+		compilationDate,
+		(TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(compilationDate)) / 2,
+		this->calculatePosY(1, false)
+	);
 }
 
 uint8_t AboutPanel::calculatePosY(uint8_t row, bool shifted) {
