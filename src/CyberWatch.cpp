@@ -154,6 +154,9 @@ void CyberWatch::handleCabelConnection() {
 		BatteryManager::getInstance()->handleCabelPlugInIRQ() == true
 		|| BatteryManager::getInstance()->handleCabelPlugRemoveIRQ() == true
 	) {
+		SystemInfo::getInstance()->setPlugState(
+			!BatteryManager::getInstance()->handleCabelPlugRemoveIRQ()
+		);
 		EventManager::getInstance()->fireEvent(EVENT_CABLE_PLUG);
 	}
 }

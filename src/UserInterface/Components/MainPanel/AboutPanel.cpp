@@ -15,14 +15,17 @@ void AboutPanel::render() {
 		TTGOClass::getWatch()->tft->drawString("Up:",  10, this->calculatePosY(2, true));
 
 		TTGOClass::getWatch()->tft->fillRect(
-			65,
+			75,
 			this->calculatePosY(2, true) - 10,
 			TTGOClass::getWatch()->tft->width(),
 			TTGOClass::getWatch()->tft->fontHeight() * 2.4,
 			COLOR_BACKGROUND
 		);
 		this->renderDateDiff(uptime, 2);
-
+		TTGOClass::getWatch()->tft->drawString("Unpl:",  10, this->calculatePosY(3, true));
+		if (SystemInfo::getInstance()->getPluggedIn() == false) {
+			this->renderDateDiff(SystemInfo::getInstance()->getUnplugTime(), 3);
+		}
 	}
 	this->prevUptime = uptime;
 }

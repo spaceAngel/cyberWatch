@@ -6,6 +6,7 @@
 #include <LilyGoWatch.h>
 
 #include "RunAfterCompilation.h"
+#include "Environment/SystemInfo.h"
 
 #include "timestamp.h"
 #include "BuildDateTime.h"
@@ -14,6 +15,7 @@ void RunAfterCompilation::handle() {
 	RunAfterCompilation *handler = new RunAfterCompilation();
 	if (handler->isFirstRun()) {
 		handler->afterFirstRunOperations();
+		SystemInfo::getInstance()->setPlugState(true);
 	}
 }
 

@@ -10,11 +10,21 @@ class SystemInfo {
 
 		uint getUptime();
 
+		void setPlugState(bool state);
+
+		bool getPluggedIn();
+
+		uint getUnplugTime();
+
 		protected:
 
 			static SystemInfo *inst;
 
 			time_t startAt;
+
+			bool pluggedIn = false;
+
+			time_t pluggedInAt;
 
 			SystemInfo();
 
