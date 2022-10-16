@@ -25,6 +25,12 @@ void AboutPanel::render() {
 		TTGOClass::getWatch()->tft->drawString("Unpl:",  10, this->calculatePosY(3, true));
 		if (SystemInfo::getInstance()->getPluggedIn() == false) {
 			this->renderDateDiff(SystemInfo::getInstance()->getUnplugTime(), 3);
+		} else {
+			TTGOClass::getWatch()->tft->drawString(
+			"plugged",
+			TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth("plugged") - 15,
+			this->calculatePosY(3, true)
+	);
 		}
 	}
 	this->prevUptime = uptime;
