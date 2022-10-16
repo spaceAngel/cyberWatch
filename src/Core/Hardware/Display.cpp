@@ -18,7 +18,7 @@ Display *Display::getInstance() {
 
 void Display::init() {
 	TTGOClass::getWatch()->openBL();
-	TTGOClass::getWatch()->bl->adjust(DISPLAY_ADJUST);
+	this->setAdjust(DISPLAY_ADJUST);
 	TTGOClass::getWatch()->tft->setTextColor(COLOR_MAIN_1);
 }
 
@@ -41,4 +41,14 @@ void Display::turnDisplayOn() {
 		TTGOClass::getWatch()->displayWakeup();
 		this->lastOn = TimeUtil::getCurrentTimeInSeconds();
 	}
+}
+
+void Display::setAdjust(uint8_t adjustPercent) {
+	uint8_t adjust = ((ADJUST_MAX - ADJUST_MIN) * adjustPercent) / 100;
+	TTGOClass::getWatch()->bl->adjust(ADJUST_MIN + adjust);
+	this->adjustPercent = adjustPercent;
+}
+
+uint8_t Display::getAdjust() {
+	return this->adjustPercent;
 }

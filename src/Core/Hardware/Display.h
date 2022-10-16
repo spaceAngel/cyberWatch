@@ -2,6 +2,9 @@
 
 #include "Utils/TimeUtil.h"
 
+#define ADJUST_MIN 5
+#define ADJUST_MAX 250
+
 class Display {
 
 	public:
@@ -16,11 +19,17 @@ class Display {
 
 		void turnDisplayOn();
 
+		uint8_t getAdjust();
+
+		void setAdjust(uint8_t adjustPercent);
+
 		protected:
 
 			static Display *inst;
 
 			uint lastOn = TimeUtil::getCurrentTimeInSeconds();
+
+			uint8_t adjustPercent;
 
 			Display() {
 			}

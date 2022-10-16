@@ -1,5 +1,6 @@
 cyberWatch 0.5
 ========================
+- REFACTOR: display adjust is now set in percentage (1 - 100)
 
 cyberWatch 0.4
 ========================
