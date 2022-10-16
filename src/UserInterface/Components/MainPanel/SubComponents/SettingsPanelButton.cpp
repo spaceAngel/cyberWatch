@@ -20,21 +20,21 @@ SettingsPanelButton::SettingsPanelButton(
 	this->handleTouchFunc = handleTouchFunc;
 }
 
-uint8_t SettingsPanelButton::getX() {
-	return 5 + (this->col == (uint8_t) 1 ? 0 : (TTGOClass::getWatch()->tft->width() / 2));
-}
+ uint8_t SettingsPanelButton::getX() {
+	return (this->col == (uint8_t) 1 ? 5 : 5 + (TTGOClass::getWatch()->tft->width() / 2));
+ }
 
-uint8_t SettingsPanelButton::getY() {
-	return 13 + (((int32_t)this->row - 1) * 71);
-}
+ uint8_t SettingsPanelButton::getY() {
+	return 10 + (((int32_t)this->row - 1) * 51);
+ }
 
-uint8_t SettingsPanelButton::getWidth() {
+ uint8_t SettingsPanelButton::getWidth() {
 	return (TTGOClass::getWatch()->tft->width() / 2) - 10;
-}
+ }
 
-uint8_t SettingsPanelButton::getHeight() {
-	return 54;
-}
+ uint8_t SettingsPanelButton::getHeight() {
+	return 40;
+ }
 
 void SettingsPanelButton::render() {
 	if (
