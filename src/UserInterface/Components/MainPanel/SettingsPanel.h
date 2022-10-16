@@ -7,6 +7,9 @@
 #include "Environment/AppSettings.h"
 #include "Core/Hardware/MotorController.h"
 
+#define ADJUSTBAR_HEIGHT 24
+#define ADJUSTBAR_POSY 118
+
 class SettingsPanel : public MainComponent {
 
 	public:
@@ -44,5 +47,10 @@ class SettingsPanel : public MainComponent {
 
 		const int BUTTONS = 3;
 		SettingsPanelButton *buttons[4];
+
+		void renderAdjustBar();
+
+		void handleTouchAdjustbar(uint8_t x);
+		void handleTouchButtons(uint8_t x, uint8_t y);
 
 };

@@ -4,6 +4,7 @@
 #include "UserInterface/UserInterfaceManager.h"
 #include "UserInterface/Icons/LightBulb.h"
 #include "Environment/AppSettings.h"
+#include "Core/Hardware/Display.h"
 
 #include <LilyGoWatch.h>
 
@@ -14,9 +15,9 @@ void SettingsPanel::render() {
 		this->lastMask != AppSettings::getInstance()->getSettingsByteMask()
 		|| this->shouldReRender()
 	) {
-
 		Esp32::getInstance()->runWithCpuSpeedHigh(
 			[this]() {
+				this->renderAdjustBar();
 				for (int32_t i = 0; i <= BUTTONS; i++) {
 					this->buttons[i]->render();
 				}
@@ -36,6 +37,15 @@ bool SettingsPanel::controlModeIsTouch() {
 }
 
 bool SettingsPanel::handleTouch(uint8_t x, uint8_t y) {
+	if (y >= ADJUSTBAR_POSY && y <= ADJUSTBAR_POSY + ADJUSTBAR_HEIGHT) {
+		this->handleTouchAdjustbar(x);
+	} else {
+		this->handleTouchButtons(x, y);
+	}
+	return false;
+}
+
+void SettingsPanel::handleTouchButtons(uint8_t x, uint8_t y) {
 	for (int32_t i = 0; i <= BUTTONS; i++) {
 		if (
 			(x > this->buttons[i]->getX())
@@ -46,11 +56,63 @@ bool SettingsPanel::handleTouch(uint8_t x, uint8_t y) {
 			this->buttons[i]->handleTouch();
 		}
 	}
-	return false;
+}
+
+void SettingsPanel::handleTouchAdjustbar(uint8_t x) {
+	uint8_t adjustWidthFull = (TTGOClass::getWatch()->tft->width() - (10 * 2)) - (ADJUSTBAR_HEIGHT);
+	int adjustPercent = (x - 20 - (ADJUSTBAR_HEIGHT)) * 100  / adjustWidthFull;
+	adjustPercent = max(0, adjustPercent);
+	Display::getInstance()->setAdjust(adjustPercent);
+	this->setShouldReRender(true);
 }
 
 void SettingsPanel::setShouldReRender(bool shouldReRender) {
 	for (int32_t i = 0; i <= BUTTONS; i++) {
 		this->buttons[i]->setShouldReRender(shouldReRender);
+	}
+	MainComponent::setShouldReRender(shouldReRender);
+}
+
+void SettingsPanel::renderAdjustBar() {
+
+	uint8_t margin = 10;
+	TTGOClass::getWatch()->tft->fillCircle(
+		margin + (ADJUSTBAR_HEIGHT / 2),
+		ADJUSTBAR_POSY + (ADJUSTBAR_HEIGHT / 2),
+		(ADJUSTBAR_HEIGHT / 2),
+		COLOR_MAIN_1
+	);
+
+	TTGOClass::getWatch()->tft->fillCircle(
+		TTGOClass::getWatch()->tft->width() - margin - (ADJUSTBAR_HEIGHT / 2),
+		ADJUSTBAR_POSY + (ADJUSTBAR_HEIGHT / 2),
+		(ADJUSTBAR_HEIGHT / 2),
+		COLOR_MAIN_1
+	);
+
+	uint8_t adjustWidthFull = (TTGOClass::getWatch()->tft->width() - (margin * 2)) - (ADJUSTBAR_HEIGHT);
+	uint8_t adjustWidth = (adjustWidthFull *Display::getInstance()->getAdjust()) / 100;
+	TTGOClass::getWatch()->tft->fillRect(
+		margin + (ADJUSTBAR_HEIGHT / 2),
+		ADJUSTBAR_POSY,
+		adjustWidthFull,
+		ADJUSTBAR_HEIGHT,
+		COLOR_BACKGROUND
+	);
+	TTGOClass::getWatch()->tft->fillRect(
+		margin + (ADJUSTBAR_HEIGHT / 2),
+		ADJUSTBAR_POSY,
+		adjustWidth,
+		ADJUSTBAR_HEIGHT,
+		COLOR_MAIN_1
+	);
+	for (uint8_t i = 0; i <= 10; i++) {
+		TTGOClass::getWatch()->tft->fillRect(
+			margin + (ADJUSTBAR_HEIGHT / 2) + i * (adjustWidthFull / 10),
+			ADJUSTBAR_POSY,
+			3,
+			ADJUSTBAR_HEIGHT,
+			COLOR_BACKGROUND
+		);
 	}
 }
