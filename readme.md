@@ -4,6 +4,14 @@ Simple OS for [LILYGO® T-WATCH-2020 V3](http://www.lilygo.cn/prod_view.aspx?Typ
 
 Free time project to create lightweight and simple OS for smartwatch, with only necessary small functionality (to keep it simple and effective). With strong DIY cyberpunk motivation (don't want to support and pay money to big corporations). And with cool 80' cyberpunk retro design!
 
+![license](https://img.shields.io/github/license/spaceangel/cyberwatch?style=for-the-badge)
+![Last commit](https://img.shields.io/github/last-commit/spaceangel/cyberwatch?style=for-the-badge)
+![activity](https://img.shields.io/github/commit-activity/m/spaceangel/cyberwatch?style=for-the-badge)
+![github stars](https://img.shields.io/github/stars/spaceangel/cyberwatch?style=for-the-badge)
+
+<a href="https://www.buymeacoffee.com/spaceangel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
+
 ## Installation
 
  - download and install [VS Code](https://code.visualstudio.com/download) and [PlatformIO](https://platformio.org/install/ide?install=vscode) (or any other C/C++ IDE)
