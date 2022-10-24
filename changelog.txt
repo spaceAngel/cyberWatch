@@ -1,6 +1,7 @@
 cyberWatch 0.5
 ========================
 - FEATURE: display adjust is changeable in settings screen / miniapp
+- FEATURE: using run modes to control flow of current mode (for future pin screen after start, battery charging when connect turned off watches to power supply)
 - REFACTOR: display adjust is now set in percentage (1 - 100) (and stored in resgistry after shutdown)
 
 cyberWatch 0.4

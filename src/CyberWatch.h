@@ -2,6 +2,10 @@
 
 #include "config.h"
 
+#include "Core/RunModes/RunMode.h"
+
+#define RUNNMODE_MAIN 0
+
 class CyberWatch {
 
 	public:
@@ -11,30 +15,15 @@ class CyberWatch {
 
 		void loop();
 
-		void turnOff();
+		void setRunMode(uint8_t mode);
 
 	protected:
 
 		static CyberWatch *inst;
 
+		RunMode *runModes[1];
+		uint8_t runMode;
+
 		CyberWatch();
-
-		void handleCabelConnection();
-
-		void handleEsp32IRQ(bool &PEKshort);
-
-		void sleep();
-
-		void handleWakeupTick();
-
-		void checkIfTiltIrqAndMarkAsActive();
-
-		void executeLoopActions();
-
-		void executeLoopSleep();
-
-		void executeLoopWakeUp();
-
-		bool isSleepForbidden();
 
 };
