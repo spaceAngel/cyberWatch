@@ -6,6 +6,7 @@
 
 #include "UserInterface/UserInterfaceManager.h"
 #include "Utils/TimeUtil.h"
+#include "Core/Registry.h"
 
 Display *Display::inst;
 
@@ -18,7 +19,16 @@ Display *Display::getInstance() {
 
 void Display::init() {
 	TTGOClass::getWatch()->openBL();
-	this->setAdjust(DISPLAY_ADJUST);
+	uint adjust = Registry::getInstance()->getValue(Registry::NAME_DISPLAY_ADJUST);
+	if (
+		(adjust > 0)
+		&& (adjust <= 100)
+	) {
+		this->setAdjust(adjust);
+	} else {
+		this->setAdjust(DISPLAY_ADJUST);
+	}
+
 	TTGOClass::getWatch()->tft->setTextColor(COLOR_MAIN_1);
 }
 
@@ -44,6 +54,7 @@ void Display::turnDisplayOn() {
 }
 
 void Display::setAdjust(uint8_t adjustPercent) {
+	Registry::getInstance()->setValue(Registry::NAME_DISPLAY_ADJUST, adjustPercent);
 	uint8_t adjust = ((ADJUST_MAX - ADJUST_MIN) * adjustPercent) / 100;
 	TTGOClass::getWatch()->bl->adjust(ADJUST_MIN + adjust);
 	this->adjustPercent = adjustPercent;
