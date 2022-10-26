@@ -4,7 +4,7 @@ class RunAfterCompilation {
 
 	public:
 
-		static void handle();
+		static bool handle();
 
 		const char *buildTimestampFile = "/build.lock";
 

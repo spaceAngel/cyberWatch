@@ -23,6 +23,13 @@ uint8_t BatteryManager::getCapacity() {
 	return (uint8_t)this->lastCapacity;
 }
 
+uint8_t BatteryManager::getUpdatedCapacity() {
+	int capacity = (int)(TTGOClass::getWatch()->power->getBattVoltage()	- BATTERY_LOW_CAPACITY) * 100 / (BATTERY_FULL_CAPACITY - BATTERY_LOW_CAPACITY);
+	capacity = min(100, capacity);	//prevent to return capacity over 100% (calculation inaccurancy)
+	capacity = max(0, capacity); //prevent to return capacity less then 0 (calculation inaccurancy)
+	return capacity;
+}
+
 void BatteryManager::updateCapacity() {
 	if (
 		this->lastCapacity == 0

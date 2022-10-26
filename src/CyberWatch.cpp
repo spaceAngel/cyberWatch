@@ -15,6 +15,7 @@
 #include "Core/SystemTicker.h"
 #include "Events/EventManager.h"
 #include "Core/RunModes/MainMode.h"
+#include "Core/RunModes/ChargingMode.h"
 
 CyberWatch* CyberWatch::inst;
 
@@ -37,14 +38,21 @@ void CyberWatch::init() {
 	#endif
 
 	SPIFFS.begin();
-	RunAfterCompilation::handle();
+	bool isFirstRun = RunAfterCompilation::handle();
 	Display::getInstance()->init();
 	BatteryManager::getInstance()->energyConsumptionSavingsSettings();
 	Esp32::getInstance()->initIRQ();
 	MoveSensor::getInstance()->initIRQ();
 	SystemTicker::getInstance();
 	SystemInfo::getInstance();
-	this->setRunMode(RUNNMODE_MAIN);
+	if (
+		BatteryManager::getInstance()->isCharging()
+		&& isFirstRun == false
+	) {
+		this->setRunMode(RUNMODE_CHARGING);
+	} else {
+		this->setRunMode(RUNMODE_MAIN);
+	}
 };
 
 void CyberWatch::loop() {
@@ -52,12 +60,23 @@ void CyberWatch::loop() {
 };
 
 void CyberWatch::setRunMode(uint8_t mode) {
+
+	//clear disply
+	TTGOClass::getWatch()->tft->fillRect(
+		0,
+		0,
+		TTGOClass::getWatch()->tft->width(),
+		TTGOClass::getWatch()->tft->height(),
+		COLOR_BACKGROUND
+	);
+
 	this->runMode = mode;
 	this->runModes[this->runMode]->switchedTo();
 }
 
 CyberWatch::CyberWatch() {
-	this->runModes[0] = new MainMode();
+	this->runModes[RUNMODE_MAIN] = new MainMode();
+	this->runModes[RUNMODE_CHARGING] = new ChargingMode();
 }
 
 

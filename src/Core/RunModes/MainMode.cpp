@@ -1,5 +1,6 @@
 #include "MainMode.h"
 
+#include "CyberWatch.h"
 #include "UserInterface/UserInterfaceManager.h"
 #include "Core/InactivityWatcher.h"
 #include "Core/Hardware/Display.h"
@@ -139,5 +140,9 @@ void MainMode::turnOff() {
 	UserInterfaceManager::getInstance()->showExitScreen();
 	MotorController::vibrate(2);
 	delay(2000);
-	TTGOClass::getWatch()->shutdown();
+	if (BatteryManager::getInstance()->isCharging()) {
+		CyberWatch::getInstance()->setRunMode(RUNMODE_CHARGING);
+	} else {
+		TTGOClass::getWatch()->shutdown();
+	}
 }

@@ -4,7 +4,8 @@
 
 #include "Core/RunModes/RunMode.h"
 
-#define RUNNMODE_MAIN 0
+#define RUNMODE_MAIN 0
+#define RUNMODE_CHARGING 1
 
 class CyberWatch {
 
@@ -21,7 +22,7 @@ class CyberWatch {
 
 		static CyberWatch *inst;
 
-		RunMode *runModes[1];
+		RunMode *runModes[2];
 		uint8_t runMode;
 
 		CyberWatch();

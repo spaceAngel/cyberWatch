@@ -20,6 +20,8 @@ class BatteryManager {
 
 		void updateCapacity();
 
+		uint8_t getUpdatedCapacity();
+
 	protected:
 
 			static BatteryManager *inst;

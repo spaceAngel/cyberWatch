@@ -11,12 +11,14 @@
 #include "timestamp.h"
 #include "BuildDateTime.h"
 
-void RunAfterCompilation::handle() {
+bool RunAfterCompilation::handle() {
 	RunAfterCompilation *handler = new RunAfterCompilation();
 	if (handler->isFirstRun()) {
 		handler->afterFirstRunOperations();
 		SystemInfo::getInstance()->setPlugState(true);
+		return true;
 	}
+	return false;
 }
 
 bool RunAfterCompilation::isFirstRun() {
