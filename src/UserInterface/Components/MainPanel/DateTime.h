@@ -8,6 +8,7 @@
 #include "UserInterface/Components/MainPanel/WatchFaces/DigitalClocks.h"
 #include "UserInterface/Components/MainPanel/WatchFaces/ProgressBars.h"
 #include "UserInterface/Components/MainPanel/WatchFaces/NeonCircles.h"
+#include "UserInterface/Components/MainPanel/WatchFaces/SensorGrid.h"
 
 class DateTime : public MainComponent {
 
@@ -25,10 +26,10 @@ class DateTime : public MainComponent {
 
 	protected:
 
-		const int FACES = 4;
+		const int FACES = 5;
 
-		MainComponent *clockFaces[5];
-		int8_t currentFace = 4;
+		MainComponent *clockFaces[6];
+		int8_t currentFace = 5;
 
 		void createFaces() {
 			clockFaces[0] = new DigitalClocks();
@@ -36,6 +37,7 @@ class DateTime : public MainComponent {
 			clockFaces[2] = new Planetoid();
 			clockFaces[3] = new ProgressBars();
 			clockFaces[4] = new NeonCircles();
+			clockFaces[5] = new SensorGrid();
 		}
 
 };
