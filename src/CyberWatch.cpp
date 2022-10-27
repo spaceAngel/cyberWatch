@@ -30,6 +30,7 @@ void CyberWatch::init() {
 
 	Serial.begin(SERIAL_RATE);
 	Serial.println("cyberWatch starting");
+	srand((unsigned)time(NULL));
 
 	TTGOClass::getWatch()->begin();
 
