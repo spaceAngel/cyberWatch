@@ -4,6 +4,7 @@ cyberWatch 0.5
 - FEATURE: using run modes to control flow of current mode (for future pin screen after start, battery charging when connect turned off watches to power supply)
 - FEATURE: charging mode (when connect power to turned off watches, show battery icon + % bar instead of fully start)
 - FEATURE: "Cassete futurism" clock face
+- FEATURE: "Knight Rider speaker" clock face
 - REFACTOR: display adjust is now set in percentage (1 - 100) (and stored in resgistry after shutdown)
 
 cyberWatch 0.4
