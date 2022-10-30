@@ -9,6 +9,8 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
 ![activity](https://img.shields.io/github/commit-activity/m/spaceangel/cyberwatch?style=for-the-badge)
 ![github stars](https://img.shields.io/github/stars/spaceangel/cyberwatch?style=for-the-badge)
 
+[https://cyberwatch.cyberdeck.cz/](https://cyberwatch.cyberdeck.cz/)
+
 <a href="https://www.buymeacoffee.com/spaceangel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 
