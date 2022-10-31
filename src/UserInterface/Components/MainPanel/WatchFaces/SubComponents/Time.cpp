@@ -4,6 +4,7 @@
 
 #include "Time.h"
 #include "Core/Hardware/RTC.h"
+#include "Core/Hardware/Display.h"
 
 void Time::render() {
 	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
@@ -27,7 +28,7 @@ void Time::render() {
 			(TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(timeStr)) / 2,
 			POS_Y
 		);
-		TTGOClass::getWatch()->tft->setTextSize(1); // reset size to default
+		Display::getInstance()->resetTypographySettings();
 		this->prevMinute = currentTime.minute;
 		setShouldReRender(false);
 	}

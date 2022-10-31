@@ -5,6 +5,7 @@
 #include <LilyGoWatch.h>
 
 #include "Core/AppsStatusMonitor.h"
+#include "Core/Hardware/Display.h"
 
 void StopWatch::render() {
 	long stopTime;
@@ -31,7 +32,7 @@ void StopWatch::render() {
 			TTGOClass::getWatch()->tft->drawString(".",	168, POS_Y);
 		}
 		this->renderTime((stopTime > 0) ? stopTime : 0);
-		TTGOClass::getWatch()->tft->setTextSize(1);
+		Display::getInstance()->resetTypographySettings();
 		this->prevTime = stopTime;
 		this->setShouldReRender(false);
 	}

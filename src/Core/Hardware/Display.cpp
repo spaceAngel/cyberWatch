@@ -63,3 +63,9 @@ void Display::setAdjust(uint8_t adjustPercent) {
 uint8_t Display::getAdjust() {
 	return this->adjustPercent;
 }
+
+void Display::resetTypographySettings() {
+	TTGOClass::getWatch()->tft->setTextFont(4); //reset to default
+	TTGOClass::getWatch()->tft->setTextSize(1); //reset to default
+	TTGOClass::getWatch()->tft->setTextColor(COLOR_MAIN_1);
+}

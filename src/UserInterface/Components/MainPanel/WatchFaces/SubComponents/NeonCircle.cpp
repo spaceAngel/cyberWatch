@@ -5,6 +5,7 @@
 #include <LilyGoWatch.h>
 #include "Utils/Geometry.h"
 #include "Core/Hardware/Esp32.h"
+#include "Core/Hardware/Display.h"
 
 NeonCircle::NeonCircle(uint8_t x, uint8_t y, uint8_t maxValue, long color) {
 	this->x = x;
@@ -66,6 +67,5 @@ void NeonCircle::renderCircle(int32_t value) {
 		this->y + 6
 	);
 
-	TTGOClass::getWatch()->tft->setTextColor(COLOR_MAIN_1);
-	TTGOClass::getWatch()->tft->setTextSize(1);
+	Display::getInstance()->resetTypographySettings();
 }

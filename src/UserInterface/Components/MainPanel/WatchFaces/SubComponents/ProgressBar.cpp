@@ -4,6 +4,8 @@
 
 #include <LilyGoWatch.h>
 
+#include "Core/Hardware/Display.h"
+
 ProgressBar::ProgressBar(uint8_t y, uint8_t maxValue, long color) {
 	this->color = color;
 	this->maxValue = maxValue;
@@ -27,8 +29,7 @@ void ProgressBar::render(int32_t value) {
 		TTGOClass::getWatch()->tft->setTextColor(this->color);
 		TTGOClass::getWatch()->tft->setTextSize(2);
 		TTGOClass::getWatch()->tft->drawString(txt, 15, this->y);
-		TTGOClass::getWatch()->tft->setTextColor(COLOR_MAIN_1);
-		TTGOClass::getWatch()->tft->setTextSize(1);
+		Display::getInstance()->resetTypographySettings();
 		TTGOClass::getWatch()->tft->fillCircle(BAR_START, this->y + 20, BAR_HEIGHT / 2, this->color);
 		int32_t width = TTGOClass::getWatch()->tft->width() - BAR_START - 20;
 		TTGOClass::getWatch()->tft->fillRect(

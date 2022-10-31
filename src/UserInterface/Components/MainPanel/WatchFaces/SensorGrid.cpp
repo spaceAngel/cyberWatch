@@ -4,6 +4,7 @@
 
 #include "SensorGrid.h"
 #include "Core/Hardware/RTC.h"
+#include "Core/Hardware/Display.h"
 
 void SensorGrid::render() {
 
@@ -44,7 +45,7 @@ void SensorGrid::renderTime() {
 		(TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(timeStr)) / 2,
 		50
 	);
-	TTGOClass::getWatch()->tft->setTextSize(1); // reset size to default
+	Display::getInstance()->resetTypographySettings();
 }
 
 void SensorGrid::renderSensorGrid() {

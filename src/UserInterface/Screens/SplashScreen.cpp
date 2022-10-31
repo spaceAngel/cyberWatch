@@ -5,6 +5,7 @@
 #include "SplashScreen.h"
 #include "Core/Hardware/MotorController.h"
 #include "UserInterface/Components/Logo.h"
+#include "Core/Hardware/Display.h"
 
 void SplashScreen::show() {
 	MotorController::vibrate(1);
@@ -18,9 +19,8 @@ void SplashScreen::show() {
 }
 
 void SplashScreen::resetToDefault() {
-	TTGOClass::getWatch()->tft->setTextFont(4); //reset to default
-	TTGOClass::getWatch()->tft->setTextSize(1); //reset to default
 	//clear display
+	Display::getInstance()->resetTypographySettings();
 	TTGOClass::getWatch()->tft->fillRect(
 		0,
 		0,

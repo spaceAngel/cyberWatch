@@ -23,6 +23,8 @@ class Display {
 
 		void setAdjust(uint8_t adjustPercent);
 
+		void resetTypographySettings();
+
 		protected:
 
 			static Display *inst;
