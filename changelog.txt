@@ -6,6 +6,7 @@ cyberWatch 0.5
 - FEATURE: "Cassete futurism" clock face
 - FEATURE: "Knight Rider speaker" clock face
 - REFACTOR: display adjust is now set in percentage (1 - 100) (and stored in resgistry after shutdown)
+- BUGFIX: analog + planetoid watch faces update every second (check for prev second)
 
 cyberWatch 0.4
 ========================

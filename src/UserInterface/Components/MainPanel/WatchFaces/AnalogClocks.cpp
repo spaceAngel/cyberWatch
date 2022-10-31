@@ -13,7 +13,8 @@ void AnalogClocks::render() {
 	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
 	if (
 		(this->shouldReRender() == true)
-		|| SystemTicker::getInstance()->isTickFor(TICKER_CLOCKS)
+		|| currentTime.second != this->prevSecond
+
 	) {
 		if (this->shouldReRender() == true) {
 			this->renderFace();
@@ -27,6 +28,7 @@ void AnalogClocks::render() {
 		this->drawLine(currentTime.minute, 52, COLOR_MAIN_1);
 		this->drawLine(currentTime.second, 52, COLOR_MAIN_3);
 		setShouldReRender(false);
+		this->prevSecond = currentTime.second;
 	}
 }
 

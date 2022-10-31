@@ -13,7 +13,7 @@ void Planetoid::render() {
 	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
 	if (
 		this->shouldReRender()
-		|| SystemTicker::getInstance()->isTickFor(TICKER_CLOCKS)
+		|| currentTime.second != this->prevSecond
 	) {
 		this->clear();
 		this->renderFace();
@@ -21,6 +21,7 @@ void Planetoid::render() {
 		this->renderPoint(6 * currentTime.minute, 60, 5, COLOR_MAIN_2);
 		this->renderPoint(6 * currentTime.second, 30, 4, COLOR_MAIN_3);
 		setShouldReRender(false);
+		this->prevSecond = currentTime.second;
 	}
 }
 
