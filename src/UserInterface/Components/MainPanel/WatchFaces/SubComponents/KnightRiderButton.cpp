@@ -3,17 +3,19 @@
 
 #include <LilyGoWatch.h>
 
+#include "Core/Hardware/Display.h"
+
 void KnightRiderButton::render(int32_t value) {
 	if (
 		this->prevValue!= value
 		|| this->shouldReRender()
 	) {
-		uint8_t cellWidth = 62;
-		uint8_t cellHeight = 40;
-		uint8_t posX = col == 1 ? 14 : TTGOClass::getWatch()->tft->width() - (12 + cellWidth);
+		uint8_t cellWidth = 52;
+		uint8_t cellHeight = 37;
+		uint8_t posX = col == 1 ? 22 : TTGOClass::getWatch()->tft->width() - (18 + cellWidth);
 
-		uint posY = 4 + (
-			(150 / 3) * (row - 1)
+		uint posY =  9 + (
+			(142 / 3) * (row - 1)
 		);
 
 		TTGOClass::getWatch()->tft->fillCircle(-4 + posX + cellHeight / 2, posY + cellHeight / 2, cellHeight / 2, this->color);
@@ -22,21 +24,21 @@ void KnightRiderButton::render(int32_t value) {
 
 		char str[3];
 		(void)snprintf(str, sizeof(str), "%02d", value);
-		TTGOClass::getWatch()->tft->setTextSize(2);
+		TTGOClass::getWatch()->tft->setTextFont(1);
+
+		TTGOClass::getWatch()->tft->setTextSize(4);
 		TTGOClass::getWatch()->tft->setTextColor(COLOR_BACKGROUND);
 		TTGOClass::getWatch()->tft->drawString(
 			str,
-			posX ,
-			posY
+			posX + 3,
+			posY + 4
 		);
-		TTGOClass::getWatch()->tft->setTextSize(1);
-		TTGOClass::getWatch()->tft->setTextColor(COLOR_MAIN_1);
+		Display::getInstance()->resetTypographySettings();
 	}
 
 	this->prevValue = value;
 	this->setShouldReRender(false);
 }
-
 
 KnightRiderButton::KnightRiderButton(uint8_t row, uint8_t col, uint32_t color) {
 	this->col = col;
