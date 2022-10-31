@@ -11,7 +11,7 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
 
 [https://cyberwatch.cyberdeck.cz/](https://cyberwatch.cyberdeck.cz/)
 
-<a href="https://www.buymeacoffee.com/spaceangel" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+<a href="https://www.buymeacoffee.com/cyberwathos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 
 ## Installation
