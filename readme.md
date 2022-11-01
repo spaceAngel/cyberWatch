@@ -23,6 +23,7 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - connect [LillyGo T_Watch device](http://www.lilygo.cn/prod_view.aspx?TypeId=50053&Id=1380&FId=t3:50053:3) via USB
  - compile and upload via your favorite IDE
  - __have a fun!__
+ - __screen is autolocked (prevention of random touch) - if there is a lock icon, press crown (button) to unlock it!__
 
 ## Code quality & standards
  - [Misra C++ standards](https://www.misra.org.uk/) (98% and still improving)
