@@ -4,9 +4,9 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/WatchFaces/WatchFace.h"
 
-class Planetoid : public MainComponent {
+class Planetoid : public WatchFace {
 
 	public:
 

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/WatchFaces/WatchFace.h"
 
-class SensorGrid : public MainComponent {
+class SensorGrid : public WatchFace {
 
 	public:
 

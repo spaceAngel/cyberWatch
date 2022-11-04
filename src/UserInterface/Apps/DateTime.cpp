@@ -7,6 +7,7 @@
 #include "Core/Registry.h"
 #include "Environment/AppSettings.h"
 #include "UserInterface/UserInterfaceManager.h"
+#include "UserInterface/WatchFaces/WatchFace.h"
 
 void DateTime::render() {
 	getCurrentFace()->render();
@@ -32,7 +33,7 @@ bool DateTime::handleSwipeVertical(int8_t vector) {
 	return true;
 }
 
-MainComponent *DateTime::getCurrentFace() {
+WatchFace *DateTime::getCurrentFace() {
 	return this->clockFaces[this->currentFace];
 }
 
@@ -41,6 +42,10 @@ bool DateTime::handlePEKShort() {
 		!UserInterfaceManager::getInstance()->isLocked()
 	);
 	return false;
+}
+
+bool DateTime::hasToolbar() {
+	return this->getCurrentFace()->hasToolbar();
 }
 
 DateTime::DateTime() {

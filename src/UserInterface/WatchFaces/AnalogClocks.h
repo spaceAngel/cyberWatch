@@ -4,13 +4,17 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/WatchFaces/WatchFace.h"
 
-class AnalogClocks : public MainComponent {
+class AnalogClocks : public WatchFace {
 
 	public:
 
 		void render();
+
+		bool hasToolbar() {
+			return true;
+		}
 
 	protected:
 

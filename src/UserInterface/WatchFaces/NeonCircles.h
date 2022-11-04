@@ -1,9 +1,9 @@
 #pragma once
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/WatchFaces/WatchFace.h"
 #include "UserInterface/WatchFaces/Components/NeonCircle.h"
 
-class NeonCircles : public MainComponent {
+class NeonCircles : public WatchFace {
 
 	public:
 

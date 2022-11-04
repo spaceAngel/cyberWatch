@@ -1,9 +1,9 @@
 #pragma once
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/WatchFaces/WatchFace.h"
 #include "UserInterface/WatchFaces/Components/KnightRiderButton.h"
 
-class KnightRider : public MainComponent {
+class KnightRider : public WatchFace {
 
 	public:
 

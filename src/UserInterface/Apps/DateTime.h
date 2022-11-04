@@ -3,6 +3,7 @@
 #include <Arduino.h>
 
 #include "UserInterface/App.h"
+#include "UserInterface/WatchFaces/WatchFace.h"
 #include "UserInterface/WatchFaces/AnalogClocks.h"
 #include "UserInterface/WatchFaces/Planetoid.h"
 #include "UserInterface/WatchFaces/DigitalClocks.h"
@@ -11,13 +12,14 @@
 #include "UserInterface/WatchFaces/SensorGrid.h"
 #include "UserInterface/WatchFaces/KnightRider.h"
 
+
 class DateTime : public App {
 
 	public:
 
 		bool handleSwipeVertical(int8_t vector);
 		void setShouldReRender(bool shouldReRender);
-		MainComponent *getCurrentFace();
+		WatchFace *getCurrentFace();
 		void render();
 
 
@@ -25,11 +27,13 @@ class DateTime : public App {
 
 		DateTime();
 
+		bool hasToolbar();
+
 	protected:
 
 		const int FACES = 6;
 
-		MainComponent *clockFaces[7];
+		WatchFace *clockFaces[7];
 		int8_t currentFace = 6;
 
 		void createFaces() {

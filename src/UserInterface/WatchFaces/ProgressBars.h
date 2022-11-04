@@ -1,8 +1,9 @@
 #pragma once
 
+#include "UserInterface/WatchFaces/WatchFace.h"
 #include "UserInterface/WatchFaces/Components/ProgressBar.h"
 
-class ProgressBars : public MainComponent {
+class ProgressBars : public WatchFace {
 
 	public:
 

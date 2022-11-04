@@ -4,11 +4,11 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/WatchFaces/WatchFace.h"
 #include "UserInterface/WatchFaces/Components/Date.h"
 #include "UserInterface/WatchFaces/Components/Time.h"
 
-class DigitalClocks : public MainComponent {
+class DigitalClocks : public WatchFace {
 
 	public:
 		void render();
