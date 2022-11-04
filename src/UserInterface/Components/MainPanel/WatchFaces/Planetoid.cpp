@@ -5,7 +5,6 @@
 #include <LilyGoWatch.h>
 #include "Utils/Geometry.h"
 
-#include "UserInterface/Screens/MainScreen.h"
 #include "Core/SystemTicker.h"
 #include "Core/Hardware/RTC.h"
 

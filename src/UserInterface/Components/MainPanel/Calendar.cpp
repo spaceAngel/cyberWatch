@@ -3,7 +3,6 @@
 #include <LilyGoWatch.h>
 
 #include "Calendar.h"
-#include "UserInterface/Components/MainPanel.h"
 #include "Utils/DateUtil.h"
 #include "Core/Hardware/Esp32.h"
 

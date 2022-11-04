@@ -1,7 +1,13 @@
 #pragma once
 
-#include "UserInterface/Components/MainPanel.h"
 #include "UserInterface/Components/InfoPanel.h"
+#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/Components/MainPanel/DateTime.h"
+#include "UserInterface/Components/MainPanel/Calendar.h"
+#include "UserInterface/Components/MainPanel/StopWatch.h"
+#include "UserInterface/Components/MainPanel/SettingsPanel.h"
+#include "UserInterface/Components/MainPanel/AboutPanel.h"
+#include "Core/AppsStatusMonitor.h"
 
 class MainScreen {
 
@@ -17,14 +23,29 @@ class MainScreen {
 		bool isSleepForbidden();
 		void handleTouch(uint8_t x, uint8_t y);
 		void setToDefaultApp();
+		void switchApp(int vector);
+		MainComponent *getCurrentComponent();
 
 		protected:
 
 			static MainScreen *inst;
 
-			MainPanel *mainPanel;
 			InfoPanel *infoPanel;
 
+			const int8_t APPS = 4;
+
+			MainComponent *apps[5];
+			int8_t currentApp = 0;
+
+			void clear();
+
+			void createApps() {
+				this->apps[0] = new DateTime();
+				this->apps[1] = new Calendar();
+				this->apps[2] = new StopWatch();
+				this->apps[3] = new SettingsPanel();
+				this->apps[4] = new AboutPanel();
+			}
 			MainScreen();
 
 };

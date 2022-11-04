@@ -2,7 +2,6 @@
 
 #include "MainScreen.h"
 
-#include "UserInterface/Components/MainPanel.h"
 #include "UserInterface/Components/InfoPanel.h"
 
 MainScreen* MainScreen::inst;
@@ -15,35 +14,80 @@ MainScreen *MainScreen::getInstance() {
 }
 
 void MainScreen::render() {
-	this->mainPanel->render();
+	this->getCurrentComponent()->render();
 	this->infoPanel->render();
 }
 
 MainScreen::MainScreen() {
-	this->mainPanel = new MainPanel();
+	this->createApps();
 	this->infoPanel = new InfoPanel();
 }
 
 void MainScreen::handleSwipeHorizontal(int vector) {
-	this->mainPanel->switchApp(vector);
+	this->getCurrentComponent()->setIsActive(false);
+	this->currentApp += vector;
+	if (this->currentApp > APPS) {
+		this->currentApp = 0;
+	}
+
+	if (this->currentApp < 0) {
+		this->currentApp = APPS;
+	}
+
+	this->getCurrentComponent()->setShouldReRender(true);
+	this->getCurrentComponent()->setIsActive(true);
+	this->clear();
+	this->render();
 }
 
 void MainScreen::handleSwipeVertical(int vector) {
-	this->mainPanel->handleSwipeVertical(vector);
+	if (this->getCurrentComponent()->handleSwipeVertical(vector) == true) {
+		this->clear();
+	}
 }
 
 void MainScreen::handlePEKShort() {
-	this->mainPanel->handlePEKShort();
+	if (this->getCurrentComponent()->handlePEKShort() == true) {
+		this->clear();
+	}
 }
 
 bool MainScreen::isSleepForbidden() {
-	return this->mainPanel->isSleepForbidden();
+	bool rslt = false;
+	for (int8_t i = 0; i <= APPS; i++) {
+		if (apps[i]->isSystemSleepForbidden() == true) {
+			rslt = true;
+		}
+	}
+	return rslt;
 }
 
 void MainScreen::handleTouch(uint8_t x, uint8_t y) {
-	this->mainPanel->handleTouch(x, y);
+	if (this->getCurrentComponent()->controlModeIsTouch() == true) {
+		if (this->getCurrentComponent()->handleTouch(x, y) == true) {
+			this->clear();
+		}
+	}
 }
 
 void  MainScreen::setToDefaultApp() {
-	this->mainPanel->setToDefaultApp();
+	if (this->currentApp != 0) {
+		this->clear();
+		this->currentApp = 0;
+		this->apps[0]->setShouldReRender(true);
+	}
+}
+
+void MainScreen::clear() {
+	TTGOClass::getWatch()->tft->fillRect(
+		0,
+		0,
+		TTGOClass::getWatch()->tft->width(),
+		TTGOClass::getWatch()->tft->height(),
+		COLOR_BACKGROUND
+	);
+}
+
+MainComponent *MainScreen::getCurrentComponent() {
+	return this->apps[this->currentApp];
 }
