@@ -1,7 +1,7 @@
 #pragma once
 
 #include "UserInterface/Components/MainComponent.h"
-#include "UserInterface/Components/MainPanel/WatchFaces/SubComponents/KnightRiderButton.h"
+#include "UserInterface/WatchFaces/Components/KnightRiderButton.h"
 
 class KnightRider : public MainComponent {
 

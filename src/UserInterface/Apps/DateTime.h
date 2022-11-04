@@ -3,13 +3,13 @@
 #include <Arduino.h>
 
 #include "UserInterface/App.h"
-#include "UserInterface/Components/MainPanel/WatchFaces/AnalogClocks.h"
-#include "UserInterface/Components/MainPanel/WatchFaces/Planetoid.h"
-#include "UserInterface/Components/MainPanel/WatchFaces/DigitalClocks.h"
-#include "UserInterface/Components/MainPanel/WatchFaces/ProgressBars.h"
-#include "UserInterface/Components/MainPanel/WatchFaces/NeonCircles.h"
-#include "UserInterface/Components/MainPanel/WatchFaces/SensorGrid.h"
-#include "UserInterface/Components/MainPanel/WatchFaces/KnightRider.h"
+#include "UserInterface/WatchFaces/AnalogClocks.h"
+#include "UserInterface/WatchFaces/Planetoid.h"
+#include "UserInterface/WatchFaces/DigitalClocks.h"
+#include "UserInterface/WatchFaces/ProgressBars.h"
+#include "UserInterface/WatchFaces/NeonCircles.h"
+#include "UserInterface/WatchFaces/SensorGrid.h"
+#include "UserInterface/WatchFaces/KnightRider.h"
 
 class DateTime : public App {
 

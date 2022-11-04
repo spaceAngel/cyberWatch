@@ -1,7 +1,7 @@
 #include "DigitalClocks.h"
 
-#include "UserInterface/Components/MainPanel/WatchFaces/SubComponents/Date.h"
-#include "UserInterface/Components/MainPanel/WatchFaces/SubComponents/Time.h"
+#include "UserInterface/WatchFaces/Components/Date.h"
+#include "UserInterface/WatchFaces/Components/Time.h"
 
 void DigitalClocks::render() {
 	this->date->render();

@@ -4,7 +4,7 @@
 
 #include "KnightRider.h"
 #include "Core/Hardware/RTC.h"
-#include "UserInterface/Components/MainPanel/WatchFaces/SubComponents/KnightRiderButton.h"
+#include "UserInterface/WatchFaces/Components/KnightRiderButton.h"
 
 void KnightRider::render() {
 	uint8_t cellWidth = 24;

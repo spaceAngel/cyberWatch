@@ -4,7 +4,7 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/Components/MainPanel/WatchFaces/SubComponents/ProgressBar.h"
+#include "UserInterface/WatchFaces/Components/ProgressBar.h"
 #include "Core/SystemTicker.h"
 #include "Core/Hardware/RTC.h"
 
