@@ -1,6 +1,6 @@
 #pragma once
 
-#include "UserInterface/Components/MainPanel/StopWatch.h"
+#include "UserInterface/Apps/StopWatch.h"
 
 class RunMode {
 

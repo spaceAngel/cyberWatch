@@ -1,12 +1,12 @@
 #pragma once
 
 #include "UserInterface/Components/InfoPanel.h"
-#include "UserInterface/Components/MainComponent.h"
-#include "UserInterface/Components/MainPanel/DateTime.h"
-#include "UserInterface/Components/MainPanel/Calendar.h"
-#include "UserInterface/Components/MainPanel/StopWatch.h"
-#include "UserInterface/Components/MainPanel/SettingsPanel.h"
-#include "UserInterface/Components/MainPanel/AboutPanel.h"
+#include "UserInterface/App.h"
+#include "UserInterface/Apps/DateTime.h"
+#include "UserInterface/Apps/Calendar.h"
+#include "UserInterface/Apps/StopWatch.h"
+#include "UserInterface/Apps/SettingsPanel.h"
+#include "UserInterface/Apps/AboutPanel.h"
 #include "Core/AppsStatusMonitor.h"
 
 class MainScreen {
@@ -24,7 +24,7 @@ class MainScreen {
 		void handleTouch(uint8_t x, uint8_t y);
 		void setToDefaultApp();
 		void switchApp(int vector);
-		MainComponent *getCurrentComponent();
+		App *getCurrentApp();
 
 		protected:
 
@@ -34,7 +34,7 @@ class MainScreen {
 
 			const int8_t APPS = 4;
 
-			MainComponent *apps[5];
+			App *apps[5];
 			int8_t currentApp = 0;
 
 			void clear();

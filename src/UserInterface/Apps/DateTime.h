@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/App.h"
 #include "UserInterface/Components/MainPanel/WatchFaces/AnalogClocks.h"
 #include "UserInterface/Components/MainPanel/WatchFaces/Planetoid.h"
 #include "UserInterface/Components/MainPanel/WatchFaces/DigitalClocks.h"
@@ -11,7 +11,7 @@
 #include "UserInterface/Components/MainPanel/WatchFaces/SensorGrid.h"
 #include "UserInterface/Components/MainPanel/WatchFaces/KnightRider.h"
 
-class DateTime : public MainComponent {
+class DateTime : public App {
 
 	public:
 

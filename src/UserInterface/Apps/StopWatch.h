@@ -4,9 +4,9 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/App.h"
 
-class StopWatch : public MainComponent {
+class StopWatch : public App {
 	public:
 
 		void render();

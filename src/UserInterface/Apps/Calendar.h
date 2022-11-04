@@ -2,9 +2,9 @@
 
 #include <Arduino.h>
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/App.h"
 
-class Calendar : public MainComponent {
+class Calendar : public App {
 
 	public:
 

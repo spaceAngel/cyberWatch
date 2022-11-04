@@ -14,7 +14,7 @@ MainScreen *MainScreen::getInstance() {
 }
 
 void MainScreen::render() {
-	this->getCurrentComponent()->render();
+	this->getCurrentApp()->render();
 	this->infoPanel->render();
 }
 
@@ -24,7 +24,7 @@ MainScreen::MainScreen() {
 }
 
 void MainScreen::handleSwipeHorizontal(int vector) {
-	this->getCurrentComponent()->setIsActive(false);
+	this->getCurrentApp()->setIsActive(false);
 	this->currentApp += vector;
 	if (this->currentApp > APPS) {
 		this->currentApp = 0;
@@ -34,20 +34,20 @@ void MainScreen::handleSwipeHorizontal(int vector) {
 		this->currentApp = APPS;
 	}
 
-	this->getCurrentComponent()->setShouldReRender(true);
-	this->getCurrentComponent()->setIsActive(true);
+	this->getCurrentApp()->setShouldReRender(true);
+	this->getCurrentApp()->setIsActive(true);
 	this->clear();
 	this->render();
 }
 
 void MainScreen::handleSwipeVertical(int vector) {
-	if (this->getCurrentComponent()->handleSwipeVertical(vector) == true) {
+	if (this->getCurrentApp()->handleSwipeVertical(vector) == true) {
 		this->clear();
 	}
 }
 
 void MainScreen::handlePEKShort() {
-	if (this->getCurrentComponent()->handlePEKShort() == true) {
+	if (this->getCurrentApp()->handlePEKShort() == true) {
 		this->clear();
 	}
 }
@@ -63,8 +63,8 @@ bool MainScreen::isSleepForbidden() {
 }
 
 void MainScreen::handleTouch(uint8_t x, uint8_t y) {
-	if (this->getCurrentComponent()->controlModeIsTouch() == true) {
-		if (this->getCurrentComponent()->handleTouch(x, y) == true) {
+	if (this->getCurrentApp()->controlModeIsTouch() == true) {
+		if (this->getCurrentApp()->handleTouch(x, y) == true) {
 			this->clear();
 		}
 	}
@@ -88,6 +88,6 @@ void MainScreen::clear() {
 	);
 }
 
-MainComponent *MainScreen::getCurrentComponent() {
+App *MainScreen::getCurrentApp() {
 	return this->apps[this->currentApp];
 }

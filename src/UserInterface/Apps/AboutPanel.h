@@ -4,9 +4,9 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/App.h"
 
-class AboutPanel : public MainComponent {
+class AboutPanel : public App {
 	public:
 
 		void render();

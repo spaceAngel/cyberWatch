@@ -70,7 +70,7 @@ void SettingsPanel::setShouldReRender(bool shouldReRender) {
 	for (int32_t i = 0; i <= BUTTONS; i++) {
 		this->buttons[i]->setShouldReRender(shouldReRender);
 	}
-	MainComponent::setShouldReRender(shouldReRender);
+	App::setShouldReRender(shouldReRender);
 }
 
 void SettingsPanel::renderAdjustBar() {
