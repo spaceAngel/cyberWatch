@@ -41,6 +41,7 @@ void MainScreen::handleSwipeHorizontal(int vector) {
 
 	this->getCurrentApp()->setShouldReRender(true);
 	this->toolbar->setShouldReRender(true);
+	this->infoPanel->setShouldReRender(true);
 	this->getCurrentApp()->setIsActive(true);
 	this->clear();
 	this->render();

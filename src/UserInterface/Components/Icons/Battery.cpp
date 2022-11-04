@@ -11,42 +11,42 @@
 void Battery::render() {
 	uint8_t capacity = BatteryManager::getInstance()->getCapacity();
 	if (
-		(capacity < this->prevCapacity) //avoid blinking cause percentage is oscilating e.g. 94 - 96
+		(this->shouldReRender())
+		|| (capacity < this->prevCapacity) //avoid blinking cause percentage is oscilating e.g. 94 - 96
 		|| (
 			(capacity != this->prevCapacity)
 			&& (BatteryManager::getInstance()->isCharging() == true)
 		)
 	) {
-		char battery[6];
-		(void)snprintf(battery, sizeof(battery), "%d%%", capacity);
-		TTGOClass::getWatch()->tft->fillRect(POS_X, POS_Y, 115, 26, COLOR_BACKGROUND);
-		TTGOClass::getWatch()->tft->setTextColor(
-			(capacity <= BATTERY_VERY_LOW) ? COLOR_WARN : COLOR_MAIN_1
-		);
-		TTGOClass::getWatch()->tft->drawString(battery, POS_X + 48, POS_Y + 3);
+		if (this->showCapacity == true) {
+			this->renderCapacity(capacity);
+		}
+
 		this->renderBatteryIcon(capacity);
 		this->prevCapacity = capacity;
-		TTGOClass::getWatch()->tft->setTextColor(COLOR_MAIN_1);
 	}
+	this->setShouldReRender(false);
+}
 
-	if (BatteryManager::getInstance()->isCharging() != this->prevChargingState) {
-		if (BatteryManager::getInstance()->isCharging() == true) {
-			UserInterfaceManager::getInstance()->renderIcon(iconCharging, 140, POS_Y);
-		} else {
-			TTGOClass::getWatch()->tft->fillRect(140, POS_Y, 24, 24, COLOR_BACKGROUND);
-		}
-		this->prevChargingState = BatteryManager::getInstance()->isCharging();
-	}
+void Battery::renderCapacity(uint8_t capacity) {
+	char battery[6];
+	(void)snprintf(battery, sizeof(battery), "%d%%", capacity);
+	TTGOClass::getWatch()->tft->fillRect(this->posX + 45, this->posY, 70, 26, COLOR_BACKGROUND);
+	TTGOClass::getWatch()->tft->setTextColor(
+		(capacity <= BATTERY_VERY_LOW) ? COLOR_WARN : COLOR_MAIN_1
+	);
+	TTGOClass::getWatch()->tft->drawString(battery, this->posX + 48, this->posY + 3);
+	TTGOClass::getWatch()->tft->setTextColor(COLOR_MAIN_1);
 }
 
 void Battery::renderBatteryIcon(uint8_t capacity) {
-	uint y = POS_Y + 5;
-	uint x = POS_X + 3;
+	uint y = this->posY + 5;
+	uint x = this->posX + 3;
 	uint thick = 2;
 	uint height = 17;
 	uint width = 32;
 	uint innerWidth = (width - 6) - (2 * thick);
-
+	TTGOClass::getWatch()->tft->fillRect(this->posX, this->posY, 45, 26, COLOR_BACKGROUND);
 	TTGOClass::getWatch()->tft->fillRect(x, y, width, height, (capacity <= BATTERY_VERY_LOW) ? COLOR_WARN : COLOR_MAIN_1);
 	TTGOClass::getWatch()->tft->fillRect(
 		x + thick,

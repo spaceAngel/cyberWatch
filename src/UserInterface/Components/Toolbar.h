@@ -2,6 +2,8 @@
 
 #include "UserInterface/Components/MainComponent.h"
 
+#include "UserInterface/Components/Icons/Battery.h"
+
 class Toolbar : public MainComponent {
 
 	public:
@@ -10,7 +12,11 @@ class Toolbar : public MainComponent {
 
 		Toolbar();
 
+		void setShouldReRender(bool shouldReRender);
+
 	protected:
+
+		Battery *battery;
 
 		void renderDesign();
 
