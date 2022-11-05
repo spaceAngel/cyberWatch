@@ -13,7 +13,7 @@
 #include "UserInterface/WatchFaces/KnightRider.h"
 
 
-class DateTime : public App {
+class Watches : public App {
 
 	public:
 
@@ -25,7 +25,7 @@ class DateTime : public App {
 
 		bool handlePEKShort();
 
-		DateTime();
+		Watches();
 
 		bool hasToolbar();
 

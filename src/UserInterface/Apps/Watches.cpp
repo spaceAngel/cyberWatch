@@ -2,24 +2,24 @@
 
 #include <LilyGoWatch.h>
 
-#include "DateTime.h"
+#include "Watches.h"
 #include "UserInterface/Components/MainComponent.h"
 #include "Core/Registry.h"
 #include "Environment/AppSettings.h"
 #include "UserInterface/UserInterfaceManager.h"
 #include "UserInterface/WatchFaces/WatchFace.h"
 
-void DateTime::render() {
+void Watches::render() {
 	getCurrentFace()->render();
 }
 
-void DateTime::setShouldReRender(bool shouldReRender) {
+void Watches::setShouldReRender(bool shouldReRender) {
 	for (int32_t i = 0; i <= FACES; i++) {
 		this->clockFaces[i]->setShouldReRender(shouldReRender);
 	}
 }
 
-bool DateTime::handleSwipeVertical(int8_t vector) {
+bool Watches::handleSwipeVertical(int8_t vector) {
 	this->currentFace += vector;
 	if (this->currentFace > FACES) {
 		this->currentFace = 0;
@@ -33,22 +33,22 @@ bool DateTime::handleSwipeVertical(int8_t vector) {
 	return true;
 }
 
-WatchFace *DateTime::getCurrentFace() {
+WatchFace *Watches::getCurrentFace() {
 	return this->clockFaces[this->currentFace];
 }
 
-bool DateTime::handlePEKShort() {
+bool Watches::handlePEKShort() {
 	UserInterfaceManager::getInstance()->setIsLocked(
 		!UserInterfaceManager::getInstance()->isLocked()
 	);
 	return false;
 }
 
-bool DateTime::hasToolbar() {
+bool Watches::hasToolbar() {
 	return this->getCurrentFace()->hasToolbar();
 }
 
-DateTime::DateTime() {
+Watches::Watches() {
 	this->createFaces();
 	uint currentFace = Registry::getInstance()->getValue(Registry::NAME_WATCH_FACE);
 	if (
