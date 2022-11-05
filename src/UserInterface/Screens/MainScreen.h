@@ -2,7 +2,7 @@
 
 #include "UserInterface/Components/InfoPanel.h"
 #include "UserInterface/App.h"
-#include "UserInterface/Apps/DateTime.h"
+#include "UserInterface/Apps/Watches.h"
 #include "UserInterface/Apps/Calendar.h"
 #include "UserInterface/Apps/StopWatch.h"
 #include "UserInterface/Apps/SettingsPanel.h"
@@ -31,8 +31,6 @@ class MainScreen {
 
 			static MainScreen *inst;
 
-			InfoPanel *infoPanel;
-
 			const int8_t APPS = 4;
 
 			App *apps[5];
@@ -43,7 +41,7 @@ class MainScreen {
 			void clear();
 
 			void createApps() {
-				this->apps[0] = new DateTime();
+				this->apps[0] = new Watches();
 				this->apps[1] = new Calendar();
 				this->apps[2] = new StopWatch();
 				this->apps[3] = new SettingsPanel();

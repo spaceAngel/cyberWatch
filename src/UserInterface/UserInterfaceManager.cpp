@@ -183,3 +183,13 @@ bool UserInterfaceManager::isLocked() {
 void UserInterfaceManager::setIsLocked(bool locked) {
 	this->locked = locked;
 }
+
+void UserInterfaceManager::clearScreen() {
+	TTGOClass::getWatch()->tft->fillRect(
+		0,
+		0,
+		TTGOClass::getWatch()->tft->width(),
+		TTGOClass::getWatch()->tft->height(),
+		COLOR_BACKGROUND
+	);
+}

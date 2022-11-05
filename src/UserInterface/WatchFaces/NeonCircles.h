@@ -11,6 +11,10 @@ class NeonCircles : public WatchFace {
 		void render();
 		void setShouldReRender(bool shouldReRender);
 
+		bool hasInfoPanel() {
+			return true;
+		}
+
 	protected:
 
 		NeonCircle *circles [2];

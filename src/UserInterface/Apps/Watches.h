@@ -11,7 +11,7 @@
 #include "UserInterface/WatchFaces/NeonCircles.h"
 #include "UserInterface/WatchFaces/SensorGrid.h"
 #include "UserInterface/WatchFaces/KnightRider.h"
-
+#include "UserInterface/Components/InfoPanel.h"
 
 class Watches : public App {
 
@@ -27,7 +27,7 @@ class Watches : public App {
 
 		Watches();
 
-		bool hasToolbar();
+		bool hasNotificationBar();
 
 	protected:
 
@@ -35,6 +35,8 @@ class Watches : public App {
 
 		WatchFace *clockFaces[7];
 		int8_t currentFace = 6;
+
+		InfoPanel *infoPanel;
 
 		void createFaces() {
 			clockFaces[0] = new DigitalClocks();

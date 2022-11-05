@@ -12,6 +12,10 @@ class ProgressBars : public WatchFace {
 
 		ProgressBars();
 
+		bool hasInfoPanel() {
+			return true;
+		}
+
 	protected:
 
 		ProgressBar *bars[3];

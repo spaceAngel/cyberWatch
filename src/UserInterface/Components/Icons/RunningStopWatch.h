@@ -1,6 +1,8 @@
 #include "config.h"
 
-class RunningStopWatch {
+#include "UserInterface/Components/MainComponent.h"
+
+class RunningStopWatch : public MainComponent {
 
 	public:
 

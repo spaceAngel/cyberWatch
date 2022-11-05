@@ -2,7 +2,6 @@
 
 #include "MainScreen.h"
 
-#include "UserInterface/Components/InfoPanel.h"
 #include "UserInterface/Components/NotificationBar/NotificationBar.h"
 
 MainScreen* MainScreen::inst;
@@ -19,13 +18,11 @@ void MainScreen::render() {
 	if (this->getCurrentApp()->hasNotificationBar()) {
 		this->notificationBar->render();
 	}
-	this->infoPanel->render();
 }
 
 MainScreen::MainScreen() {
 	this->createApps();
 	this->notificationBar = new NotificationBar();
-	this->infoPanel = new InfoPanel();
 }
 
 void MainScreen::handleSwipeHorizontal(int vector) {
@@ -41,7 +38,6 @@ void MainScreen::handleSwipeHorizontal(int vector) {
 
 	this->getCurrentApp()->setShouldReRender(true);
 	this->notificationBar->setShouldReRender(true);
-	this->infoPanel->setShouldReRender(true);
 	this->getCurrentApp()->setIsActive(true);
 	this->clear();
 	this->render();
@@ -50,6 +46,7 @@ void MainScreen::handleSwipeHorizontal(int vector) {
 void MainScreen::handleSwipeVertical(int vector) {
 	if (this->getCurrentApp()->handleSwipeVertical(vector) == true) {
 		this->clear();
+		this->notificationBar->setShouldReRender(true);
 	}
 }
 

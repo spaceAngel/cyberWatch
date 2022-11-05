@@ -10,13 +10,17 @@
 #include "UserInterface/WatchFaces/WatchFace.h"
 
 void Watches::render() {
-	getCurrentFace()->render();
+	this->getCurrentFace()->render();
+	if (this->getCurrentFace()->hasInfoPanel()) {
+		this->infoPanel->render();
+	}
 }
 
 void Watches::setShouldReRender(bool shouldReRender) {
 	for (int32_t i = 0; i <= FACES; i++) {
 		this->clockFaces[i]->setShouldReRender(shouldReRender);
 	}
+	this->infoPanel->setShouldReRender(shouldReRender);
 }
 
 bool Watches::handleSwipeVertical(int8_t vector) {
@@ -29,7 +33,9 @@ bool Watches::handleSwipeVertical(int8_t vector) {
 	}
 
 	Registry::getInstance()->setValue(Registry::NAME_WATCH_FACE, this->currentFace);
+	UserInterfaceManager::getInstance()->clearScreen();
 	this->getCurrentFace()->setShouldReRender(true);
+	this->infoPanel->setShouldReRender(true);
 	return true;
 }
 
@@ -44,11 +50,12 @@ bool Watches::handlePEKShort() {
 	return false;
 }
 
-bool Watches::hasToolbar() {
+bool Watches::hasNotificationBar() {
 	return this->getCurrentFace()->hasToolbar();
 }
 
 Watches::Watches() {
+	this->infoPanel = new InfoPanel();
 	this->createFaces();
 	uint currentFace = Registry::getInstance()->getValue(Registry::NAME_WATCH_FACE);
 	if (

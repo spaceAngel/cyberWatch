@@ -3,8 +3,9 @@
 #include "config.h"
 
 #include "Core/Hardware/BatteryManager.h"
+#include "UserInterface/Components/MainComponent.h"
 
-class DisplayOn {
+class DisplayOn : public MainComponent{
 
 	public:
 

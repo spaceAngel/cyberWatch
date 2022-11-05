@@ -27,6 +27,8 @@ class UserInterfaceManager {
 		bool isLocked();
 		void setIsLocked(bool locked);
 
+		void clearScreen();
+
 		protected:
 
 			const int8_t VECTOR_LEFT = 1;
@@ -65,5 +67,6 @@ class UserInterfaceManager {
 			void stopSwipeHandlerVertical();
 
 			void handleSwipeVertical(uint y);
+
 
 };

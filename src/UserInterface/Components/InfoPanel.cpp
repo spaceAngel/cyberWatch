@@ -13,4 +13,6 @@ void InfoPanel::render() {
 
 void InfoPanel::setShouldReRender(bool shouldReRender) {
 	this->battery->setShouldReRender(shouldReRender);
+	this->displayOn->setShouldReRender(shouldReRender);
+	this->runningStopWatch->setShouldReRender(shouldReRender);
 }

@@ -10,7 +10,10 @@
 
 void RunningStopWatch::render() {
 	bool state = AppsStatusMonitor::getInstance()->isStopWatchRunning();
-	if (state != this->wasRunning) {
+	if (
+		state != this->wasRunning
+		|| this->shouldReRender()
+	) {
 		if (state == false) {
 			this->clear();
 		} else {

@@ -11,4 +11,8 @@ class WatchFace : public MainComponent {
 			return false;
 		}
 
+		virtual bool hasInfoPanel() {
+			return false;
+		}
+
 };

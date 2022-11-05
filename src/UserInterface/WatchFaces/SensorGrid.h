@@ -10,6 +10,10 @@ class SensorGrid : public WatchFace {
 
 		SensorGrid();
 
+		bool hasInfoPanel() {
+			return true;
+		}
+
 	protected:
 		uint8_t prevMinute = 99;
 		uint8_t prevSecond = 99;
