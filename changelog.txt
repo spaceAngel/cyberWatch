@@ -1,5 +1,7 @@
-cyberWatch 0.5
+cyberWatch 1.0
 ========================
+- REFACTOR: rewrite UI
+- FEATURE: notification bar in top of the display
 - FEATURE: display adjust is changeable in settings screen / miniapp
 - FEATURE: using run modes to control flow of current mode (for future pin screen after start, battery charging when connect turned off watches to power supply)
 - FEATURE: charging mode (when connect power to turned off watches, show battery icon + % bar instead of fully start)
