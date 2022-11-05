@@ -25,7 +25,7 @@ SettingsPanelButton::SettingsPanelButton(
  }
 
  uint8_t SettingsPanelButton::getY() {
-	return 10 + (((int32_t)this->row - 1) * 51);
+	return 40 + (((int32_t)this->row - 1) * 51);
  }
 
  uint8_t SettingsPanelButton::getWidth() {

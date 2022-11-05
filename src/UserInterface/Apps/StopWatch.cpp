@@ -36,9 +36,7 @@ void StopWatch::render() {
 		this->prevTime = stopTime;
 		this->setShouldReRender(false);
 	}
-
 }
-
 
 bool StopWatch::handlePEKShort() {
 	if (this->running) { //is running, PEK means stop

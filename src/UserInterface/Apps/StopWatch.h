@@ -18,7 +18,7 @@ class StopWatch : public App {
 
 		protected:
 
-			const uint8_t POS_Y = 48;
+			const uint8_t POS_Y = 83;
 
 			int64_t startAt = 0;
 			int64_t stopAt = 0;

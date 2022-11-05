@@ -12,9 +12,16 @@ class Planetoid : public WatchFace {
 
 		void render();
 
+		bool hasToolbar() {
+			return true;
+		}
+
 	protected:
 
 		uint8_t prevSecond = 99;
+
+		uint8_t const POS_Y = 120;
+		uint8_t const RADIUS = 80;
 
 		void clear();
 		void renderFace();

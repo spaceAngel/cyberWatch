@@ -17,13 +17,7 @@ void NotificationBar::render() {
 
 void NotificationBar::renderDesign() {
 	if (this->shouldReRender()) {
-		TTGOClass::getWatch()->tft->drawLine(
-			0,
-			26,
-			TTGOClass::getWatch()->tft->width(),
-			26,
-			COLOR_MAIN_3
-		);
+
 	}
 }
 

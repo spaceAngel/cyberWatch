@@ -79,6 +79,7 @@ void  MainScreen::setToDefaultApp() {
 		this->clear();
 		this->currentApp = 0;
 		this->apps[0]->setShouldReRender(true);
+		this->notificationBar->setShouldReRender(true);
 	}
 }
 

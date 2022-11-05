@@ -65,7 +65,7 @@ void AboutPanel::renderCompilationData() {
 }
 
 uint8_t AboutPanel::calculatePosY(uint8_t row, bool shifted) {
-	return (shifted ? 30 : 15)
+	return (shifted ? 60 : 45)
 	+ (TTGOClass::getWatch()->tft->fontHeight() * (row * 1.1));
 }
 

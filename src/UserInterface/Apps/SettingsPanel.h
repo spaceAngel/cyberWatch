@@ -8,7 +8,7 @@
 #include "Core/Hardware/MotorController.h"
 
 #define ADJUSTBAR_HEIGHT 24
-#define ADJUSTBAR_POSY 118
+#define ADJUSTBAR_POSY 158
 
 class SettingsPanel : public App {
 

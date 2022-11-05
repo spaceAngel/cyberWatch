@@ -51,9 +51,9 @@ void Calendar::renderDelimiter(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 	) {
 		TTGOClass::getWatch()->tft->drawLine(
 			(int32_t)dayInWeek * 34,
-			(2 + ((int32_t)row * 23)),
+			(42 + ((int32_t)row * 23)),
 			((int32_t)dayInWeek * 34),
-			2 + (((int32_t)row + 1) * 23),
+			42 + (((int32_t)row + 1) * 23),
 			COLOR_MAIN_1
 		);
 	}
@@ -68,7 +68,7 @@ void Calendar::renderIsNowBox(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 	) {
 		TTGOClass::getWatch()->tft->drawRect(
 			(1 + ((int32_t)dayInWeek - 1) * 34),
-			(4 + ((int32_t)row * 23)),
+			(44 + ((int32_t)row * 23)),
 			33,
 			24,
 			COLOR_MAIN_2
@@ -83,17 +83,17 @@ void Calendar::renderDay(uint8_t day, uint8_t row, uint8_t dayInWeek) {
 	TTGOClass::getWatch()->tft->drawString(
 		str,
 		(((int32_t)day < 10) ? 13 : 0) + 3 + (((int32_t)dayInWeek - 1) * 34),
-		(6 + ((int32_t)row * 23))
+		(46 + ((int32_t)row * 23))
 	);
 }
 
 void Calendar::renderMonthYearLabel() {
 	char monthNameShort[4];
 	DateUtil::monthNameShort(monthNameShort, this->month);
-	TTGOClass::getWatch()->tft->drawString(monthNameShort, 182, 125);
+	TTGOClass::getWatch()->tft->drawString(monthNameShort, 182, 175);
 	char year[5];
 	(void)snprintf(year, sizeof(year), "%d", this->year);
-	TTGOClass::getWatch()->tft->drawString(year, 120, 125);
+	TTGOClass::getWatch()->tft->drawString(year, 120, 175);
 
 }
 
