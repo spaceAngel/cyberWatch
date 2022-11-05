@@ -1,17 +1,21 @@
 #include "config.h"
 
-#include "Toolbar.h"
+#include "NotificationBar.h"
 
 #include <LilyGoWatch.h>
 
 #include "UserInterface/Components/Icons/Battery.h"
+#include "UserInterface/Components/NotificationBar/DeviceStatusIconBar.h"
 
-void Toolbar::render() {
+#include "Core/Hardware/MotorController.h"
+
+void NotificationBar::render() {
 	this->renderDesign();
 	this->battery->render();
+	this->deviceStatusIconBar->render();
 }
 
-void Toolbar::renderDesign() {
+void NotificationBar::renderDesign() {
 	if (this->shouldReRender()) {
 		TTGOClass::getWatch()->tft->drawLine(
 			0,
@@ -23,15 +27,17 @@ void Toolbar::renderDesign() {
 	}
 }
 
-Toolbar::Toolbar() {
+NotificationBar::NotificationBar() {
 	this->battery = new Battery(
 		TTGOClass::getWatch()->tft->width() - 45,
 		0,
 		false
 	);
+	this->deviceStatusIconBar = new DeviceStatusIconBar();
 }
 
-void Toolbar::setShouldReRender(bool shouldReRender) {
+void NotificationBar::setShouldReRender(bool shouldReRender) {
 	this->battery->setShouldReRender(shouldReRender);
+	this->deviceStatusIconBar->setShouldReRender(shouldReRender);
 	MainComponent::setShouldReRender(shouldReRender);
 }

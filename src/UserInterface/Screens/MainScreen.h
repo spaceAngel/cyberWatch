@@ -8,7 +8,7 @@
 #include "UserInterface/Apps/SettingsPanel.h"
 #include "UserInterface/Apps/AboutPanel.h"
 #include "Core/AppsStatusMonitor.h"
-#include "UserInterface/Components/Toolbar.h"
+#include "UserInterface/Components/NotificationBar/NotificationBar.h"
 
 class MainScreen {
 
@@ -38,7 +38,7 @@ class MainScreen {
 			App *apps[5];
 			int8_t currentApp = 0;
 
-			Toolbar *toolbar;
+			NotificationBar *notificationBar;
 
 			void clear();
 

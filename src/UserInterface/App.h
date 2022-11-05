@@ -6,7 +6,7 @@ class App {
 
 		virtual void render() {}
 
-		virtual bool hasToolbar() {
+		virtual bool hasNotificationBar() {
 			return true;
 		}
 
