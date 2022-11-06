@@ -40,6 +40,11 @@ class SettingsPanel : public App {
 		bool controlModeIsTouch();
 		bool handleTouch(uint8_t x, uint8_t y);
 		void setShouldReRender(bool shouldReRender);
+		bool canHandleLongTouch() {
+			return true;
+		}
+
+		bool handleLongTouch(uint8_t x, uint8_t y);
 
 	protected:
 

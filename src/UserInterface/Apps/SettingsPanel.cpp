@@ -9,6 +9,8 @@
 #include <LilyGoWatch.h>
 
 #include "Core/Hardware/Esp32.h"
+#include "UserInterface/Apps/AboutPanel.h"
+#include "UserInterface/Screens/MainScreen.h"
 
 void SettingsPanel::render() {
 	if (
@@ -115,4 +117,9 @@ void SettingsPanel::renderAdjustBar() {
 			COLOR_BACKGROUND
 		);
 	}
+}
+
+bool SettingsPanel::handleLongTouch(uint8_t x, uint8_t y) {
+	MainScreen::getInstance()->setAppOnTop(new AboutPanel());
+	return true;
 }

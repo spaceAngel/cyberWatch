@@ -8,6 +8,9 @@
 #include "Environment/AppSettings.h"
 #include "UserInterface/UserInterfaceManager.h"
 #include "UserInterface/WatchFaces/WatchFace.h"
+#include "Core/Hardware/MotorController.h"
+#include "UserInterface/Screens/MainScreen.h"
+#include "UserInterface/Apps/SettingsPanel.h"
 
 void Watches::render() {
 	this->getCurrentFace()->render();
@@ -64,4 +67,10 @@ Watches::Watches() {
 	) {
 		this->currentFace = currentFace;
 	}
+}
+
+
+bool Watches::handleLongTouch(uint8_t x, uint8_t y) {
+	MainScreen::getInstance()->setAppOnTop(new SettingsPanel());
+	return true;
 }

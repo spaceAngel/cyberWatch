@@ -29,6 +29,12 @@ class Watches : public App {
 
 		bool hasNotificationBar();
 
+		bool canHandleLongTouch() {
+			return true;
+		}
+
+		bool handleLongTouch(uint8_t x, uint8_t y);
+
 	protected:
 
 		const int FACES = 6;

@@ -32,9 +32,9 @@ class MainScreen {
 
 			static MainScreen *inst;
 
-			const int8_t APPS = 4;
+			const int8_t APPS = 2;
 
-			App *apps[5];
+			App *apps[3];
 			int8_t currentApp = 0;
 
 			App *appOnTop = nullptr;
@@ -47,8 +47,6 @@ class MainScreen {
 				this->apps[0] = new Watches();
 				this->apps[1] = new Calendar();
 				this->apps[2] = new StopWatch();
-				this->apps[3] = new SettingsPanel();
-				this->apps[4] = new AboutPanel();
 			}
 			MainScreen();
 
