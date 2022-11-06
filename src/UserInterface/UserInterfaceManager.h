@@ -51,6 +51,8 @@ class UserInterfaceManager {
 			bool touchReleased = true;
 			bool touchFromInactivity = false;;
 
+			uint lastTouched = 0;
+
 			int16_t lastTouchX;
 			int16_t lastTouchY;
 			bool swipeWasHandled = false;

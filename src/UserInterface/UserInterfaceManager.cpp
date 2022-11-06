@@ -45,6 +45,14 @@ bool UserInterfaceManager::handleTouch() {
 		|| ((x == 257) && (y == 2)) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
 	) {
 		if (
+			this->isLocked()
+			&& this->lastTouched > 0
+			&& this->lastTouched + LONGTOUCH_UNLOCK < millis()
+			&& this->touchFromInactivity == false
+		) {
+			this->setIsLocked(false);
+		}
+		if (
 			this->touchFromInactivity == false
 			&& this->touchReleased == false
 			&& this->swipeWasHandled == false
@@ -54,6 +62,7 @@ bool UserInterfaceManager::handleTouch() {
 		this->touchReleased = true;
 		this->swipeWasHandled = false;
 		this->touchFromInactivity = InactivityWatcher::getInstance()->isInactive();
+		this->lastTouched = 0;
 
 	} else {
 		if (this->isLocked() != true) {
@@ -66,6 +75,13 @@ bool UserInterfaceManager::handleTouch() {
 			if (this->swipeEnabled == true) {
 				this->handleSwipeHorizontal(x);
 				this->handleSwipeVertical(y);
+			}
+		} else {
+
+			if (
+				this->lastTouched == 0
+			) {
+				this->lastTouched = millis();
 			}
 		}
 		handled = true;
