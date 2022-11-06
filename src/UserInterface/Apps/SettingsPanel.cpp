@@ -30,10 +30,6 @@ void SettingsPanel::render() {
 	}
 }
 
-bool SettingsPanel::handlePEKShort() {
-	return false;
-}
-
 bool SettingsPanel::controlModeIsTouch() {
 	return true;
 }
@@ -121,5 +117,10 @@ void SettingsPanel::renderAdjustBar() {
 
 bool SettingsPanel::handleLongTouch(uint8_t x, uint8_t y) {
 	MainScreen::getInstance()->setAppOnTop(new AboutPanel());
+	return true;
+}
+
+bool SettingsPanel::handlePEKShort() {
+	MainScreen::getInstance()->setToDefaultApp();
 	return true;
 }

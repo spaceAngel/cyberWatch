@@ -15,7 +15,6 @@ class SettingsPanel : public App {
 	public:
 
 		void render();
-		bool handlePEKShort();
 
 		SettingsPanel() {
 			this->lastMask = AppSettings::getInstance()->getSettingsByteMask();
@@ -45,6 +44,8 @@ class SettingsPanel : public App {
 		}
 
 		bool handleLongTouch(uint8_t x, uint8_t y);
+
+		bool handlePEKShort();
 
 	protected:
 

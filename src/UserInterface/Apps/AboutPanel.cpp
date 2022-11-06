@@ -5,6 +5,8 @@
 #include <LilyGoWatch.h>
 #include "Environment/compilationdata.h"
 #include "Environment/SystemInfo.h"
+#include "UserInterface/Screens/MainScreen.h"
+#include "UserInterface/Apps/SettingsPanel.h"
 
 void AboutPanel::render() {
 
@@ -85,6 +87,11 @@ void AboutPanel::secondsToString(uint totalSeconds, char (&string)[20]) {
 	} else {
 		snprintf(string, sizeof(string), " %02d:%02d:%02d", hours, minutes, totalSeconds);
 	}
+}
+
+bool AboutPanel::handlePEKShort() {
+	MainScreen::getInstance()->setAppOnTop(new SettingsPanel());
+	return true;
 }
 
 AboutPanel::AboutPanel() {
