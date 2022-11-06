@@ -26,6 +26,7 @@ void KnightRider::setShouldReRender(bool shouldReRender) {
 		this->buttons[i]->setShouldReRender(shouldReRender);
 	}
 	this->batteryBar->setShouldReRender(shouldReRender);
+	this->deviceBar->setShouldReRender(shouldReRender);
 }
 
 void KnightRider::renderDataCells() {
