@@ -3,6 +3,7 @@ cyberWatch 1.0
 - REFACTOR: rewrite UI
 - FEATURE: notification bar in top of the display
 - FEATURE: locked display can be unlocked by "long touch" - (>0.4s)
+- FEATURE: apps can handle long touch - (>0.4s)
 - FEATURE: display adjust is changeable in settings screen / miniapp
 - FEATURE: using run modes to control flow of current mode (for future pin screen after start, battery charging when connect turned off watches to power supply)
 - FEATURE: charging mode (when connect power to turned off watches, show battery icon + % bar instead of fully start)

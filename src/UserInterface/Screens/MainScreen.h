@@ -22,7 +22,7 @@ class MainScreen {
 		void handleSwipeVertical(int vector);
 		void handlePEKShort();
 		bool isSleepForbidden();
-		void handleTouch(uint8_t x, uint8_t y);
+		void handleTouch(uint8_t x, uint8_t y, bool isLongTouch);
 		void setToDefaultApp();
 		void switchApp(int vector);
 		App *getCurrentApp();

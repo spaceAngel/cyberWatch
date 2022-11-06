@@ -18,6 +18,14 @@ class App {
 			return false;
 		}
 
+		virtual bool canHandleLongTouch() {
+			return false;
+		}
+
+		virtual bool handleLongTouch(uint8_t x, uint8_t y) {
+			return false;
+		}
+
 		virtual bool handleTouch(uint8_t x, uint8_t y) {
 			return false;
 		}

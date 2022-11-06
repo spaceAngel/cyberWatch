@@ -57,7 +57,11 @@ bool UserInterfaceManager::handleTouch() {
 			&& this->touchReleased == false
 			&& this->swipeWasHandled == false
 		)  {
-			MainScreen::getInstance()->handleTouch(this->lastTouchX, this->lastTouchY);
+			MainScreen::getInstance()->handleTouch(
+				this->lastTouchX,
+				this->lastTouchY,
+				this->lastTouched + LONGTOUCH_INAPP < millis()
+			);
 		}
 		this->touchReleased = true;
 		this->swipeWasHandled = false;
@@ -76,13 +80,12 @@ bool UserInterfaceManager::handleTouch() {
 				this->handleSwipeHorizontal(x);
 				this->handleSwipeVertical(y);
 			}
-		} else {
+		}
 
-			if (
-				this->lastTouched == 0
-			) {
-				this->lastTouched = millis();
-			}
+		if (
+			this->lastTouched == 0
+		) {
+			this->lastTouched = millis();
 		}
 		handled = true;
 	}

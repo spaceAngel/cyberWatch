@@ -66,8 +66,15 @@ bool MainScreen::isSleepForbidden() {
 	return rslt;
 }
 
-void MainScreen::handleTouch(uint8_t x, uint8_t y) {
-	if (this->getCurrentApp()->controlModeIsTouch() == true) {
+void MainScreen::handleTouch(uint8_t x, uint8_t y, bool isLongTouch ){
+	if (
+		this->getCurrentApp()->canHandleLongTouch() == true
+		&& isLongTouch
+	) {
+		if (this->getCurrentApp()->handleLongTouch(x, y) == true) {
+			this->clear();
+		}
+	} else  if (this->getCurrentApp()->controlModeIsTouch() == true) {
 		if (this->getCurrentApp()->handleTouch(x, y) == true) {
 			this->clear();
 		}
