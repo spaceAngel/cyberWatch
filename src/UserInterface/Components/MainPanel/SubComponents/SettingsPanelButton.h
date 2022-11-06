@@ -2,9 +2,9 @@
 
 #include <Arduino.h>
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/Components/Component.h"
 
-class SettingsPanelButton : public MainComponent {
+class SettingsPanelButton : public Component {
 
 	public:
 

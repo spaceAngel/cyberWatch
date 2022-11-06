@@ -3,7 +3,7 @@
 #include <LilyGoWatch.h>
 
 #include "Watches.h"
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/Components/Component.h"
 #include "Core/Registry.h"
 #include "Environment/AppSettings.h"
 #include "UserInterface/UserInterfaceManager.h"

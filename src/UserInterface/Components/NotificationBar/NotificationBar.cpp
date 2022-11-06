@@ -31,5 +31,5 @@ NotificationBar::NotificationBar() {
 void NotificationBar::setShouldReRender(bool shouldReRender) {
 	this->battery->setShouldReRender(shouldReRender);
 	this->deviceStatusIconBar->setShouldReRender(shouldReRender);
-	MainComponent::setShouldReRender(shouldReRender);
+	Component::setShouldReRender(shouldReRender);
 }

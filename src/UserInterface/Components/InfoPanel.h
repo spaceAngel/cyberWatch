@@ -1,6 +1,6 @@
 #pragma once
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/Components/Component.h"
 #include "UserInterface/Components/InfoPanel/StepCounter.h"
 #include "UserInterface/Components/Icons/Battery.h"
 #include "UserInterface/Components/Icons/RunningStopWatch.h"
@@ -8,7 +8,7 @@
 #include "UserInterface/Components/Icons/Lock.h"
 #include "UserInterface/Components/Icons/Charger.h"
 
-class InfoPanel : public MainComponent{
+class InfoPanel : public Component{
 
 	public:
 

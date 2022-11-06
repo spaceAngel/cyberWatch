@@ -27,7 +27,7 @@ ProgressBars::ProgressBars() {
 }
 
 void ProgressBars::setShouldReRender(bool shouldReRender) {
-	MainComponent::setShouldReRender(shouldReRender);
+	Component::setShouldReRender(shouldReRender);
 	this->bars[0]->setShouldReRender(shouldReRender);
 	this->bars[1]->setShouldReRender(shouldReRender);
 	this->bars[2]->setShouldReRender(shouldReRender);

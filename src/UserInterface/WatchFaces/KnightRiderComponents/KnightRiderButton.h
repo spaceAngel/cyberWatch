@@ -1,8 +1,8 @@
 #pragma once
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/Components/Component.h"
 
-class KnightRiderButton : public MainComponent {
+class KnightRiderButton : public Component {
 
 	public:
 

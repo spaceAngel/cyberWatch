@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 
-class MainComponent {
+class Component {
 
 	public:
 

@@ -6,9 +6,9 @@
 #define DEVICESTATE_NOTIFICATIONS_DISPLAY_LOCKED 8
 
 #include "UserInterface/Icons/IconStruct.h"
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/Components/Component.h"
 
-class DeviceStatusIconBar : public MainComponent {
+class DeviceStatusIconBar : public Component {
 
 	public:
 

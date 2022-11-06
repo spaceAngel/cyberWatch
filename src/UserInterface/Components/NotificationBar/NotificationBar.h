@@ -1,11 +1,11 @@
 #pragma once
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/Components/Component.h"
 
 #include "UserInterface/Components/Icons/Battery.h"
 #include "UserInterface/Components/NotificationBar/DeviceStatusIconBar.h"
 
-class NotificationBar : public MainComponent {
+class NotificationBar : public Component {
 
 	public:
 

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/Components/Component.h"
 
-class ProgressBar : public MainComponent {
+class ProgressBar : public Component {
 
 	public:
 

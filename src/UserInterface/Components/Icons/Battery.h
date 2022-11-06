@@ -3,9 +3,9 @@
 #include "config.h"
 
 #include "Core/Hardware/BatteryManager.h"
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/Components/Component.h"
 
-class Battery : public MainComponent {
+class Battery : public Component {
 
 	public:
 

@@ -6,9 +6,9 @@
 
 #include <Arduino.h>
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/Components/Component.h"
 
-class KnightRiderDeviceState : public MainComponent {
+class KnightRiderDeviceState : public Component {
 
 	public:
 

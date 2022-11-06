@@ -4,9 +4,9 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/Components/MainComponent.h"
+#include "UserInterface/Components/Component.h"
 
-class Date : public MainComponent {
+class Date : public Component {
 	public:
 		void render();
 

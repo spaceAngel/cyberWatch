@@ -21,7 +21,7 @@ void KnightRider::render() {
 }
 
 void KnightRider::setShouldReRender(bool shouldReRender) {
-	MainComponent::setShouldReRender(shouldReRender);
+	Component::setShouldReRender(shouldReRender);
 	for (uint8_t i = 0; i<= 5; i++) {
 		this->buttons[i]->setShouldReRender(shouldReRender);
 	}
