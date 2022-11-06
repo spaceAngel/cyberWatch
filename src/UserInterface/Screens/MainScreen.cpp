@@ -82,11 +82,17 @@ void MainScreen::handleTouch(uint8_t x, uint8_t y, bool isLongTouch ){
 }
 
 void  MainScreen::setToDefaultApp() {
-	if (this->currentApp != 0) {
+	if (
+		this->currentApp != 0
+		|| this->appOnTop != nullptr
+	) {
 		this->clear();
 		this->currentApp = 0;
 		this->apps[0]->setShouldReRender(true);
 		this->notificationBar->setShouldReRender(true);
+
+		delete this->appOnTop;
+		this->appOnTop = NULL;
 	}
 }
 
@@ -101,5 +107,9 @@ void MainScreen::clear() {
 }
 
 App *MainScreen::getCurrentApp() {
-	return this->apps[this->currentApp];
+	return this->appOnTop == nullptr ? this->apps[this->currentApp] : this->appOnTop;
+}
+
+void MainScreen::setAppOnTop(App* appOnTop) {
+	this->appOnTop = appOnTop;
 }

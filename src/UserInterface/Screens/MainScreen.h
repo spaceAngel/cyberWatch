@@ -25,6 +25,7 @@ class MainScreen {
 		void handleTouch(uint8_t x, uint8_t y, bool isLongTouch);
 		void setToDefaultApp();
 		void switchApp(int vector);
+		void setAppOnTop(App* app);
 		App *getCurrentApp();
 
 		protected:
@@ -35,6 +36,8 @@ class MainScreen {
 
 			App *apps[5];
 			int8_t currentApp = 0;
+
+			App *appOnTop = nullptr;
 
 			NotificationBar *notificationBar;
 
