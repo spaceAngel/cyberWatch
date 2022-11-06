@@ -1,7 +1,10 @@
 #pragma once
 
 #include "UserInterface/WatchFaces/WatchFace.h"
-#include "UserInterface/WatchFaces/Components/KnightRiderButton.h"
+#include "UserInterface/WatchFaces/KnightRiderComponents/KnightRiderButton.h"
+#include "UserInterface/WatchFaces/KnightRiderComponents/KnightRiderSpeaker.h"
+#include "UserInterface/WatchFaces/KnightRiderComponents/KnightRiderBatteryBar.h"
+#include "UserInterface/WatchFaces/KnightRiderComponents/KnightRiderDeviceState.h"
 
 class KnightRider : public WatchFace {
 
@@ -14,18 +17,14 @@ class KnightRider : public WatchFace {
 
 	protected:
 
-		uint8_t const CELL_WIDTH = 18;
-		uint8_t const CELL_HEIGHT = 10;
-
-		uint8_t ticks = 0;
-
 		KnightRiderButton *buttons[6];
-
-		void renderSpeaker();
-		void renderSpeakerCol(uint8_t col, uint8_t value);
-		void renderSpeakerCell(int8_t row, uint8_t col);
+		KnightRiderSpeaker *speaker;
+		KnightRiderBatteryBar *batteryBar;
+		KnightRiderDeviceState *deviceBar;
 
 		void renderDataCells();
+
+		void renderBattery(uint8_t capacity);
 
 
 };
