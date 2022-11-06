@@ -7,8 +7,6 @@
 #include "UserInterface/Components/Icons/Battery.h"
 #include "UserInterface/Components/NotificationBar/DeviceStatusIconBar.h"
 
-#include "Core/Hardware/MotorController.h"
-
 void NotificationBar::render() {
 	this->renderDesign();
 	this->battery->render();

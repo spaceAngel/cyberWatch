@@ -5,7 +5,6 @@
 
 #include "CyberWatch.h"
 #include "Core/Hardware/Esp32.h"
-#include "Core/Hardware/MotorController.h"
 #include "Core/Hardware/BatteryManager.h"
 
 

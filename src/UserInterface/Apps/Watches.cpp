@@ -8,7 +8,6 @@
 #include "Environment/AppSettings.h"
 #include "UserInterface/UserInterfaceManager.h"
 #include "UserInterface/WatchFaces/WatchFace.h"
-#include "Core/Hardware/MotorController.h"
 #include "UserInterface/Screens/MainScreen.h"
 #include "UserInterface/Apps/SettingsPanel.h"
 

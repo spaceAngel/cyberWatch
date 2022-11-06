@@ -9,7 +9,6 @@
 #include "Core/Hardware/Esp32.h"
 #include "Core/Hardware/BatteryManager.h"
 #include "Core/Hardware/MoveSensor.h"
-#include "Core/Hardware/MotorController.h"
 #include "Environment/RunAfterCompilation.h"
 #include "Environment/SystemInfo.h"
 #include "Core/SystemTicker.h"

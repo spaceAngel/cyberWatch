@@ -5,7 +5,6 @@
 #include "UserInterface/App.h"
 #include "UserInterface/Components/MainPanel/SubComponents/SettingsPanelButton.h"
 #include "Environment/AppSettings.h"
-#include "Core/Hardware/MotorController.h"
 
 #define ADJUSTBAR_HEIGHT 24
 #define ADJUSTBAR_POSY 158
