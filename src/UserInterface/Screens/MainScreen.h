@@ -26,6 +26,8 @@ class MainScreen {
 		void setToDefaultApp();
 		void switchApp(int vector);
 		void setAppOnTop(App* app);
+		void destroy();
+
 		App *getCurrentApp();
 
 		protected:

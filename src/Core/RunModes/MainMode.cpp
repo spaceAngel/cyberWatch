@@ -12,10 +12,13 @@
 #include "Environment/SystemInfo.h"
 #include "Core/SystemTicker.h"
 #include "Events/EventManager.h"
+#include "UserInterface/Screens/MainScreen.h"
 
 
 void MainMode::switchedTo() {
+	MainScreen::getInstance()->destroy();
 	UserInterfaceManager::getInstance()->showSplashScreen();
+	InactivityWatcher::getInstance()->markActivity();
 };
 
 void MainMode::loop() {
