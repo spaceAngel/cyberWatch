@@ -77,7 +77,7 @@ bool UserInterfaceManager::handleTouch() {
 		}
 		this->touchReleased = true;
 		this->swipeWasHandled = false;
-		this->touchFromInactivity = InactivityWatcher::getInstance()->isInactive();
+		this->touchFromInactivity = !Display::getInstance()->isDisplayOn();
 		this->lastTouched = 0;
 
 	} else {
@@ -85,7 +85,7 @@ bool UserInterfaceManager::handleTouch() {
 			this->lastTouchX = x;
 			this->lastTouchY = y;
 			if (this->touchReleased == true) {
-				this->touchFromInactivity = InactivityWatcher::getInstance()->isInactive();
+				this->touchFromInactivity = !Display::getInstance()->isDisplayOn();
 				this->touchReleased = false;
 			}
 			if (this->swipeEnabled == true) {
