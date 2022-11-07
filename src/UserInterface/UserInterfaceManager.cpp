@@ -50,6 +50,7 @@ bool UserInterfaceManager::handleTouch() {
 			&& this->lastTouched > 0
 			&& this->lastTouched + LONGTOUCH_UNLOCK < millis()
 			&& this->touchFromInactivity == false
+			&& this->lastTouched + TOUCH_LIFETIME > millis()
 		) {
 			this->setIsLocked(false);
 		}
@@ -66,6 +67,7 @@ bool UserInterfaceManager::handleTouch() {
 			this->touchFromInactivity == false
 			&& this->touchReleased == false
 			&& this->swipeWasHandled == false
+			&& this->lastTouched + TOUCH_LIFETIME > millis()
 		)  {
 			MainScreen::getInstance()->handleTouch(
 				this->lastTouchX,
