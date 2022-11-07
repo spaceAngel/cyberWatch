@@ -11,6 +11,7 @@
 #include "Utils/TimeUtil.h"
 #include "Core/Hardware/Display.h"
 #include "Core/InactivityWatcher.h"
+#include "UserInterface/Apps/MsgBoxes/Locked.h"
 
 UserInterfaceManager *UserInterfaceManager::inst;
 
@@ -51,6 +52,15 @@ bool UserInterfaceManager::handleTouch() {
 			&& this->touchFromInactivity == false
 		) {
 			this->setIsLocked(false);
+		}
+
+		if (
+			this->isLocked()
+			&& this->lastTouched > 0
+			&& this->lastTouched + LONGTOUCH_UNLOCK > millis()
+			&& this->touchFromInactivity == false
+		) {
+			MainScreen::getInstance()->setAppOnTop(new Locked());
 		}
 		if (
 			this->touchFromInactivity == false
