@@ -5,6 +5,7 @@
 #include <LilyGoWatch.h>
 #include "UserInterface/Screens/MainScreen.h"
 #include "UserInterface/UserInterfaceManager.h"
+#include "Core/Hardware/MotorController.h"
 
 void Locked::render() {
 	if (
@@ -51,5 +52,15 @@ void Locked::renderText(uint8_t line, char* text) {
 
 bool Locked::handlePEKShort() {
 	UserInterfaceManager::getInstance()->setIsLocked(false);
+	return true;
+}
+
+bool Locked::handleLongTouch(uint8_t x, uint8_t y) {
+	UserInterfaceManager::getInstance()->setIsLocked(false);
+	return true;
+}
+
+bool Locked::handleTouch(uint8_t x, uint8_t y) {
+	MainScreen::getInstance()->setToDefaultApp();
 	return true;
 }
