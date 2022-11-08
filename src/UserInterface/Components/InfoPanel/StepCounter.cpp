@@ -9,14 +9,19 @@
 void StepCounter::render() {
 	if (
 		SystemTicker::getInstance()->isTickFor(TICKER_STEPS)
+		|| this->shouldReRender()
 	) {
-		if (iconIsRendered == false) {
+		if (this->shouldReRender()) {
 			UserInterfaceManager::getInstance()->renderIcon(iconFootPrints, (int32_t)POS_X + 7,  POS_Y);
 		}
+
 		TTGOClass::getWatch()->bma->readInterrupt();
 		uint stepCount = TTGOClass::getWatch()->bma->getCounter();
 
-		if (stepCount != this->prevStepCount) {
+		if (
+			stepCount != this->prevStepCount
+			|| this->shouldReRender()
+		) {
 			this->clearDisplay();
 			char steps[8];
 			(void)snprintf(
@@ -29,6 +34,7 @@ void StepCounter::render() {
 			TTGOClass::getWatch()->tft->drawString(steps, (int32_t)POS_X + 43, (int32_t)POS_Y + 1);
 			this->prevStepCount = stepCount;
 		}
+		this->setShouldReRender(false);
 	}
 }
 

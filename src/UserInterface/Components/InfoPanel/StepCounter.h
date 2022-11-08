@@ -2,7 +2,9 @@
 
 #include <Arduino.h>
 
-class StepCounter {
+#include "UserInterface/Components/Component.h"
+
+class StepCounter : public Component {
 
 	public:
 
@@ -14,7 +16,6 @@ class StepCounter {
 		const uint8_t POS_Y = 180;
 
 		uint prevStepCount = 0;
-		bool iconIsRendered = false;
 
 		void clearDisplay();
 
