@@ -48,23 +48,26 @@ bool UserInterfaceManager::handleTouch() {
 		if (
 			this->isLocked()
 			&& this->lastTouched > 0
-			&& this->lastTouched + LONGTOUCH_UNLOCK < millis()
 			&& this->touchFromInactivity == false
 			&& this->lastTouched + TOUCH_LIFETIME > millis()
 		) {
-			this->setIsLocked(false);
+			if (MainScreen::getInstance()->getCurrentApp()->canBeTouchedLocked()) {
+				MainScreen::getInstance()->handleTouch(
+					this->lastTouchX,
+					this->lastTouchY,
+					this->lastTouched + LONGTOUCH_INAPP < millis()
+				);
+			} else {
+				if (this->lastTouched + LONGTOUCH_UNLOCK < millis()) {
+					this->setIsLocked(false);
+				} else {
+					MainScreen::getInstance()->setAppOnTop(new Locked());
+				}
+			}
 		}
-
 		if (
-			this->isLocked()
-			&& this->lastTouched > 0
-			&& this->lastTouched + LONGTOUCH_UNLOCK > millis()
+			!this->isLocked()
 			&& this->touchFromInactivity == false
-		) {
-			MainScreen::getInstance()->setAppOnTop(new Locked());
-		}
-		if (
-			this->touchFromInactivity == false
 			&& this->touchReleased == false
 			&& this->swipeWasHandled == false
 			&& this->lastTouched + TOUCH_LIFETIME > millis()

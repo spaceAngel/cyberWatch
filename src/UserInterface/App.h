@@ -30,6 +30,10 @@ class App {
 			return false;
 		}
 
+		virtual bool canBeTouchedLocked() {
+			return false;
+		}
+
 		virtual void setShouldReRender(bool shouldReRender) {
 			this->shouldRerender = shouldReRender;
 		}
