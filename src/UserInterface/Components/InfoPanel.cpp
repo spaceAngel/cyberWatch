@@ -16,4 +16,5 @@ void InfoPanel::setShouldReRender(bool shouldReRender) {
 	this->displayOn->setShouldReRender(shouldReRender);
 	this->runningStopWatch->setShouldReRender(shouldReRender);
 	this->stepCounter->setShouldReRender(shouldReRender);
+	this->lock->setShouldReRender(shouldReRender);
 }

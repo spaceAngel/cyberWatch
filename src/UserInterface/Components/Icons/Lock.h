@@ -3,8 +3,9 @@
 #include "config.h"
 
 #include "Core/Hardware/BatteryManager.h"
+#include "UserInterface/Components/Component.h"
 
-class Lock {
+class Lock : public Component{
 
 	public:
 

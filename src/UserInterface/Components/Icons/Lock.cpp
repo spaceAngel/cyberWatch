@@ -10,7 +10,10 @@
 
 void Lock::render() {
 
-	if (UserInterfaceManager::getInstance()->isLocked() != this->prevState) {
+	if (
+		UserInterfaceManager::getInstance()->isLocked() != this->prevState
+		|| this->shouldReRender()
+	) {
 		if (UserInterfaceManager::getInstance()->isLocked() == true) {
 			UserInterfaceManager::getInstance()->renderIcon(iconLock, POS_X, POS_Y);
 		} else {
@@ -18,4 +21,5 @@ void Lock::render() {
 		}
 		this->prevState = UserInterfaceManager::getInstance()->isLocked();
 	}
+	this->setShouldReRender(false);
 }
