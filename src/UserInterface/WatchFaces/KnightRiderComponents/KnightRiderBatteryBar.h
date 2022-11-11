@@ -16,5 +16,8 @@ class KnightRiderBatteryBar : public Component{
 		uint8_t const HEIGHT = 7;
 
 		uint8_t prevCapacity = 101;
+		bool wasCharging = false;
+
 		void renderBar(uint8_t capacity);
+		void renderChargingIcon(bool chargingState);
 };
