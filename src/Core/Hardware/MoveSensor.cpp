@@ -47,6 +47,7 @@ void MoveSensor::setIsIRQ() {
 bool MoveSensor::isTilt() {
 	bool isTilt = false;
 	if (this->IRQ) {
+		TTGOClass::getWatch()->bma->readInterrupt();
 		MoveSensor::getInstance()->cleanIRQ();
 		isTilt = true;
 	}
