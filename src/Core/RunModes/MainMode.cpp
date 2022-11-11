@@ -76,7 +76,6 @@ void MainMode::executeLoopWakeUp() {
 		UserInterfaceManager::getInstance()->setToDefaultApp();
 		UserInterfaceManager::getInstance()->setIsLocked(true);
 	}
-	//SystemTicker::getInstance()->tickWakedUp();
 	this->handleWakeupTick();
 }
 
