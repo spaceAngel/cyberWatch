@@ -8,6 +8,7 @@
 #include "UserInterface/Screens/MainScreen.h"
 #include "Core/Hardware/RTC.h"
 #include "Core/SystemTicker.h"
+#include "Utils/DateUtil.h"
 
 void AnalogClocks::render() {
 	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
@@ -27,6 +28,7 @@ void AnalogClocks::render() {
 		);
 		this->drawLine(currentTime.minute, RADIUS - 15, COLOR_MAIN_1);
 		this->drawLine(currentTime.second, RADIUS - 15, COLOR_MAIN_3);
+		this->renderDate(currentTime);
 		setShouldReRender(false);
 		this->prevSecond = currentTime.second;
 	}
@@ -63,4 +65,24 @@ void AnalogClocks::renderFace() {
 
 		TTGOClass::getWatch()->tft->drawLine(x1, y1, x2, y2, COLOR_MAIN_1);
 	}
+}
+
+void AnalogClocks::renderDate(RTC_Date date) {
+	TTGOClass::getWatch()->tft->fillRect(
+		(TTGOClass::getWatch()->tft->width() - 100) / 2,
+		POS_Y - 37,
+		100,
+		24,
+		COLOR_BACKGROUND
+	);
+	char dateStr[11];
+	char dayInWeek[2];
+
+	DateUtil::weekdayNameShort(dayInWeek, date.year, date.month, date.day);
+	(void)snprintf(dateStr, sizeof(dateStr), "%s %02d/%02d", dayInWeek, date.day, date.month);
+	TTGOClass::getWatch()->tft->drawString(
+		dateStr,
+		(TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(dateStr)) / 2,
+		POS_Y - 36
+	);
 }
