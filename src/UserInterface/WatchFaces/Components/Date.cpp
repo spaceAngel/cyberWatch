@@ -39,7 +39,7 @@ void Date::renderDate(RTC_Date currentDate) {
 
 void Date::renderDayInWeek(RTC_Date currentDate) {
 	char dayInWeek[10];
-	this->weekday(dayInWeek, currentDate.year,currentDate.month, currentDate.day);
+	DateUtil::weekdayName(dayInWeek, currentDate.year,currentDate.month, currentDate.day);
 	TTGOClass::getWatch()->tft->drawString(
 		dayInWeek,
 		(TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(dayInWeek)) / 2,
@@ -47,16 +47,4 @@ void Date::renderDayInWeek(RTC_Date currentDate) {
 	);
 }
 
-// calculation of weekday used from here https://forum.arduino.cc/t/rtc-clock-with-days-of-week/426045/4
-void Date::weekday(char *dayInWeekStr, uint year, uint8_t month, uint8_t day) {
-	uint8_t dayInWeek = DateUtil::weekday(year, month, day);
-	switch (dayInWeek) {
-		case 0: (void)strcpy(dayInWeekStr, "Sunday"); break;
-		case 1: (void)strcpy(dayInWeekStr, "Monday"); break;
-		case 2: (void)strcpy(dayInWeekStr, "Tuesday"); break;
-		case 3: (void)strcpy(dayInWeekStr, "Wednesday"); break;
-		case 4: (void)strcpy(dayInWeekStr, "Thursday"); break;
-		case 5: (void)strcpy(dayInWeekStr, "Friday"); break;
-		case 6: (void)strcpy(dayInWeekStr, "Saturday"); break;
-	}
-}
+

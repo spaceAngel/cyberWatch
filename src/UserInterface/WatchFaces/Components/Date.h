@@ -18,6 +18,5 @@ class Date : public Component {
 
 			void renderDate(RTC_Date currentDate);
 			void renderDayInWeek(RTC_Date currentDate);
-			void weekday(char *dayInWeekStr, uint year, uint8_t month, uint8_t day);
 
 };

@@ -57,3 +57,17 @@ void DateUtil::monthNameShort(char (&name)[4], int month) {
 	}
 
 }
+
+// calculation of weekday used from here https://forum.arduino.cc/t/rtc-clock-with-days-of-week/426045/4
+void DateUtil::weekdayName(char *dayInWeekStr, uint year, uint8_t month, uint8_t day) {
+	uint8_t dayInWeek = DateUtil::weekday(year, month, day);
+	switch (dayInWeek) {
+		case 0: (void)strcpy(dayInWeekStr, "Sunday"); break;
+		case 1: (void)strcpy(dayInWeekStr, "Monday"); break;
+		case 2: (void)strcpy(dayInWeekStr, "Tuesday"); break;
+		case 3: (void)strcpy(dayInWeekStr, "Wednesday"); break;
+		case 4: (void)strcpy(dayInWeekStr, "Thursday"); break;
+		case 5: (void)strcpy(dayInWeekStr, "Friday"); break;
+		case 6: (void)strcpy(dayInWeekStr, "Saturday"); break;
+	}
+}
