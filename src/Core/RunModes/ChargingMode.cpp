@@ -6,6 +6,10 @@
 #include "CyberWatch.h"
 #include "Core/Hardware/Esp32.h"
 #include "Core/Hardware/BatteryManager.h"
+#include "Core/Hardware/RTC.h"
+#include "Core/Hardware/Display.h"
+#include "Core/Hardware/MotorController.h"
+#include "Utils/DateUtil.h"
 
 
 void ChargingMode::switchedTo() {
@@ -64,7 +68,51 @@ void ChargingMode::loop() {
 		);
 		delay(200);
 	}
+	this->renderDateTime();
 	this->loops++;
+}
+
+void ChargingMode::renderDateTime() {
+
+	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
+	if (currentTime.minute != this->prevMinute) {
+		Display::getInstance()->resetTypographySettings();
+		this->prevMinute = currentTime.minute;
+		TTGOClass::getWatch()->tft->fillRect(
+			0,
+			ChargingMode::POS_Y + 55,
+			TTGOClass::getWatch()->tft->width(),
+			135,
+			COLOR_BACKGROUND
+		);
+
+		char dayInWeek[10];
+		DateUtil::weekdayName(dayInWeek, currentTime.year, currentTime.month, currentTime.day);
+		TTGOClass::getWatch()->tft->drawString(
+			dayInWeek,
+			25,
+			ChargingMode::POS_Y + 155
+		);
+
+		char dateStr[11];
+		(void)snprintf(dateStr, sizeof(dateStr), "%02d/%02d/%04d", currentTime.day, currentTime.month, currentTime.year);
+		TTGOClass::getWatch()->tft->setTextSize(1);
+		TTGOClass::getWatch()->tft->drawString(
+			dateStr,
+			25,
+			ChargingMode::POS_Y + 130
+		);
+
+		char timeStr[6];
+		(void)snprintf(timeStr, sizeof(timeStr), "%02d:%02d", currentTime.hour, currentTime.minute);
+		TTGOClass::getWatch()->tft->setTextSize(3);
+		TTGOClass::getWatch()->tft->drawString(
+			timeStr,
+			15,
+			ChargingMode::POS_Y + 60
+		);
+
+	}
 }
 
 void ChargingMode::handleEsp32IRQ() {
