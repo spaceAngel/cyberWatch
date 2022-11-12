@@ -17,7 +17,6 @@ void KnightRiderBatteryBar::render() {
 	) {
 		TTGOClass::getWatch()->tft->drawString("BATTERY", 17, POS_Y);
 		this->renderBar(capacity);
-		this->renderBar(100);
 		this->prevCapacity = capacity;
 	}
 	if (
