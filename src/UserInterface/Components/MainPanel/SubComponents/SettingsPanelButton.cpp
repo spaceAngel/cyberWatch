@@ -7,7 +7,7 @@
 #include "Core/Hardware/Esp32.h"
 
 SettingsPanelButton::SettingsPanelButton(
-	char *btnText,
+	const char *btnText,
 	uint8_t col,
 	uint8_t row,
 	std::function<bool(void)> isActiveFunc,

@@ -24,7 +24,7 @@ void KnightRiderDeviceState::render() {
 	this->setShouldReRender(false);
 }
 
-void KnightRiderDeviceState::renderButton(uint8_t col, char* text, bool state) {
+void KnightRiderDeviceState::renderButton(uint8_t col, const char* text, bool state) {
 	uint8_t displayWidth = TTGOClass::getWatch()->tft->width() - 30;
 	uint8_t buttonWidth = displayWidth / 3;
 	TTGOClass::getWatch()->tft->setTextFont(1);

@@ -21,7 +21,7 @@ class KnightRiderDeviceState : public Component {
 
 		uint8_t prevBitMask;
 
-		void renderButton(uint8_t col, char* text, bool state);
+		void renderButton(uint8_t col, const char* text, bool state);
 
 		uint8_t getDeviceStateBitMask();
 

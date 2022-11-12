@@ -31,6 +31,6 @@ class Locked : public App {
 
 	protected:
 
-		void renderText(uint8_t line, char* text);
+		void renderText(uint8_t line, const char* text);
 
 };

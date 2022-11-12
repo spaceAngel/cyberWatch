@@ -41,7 +41,7 @@ void Locked::render() {
 	this->setShouldReRender(false);
 }
 
-void Locked::renderText(uint8_t line, char* text) {
+void Locked::renderText(uint8_t line, const char* text) {
 	uint8_t posX = (TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(text)) / 2;
 	TTGOClass::getWatch()->tft->drawString(
 		text,
