@@ -41,24 +41,27 @@ bool UserInterfaceManager::handleTouch() {
 	int16_t x;
 	int16_t y;
 	bool handled = false;
-	if (
-		!TTGOClass::getWatch()->getTouch(x, y)
-		|| ((x == 257) && (y == 2)) //some kind of HW error in my LILLYGO T-Watch (short circuit?)
-	) {
+	if (!TTGOClass::getWatch()->getTouch(x, y)) {
 		if (
 			this->isLocked()
 			&& this->lastTouched > 0
 			&& this->touchFromInactivity == false
 			&& this->lastTouched + TOUCH_LIFETIME > millis()
 		) {
-			if (MainScreen::getInstance()->getCurrentApp()->canBeTouchedLocked()) {
+			if (
+				MainScreen::getInstance()->getCurrentApp()->canBeTouchedLocked()
+				&& this->isLongtouchOnSameCoords()
+			) {
 				MainScreen::getInstance()->handleTouch(
 					this->lastTouchX,
 					this->lastTouchY,
 					this->lastTouched + LONGTOUCH_INAPP < millis()
 				);
 			} else {
-				if (this->lastTouched + LONGTOUCH_UNLOCK < millis()) {
+				if (
+					this->lastTouched + LONGTOUCH_UNLOCK < millis()
+					&& this->isLongtouchOnSameCoords()
+				) {
 					this->setIsLocked(false);
 				} else {
 					MainScreen::getInstance()->setAppOnTop(new Locked());
@@ -71,6 +74,7 @@ bool UserInterfaceManager::handleTouch() {
 			&& this->touchReleased == false
 			&& this->swipeWasHandled == false
 			&& this->lastTouched + TOUCH_LIFETIME > millis()
+			&& this->isLongtouchOnSameCoords()
 		)  {
 			MainScreen::getInstance()->handleTouch(
 				this->lastTouchX,
@@ -82,8 +86,10 @@ bool UserInterfaceManager::handleTouch() {
 		this->swipeWasHandled = false;
 		this->touchFromInactivity = !Display::getInstance()->isDisplayOn();
 		this->lastTouched = 0;
+		this->setLongtouchOnSameCoords(NULL, NULL);
 
 	} else {
+		this->setLongtouchOnSameCoords(x, y);
 		if (this->isLocked() != true) {
 			this->lastTouchX = x;
 			this->lastTouchY = y;
@@ -225,5 +231,34 @@ void UserInterfaceManager::clearScreen() {
 		TTGOClass::getWatch()->tft->width(),
 		TTGOClass::getWatch()->tft->height(),
 		COLOR_BACKGROUND
+	);
+}
+
+void UserInterfaceManager::setLongtouchOnSameCoords(uint8_t x, uint8_t y) {
+	if (x == NULL && y == NULL) {
+		this->longtouchPreventinMovingFingerXMax = NULL;
+		this->longtouchPreventinMovingFingerXMin = NULL;
+		this->longtouchPreventinMovingFingerYMax = NULL;
+		this->longtouchPreventinMovingFingerYMin = NULL;
+
+	} else {
+
+		this->longtouchPreventinMovingFingerXMax = max(this->longtouchPreventinMovingFingerXMax, x);
+		this->longtouchPreventinMovingFingerXMin = this->longtouchPreventinMovingFingerXMin == NULL ? x : min(this->longtouchPreventinMovingFingerXMin, x);
+		this->longtouchPreventinMovingFingerYMax = max(this->longtouchPreventinMovingFingerYMax, y);
+		this->longtouchPreventinMovingFingerYMin = this->longtouchPreventinMovingFingerYMin == NULL ? y : min(this->longtouchPreventinMovingFingerYMin, y);
+	}
+}
+
+bool UserInterfaceManager::isLongtouchOnSameCoords() {
+	uint8_t toleranceX = (TTGOClass::getWatch()->tft->width() * 5) / 100;
+	uint8_t toleranceY = (TTGOClass::getWatch()->tft->height() * 5) / 100;
+
+	return (
+		(this->lastTouched + LONGTOUCH_INAPP > millis())
+		|| (
+			this->longtouchPreventinMovingFingerXMax - this->longtouchPreventinMovingFingerXMin < toleranceX
+			&& this->longtouchPreventinMovingFingerYMax - this->longtouchPreventinMovingFingerYMin < toleranceY
+		)
 	);
 }

@@ -57,6 +57,11 @@ class UserInterfaceManager {
 			int16_t lastTouchY;
 			bool swipeWasHandled = false;
 
+			uint8_t longtouchPreventinMovingFingerXMin;
+			uint8_t longtouchPreventinMovingFingerXMax;
+			uint8_t longtouchPreventinMovingFingerYMin;
+			uint8_t longtouchPreventinMovingFingerYMax;
+
 			bool locked = true;
 
 			UserInterfaceManager() {
@@ -69,6 +74,9 @@ class UserInterfaceManager {
 			void stopSwipeHandlerVertical();
 
 			void handleSwipeVertical(uint y);
+
+			bool isLongtouchOnSameCoords();
+			void setLongtouchOnSameCoords(uint8_t x, uint8_t y);
 
 
 };
