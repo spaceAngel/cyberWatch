@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=no">
+
+	<title>
+		CyberWatch OS Documentation| open source system for smart watch
+	</title>
+
+	<link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+<header>
+	<div class="center">
+		<h1><a href="https://cyberwatch.cyberdeck.cz">CyberWatch OS</a></h1>
+		<h2>User documentation</h2>
+			<br clear/>
+	</div>
+	<br clear/>
+</header>
+<div class="center">
+
+
+<ul>
+	<li>
+		<a href="#installation">Installation</a>
+		<ul>
+			<li><a href="#requirements">Requirements</a></li>
+			<li><a href="#installation-process">Installation process</a></li>
+			<li><a href="#datetime-synchonisation">Date &amp; time synchronisation</a></li>
+		</ul>
+	</li>
+	<li>
+		<a href="#basic-manipulation">Basic manipulation</a>
+		<ul>
+			<li><a href="#default-screen-mode">Default screen mode</a></li>
+			<li><a href="#display-always-on-mode">Display always on mode</a></li>
+			<li><a href="#screen-autolock">Autolocking screen</a>
+			<li><a href="#apps-switching">Switching between apps</a>
+			<li><a href="#power-onoff">Power on/off</a>
+			<li><a href="#settings">Device settings menu</a>
+		</ul>
+	</li>
+	<li>
+		<a href="#application">Applications</a>
+		<ul>
+			<li><a href="#watch-faces">Watch faces</a></li>
+			<li><a href="#calendar">Calendar</a></li>
+			<li><a href="#stopwatch">Stopwatch</a></li>
+		</ul>
+	</li>
+</ul>
+
+<div class="manual">
+	<a name="installation"></a>
+	<h2>Installation</h2>
+
+	<a name="requirements"></a>
+	<h3>Requirements</h3>
+	<div>
+		<ul>
+			<li>Installed <a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+			<li>Installed <a href="https://platformio.org/install/ide?install=vscode">PlatformIO IDE</a> for VSCode</li>
+			<li>Installed <a href="https://github.com/Xinyuan-LilyGO/TTGO_TWatch_Library">TTGO Twatch Library</a> to PlatformIO</li>
+			<li>Cloned (or downloaded) CyberWatch OS source code fron <a href="https://github.com/spaceAngel/cyberWatch">GitHub</a></li>
+		</ul>
+	</div>
+
+	<a name="installation-process"></a>
+	<h3>Installation process</h3>
+	<div>
+		<ul>
+			<li>Open directory with CyberWatch OS in VSCode</li>
+			<li>Connect your device via USB</li>
+			<li>Compile and upload project via VSCode</li>
+		</ul>
+	</div>
+
+	<a name="datetime-synchonisation"></a>
+	<h3>Date &amp; time synchronisation</h3>
+	<div>
+		Date &amp; time of TWatch is synchronised with build machine everytime CyberWatch OS is compiled &amp; uploaded.
+	</div>
+
+	<a name="basic-manipulation"></a>
+	<h2>Basic manipulation</h2>
+
+	<a name="default-screen-mode"></a>
+	<h3>Default screen mode</h3>
+	<div>
+		Display is turned off by default. It could be waked up by touching display, button (crown) press and, if turned on, by tilt maneuver.
+		After 5 seconds of inactivity, display goes sleep. After waking up, display is set to clock app, no matter on what application went sleep.
+	</div>
+
+	<a name="display-always-on-mode"></a>
+	<h3>Display always on mode</h3>
+	<div>
+		This feature can be turned on on settings screen.
+		When feature "display alwas on" is active, display is set to clock app and watches are locked after 5 seconds of inactivity.
+		When watches are off hand in this mode, after 5 seconds off hand (e.g. no move on table) display goes sleep; after moving/shaking watch, display wakes up.
+	</div>
+
+	<a name="screen-autolock"></a>
+	<h3>Autolock screen</h3>
+	<div>
+		When display is waked up from sleep mode (by touch, button press or tilt up maneuver), display is in locked state.
+		That means that device ignores all display touchs.
+		This state is indicated by icon of lock in tray panel of display. Device could be unlocked by pressing crown (button).
+		When clock app (default screen) is active and unlocked, device can be locked by pressing crown (button) or longtouch (>0.5s).
+	</div>
+
+	<a name="apps-switching"></a>
+	<h3>Switching between apps</h3>
+	<div>
+		Switching between apps is handled by horizontal swipe.
+	</div>
+
+	<a name="power-onoff"></a>
+	<h3>Power on/off</h3>
+	<div>
+		Device can be turned on or off by long (3 seconds) crown (button) pressing.
+	</div>
+	
+	<a name="settings"></a>
+	<h3>Device settings menu</h3>
+	<div>
+		Device settings menu is accessible via longtouch (>0.5s) on any unlocked watch face. 
+		This shows menu, where can be sets followed: display adjust, display always on, vibration and activation by tilt up maneuver.
+		These settings are stored between device shutdowns/starts.
+	</div>
+
+	<a name="applications"></a>
+	<h2>Applications</h2>
+
+	<a name="watch-faces"></a>
+	<h3>Watch faces</h3>
+	<div>
+		Watch faces can be changed by vertical swipe. Selected watch face is saved and set as default after next system start.
+	</div>
+
+	<a name="calendar"></a>
+	<h3>Calendar</h3>
+	<div>
+		When entering this app, current month and current day (by blue box) is set.
+		Months can be changed by vertical swipe, pressing crown (button) resets calendar to current month and day.
+	</div>
+
+	<a name="stopwatch"></a>
+	<h3>Stop watch</h3>
+	<div>
+		When stop watch app is on screen, display never goes sleep. When stopwatches are running, stopwatch icon is showed in display icon panel.
+		Stops can be started, stopped and set to zero by pressing crown (button).
+	</div>
+</div>
+</body>
+ </html>
+
+ 
