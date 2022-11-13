@@ -78,5 +78,7 @@ class UserInterfaceManager {
 			bool isLongtouchOnSameCoords();
 			void setLongtouchOnSameCoords(uint8_t x, uint8_t y);
 
+			void handleTouchReleased();
+
 
 };

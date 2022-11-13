@@ -42,52 +42,7 @@ bool UserInterfaceManager::handleTouch() {
 	int16_t y;
 	bool handled = false;
 	if (!TTGOClass::getWatch()->getTouch(x, y)) {
-		if (
-			this->isLocked()
-			&& this->lastTouched > 0
-			&& this->touchFromInactivity == false
-			&& this->lastTouched + TOUCH_LIFETIME > millis()
-		) {
-			if (
-				MainScreen::getInstance()->getCurrentApp()->canBeTouchedLocked()
-				&& this->isLongtouchOnSameCoords()
-			) {
-				MainScreen::getInstance()->handleTouch(
-					this->lastTouchX,
-					this->lastTouchY,
-					this->lastTouched + LONGTOUCH_INAPP < millis()
-				);
-			} else {
-				if (
-					this->lastTouched + LONGTOUCH_UNLOCK < millis()
-					&& this->isLongtouchOnSameCoords()
-				) {
-					this->setIsLocked(false);
-				} else {
-					MainScreen::getInstance()->setAppOnTop(new Locked());
-				}
-			}
-		}
-		if (
-			!this->isLocked()
-			&& this->touchFromInactivity == false
-			&& this->touchReleased == false
-			&& this->swipeWasHandled == false
-			&& this->lastTouched + TOUCH_LIFETIME > millis()
-			&& this->isLongtouchOnSameCoords()
-		)  {
-			MainScreen::getInstance()->handleTouch(
-				this->lastTouchX,
-				this->lastTouchY,
-				this->lastTouched + LONGTOUCH_INAPP < millis()
-			);
-		}
-		this->touchReleased = true;
-		this->swipeWasHandled = false;
-		this->touchFromInactivity = !Display::getInstance()->isDisplayOn();
-		this->lastTouched = 0;
-		this->setLongtouchOnSameCoords(NULL, NULL);
-
+		this->handleTouchReleased();
 	} else {
 		this->setLongtouchOnSameCoords(x, y);
 		if (this->isLocked() != true) {
@@ -261,4 +216,52 @@ bool UserInterfaceManager::isLongtouchOnSameCoords() {
 			&& this->longtouchPreventinMovingFingerYMax - this->longtouchPreventinMovingFingerYMin < toleranceY
 		)
 	);
+}
+
+void UserInterfaceManager::handleTouchReleased() {
+	if (
+		this->isLocked()
+		&& this->lastTouched > 0
+		&& this->touchFromInactivity == false
+		&& this->lastTouched + TOUCH_LIFETIME > millis()
+	) {
+		if (
+			MainScreen::getInstance()->getCurrentApp()->canBeTouchedLocked()
+			&& this->isLongtouchOnSameCoords()
+		) {
+			MainScreen::getInstance()->handleTouch(
+				this->lastTouchX,
+				this->lastTouchY,
+				this->lastTouched + LONGTOUCH_INAPP < millis()
+			);
+		} else {
+			if (
+				this->lastTouched + LONGTOUCH_UNLOCK < millis()
+				&& this->isLongtouchOnSameCoords()
+			) {
+				this->setIsLocked(false);
+			} else {
+				MainScreen::getInstance()->setAppOnTop(new Locked());
+			}
+		}
+	}
+	if (
+		!this->isLocked()
+		&& this->touchFromInactivity == false
+		&& this->touchReleased == false
+		&& this->swipeWasHandled == false
+		&& this->lastTouched + TOUCH_LIFETIME > millis()
+		&& this->isLongtouchOnSameCoords()
+	)  {
+		MainScreen::getInstance()->handleTouch(
+			this->lastTouchX,
+			this->lastTouchY,
+			this->lastTouched + LONGTOUCH_INAPP < millis()
+		);
+	}
+	this->touchReleased = true;
+	this->swipeWasHandled = false;
+	this->touchFromInactivity = !Display::getInstance()->isDisplayOn();
+	this->lastTouched = 0;
+	this->setLongtouchOnSameCoords(NULL, NULL);
 }
