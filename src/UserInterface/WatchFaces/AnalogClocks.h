@@ -16,6 +16,10 @@ class AnalogClocks : public WatchFace {
 			return true;
 		}
 
+		bool runWithHighSpeed() {
+			return true;
+		}
+
 	protected:
 
 		uint8_t prevSecond = 99;

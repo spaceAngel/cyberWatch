@@ -15,4 +15,8 @@ class WatchFace : public Component {
 			return false;
 		}
 
+		virtual bool runWithHighSpeed() {
+			return false;
+		}
+
 };

@@ -10,9 +10,20 @@
 #include "UserInterface/WatchFaces/WatchFace.h"
 #include "UserInterface/Screens/MainScreen.h"
 #include "UserInterface/Apps/SettingsPanel.h"
+#include "Core/Hardware/Esp32.h"
 
 void Watches::render() {
-	this->getCurrentFace()->render();
+	if (
+		this->getCurrentFace()->runWithHighSpeed()
+	) {
+		Esp32::getInstance()->runWithCpuSpeedHigh(
+			[this]() {
+				this->getCurrentFace()->render();
+			}
+		);
+	} else {
+		this->getCurrentFace()->render();
+	}
 	if (this->getCurrentFace()->hasInfoPanel()) {
 		this->infoPanel->render();
 	}
