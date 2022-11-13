@@ -5,6 +5,7 @@
 #include "SensorGrid.h"
 #include "Core/Hardware/RTC.h"
 #include "Core/Hardware/Display.h"
+#include "Utils/MathUtil.h"
 
 void SensorGrid::render() {
 
@@ -65,17 +66,10 @@ void SensorGrid::renderSensorGrid() {
 }
 
 void SensorGrid::renderSensorGridCell(uint8_t line) {
-	uint8_t col;
-	uint8_t row;
-	uint8_t color;
-
-	while( ( col = rand() ) > 11 )  {}
-	while( ( row = rand() ) > 2 )  {}
-	while( ( color = rand() ) > 3 )  {}
-
+	uint8_t color = MathUtil::getRandomUint8(3);
 	TTGOClass::getWatch()->tft->fillRect(
-		1 + col * 24,
-		row * 12 + 6 + line * 95,
+		1 + MathUtil::getRandomUint8(11) * 24,
+		MathUtil::getRandomUint8(2) * 12 + 6 + line * 95,
 		22,
 		11,
 		this->colors[color]
@@ -83,9 +77,7 @@ void SensorGrid::renderSensorGridCell(uint8_t line) {
 }
 
 uint8_t SensorGrid::getCellCount() {
-	uint8_t cells;
-	while( ( cells = rand() ) > 12)  {}
-	return cells + 10;
+	return MathUtil::getRandomUint8(12) + 10;
 }
 
 SensorGrid::SensorGrid() {

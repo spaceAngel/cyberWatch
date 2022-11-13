@@ -4,12 +4,13 @@
 
 #include <LilyGoWatch.h>
 
+#include "Utils/MathUtil.h"
+
 void KnightRiderSpeaker::render() {
 	this->ticks++;
 	if (this->ticks == 6) {
 		this->ticks = 0;
-		uint8_t rows;
-		while( ( rows = rand() ) > 4 )  {}
+		uint8_t rows = MathUtil::getRandomUint8(4);
 		TTGOClass::getWatch()->tft->fillRect(
 			- 3 +  (TTGOClass::getWatch()->tft->width() - 5 - CELL_WIDTH * 3) / 2,
 			0,
