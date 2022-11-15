@@ -32,7 +32,6 @@ class SettingsPanel : public App {
 				[]() {return AppSettings::getInstance()->get(APPSETTINGS_VIBRATE);},
 				[]() {AppSettings::getInstance()->toggle(APPSETTINGS_VIBRATE);}
 			);
-			this->buttons[3] = new SettingsPanelButton("Sound", 2, 2, []() {return false;}, []() {});
 
 		}
 		bool controlModeIsTouch();
@@ -50,8 +49,8 @@ class SettingsPanel : public App {
 
 		uint8_t lastMask;
 
-		const int BUTTONS = 3;
-		SettingsPanelButton *buttons[4];
+		const int BUTTONS = 2;
+		SettingsPanelButton *buttons[3];
 
 		void renderAdjustBar();
 
