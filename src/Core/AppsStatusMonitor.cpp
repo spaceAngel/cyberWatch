@@ -4,7 +4,7 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/Apps/StopWatch.h"
+#include "Apps/StopWatch.h"
 
 AppsStatusMonitor* AppsStatusMonitor::inst;
 

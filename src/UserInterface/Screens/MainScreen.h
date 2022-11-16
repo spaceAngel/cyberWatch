@@ -2,11 +2,11 @@
 
 #include "UserInterface/Components/InfoPanel.h"
 #include "UserInterface/App.h"
-#include "UserInterface/Apps/Watches.h"
-#include "UserInterface/Apps/Calendar.h"
-#include "UserInterface/Apps/StopWatch.h"
-#include "UserInterface/Apps/SettingsPanel.h"
-#include "UserInterface/Apps/AboutPanel.h"
+#include "Apps/Watches.h"
+#include "Apps/Calendar.h"
+#include "Apps/StopWatch.h"
+#include "Apps/SettingsPanel.h"
+#include "Apps/AboutPanel.h"
 #include "Core/AppsStatusMonitor.h"
 #include "UserInterface/Components/NotificationBar/NotificationBar.h"
 

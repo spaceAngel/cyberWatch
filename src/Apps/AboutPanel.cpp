@@ -6,7 +6,7 @@
 #include "Environment/compilationdata.h"
 #include "Environment/SystemInfo.h"
 #include "UserInterface/Screens/MainScreen.h"
-#include "UserInterface/Apps/SettingsPanel.h"
+#include "Apps/SettingsPanel.h"
 
 void AboutPanel::render() {
 

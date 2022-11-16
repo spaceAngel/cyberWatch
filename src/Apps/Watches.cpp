@@ -9,7 +9,7 @@
 #include "UserInterface/UserInterfaceManager.h"
 #include "UserInterface/WatchFaces/WatchFace.h"
 #include "UserInterface/Screens/MainScreen.h"
-#include "UserInterface/Apps/SettingsPanel.h"
+#include "Apps/SettingsPanel.h"
 #include "Core/Hardware/Esp32.h"
 
 void Watches::render() {

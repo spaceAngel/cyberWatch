@@ -9,7 +9,7 @@
 #include <LilyGoWatch.h>
 
 #include "Core/Hardware/Esp32.h"
-#include "UserInterface/Apps/AboutPanel.h"
+#include "Apps/AboutPanel.h"
 #include "UserInterface/Screens/MainScreen.h"
 
 void SettingsPanel::render() {

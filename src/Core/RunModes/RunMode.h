@@ -1,7 +1,5 @@
 #pragma once
 
-#include "UserInterface/Apps/StopWatch.h"
-
 class RunMode {
 
 	public:
