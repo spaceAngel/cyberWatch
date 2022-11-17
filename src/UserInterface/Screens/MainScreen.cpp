@@ -117,4 +117,7 @@ App *MainScreen::getCurrentApp() {
 
 void MainScreen::setAppOnTop(App* appOnTop) {
 	this->appOnTop = appOnTop;
+	if (this->appOnTop->hasNotificationBar()) {
+		this->notificationBar->setShouldReRender(true);
+	}
 }
