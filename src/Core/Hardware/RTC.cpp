@@ -5,6 +5,7 @@
 #include "RTC.h"
 
 #include "Core/SystemTicker.h"
+#include "Events/EventManager.h"
 
 RTC* RTC::inst;
 
@@ -16,12 +17,21 @@ RTC *RTC::getInstance() {
 }
 
 RTC_Date RTC::getCurrentDate() {
+	this->updateDate();
+	return this->lastDateTime;
+}
+
+void RTC::updateDate() {
 	if (
 		SystemTicker::getInstance()->isTickFor(TICKER_DATETIME)
 	) {
-		this->lastDateTime = TTGOClass::getWatch()->rtc->getDateTime();
+		RTC_Date currentDate = TTGOClass::getWatch()->rtc->getDateTime();
+		if (currentDate.second != this->lastDateTime.second) {
+			this->lastDateTime = currentDate;
+			EventManager::getInstance()->fireEvent(EVENT_TIME_CHANGE);
+		}
+
 	}
-	return this->lastDateTime;
 }
 
 RTC::RTC() {

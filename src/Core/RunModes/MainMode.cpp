@@ -8,6 +8,7 @@
 #include "Core/Hardware/BatteryManager.h"
 #include "Core/Hardware/MoveSensor.h"
 #include "Core/Hardware/MotorController.h"
+#include "Core/Hardware/RTC.h"
 #include "Environment/AppSettings.h"
 #include "Environment/SystemInfo.h"
 #include "Core/SystemTicker.h"
@@ -47,6 +48,7 @@ void MainMode::loop() {
 
 void MainMode::executeLoopActions() {
 	BatteryManager::getInstance()->updateCapacity();
+	RTC::getInstance()->updateDate();
 	if (
 		(InactivityWatcher::getInstance()->isInactive() == false)
 		|| (UserInterfaceManager::getInstance()->isSleepForbidden() == true)

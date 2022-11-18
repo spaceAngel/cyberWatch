@@ -8,6 +8,7 @@
 #define EVENT_CABLE_PLUG 1
 #define EVENT_CABLE_UNPLUG 2
 #define EVENT_BATTERY_CHANGE 3
+#define EVENT_TIME_CHANGE 4
 
 class EventManager {
 
@@ -30,3 +31,4 @@ class EventManager {
 			this->listeners[1] = new BatteryLeveLWarningsListener();
 		}
 };
+

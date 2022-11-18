@@ -10,6 +10,8 @@ class RTC {
 
 		RTC_Date getCurrentDate();
 
+		void updateDate();
+
 
 	protected:
 
