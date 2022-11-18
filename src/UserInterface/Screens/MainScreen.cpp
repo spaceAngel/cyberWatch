@@ -111,6 +111,14 @@ void MainScreen::destroy() {
 	MainScreen::inst = NULL;
 }
 
+void MainScreen::removeAppOnTop() {
+	delete this->appOnTop;
+	this->appOnTop = NULL;
+	this->clear();
+	this->getCurrentApp()->setShouldReRender(true);
+	this->render();
+}
+
 App *MainScreen::getCurrentApp() {
 	return this->appOnTop == nullptr ? this->apps[this->currentApp] : this->appOnTop;
 }
