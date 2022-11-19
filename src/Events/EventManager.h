@@ -4,6 +4,7 @@
 #include "Events/EventListener.h"
 #include "Events/Listeners/PlugListener.h"
 #include "Events/Listeners/BatteryLeveLWarningsListener.h"
+#include "Apps/Alarm/AlarmListener.h"
 
 #define EVENT_CABLE_PLUG 1
 #define EVENT_CABLE_UNPLUG 2
@@ -22,13 +23,14 @@ class EventManager {
 
 		static EventManager *inst;
 
-		uint8_t listenersCount = 2;
+		uint8_t listenersCount = 3;
 
-		EventListener *listeners[2];
+		EventListener *listeners[3];
 
 		EventManager() {
 			this->listeners[0] = new PlugListener();
 			this->listeners[1] = new BatteryLeveLWarningsListener();
+			this->listeners[2] = new AlarmListener();
 		}
 };
 

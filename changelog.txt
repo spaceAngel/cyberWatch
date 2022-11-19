@@ -11,6 +11,7 @@ cyberWatch 1.0
 - FEATURE: "Cassete futurism" clock face
 - FEATURE: "Knight Rider speaker" clock face
 - FEATURE: Analog wazchface shows date
+- FEATURE: 3-slot alarm
 - REFACTOR: display adjust is now set in percentage (1 - 100) (and stored in resgistry after shutdown)
 - REFACTOR: reset display typography method instead of calling all methods to set default color, font & szie
 - BUGFIX: Fix read bma interupt in MoveSensor isTilt func which caused not waked by tilt in some watch faces

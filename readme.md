@@ -50,6 +50,7 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - multiple clock faces - change by swipe vertical on datetime "miniapp"
  - shows battery status
  - step counter
+ - 3-slot alarm
  - horizontal swipe - switching between mainPanel components/miniapps
  - vertical swipe - control components
  - calendar with prev/next month feature
@@ -62,7 +63,6 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - activated by touch (when display is off) also do "touch event" on component on touch coords (e.g. when current screen is watch settings, activation also can activated display on, when display activation touch is at left top corner of display )
 
 ## Future features :-)
- - alarm
  - conection vith phone via BT (require app for android)
    - SMS notification icon
    - missed call icon
