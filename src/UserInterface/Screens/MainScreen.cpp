@@ -128,4 +128,6 @@ void MainScreen::setAppOnTop(App* appOnTop) {
 	if (this->appOnTop->hasNotificationBar()) {
 		this->notificationBar->setShouldReRender(true);
 	}
+	this->clear();
+	this->appOnTop->setShouldReRender(true);
 }
