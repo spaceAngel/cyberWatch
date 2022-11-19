@@ -14,6 +14,8 @@ class AlarmStorage {
 
 		uint8_t getAlarmsCount() {return 3;};
 
+		bool isActiveAlarm();
+
 	protected:
 
 		static AlarmStorage *inst;

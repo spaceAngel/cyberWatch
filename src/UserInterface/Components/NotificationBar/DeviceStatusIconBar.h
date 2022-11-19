@@ -4,6 +4,7 @@
 #define DEVICESTATE_NOTIFICATIONS_DISPLAY_ALWAYS_ON 2
 #define DEVICESTATE_NOTIFICATIONS_STOPWATCH_RUNNING 4
 #define DEVICESTATE_NOTIFICATIONS_DISPLAY_LOCKED 8
+#define DEVICESTATE_NOTIFICATIONS_ALARM_ENABLED 16
 
 #include "UserInterface/Icons/IconStruct.h"
 #include "UserInterface/Components/Component.h"
@@ -26,5 +27,6 @@ class DeviceStatusIconBar : public Component {
 		void renderIconDisplayAlwaysOn(uint8_t &pos);
 		void renderIconStopwatchRunning(uint8_t &pos);
 		void renderIconDisplayLocked(uint8_t &pos);
+		void renderIconAlarmEnabled(uint8_t &pos);
 
 };

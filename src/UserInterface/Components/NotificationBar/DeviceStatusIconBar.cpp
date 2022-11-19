@@ -11,10 +11,12 @@
 #include "UserInterface/Icons/LightBulb.h"
 #include "UserInterface/Icons/StopWatch.h"
 #include "UserInterface/Icons/Lock.h"
+#include "UserInterface/Icons/Bell.h"
 
 #include "Core/AppsStatusMonitor.h"
 #include "Environment/AppSettings.h"
 #include "Core/Hardware/BatteryManager.h"
+#include "Apps/Alarm/AlarmStorage.h"
 
 void DeviceStatusIconBar::render() {
 	if (
@@ -33,6 +35,7 @@ void DeviceStatusIconBar::render() {
 		this->renderIconDisplayAlwaysOn(pos);
 		this->renderIconStopwatchRunning(pos);
 		this->renderIconDisplayLocked(pos);
+		this->renderIconAlarmEnabled(pos);
 		this->prevBits = this->getDeviceStateBitMask();
 		this->setShouldReRender(false);
 	}
@@ -70,6 +73,10 @@ uint8_t DeviceStatusIconBar::getDeviceStateBitMask() {
 		bits |= DEVICESTATE_NOTIFICATIONS_DISPLAY_LOCKED;
 	}
 
+	if (AlarmStorage::getInstance()->isActiveAlarm()) {
+		bits |= DEVICESTATE_NOTIFICATIONS_ALARM_ENABLED;
+	}
+
 	return bits;
 }
 
@@ -94,5 +101,11 @@ void DeviceStatusIconBar::renderIconStopwatchRunning(uint8_t &pos) {
 void DeviceStatusIconBar::renderIconDisplayLocked(uint8_t &pos) {
 	if (UserInterfaceManager::getInstance()->isLocked() == true) {
 		this->renderIcon(iconLock, pos);
+	}
+}
+
+void DeviceStatusIconBar::renderIconAlarmEnabled(uint8_t &pos) {
+	if (AlarmStorage::getInstance()->isActiveAlarm()) {
+		this->renderIcon(iconBell, pos);
 	}
 }
