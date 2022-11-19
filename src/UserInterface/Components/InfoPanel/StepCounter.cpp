@@ -43,7 +43,7 @@ void StepCounter::clearDisplay() {
 	TTGOClass::getWatch()->tft->fillRect(
 		(int32_t)POS_X + 44,
 		(int32_t)POS_Y,
-		100,
+		80,
 		TTGOClass::getWatch()->tft->fontHeight(),
 		COLOR_BACKGROUND
 	);
