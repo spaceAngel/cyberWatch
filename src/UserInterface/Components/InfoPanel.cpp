@@ -9,6 +9,7 @@ void InfoPanel::render() {
 	this->runningStopWatch->render();
 	this->displayOn->render();
 	this->lock->render();
+	this->alarmOn->render();
 };
 
 void InfoPanel::setShouldReRender(bool shouldReRender) {
@@ -17,4 +18,5 @@ void InfoPanel::setShouldReRender(bool shouldReRender) {
 	this->runningStopWatch->setShouldReRender(shouldReRender);
 	this->stepCounter->setShouldReRender(shouldReRender);
 	this->lock->setShouldReRender(shouldReRender);
+	this->alarmOn->setShouldReRender(shouldReRender);
 }

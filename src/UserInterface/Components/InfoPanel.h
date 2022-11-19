@@ -7,6 +7,7 @@
 #include "UserInterface/Components/Icons/DisplayOn.h"
 #include "UserInterface/Components/Icons/Lock.h"
 #include "UserInterface/Components/Icons/Charger.h"
+#include "UserInterface/Components/Icons/AlarmOn.h"
 
 class InfoPanel : public Component{
 
@@ -19,6 +20,7 @@ class InfoPanel : public Component{
 			this->runningStopWatch = new RunningStopWatch();
 			this->displayOn = new DisplayOn();
 			this->lock = new Lock();
+			this->alarmOn = new AlarmOn();
 		}
 
 		void render();
@@ -32,6 +34,7 @@ class InfoPanel : public Component{
 		DisplayOn *displayOn;
 		Lock *lock;
 		Charger *charger;
+		AlarmOn *alarmOn;
 
 
 };
