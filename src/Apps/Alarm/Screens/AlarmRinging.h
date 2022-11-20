@@ -8,8 +8,6 @@ class AlarmRinging : public App {
 	public:
 		void render();
 
-		bool handlePEKShort();
-
 		bool hasNotificationBar() {return true;}
 		bool controlModeIsTouch() {return true;}
 		bool canHandleLongTouch() {return true;}
@@ -20,7 +18,6 @@ class AlarmRinging : public App {
 		AlarmRinging(uint8_t alarmHour, uint8_t alarmMinute);
 
 	protected:
-
 
 		uint64_t lastVibrationTime = 0;
 		uint8_t alarmHour;

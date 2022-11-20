@@ -21,11 +21,6 @@ void AlarmRinging::render() {
 	}
 }
 
-bool AlarmRinging::handlePEKShort() {
-	AppRunner::getInstance()->setToDefaultApp();
-	return false;
-}
-
 bool AlarmRinging::handleLongTouch(uint8_t x, uint8_t y) {
 	AppRunner::getInstance()->setToDefaultApp();
 	return false;

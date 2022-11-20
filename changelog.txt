@@ -13,6 +13,7 @@ cyberWatch 1.0
 - FEATURE: Analog wazchface shows date
 - FEATURE: 3-slot alarm
 - FEATURE: calendar can be reset to the current moon by long touch instead of PEKshort
+- FEATURE: PEKShort si default in every app to get to watch face, if not overloaded
 - REFACTOR: Move apps related function to AppRunner from MainScreen #refactor
 - REFACTOR: display adjust is now set in percentage (1 - 100) (and stored in resgistry after shutdown)
 - REFACTOR: reset display typography method instead of calling all methods to set default color, font & szie

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Arduino.h>
+
 class App {
 
 	public:
@@ -54,9 +56,7 @@ class App {
 			return false;
 		}
 
-		virtual bool handlePEKShort() {
-			return false;
-		};
+		virtual bool handlePEKShort();
 
 	protected:
 
