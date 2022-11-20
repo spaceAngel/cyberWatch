@@ -125,7 +125,7 @@ bool Calendar::handleSwipeVertical(int8_t vector) {
 	return true;
 }
 
-bool Calendar::handlePEKShort() {
+bool Calendar::handleLongTouch(uint8_t x, uint8_t y) {
 	RTC_Date currentDate = TTGOClass::getWatch()->rtc->getDateTime();
 	this->year = currentDate.year;
 	this->month = currentDate.month;

@@ -9,7 +9,10 @@ class Calendar : public App {
 	public:
 
 		bool handleSwipeVertical(int8_t vector);
-		bool handlePEKShort();
+		bool canHandleLongTouch() {return true;};
+
+		bool handleLongTouch(uint8_t x, uint8_t y);
+
 		void prevMonth();
 		void nextMonth();
 		void setYearMonth(uint16_t year, uint8_t month);
