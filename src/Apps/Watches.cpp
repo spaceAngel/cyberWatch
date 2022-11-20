@@ -8,7 +8,7 @@
 #include "Environment/AppSettings.h"
 #include "UserInterface/UserInterfaceManager.h"
 #include "UserInterface/WatchFaces/WatchFace.h"
-#include "UserInterface/Screens/MainScreen.h"
+#include "UserInterface/AppRunner.h"
 #include "Apps/SettingsPanel.h"
 #include "Core/Hardware/Esp32.h"
 
@@ -81,6 +81,6 @@ Watches::Watches() {
 
 
 bool Watches::handleLongTouch(uint8_t x, uint8_t y) {
-	MainScreen::getInstance()->setAppOnTop(new SettingsPanel());
+	AppRunner::getInstance()->setAppOnTop(new SettingsPanel());
 	return true;
 }

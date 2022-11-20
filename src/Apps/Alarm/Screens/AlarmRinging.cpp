@@ -6,7 +6,7 @@
 
 #include "Apps/Alarm/AlarmModel.h"
 #include "Core/InactivityWatcher.h"
-#include "UserInterface/Screens/MainScreen.h"
+#include "UserInterface/AppRunner.h"
 #include "Core/Hardware/MotorController.h"
 #include "Core/Hardware/Display.h"
 
@@ -22,12 +22,12 @@ void AlarmRinging::render() {
 }
 
 bool AlarmRinging::handlePEKShort() {
-	MainScreen::getInstance()->setToDefaultApp();
+	AppRunner::getInstance()->setToDefaultApp();
 	return false;
 }
 
 bool AlarmRinging::handleLongTouch(uint8_t x, uint8_t y) {
-	MainScreen::getInstance()->setToDefaultApp();
+	AppRunner::getInstance()->setToDefaultApp();
 	return false;
 }
 

@@ -12,6 +12,7 @@
 #include "Core/Hardware/Display.h"
 #include "Core/InactivityWatcher.h"
 #include "UserInterface/Apps/MsgBoxes/Locked.h"
+#include "UserInterface/AppRunner.h"
 
 UserInterfaceManager *UserInterfaceManager::inst;
 
@@ -159,7 +160,7 @@ void UserInterfaceManager::handlePEKShort() {
 }
 
 bool UserInterfaceManager::isSleepForbidden() {
-	return MainScreen::getInstance()->isSleepForbidden();
+	return AppRunner::getInstance()->isSleepForbidden();
 }
 
 void UserInterfaceManager::renderIcon(IconStruct icon, uint8_t x, uint8_t y) {
@@ -168,7 +169,7 @@ void UserInterfaceManager::renderIcon(IconStruct icon, uint8_t x, uint8_t y) {
 }
 
 void UserInterfaceManager::setToDefaultApp() {
-	MainScreen::getInstance()->setToDefaultApp();
+	AppRunner::getInstance()->setToDefaultApp();
 }
 
 bool UserInterfaceManager::isLocked() {
@@ -226,7 +227,7 @@ void UserInterfaceManager::handleTouchReleased() {
 		&& this->lastTouched + TOUCH_LIFETIME > millis()
 	) {
 		if (
-			MainScreen::getInstance()->getCurrentApp()->canBeTouchedLocked()
+			AppRunner::getInstance()->getCurrentApp()->canBeTouchedLocked()
 			&& this->isLongtouchOnSameCoords()
 		) {
 			MainScreen::getInstance()->handleTouch(
@@ -241,7 +242,7 @@ void UserInterfaceManager::handleTouchReleased() {
 			) {
 				this->setIsLocked(false);
 			} else {
-				MainScreen::getInstance()->setAppOnTop(new Locked());
+				AppRunner::getInstance()->setAppOnTop(new Locked());
 			}
 		}
 	}

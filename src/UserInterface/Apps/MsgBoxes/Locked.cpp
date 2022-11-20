@@ -3,7 +3,7 @@
 #include "Locked.h"
 
 #include <LilyGoWatch.h>
-#include "UserInterface/Screens/MainScreen.h"
+#include "UserInterface/AppRunner.h"
 #include "UserInterface/UserInterfaceManager.h"
 #include "Core/Hardware/MotorController.h"
 
@@ -11,7 +11,7 @@ void Locked::render() {
 	if (
 		UserInterfaceManager::getInstance()->isLocked() == false
 	) {
-		MainScreen::getInstance()->setToDefaultApp();
+		AppRunner::getInstance()->setToDefaultApp();
 		return;
 	}
 
@@ -61,6 +61,6 @@ bool Locked::handleLongTouch(uint8_t x, uint8_t y) {
 }
 
 bool Locked::handleTouch(uint8_t x, uint8_t y) {
-	MainScreen::getInstance()->setToDefaultApp();
+	AppRunner::getInstance()->setToDefaultApp();
 	return true;
 }

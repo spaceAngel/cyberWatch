@@ -8,7 +8,7 @@
 #include "Apps/Alarm/Components/Settings/AlarmSettingsDayButton.h"
 #include "Apps/Alarm/AlarmModel.h"
 #include "Apps/Alarm/AlarmStorage.h"
-#include "UserInterface/Screens/MainScreen.h"
+#include "UserInterface/AppRunner.h"
 #include "Core/Hardware/MotorController.h"
 #include "Core/Hardware/RTC.h"
 
@@ -115,7 +115,7 @@ bool AlarmSettings::handleTouch(uint8_t x, uint8_t y) {
 
 		if (y > 112 && y < 112 + AlarmSettings::BTN_HEIGHT) {
 			AlarmStorage::getInstance()->getAlarm(this->alarm)->setEnabled(false);
-			MainScreen::getInstance()->removeAppOnTop();
+			AppRunner::getInstance()->removeAppOnTop();
 		}
 	}
 
@@ -123,7 +123,7 @@ bool AlarmSettings::handleTouch(uint8_t x, uint8_t y) {
 }
 
 bool AlarmSettings::handlePEKShort() {
-	MainScreen::getInstance()->removeAppOnTop();
+	AppRunner::getInstance()->removeAppOnTop();
 	return false;
 }
 

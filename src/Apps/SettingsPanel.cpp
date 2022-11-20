@@ -10,7 +10,7 @@
 
 #include "Core/Hardware/Esp32.h"
 #include "Apps/AboutPanel.h"
-#include "UserInterface/Screens/MainScreen.h"
+#include "UserInterface/AppRunner.h"
 
 void SettingsPanel::render() {
 	if (
@@ -116,11 +116,11 @@ void SettingsPanel::renderAdjustBar() {
 }
 
 bool SettingsPanel::handleLongTouch(uint8_t x, uint8_t y) {
-	MainScreen::getInstance()->setAppOnTop(new AboutPanel());
+	AppRunner::getInstance()->setAppOnTop(new AboutPanel());
 	return true;
 }
 
 bool SettingsPanel::handlePEKShort() {
-	MainScreen::getInstance()->setToDefaultApp();
+	AppRunner::getInstance()->setToDefaultApp();
 	return true;
 }

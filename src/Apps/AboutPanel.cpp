@@ -5,7 +5,7 @@
 #include <LilyGoWatch.h>
 #include "Environment/compilationdata.h"
 #include "Environment/SystemInfo.h"
-#include "UserInterface/Screens/MainScreen.h"
+#include "UserInterface/AppRunner.h"
 #include "Apps/SettingsPanel.h"
 
 void AboutPanel::render() {
@@ -90,7 +90,7 @@ void AboutPanel::secondsToString(uint totalSeconds, char (&string)[20]) {
 }
 
 bool AboutPanel::handlePEKShort() {
-	MainScreen::getInstance()->setAppOnTop(new SettingsPanel());
+	AppRunner::getInstance()->setAppOnTop(new SettingsPanel());
 	return true;
 }
 

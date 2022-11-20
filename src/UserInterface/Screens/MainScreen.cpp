@@ -3,6 +3,7 @@
 #include "MainScreen.h"
 
 #include "UserInterface/Components/NotificationBar/NotificationBar.h"
+#include "UserInterface/AppRunner.h"
 
 MainScreen* MainScreen::inst;
 
@@ -14,86 +15,61 @@ MainScreen *MainScreen::getInstance() {
 }
 
 void MainScreen::render() {
-	this->getCurrentApp()->render();
-	if (this->getCurrentApp()->hasNotificationBar()) {
+	AppRunner::getInstance()->getCurrentApp()->render();
+	if (AppRunner::getInstance()->getCurrentApp()->hasNotificationBar()) {
 		this->notificationBar->render();
 	}
 }
 
 MainScreen::MainScreen() {
-	this->createApps();
 	this->notificationBar = new NotificationBar();
 }
 
 void MainScreen::handleSwipeHorizontal(int vector) {
-	this->getCurrentApp()->setIsActive(false);
-	this->currentApp += vector;
-	if (this->currentApp > APPS) {
-		this->currentApp = 0;
+	AppRunner::getInstance()->getCurrentApp()->setIsActive(false);
+	if (vector > 0) {
+		AppRunner::getInstance()->switchToPrevApp();
+	} else {
+		AppRunner::getInstance()->switchToNextApp();
 	}
 
-	if (this->currentApp < 0) {
-		this->currentApp = APPS;
-	}
-
-	this->getCurrentApp()->setShouldReRender(true);
+	AppRunner::getInstance()->getCurrentApp()->setShouldReRender(true);
 	this->notificationBar->setShouldReRender(true);
-	this->getCurrentApp()->setIsActive(true);
+	AppRunner::getInstance()->getCurrentApp()->setIsActive(true);
 	this->clear();
 	this->render();
 }
 
 void MainScreen::handleSwipeVertical(int vector) {
-	if (this->getCurrentApp()->handleSwipeVertical(vector) == true) {
+	if (AppRunner::getInstance()->getCurrentApp()->handleSwipeVertical(vector) == true) {
 		this->clear();
 		this->notificationBar->setShouldReRender(true);
 	}
 }
 
 void MainScreen::handlePEKShort() {
-	if (this->getCurrentApp()->handlePEKShort() == true) {
+	if (AppRunner::getInstance()->getCurrentApp()->handlePEKShort() == true) {
 		this->clear();
 	}
-}
-
-bool MainScreen::isSleepForbidden() {
-	bool rslt = false;
-	for (int8_t i = 0; i <= APPS; i++) {
-		if (apps[i]->isSystemSleepForbidden() == true) {
-			rslt = true;
-		}
-	}
-	return rslt;
 }
 
 void MainScreen::handleTouch(uint8_t x, uint8_t y, bool isLongTouch ){
 	if (
-		this->getCurrentApp()->canHandleLongTouch() == true
+		AppRunner::getInstance()->getCurrentApp()->canHandleLongTouch() == true
 		&& isLongTouch
 	) {
-		if (this->getCurrentApp()->handleLongTouch(x, y) == true) {
+		if (AppRunner::getInstance()->getCurrentApp()->handleLongTouch(x, y) == true) {
 			this->clear();
 		}
-	} else  if (this->getCurrentApp()->controlModeIsTouch() == true) {
-		if (this->getCurrentApp()->handleTouch(x, y) == true) {
+	} else  if (AppRunner::getInstance()->getCurrentApp()->controlModeIsTouch() == true) {
+		if (AppRunner::getInstance()->getCurrentApp()->handleTouch(x, y) == true) {
 			this->clear();
 		}
 	}
 }
 
-void  MainScreen::setToDefaultApp() {
-	if (
-		this->currentApp != 0
-		|| this->appOnTop != nullptr
-	) {
-		this->clear();
-		this->currentApp = 0;
-		this->apps[0]->setShouldReRender(true);
-		this->notificationBar->setShouldReRender(true);
-
-		delete this->appOnTop;
-		this->appOnTop = NULL;
-	}
+NotificationBar *MainScreen::getNotificationBar() {
+	return this->notificationBar;
 }
 
 void MainScreen::clear() {
@@ -109,25 +85,4 @@ void MainScreen::clear() {
 void MainScreen::destroy() {
 	delete MainScreen::inst;
 	MainScreen::inst = NULL;
-}
-
-void MainScreen::removeAppOnTop() {
-	delete this->appOnTop;
-	this->appOnTop = NULL;
-	this->clear();
-	this->getCurrentApp()->setShouldReRender(true);
-	this->render();
-}
-
-App *MainScreen::getCurrentApp() {
-	return this->appOnTop == nullptr ? this->apps[this->currentApp] : this->appOnTop;
-}
-
-void MainScreen::setAppOnTop(App* appOnTop) {
-	this->appOnTop = appOnTop;
-	if (this->appOnTop->hasNotificationBar()) {
-		this->notificationBar->setShouldReRender(true);
-	}
-	this->clear();
-	this->appOnTop->setShouldReRender(true);
 }

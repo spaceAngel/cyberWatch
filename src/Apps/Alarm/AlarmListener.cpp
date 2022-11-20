@@ -8,7 +8,7 @@
 #include "Events/EventManager.h"
 #include "Core/Hardware/RTC.h"
 #include "Screens/AlarmRinging.h"
-#include "UserInterface/Screens/MainScreen.h"
+#include "UserInterface/AppRunner.h"
 #include "Core/InactivityWatcher.h"
 #include "Core/Hardware/Display.h"
 #include "Utils/DateUtil.h"
@@ -41,13 +41,13 @@ void AlarmListener::handle() {
 				)
 			) {
 				Display::getInstance()->turnDisplayOn();
-				MainScreen::getInstance()->setAppOnTop(
+				AppRunner::getInstance()->setAppOnTop(
 					new AlarmRinging(
 						AlarmStorage::getInstance()->getAlarm(i)->getHour(),
 						AlarmStorage::getInstance()->getAlarm(i)->getMinute()
 					)
 				);
-				MainScreen::getInstance()->getCurrentApp()->setShouldReRender(true);
+				AppRunner::getInstance()->getCurrentApp()->setShouldReRender(true);
 				InactivityWatcher::getInstance()->markActivity();
 				if (AlarmStorage::getInstance()->getAlarm(i)->isRunningOnce()) {
 					AlarmStorage::getInstance()->getAlarm(i)->setEnabled(false);

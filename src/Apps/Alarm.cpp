@@ -6,7 +6,7 @@
 
 #include "Core/Hardware/Display.h"
 #include "Core/Hardware/MotorController.h"
-#include "UserInterface/Screens/MainScreen.h"
+#include "UserInterface/AppRunner.h"
 #include "Apps/Alarm/Screens/AlarmSettings.h"
 #include "Apps/Alarm/Components/AlarmDisplay.h"
 #include "Apps/Alarm/AlarmStorage.h"
@@ -31,7 +31,7 @@ bool Alarm::handleLongTouch(uint8_t x, uint8_t y) {
 			y > this->alarms[i]->getY()
 			&& y < this->alarms[i]->getY() + 50
 		) {
-			MainScreen::getInstance()->setAppOnTop(
+			AppRunner::getInstance()->setAppOnTop(
 				new AlarmSettings(i)
 			);
 		}
