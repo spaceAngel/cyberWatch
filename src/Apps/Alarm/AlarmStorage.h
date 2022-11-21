@@ -16,20 +16,16 @@ class AlarmStorage {
 
 		bool isActiveAlarm();
 
+		void save();
+		void load();
+
 	protected:
 
+		const char *FILENAME = "/alarms.dat";
 		static AlarmStorage *inst;
 
 		AlarmModel *alarms[3];
 
 
-		AlarmStorage() {
-			this->alarms[0] = new AlarmModel();
-			this->alarms[1] = new AlarmModel();
-			this->alarms[2] = new AlarmModel();
-
-		}
-
-
-
+		AlarmStorage();
 };

@@ -115,10 +115,11 @@ bool AlarmSettings::handleTouch(uint8_t x, uint8_t y) {
 
 		if (y > 112 && y < 112 + AlarmSettings::BTN_HEIGHT) {
 			AlarmStorage::getInstance()->getAlarm(this->alarm)->setEnabled(false);
+			AlarmStorage::getInstance()->save();
 			AppRunner::getInstance()->removeAppOnTop();
 		}
 	}
-
+	AlarmStorage::getInstance()->save();
 	return false;
 }
 

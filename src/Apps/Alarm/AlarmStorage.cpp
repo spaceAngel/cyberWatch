@@ -1,6 +1,18 @@
 #include "AlarmStorage.h"
 #include "AlarmModel.h"
 
+#include <SPIFFS.h>
+#include <FS.h>
+#include <string.h>
+#include "Core/Hardware/MotorController.h"
+#include "config.h"
+#include <LilyGoWatch.h>
+#include "UserInterface/Screens/MainScreen.h"
+#include <string>
+#include <iostream>
+#include <sstream>
+using namespace std;
+
 AlarmStorage *AlarmStorage::inst;
 
 AlarmStorage *AlarmStorage::getInstance() {
@@ -22,3 +34,73 @@ bool AlarmStorage::isActiveAlarm() {
 AlarmModel *AlarmStorage::getAlarm(uint8_t alarm) {
 	return this->alarms[alarm];
 }
+
+void AlarmStorage::save() {
+	fs::File file = SPIFFS.open(AlarmStorage::FILENAME, FILE_WRITE);
+	char save[100];
+	for (uint8_t i = 0; i < 3; i++) {
+
+		strcat(save, "A");
+		strcat(save, this->getAlarm(i)->getEnabled() ? "Y" : "N");
+		strcat(save, "E");
+		for (int j = 0; j < 7; j++) {
+			strcat(save,  this->getAlarm(i)->getIsEnabledForDay(j) ? "Y" : "N");
+		}
+		strcat(save, "W");
+		char hours[3];
+		(void)snprintf(hours, sizeof(hours), "%02d", this->getAlarm(i)->getHour());
+		strcat(save, hours);
+		strcat(save, "H");
+
+		char minutes[3];
+		(void)snprintf(minutes, sizeof(minutes), "%02d", this->getAlarm(i)->getMinute());
+		strcat(save, minutes);
+		strcat(save, "M");
+
+	}
+	file.print(save);
+	file.close();
+
+}
+
+void AlarmStorage::load() {
+	fs::File file = SPIFFS.open(AlarmStorage::FILENAME, FILE_READ);
+	String fromFile;
+	String a = "Y";
+	for (uint8_t i = 0; i< 3; i++) {
+		file.readStringUntil('A');
+		String enabled = file.readStringUntil('E');
+		if (enabled.substring(0, 1) == a)  {
+			this->getAlarm(i)->setEnabled(true);
+			String weekdays = file.readStringUntil('W');
+			for (uint8_t j = 0; j < 7; j++) {
+				if (weekdays.substring(j, j + 1) == a) {
+					this->getAlarm(i)->setIsEnabledForDay(j, true);
+				}
+			}
+
+			String hours = file.readStringUntil('H');
+			int hour = (hours.charAt(0) - 48) * 10 + (hours.charAt(1) - 48);
+			this->getAlarm(i)->setHour(hour);
+
+			String minutes = file.readStringUntil('M');
+			int minute = (minutes.charAt(0) - 48) * 10 + (minutes.charAt(1) - 48);
+			this->getAlarm(i)->setMinute(minute);
+		}
+	}
+	file.close();
+}
+
+AlarmStorage::AlarmStorage() {
+	this->alarms[0] = new AlarmModel();
+	this->alarms[1] = new AlarmModel();
+	this->alarms[2] = new AlarmModel();
+	this->load();
+}
+
+
+
+
+
+
+
