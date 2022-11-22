@@ -11,6 +11,8 @@ class InactivityWatcher {
 		bool isInactive();
 		void markActivity();
 
+		void checkAndMarkIfOnHand();
+
 		bool isDetectedOnHand();
 
 	protected:

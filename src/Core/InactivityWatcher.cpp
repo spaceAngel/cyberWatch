@@ -32,7 +32,7 @@ InactivityWatcher::InactivityWatcher() {
 	this->lastOnHandActivity = TimeUtil::getCurrentTimeInSeconds();
 }
 
-bool InactivityWatcher::isDetectedOnHand() {
+void InactivityWatcher::checkAndMarkIfOnHand() {
 	if (
 		SystemTicker::getInstance()->isTickFor(TICKER_DETECT_ONHAND)
 	) {
@@ -44,5 +44,8 @@ bool InactivityWatcher::isDetectedOnHand() {
 		}
 		this->prevOnHandState = sensorChanged ||  ((this->lastOnHandActivity + INACTIVITY_ONHAMD_TRESHOLD) > TimeUtil::getCurrentTimeInSeconds());
 	}
+}
+
+bool InactivityWatcher::isDetectedOnHand() {
 	return this->prevOnHandState;
 }

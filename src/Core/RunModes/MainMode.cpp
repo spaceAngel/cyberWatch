@@ -49,6 +49,7 @@ void MainMode::loop() {
 void MainMode::executeLoopActions() {
 	BatteryManager::getInstance()->updateCapacity();
 	RTC::getInstance()->updateDate();
+	InactivityWatcher::getInstance()->checkAndMarkIfOnHand();
 	if (
 		(InactivityWatcher::getInstance()->isInactive() == false)
 		|| (UserInterfaceManager::getInstance()->isSleepForbidden() == true)
