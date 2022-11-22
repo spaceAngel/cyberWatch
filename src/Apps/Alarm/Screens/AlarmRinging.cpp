@@ -9,6 +9,7 @@
 #include "UserInterface/AppRunner.h"
 #include "Core/Hardware/MotorController.h"
 #include "Core/Hardware/Display.h"
+#include "Core/InactivityWatcher.h"
 
 void AlarmRinging::render() {
 	if (this->lastVibrationTime == 0) {
@@ -16,7 +17,9 @@ void AlarmRinging::render() {
 	}
 	if (millis() - 400 > this->lastVibrationTime) {
 		InactivityWatcher::getInstance()->markActivity();
-		MotorController::vibrate(1);
+		if (this->wasOnHand) {
+			MotorController::vibrate(1);
+		}
 		this->lastVibrationTime = millis();
 	}
 }
@@ -54,4 +57,5 @@ void AlarmRinging::renderMsgBox() {
 AlarmRinging::AlarmRinging(uint8_t alarmHour, uint8_t alarmMinute) {
 	this->alarmHour = alarmHour;
 	this->alarmMinute = alarmMinute;
+	this->wasOnHand = InactivityWatcher::getInstance()->isDetectedOnHand();
 }

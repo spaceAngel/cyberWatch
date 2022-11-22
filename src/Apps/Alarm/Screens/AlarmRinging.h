@@ -23,5 +23,7 @@ class AlarmRinging : public App {
 		uint8_t alarmHour;
 		uint8_t alarmMinute;
 
+		bool wasOnHand;
+
 		void renderMsgBox();
 };
