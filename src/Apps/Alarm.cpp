@@ -37,7 +37,7 @@ bool Alarm::handleLongTouch(uint8_t x, uint8_t y) {
 		}
 	}
 
-	return true;
+	return false;
 }
 
 void Alarm::setShouldReRender(bool shouldReRender) {
