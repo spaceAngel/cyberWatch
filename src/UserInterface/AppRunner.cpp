@@ -25,7 +25,6 @@ void  AppRunner::setToDefaultApp() {
 		this->currentApp = 0;
 		this->apps[0]->setShouldReRender(true);
 		MainScreen::getInstance()->getNotificationBar()->setShouldReRender(true);
-
 		delete this->appOnTop;
 		this->appOnTop = NULL;
 	}
@@ -36,6 +35,9 @@ void AppRunner::removeAppOnTop() {
 	this->appOnTop = NULL;
 	MainScreen::getInstance()->clear();
 	this->getCurrentApp()->setShouldReRender(true);
+	if (this->getCurrentApp()->hasNotificationBar()) {
+		MainScreen::getInstance()->getNotificationBar()->setShouldReRender(true);
+	}
 	MainScreen::getInstance()->render();
 }
 
