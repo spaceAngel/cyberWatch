@@ -11,7 +11,7 @@
 #include "UserInterface/WatchFaces/NeonCircles.h"
 #include "UserInterface/WatchFaces/SensorGrid.h"
 #include "UserInterface/WatchFaces/KnightRider.h"
-#include "UserInterface/Components/InfoPanel.h"
+#include "UserInterface/WatchFaces/InfoPanel/InfoPanel.h"
 
 class Watches : public App {
 

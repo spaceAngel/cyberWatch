@@ -1,7 +1,7 @@
 #pragma once
 
 #include "UserInterface/Components/Component.h"
-#include "UserInterface/Components/InfoPanel/StepCounter.h"
+#include "UserInterface/WatchFaces/InfoPanel/StepCounter.h"
 #include "UserInterface/Components/Icons/Battery.h"
 #include "UserInterface/Components/Icons/RunningStopWatch.h"
 #include "UserInterface/Components/Icons/DisplayOn.h"
