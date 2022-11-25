@@ -3,7 +3,7 @@
 #include <Arduino.h>
 
 #include "UserInterface/App.h"
-#include "UserInterface/Components/MainPanel/SubComponents/SettingsPanelButton.h"
+#include "Apps/SettingsPanel/SettingsPanelButton.h"
 #include "Environment/AppSettings.h"
 
 #define ADJUSTBAR_HEIGHT 24
