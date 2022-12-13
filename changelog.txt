@@ -1,3 +1,8 @@
+cyberWatch 1.1
+========================
+- REFACTOR: renderTitle mehod in app
+
+
 cyberWatch 1.0
 ========================
 - REFACTOR: rewrite UI

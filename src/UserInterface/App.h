@@ -1,5 +1,7 @@
 #pragma once
 
+#define APP_POSITION_TOP 28
+
 #include <Arduino.h>
 
 class App {
@@ -51,6 +53,8 @@ class App {
 		bool getIsActive() {
 			return this->isActive;
 		}
+
+		void renderTitle(const char *title);
 
 		virtual bool isSystemSleepForbidden() {
 			return false;

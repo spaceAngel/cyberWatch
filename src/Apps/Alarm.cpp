@@ -13,11 +13,7 @@
 
 void Alarm::render() {
 	if (this->shouldReRender()) {
-		TTGOClass::getWatch()->tft->drawString(
-			"Alarms",
-			(TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth("Alarms")) / 2,
-			28
-		);
+		this->renderTitle("Alarms");
 
 		this->alarms[0]->render();
 		this->alarms[1]->render();
