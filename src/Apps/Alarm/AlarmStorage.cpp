@@ -11,6 +11,9 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+
+#include "Utils/StringUtils.h"
+
 using namespace std;
 
 AlarmStorage *AlarmStorage::inst;
@@ -79,13 +82,12 @@ void AlarmStorage::load() {
 				}
 			}
 
-			String hours = file.readStringUntil('H');
-			int hour = (hours.charAt(0) - 48) * 10 + (hours.charAt(1) - 48);
-			this->getAlarm(i)->setHour(hour);
-
-			String minutes = file.readStringUntil('M');
-			int minute = (minutes.charAt(0) - 48) * 10 + (minutes.charAt(1) - 48);
-			this->getAlarm(i)->setMinute(minute);
+			this->getAlarm(i)->setHour(
+				StringUtils::stringToUint(file.readStringUntil('H'))
+			);
+			this->getAlarm(i)->setMinute(
+				StringUtils::stringToUint(file.readStringUntil('M'))
+			);
 		}
 	}
 	file.close();
