@@ -51,7 +51,7 @@ void AlarmListener::handle() {
 				InactivityWatcher::getInstance()->markActivity();
 				if (AlarmStorage::getInstance()->getAlarm(i)->isRunningOnce()) {
 					AlarmStorage::getInstance()->getAlarm(i)->setEnabled(false);
-
+					AlarmStorage::getInstance()->save();
 				}
 			}
 		}
