@@ -23,7 +23,7 @@ void  AppRunner::setToDefaultApp() {
 	) {
 		MainScreen::getInstance()->clear();
 		this->currentApp = 0;
-		this->apps[0]->setShouldReRender(true);
+		this->defaultApp->setShouldReRender(true);
 		MainScreen::getInstance()->getNotificationBar()->setShouldReRender(true);
 		delete this->appOnTop;
 		this->appOnTop = NULL;
@@ -42,7 +42,7 @@ void AppRunner::removeAppOnTop() {
 }
 
 App *AppRunner::getCurrentApp() {
-	return this->appOnTop == nullptr ? this->apps[this->currentApp] : this->appOnTop;
+	return this->appOnTop == nullptr ? this->defaultApp : this->appOnTop;
 }
 
 void AppRunner::setAppOnTop(App* appOnTop) {
@@ -53,15 +53,6 @@ void AppRunner::setAppOnTop(App* appOnTop) {
 	MainScreen::getInstance()->clear();
 	this->appOnTop->setShouldReRender(true);
 }
-
-void AppRunner::switchToNextApp() {
-
-}
-
-void AppRunner::switchToPrevApp() {
-
-}
-
 
 bool AppRunner::isSleepForbidden() {
 	bool rslt = false;

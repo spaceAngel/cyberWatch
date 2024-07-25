@@ -15,8 +15,6 @@ class AppRunner {
 
 		static AppRunner *getInstance();
 
-		void switchToPrevApp();
-		void switchToNextApp();
 		void setAppOnTop(App* app);
 		void removeAppOnTop();
 		void setToDefaultApp();
@@ -28,21 +26,15 @@ class AppRunner {
 
 		static AppRunner *inst;
 
-		const int8_t APPS = 3;
-
-		App *apps[4];
 		int8_t currentApp = 0;
 
 		App *appOnTop = nullptr;
+		App *defaultApp = nullptr;
 
 		AppRunner();
 
-
 		void createApps() {
-			this->apps[0] = new Watches();
-			this->apps[1] = new Calendar();
-			this->apps[2] = new StopWatch();
-			this->apps[3] = new Alarm();
+			this->defaultApp = new Watches();
 		}
 
 
