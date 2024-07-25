@@ -37,7 +37,7 @@ void Watches::setShouldReRender(bool shouldReRender) {
 	this->infoPanel->setShouldReRender(shouldReRender);
 }
 
-bool Watches::handleSwipeVertical(int8_t vector) {
+bool Watches::handleSwipeHorizontal(int8_t vector) {
 	this->currentFace += vector;
 	if (this->currentFace > FACES) {
 		this->currentFace = 0;

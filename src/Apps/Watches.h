@@ -17,7 +17,7 @@ class Watches : public App {
 
 	public:
 
-		bool handleSwipeVertical(int8_t vector);
+		bool handleSwipeHorizontal(int8_t vector);
 		void setShouldReRender(bool shouldReRender);
 		WatchFace *getCurrentFace();
 		void render();
