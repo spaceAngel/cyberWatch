@@ -1,5 +1,6 @@
 cyberWatch 1.1
 ========================
+- FEATURE: apps menu
 - REFACTOR: renderTitle mehod in app
 - BUGFIX: fixed when "run once" alarm after ringing and turning system off and on is again enabled
 

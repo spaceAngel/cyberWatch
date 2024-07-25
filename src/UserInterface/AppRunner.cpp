@@ -55,26 +55,15 @@ void AppRunner::setAppOnTop(App* appOnTop) {
 }
 
 void AppRunner::switchToNextApp() {
-	this->currentApp++;
-	if (this->currentApp > AppRunner::APPS) {
-		this->currentApp = 0;
-	}
+
 }
 
 void AppRunner::switchToPrevApp() {
-	this->currentApp--;
-	if (this->currentApp < 0) {
-		this->currentApp = APPS;
-	}
+
 }
 
 
 bool AppRunner::isSleepForbidden() {
 	bool rslt = false;
-	for (int8_t i = 0; i <= APPS; i++) {
-		if (this->apps[i]->isSystemSleepForbidden() == true) {
-			rslt = true;
-		}
-	}
 	return rslt;
 }

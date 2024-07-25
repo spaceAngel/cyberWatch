@@ -26,18 +26,7 @@ MainScreen::MainScreen() {
 }
 
 void MainScreen::handleSwipeHorizontal(int vector) {
-	AppRunner::getInstance()->getCurrentApp()->setIsActive(false);
-	if (vector > 0) {
-		AppRunner::getInstance()->switchToPrevApp();
-	} else {
-		AppRunner::getInstance()->switchToNextApp();
-	}
-
-	AppRunner::getInstance()->getCurrentApp()->setShouldReRender(true);
-	this->notificationBar->setShouldReRender(true);
-	AppRunner::getInstance()->getCurrentApp()->setIsActive(true);
-	this->clear();
-	this->render();
+//TO-DO: send event to app
 }
 
 void MainScreen::handleSwipeVertical(int vector) {

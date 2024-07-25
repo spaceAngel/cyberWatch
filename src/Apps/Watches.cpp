@@ -3,6 +3,7 @@
 #include <LilyGoWatch.h>
 
 #include "Watches.h"
+#include "AppMenu.h"
 #include "UserInterface/Components/Component.h"
 #include "Core/Registry.h"
 #include "Environment/AppSettings.h"
@@ -81,6 +82,7 @@ Watches::Watches() {
 
 
 bool Watches::handleLongTouch(uint8_t x, uint8_t y) {
-	AppRunner::getInstance()->setAppOnTop(new SettingsPanel());
+	//AppRunner::getInstance()->setAppOnTop(new SettingsPanel());
+	AppRunner::getInstance()->setAppOnTop(new AppMenu());
 	return true;
 }
