@@ -26,7 +26,10 @@ MainScreen::MainScreen() {
 }
 
 void MainScreen::handleSwipeHorizontal(int vector) {
-//TO-DO: send event to app
+	if (AppRunner::getInstance()->getCurrentApp()->handleSwipeHorizontal(vector) == true) {
+		this->clear();
+		this->notificationBar->setShouldReRender(true);
+	}
 }
 
 void MainScreen::handleSwipeVertical(int vector) {

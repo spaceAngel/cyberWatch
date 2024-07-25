@@ -18,6 +18,10 @@ class App {
 			return false;
 		}
 
+		virtual bool handleSwipeHorizontal(int8_t vector) {
+			return false;
+		}
+
 		virtual bool controlModeIsTouch() {
 			return false;
 		}

@@ -1,8 +1,10 @@
 cyberWatch 1.1
 ========================
 - FEATURE: apps menu
+- FEATURE: apps cann be controled both vertical & horitontal swiping
 - REFACTOR: renderTitle mehod in app
 - REFACTOR: StopPWatchRegistry class to store if stopwatch is running through whole app
+- REFACTOR: remove unused AppRunner apps array ('cause apps are managed by app menu)
 - BUGFIX: fixed when "run once" alarm after ringing and turning system off and on is again enabled
 
 
