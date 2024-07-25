@@ -2,6 +2,7 @@ cyberWatch 1.1
 ========================
 - FEATURE: apps menu
 - REFACTOR: renderTitle mehod in app
+- REFACTOR: StopPWatchRegistry class to store if stopwatch is running through whole app
 - BUGFIX: fixed when "run once" alarm after ringing and turning system off and on is again enabled
 
 

@@ -4,12 +4,12 @@
 
 #include <LilyGoWatch.h>
 
-#include "Core/AppsStatusMonitor.h"
+#include "Apps/StopWatch/StopWatchRegistry.h"
 #include "UserInterface/Icons/StopWatch.h"
 #include "UserInterface/UserInterfaceManager.h"
 
 void RunningStopWatch::render() {
-	bool state = AppsStatusMonitor::getInstance()->isStopWatchRunning();
+	bool state = StopWatchRegistry::getInstance()->getRunning();
 	if (
 		state != this->wasRunning
 		|| this->shouldReRender()

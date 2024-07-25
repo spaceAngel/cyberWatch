@@ -6,13 +6,14 @@
 
 #include "Core/AppsStatusMonitor.h"
 #include "Core/Hardware/Display.h"
+#include "StopWatch/StopWatchRegistry.h"
 
 void StopWatch::render() {
 	long stopTime;
-	if (this->running) {
-		stopTime = millis() - this->startAt;
+	if (StopWatchRegistry::getInstance()->getRunning()) {
+		stopTime = millis() - StopWatchRegistry::getInstance()->getStartAt();
 	} else {
-		stopTime = this->stopAt - this->startAt;
+		stopTime = StopWatchRegistry::getInstance()->getStopAt() - StopWatchRegistry::getInstance()->getStartAt();
 	}
 	if (
 		(stopTime != this->prevTime)
@@ -39,16 +40,16 @@ void StopWatch::render() {
 }
 
 bool StopWatch::handlePEKShort() {
-	if (this->running) { //is running, PEK means stop
-		this->running = false;
-		this->stopAt = millis();
+	if (StopWatchRegistry::getInstance()->getRunning()) { //is running, PEK means stop
+		StopWatchRegistry::getInstance()->setRunning(false);
+		StopWatchRegistry::getInstance()->setStopAt(millis());
 	} else {
-		if (this->startAt == 0) { //no start value, start
-			this->startAt = millis();
-			this->running = true;
+		if (StopWatchRegistry::getInstance()->getStartAt() == 0) { //no start value, start
+			StopWatchRegistry::getInstance()->setStartAt(millis());
+			StopWatchRegistry::getInstance()->setRunning(true);
 		} else { //reset
-			this->startAt = 0;
-			this->stopAt = 0;
+			StopWatchRegistry::getInstance()->setStartAt(0);
+			StopWatchRegistry::getInstance()->setStopAt(0);
 		}
 	}
 	return false;
@@ -71,10 +72,6 @@ void StopWatch::renderTime(int64_t stopTime) {
 	this->renderMinutes(minutes);
 	this->renderSeconds(seconds);
 	this->renderMillis(stopTimeMs);
-}
-
-bool StopWatch::isRunning() {
-	return this->running;
 }
 
 void StopWatch::renderHour(uint8_t hours) {
@@ -121,11 +118,6 @@ void StopWatch::renderMillis(uint8_t millis) {
 	(void)snprintf(txt, sizeof(txt), "%02d", millis);
 	TTGOClass::getWatch()->tft->drawString(txt, 180, POS_Y);
 }
-
-StopWatch::StopWatch() {
-	AppsStatusMonitor::getInstance()->registerStopWatchComponent(this);
-}
-
 
 bool StopWatch::isSystemSleepForbidden() {
 	return this->getIsActive();

@@ -13,7 +13,7 @@
 #include "UserInterface/Icons/Lock.h"
 #include "UserInterface/Icons/Bell.h"
 
-#include "Core/AppsStatusMonitor.h"
+#include "Apps/StopWatch/StopWatchRegistry.h"
 #include "Environment/AppSettings.h"
 #include "Core/Hardware/BatteryManager.h"
 #include "Apps/Alarm/AlarmStorage.h"
@@ -53,7 +53,7 @@ void DeviceStatusIconBar::renderIcon(IconStruct icon, uint8_t &pos) {
 
 uint8_t DeviceStatusIconBar::getDeviceStateBitMask() {
 	uint8_t bits = 0;
-	if (AppsStatusMonitor::getInstance()->isStopWatchRunning()) {
+	if (StopWatchRegistry::getInstance()->getRunning()) {
 		bits |= DEVICESTATE_NOTIFICATIONS_STOPWATCH_RUNNING;
 	}
 
@@ -93,7 +93,7 @@ void DeviceStatusIconBar::renderIconDisplayAlwaysOn(uint8_t &pos) {
 }
 
 void DeviceStatusIconBar::renderIconStopwatchRunning(uint8_t &pos) {
-	if (AppsStatusMonitor::getInstance()->isStopWatchRunning()) {
+	if (StopWatchRegistry::getInstance()->getRunning()) {
 		this->renderIcon(iconStopWatch, pos);
 	}
 }

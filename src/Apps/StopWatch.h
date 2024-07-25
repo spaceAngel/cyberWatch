@@ -11,19 +11,15 @@ class StopWatch : public App {
 
 		void render();
 		bool handlePEKShort();
-		bool isRunning();
 		bool isSystemSleepForbidden();
 
-		StopWatch();
+		StopWatch() {}
 
 		protected:
 
 			const uint8_t POS_Y = 83;
 
-			int64_t startAt = 0;
-			int64_t stopAt = 0;
 			int64_t prevTime;
-			bool running = false;
 			uint8_t prevHour = 0;
 			uint8_t prevSecond = 0;
 			uint8_t prevMinute = 0;

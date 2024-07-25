@@ -8,15 +8,9 @@ class AppsStatusMonitor {
 
 		static AppsStatusMonitor *getInstance();
 
-		bool isStopWatchRunning();
-
-		void registerStopWatchComponent(StopWatch *stopWatch);
-
 	protected:
 
 		static AppsStatusMonitor *inst;
-
-		StopWatch *stopWatch;
 
 		AppsStatusMonitor() {
 

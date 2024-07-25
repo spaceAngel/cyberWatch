@@ -6,7 +6,7 @@
 
 #include "Core/Hardware/Display.h"
 
-#include "Core/AppsStatusMonitor.h"
+#include "Apps/StopWatch/StopWatchRegistry.h"
 #include "Environment/AppSettings.h"
 #include "UserInterface/UserInterfaceManager.h"
 
@@ -17,7 +17,7 @@ void KnightRiderDeviceState::render() {
 		|| this->prevBitMask != bitmask
 	) {
 		this->renderButton(1, "LCK", UserInterfaceManager::getInstance()->isLocked());
-		this->renderButton(2, "STP", AppsStatusMonitor::getInstance()->isStopWatchRunning());
+		this->renderButton(2, "STP", StopWatchRegistry::getInstance()->getRunning());
 		this->renderButton(3, "DSP", AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON));
 		this->prevBitMask = bitmask;
 	}
@@ -52,7 +52,7 @@ void KnightRiderDeviceState::renderButton(uint8_t col, const char* text, bool st
 
 uint8_t KnightRiderDeviceState::getDeviceStateBitMask() {
 	uint8_t bits = 0;
-	if (AppsStatusMonitor::getInstance()->isStopWatchRunning()) {
+	if (StopWatchRegistry::getInstance()->getRunning()) {
 		bits |= KNIGHTRIDER_DEVCIESTATE_STOPWATCH_RUNNING;
 	}
 

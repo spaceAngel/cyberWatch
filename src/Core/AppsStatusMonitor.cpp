@@ -15,11 +15,3 @@ AppsStatusMonitor *AppsStatusMonitor::getInstance() {
 	}
 	return AppsStatusMonitor::inst;
 }
-
-void AppsStatusMonitor::registerStopWatchComponent(StopWatch *stopWatch) {
-	this->stopWatch = stopWatch;
-}
-
-bool AppsStatusMonitor::isStopWatchRunning() {
-	return this->stopWatch->isRunning();
-}
