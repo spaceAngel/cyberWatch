@@ -13,6 +13,10 @@
 
 
 void ChargingMode::switchedTo() {
+	delay(100);
+	TTGOClass::getWatch()->tft->fillScreen(
+		COLOR_BACKGROUND
+	);
 	TTGOClass::getWatch()->tft->drawRect(
 		26,
 		ChargingMode::POS_Y - 4,

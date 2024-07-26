@@ -7,8 +7,9 @@ cyberWatch 1.1
 - REFACTOR: renderTitle mehod in app
 - REFACTOR: StopPWatchRegistry class to store if stopwatch is running through whole app
 - REFACTOR: remove unused AppRunner apps array ('cause apps are managed by app menu)
-- REFACTOR: isntead of array of run modes, new instance is created always when needed
+- REFACTOR: instead of array of run modes, new instance is created always when needed
 - BUGFIX: fixed when "run once" alarm after ringing and turning system off and on is again enabled
+- BUGFIX: fixed switching between charging and main modes and rerendering
 
 
 cyberWatch 1.0

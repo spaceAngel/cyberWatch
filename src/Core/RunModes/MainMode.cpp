@@ -14,12 +14,16 @@
 #include "Core/SystemTicker.h"
 #include "Events/EventManager.h"
 #include "UserInterface/Screens/MainScreen.h"
+#include "UserInterface/AppRunner.h"
+#include "Apps/BlankScreen.h"
 
 
 void MainMode::switchedTo() {
 	MainScreen::getInstance()->destroy();
 	UserInterfaceManager::getInstance()->showSplashScreen();
 	InactivityWatcher::getInstance()->markActivity();
+	AppRunner::getInstance()->setToDefaultApp();
+	AppRunner::getInstance()->getCurrentApp()->setShouldReRender(true);
 };
 
 void MainMode::loop() {
@@ -145,7 +149,12 @@ void MainMode::turnOff() {
 	UserInterfaceManager::getInstance()->showExitScreen();
 	MotorController::vibrate(2);
 	delay(2000);
-	if (BatteryManager::getInstance()->isCharging()) {
+	if (
+		BatteryManager::getInstance()->isCharging()
+		|| SystemInfo::getInstance()->getPluggedIn()
+	) {
+		AppRunner::getInstance()->setAppOnTop(new BlankScreen());
+		AppRunner::getInstance()->getCurrentApp()->render();
 		CyberWatch::getInstance()->setRunMode(RUNMODE_CHARGING);
 	} else {
 		TTGOClass::getWatch()->shutdown();
