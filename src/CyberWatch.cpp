@@ -53,15 +53,27 @@ void CyberWatch::init() {
 	} else {
 		this->setRunMode(RUNMODE_MAIN);
 	}
+
+	if (
+		BatteryManager::getInstance()->isCharging()
+		|| isFirstRun
+	) {
+		SystemInfo::getInstance()->setPlugState(true);
+	}
 };
 
 void CyberWatch::loop() {
-	this->runModes[this->runMode]->loop();
+	this->runMode->loop();
 };
 
 void CyberWatch::setRunMode(uint8_t mode) {
 
-	//clear disply
+	if (mode == RUNMODE_CHARGING) {
+		this->runMode = new ChargingMode();
+	}
+	if (mode == RUNMODE_MAIN) {
+		this->runMode = new MainMode();
+	}
 	TTGOClass::getWatch()->tft->fillRect(
 		0,
 		0,
@@ -69,14 +81,6 @@ void CyberWatch::setRunMode(uint8_t mode) {
 		TTGOClass::getWatch()->tft->height(),
 		COLOR_BACKGROUND
 	);
-
-	this->runMode = mode;
-	this->runModes[this->runMode]->switchedTo();
+	this->runMode->switchedTo();
 }
-
-CyberWatch::CyberWatch() {
-	this->runModes[RUNMODE_MAIN] = new MainMode();
-	this->runModes[RUNMODE_CHARGING] = new ChargingMode();
-}
-
 

@@ -22,9 +22,9 @@ class CyberWatch {
 
 		static CyberWatch *inst;
 
-		RunMode *runModes[2];
-		uint8_t runMode;
+		RunMode *runMode;
 
-		CyberWatch();
+		CyberWatch() {
+		}
 
 };
