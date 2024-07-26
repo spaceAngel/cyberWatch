@@ -3,6 +3,7 @@ cyberWatch 1.1
 - FEATURE: apps menu
 - FEATURE: apps cann be controled both vertical & horitontal swiping
 - FEATURE: blank screen app when needed empty screen
+- FEATURE: charging icon is charging || connected
 - REFACTOR: watches faces changed by horizontal swipe inestead of vertical
 - REFACTOR: renderTitle mehod in app
 - REFACTOR: StopPWatchRegistry class to store if stopwatch is running through whole app

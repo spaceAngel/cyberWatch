@@ -17,6 +17,7 @@
 #include "Environment/AppSettings.h"
 #include "Core/Hardware/BatteryManager.h"
 #include "Apps/Alarm/AlarmStorage.h"
+#include "Environment/SystemInfo.h"
 
 void DeviceStatusIconBar::render() {
 	if (
@@ -81,7 +82,10 @@ uint8_t DeviceStatusIconBar::getDeviceStateBitMask() {
 }
 
 void DeviceStatusIconBar::renderIconCharging(uint8_t &pos) {
-	if (BatteryManager::getInstance()->isCharging()) {
+	if (
+		BatteryManager::getInstance()->isCharging()
+		|| SystemInfo::getInstance()->getPluggedIn()
+	) {
 		this->renderIcon(iconCharging, pos);
 	}
 }
