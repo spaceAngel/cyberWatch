@@ -7,6 +7,7 @@
 
 #include "Core/SystemTicker.h"
 #include "Events/EventManager.h"
+#include "Core/Hardware/MotorController.h"
 
 BatteryManager* BatteryManager::inst;
 
@@ -33,6 +34,11 @@ void BatteryManager::updateCapacity() {
 		|| SystemTicker::getInstance()->isTickFor(TICKER_BATTERY)
 	) {
 		int capacity = TTGOClass::getWatch()->power->getBattPercentage();
+		if (capacity == 127) {
+			capacity = (int)(TTGOClass::getWatch()->power->getBattVoltage() - BATTERY_LOW_CAPACITY) * 100 / (BATTERY_FULL_CAPACITY - BATTERY_LOW_CAPACITY);
+		}
+		capacity = min(100, capacity);  //prevent to return capacity over 100% (calculation inaccurancy)
+		capacity = max(0, capacity); //prevent to return capacity less then 0 (calculation inaccurancy)
 		uint8_t lastCapacity = this->lastCapacity; //prevent recursion
 		this->lastCapacity = capacity;
 		if (capacity != lastCapacity) {
