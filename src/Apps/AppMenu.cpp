@@ -8,12 +8,14 @@
 #include "AppMenu/appIconStopwatch.h"
 #include "AppMenu/appIconCalendar.h"
 #include "AppMenu/appIconSettings.h"
+#include "AppMenu/appIconInfo.h"
 
 #include "UserInterface/AppRunner.h"
 #include "Alarm.h"
 #include "Calendar.h"
 #include "StopWatch.h"
 #include "SettingsPanel.h"
+#include "AboutPanel.h"
 
 void AppMenu::render() {
 	if (this->shouldReRender()) {
@@ -27,6 +29,7 @@ void AppMenu::render() {
 		this->renderIcon(appIconAlarm, 1,1);
 		this->renderIcon(appIconStopwatch, 2,1);
 		this->renderIcon(appIconCalendar, 3,1);
+		this->renderIcon(appIconInfo, 2,3);
 		this->renderIcon(appIconSettings, 3,3);
 	}
 }
@@ -52,6 +55,7 @@ bool AppMenu::handleTouch(uint8_t x, uint8_t y) {
 	if (posX == 1 && posY == 1) {AppRunner::getInstance()->setAppOnTop(new Alarm());}
 	if (posX == 2 && posY == 1) {AppRunner::getInstance()->setAppOnTop(new StopWatch());}
 	if (posX == 3 && posY == 1) {AppRunner::getInstance()->setAppOnTop(new Calendar());}
+	if (posX == 2 && posY == 3) {AppRunner::getInstance()->setAppOnTop(new AboutPanel());}
 	if (posX == 3 && posY == 3) {AppRunner::getInstance()->setAppOnTop(new SettingsPanel());}
 	return true;
 }

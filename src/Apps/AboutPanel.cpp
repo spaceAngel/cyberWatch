@@ -89,12 +89,6 @@ void AboutPanel::secondsToString(uint totalSeconds, char (&string)[20]) {
 	}
 }
 
-bool AboutPanel::handlePEKShort() {
-	AppRunner::getInstance()->setAppOnTop(new SettingsPanel());
-	return true;
-}
-
 AboutPanel::AboutPanel() {
-
 }
 

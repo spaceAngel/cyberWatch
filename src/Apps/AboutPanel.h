@@ -13,8 +13,6 @@ class AboutPanel : public App {
 
 		AboutPanel();
 
-		bool handlePEKShort();
-
 	protected:
 
 		uint prevUptime = 0;
