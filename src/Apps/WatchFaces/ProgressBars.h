@@ -1,7 +1,7 @@
 #pragma once
 
-#include "UserInterface/WatchFaces/WatchFace.h"
-#include "UserInterface/WatchFaces/Components/ProgressBar.h"
+#include "Apps/WatchFaces/WatchFace.h"
+#include "Apps/WatchFaces/Components/ProgressBar.h"
 
 class ProgressBars : public WatchFace {
 

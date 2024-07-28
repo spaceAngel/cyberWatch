@@ -1,6 +1,6 @@
 #pragma once
 
-#include "UserInterface/WatchFaces/WatchFace.h"
+#include "Apps/WatchFaces/WatchFace.h"
 
 class SensorGrid : public WatchFace {
 

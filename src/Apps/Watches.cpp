@@ -8,7 +8,7 @@
 #include "Core/Registry.h"
 #include "Environment/AppSettings.h"
 #include "UserInterface/UserInterfaceManager.h"
-#include "UserInterface/WatchFaces/WatchFace.h"
+#include "Apps/WatchFaces/WatchFace.h"
 #include "UserInterface/AppRunner.h"
 #include "Apps/SettingsPanel.h"
 #include "Core/Hardware/Esp32.h"

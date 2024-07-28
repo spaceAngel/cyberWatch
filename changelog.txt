@@ -1,3 +1,7 @@
+cyberWatch 1:2
+========================
+- REFACTOR: moved all watch faces into apps directory from userinterface
+
 cyberWatch 1.1
 ========================
 - FEATURE: apps menu

@@ -4,9 +4,9 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/WatchFaces/WatchFace.h"
-#include "UserInterface/WatchFaces/Components/Date.h"
-#include "UserInterface/WatchFaces/Components/Time.h"
+#include "Apps/WatchFaces/WatchFace.h"
+#include "Apps/WatchFaces/Components/Date.h"
+#include "Apps/WatchFaces/Components/Time.h"
 
 class DigitalClocks : public WatchFace {
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "UserInterface/WatchFaces/WatchFace.h"
-#include "UserInterface/WatchFaces/Components/NeonCircle.h"
+#include "Apps/WatchFaces/WatchFace.h"
+#include "Apps/WatchFaces/Components/NeonCircle.h"
 
 class NeonCircles : public WatchFace {
 

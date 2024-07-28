@@ -4,9 +4,9 @@
 
 #include "KnightRider.h"
 #include "Core/Hardware/RTC.h"
-#include "UserInterface/WatchFaces/KnightRiderComponents/KnightRiderButton.h"
-#include "UserInterface/WatchFaces/KnightRiderComponents/KnightRiderDeviceState.h"
-#include "UserInterface/WatchFaces/KnightRiderComponents/KnightRiderSpeaker.h"
+#include "Apps/WatchFaces/KnightRiderComponents/KnightRiderButton.h"
+#include "Apps/WatchFaces/KnightRiderComponents/KnightRiderDeviceState.h"
+#include "Apps/WatchFaces/KnightRiderComponents/KnightRiderSpeaker.h"
 #include "Core/Hardware/BatteryManager.h"
 
 void KnightRider::render() {

@@ -3,15 +3,15 @@
 #include <Arduino.h>
 
 #include "UserInterface/App.h"
-#include "UserInterface/WatchFaces/WatchFace.h"
-#include "UserInterface/WatchFaces/AnalogClocks.h"
-#include "UserInterface/WatchFaces/Planetoid.h"
-#include "UserInterface/WatchFaces/DigitalClocks.h"
-#include "UserInterface/WatchFaces/ProgressBars.h"
-#include "UserInterface/WatchFaces/NeonCircles.h"
-#include "UserInterface/WatchFaces/SensorGrid.h"
-#include "UserInterface/WatchFaces/KnightRider.h"
-#include "UserInterface/WatchFaces/InfoPanel/InfoPanel.h"
+#include "Apps/WatchFaces/WatchFace.h"
+#include "Apps/WatchFaces/AnalogClocks.h"
+#include "Apps/WatchFaces/Planetoid.h"
+#include "Apps/WatchFaces/DigitalClocks.h"
+#include "Apps/WatchFaces/ProgressBars.h"
+#include "Apps/WatchFaces/NeonCircles.h"
+#include "Apps/WatchFaces/SensorGrid.h"
+#include "Apps/WatchFaces/KnightRider.h"
+#include "Apps/WatchFaces/InfoPanel/InfoPanel.h"
 
 class Watches : public App {
 

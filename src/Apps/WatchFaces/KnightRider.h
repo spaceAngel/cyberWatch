@@ -1,10 +1,10 @@
 #pragma once
 
-#include "UserInterface/WatchFaces/WatchFace.h"
-#include "UserInterface/WatchFaces/KnightRiderComponents/KnightRiderButton.h"
-#include "UserInterface/WatchFaces/KnightRiderComponents/KnightRiderSpeaker.h"
-#include "UserInterface/WatchFaces/KnightRiderComponents/KnightRiderBatteryBar.h"
-#include "UserInterface/WatchFaces/KnightRiderComponents/KnightRiderDeviceState.h"
+#include "Apps/WatchFaces/WatchFace.h"
+#include "Apps/WatchFaces/KnightRiderComponents/KnightRiderButton.h"
+#include "Apps/WatchFaces/KnightRiderComponents/KnightRiderSpeaker.h"
+#include "Apps/WatchFaces/KnightRiderComponents/KnightRiderBatteryBar.h"
+#include "Apps/WatchFaces/KnightRiderComponents/KnightRiderDeviceState.h"
 
 class KnightRider : public WatchFace {
 

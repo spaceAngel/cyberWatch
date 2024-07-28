@@ -4,7 +4,7 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/WatchFaces/Components/NeonCircle.h"
+#include "Apps/WatchFaces/Components/NeonCircle.h"
 #include "Core/Hardware/RTC.h"
 
 NeonCircles::NeonCircles() {

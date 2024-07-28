@@ -4,7 +4,7 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/WatchFaces/WatchFace.h"
+#include "Apps/WatchFaces/WatchFace.h"
 
 class AnalogClocks : public WatchFace {
 
