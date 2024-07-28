@@ -1,18 +1,18 @@
 cyberWatch 1.1
 ========================
 - FEATURE: apps menu
-- FEATURE: apps cann be controled both vertical & horitontal swiping
+- FEATURE: apps can be controlled both vertical & horizontal swiping
 - FEATURE: blank screen app when needed empty screen
 - FEATURE: charging icon is charging || connected
 - FEATURE: system info is standalone app accessible from app menu
 - REFACTOR: watches faces changed by horizontal swipe inestead of vertical
 - REFACTOR: renderTitle mehod in app
-- REFACTOR: StopPWatchRegistry class to store if stopwatch is running through whole app
+- REFACTOR: StopWatchRegistry class to store if stopwatch is running through whole app
 - REFACTOR: remove unused AppRunner apps array ('cause apps are managed by app menu)
 - REFACTOR: instead of array of run modes, new instance is created always when needed
 - BUGFIX: fixed when "run once" alarm after ringing and turning system off and on is again enabled
 - BUGFIX: fixed switching between charging and main modes and rerendering
-- BUGFIX: fixed strange behavious when battere percentrage returns 127 - failback calculation by remaining voltage calculation
+- BUGFIX: fixed strange behaviour when battere percentage returns 127 - failback calculation by remaining voltage calculation
 
 
 cyberWatch 1.0
@@ -21,13 +21,13 @@ cyberWatch 1.0
 - FEATURE: notification bar in top of the display
 - FEATURE: locked display can be unlocked by "long touch" - (>0.4s)
 - FEATURE: apps can handle long touch - (>0.4s)
-- FEATURE: any app can be "on top", e.g. settings panel which is not incluuded in swiping order
+- FEATURE: any app can be "on top", e.g. settings panel which is not included in swiping order
 - FEATURE: display adjust is changeable in settings screen / miniapp
 - FEATURE: using run modes to control flow of current mode (for future pin screen after start, battery charging when connect turned off watches to power supply)
 - FEATURE: charging mode (when connect power to turned off watches, show battery icon + % bar instead of fully start)
 - FEATURE: "Cassete futurism" clock face
 - FEATURE: "Knight Rider speaker" clock face
-- FEATURE: Analog wazchface shows date
+- FEATURE: Analog watchface shows date
 - FEATURE: 3-slot alarm
 - FEATURE: calendar can be reset to the current moon by long touch instead of PEKshort
 - FEATURE: PEKShort si default in every app to get to watch face, if not overloaded
