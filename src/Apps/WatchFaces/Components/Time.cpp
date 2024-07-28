@@ -18,14 +18,14 @@ void Time::render() {
 		TTGOClass::getWatch()->tft->fillRect(
 			0,
 			POS_Y,
-			TTGOClass::getWatch()->tft->width(),
+			RESOLUTION_WIDTH,
 			TTGOClass::getWatch()->tft->fontHeight() - 14,
 			COLOR_BACKGROUND
 		);
 
 		TTGOClass::getWatch()->tft->drawString(
 			timeStr,
-			(TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(timeStr)) / 2,
+			(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(timeStr)) / 2,
 			POS_Y
 		);
 		Display::getInstance()->resetTypographySettings();

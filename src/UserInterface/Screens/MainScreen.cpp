@@ -68,8 +68,8 @@ void MainScreen::clear() {
 	TTGOClass::getWatch()->tft->fillRect(
 		0,
 		0,
-		TTGOClass::getWatch()->tft->width(),
-		TTGOClass::getWatch()->tft->height(),
+		RESOLUTION_WIDTH,
+		RESOLUTION_HEIGHT,
 		COLOR_BACKGROUND
 	);
 }

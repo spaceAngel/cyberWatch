@@ -24,8 +24,8 @@ void SplashScreen::resetToDefault() {
 	TTGOClass::getWatch()->tft->fillRect(
 		0,
 		0,
-		TTGOClass::getWatch()->tft->width(),
-		TTGOClass::getWatch()->tft->height(),
+		RESOLUTION_WIDTH,
+		RESOLUTION_HEIGHT,
 		COLOR_BACKGROUND
 	);
 }
@@ -33,10 +33,10 @@ void SplashScreen::resetToDefault() {
 void SplashScreen::renderLoadingBar() {
 	uint margin = 20;
 	//"loading effect" progressbar
-	for (uint i = margin; i < (TTGOClass::getWatch()->tft->width() - (margin * 2)); i++) {
+	for (uint i = margin; i < (RESOLUTION_WIDTH - (margin * 2)); i++) {
 		TTGOClass::getWatch()->tft->fillRect(
 			margin,
-			TTGOClass::getWatch()->tft->height() - 60,
+			RESOLUTION_HEIGHT - 60,
 			i,
 			10,
 			COLOR_MAIN_1

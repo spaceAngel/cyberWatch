@@ -12,7 +12,7 @@ void KnightRiderButton::render(int32_t value) {
 	) {
 		uint8_t cellWidth = 48;
 		uint8_t cellHeight = 29;
-		uint8_t posX = col == 1 ? 22 : TTGOClass::getWatch()->tft->width() - (18 + cellWidth);
+		uint8_t posX = col == 1 ? 22 : RESOLUTION_WIDTH - (18 + cellWidth);
 
 		uint posY =  9 + (
 			(108 / 3) * (row - 1)

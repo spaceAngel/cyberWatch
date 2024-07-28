@@ -19,7 +19,7 @@ void AboutPanel::render() {
 		TTGOClass::getWatch()->tft->fillRect(
 			75,
 			this->calculatePosY(2, true) - 10,
-			TTGOClass::getWatch()->tft->width(),
+			RESOLUTION_WIDTH,
 			TTGOClass::getWatch()->tft->fontHeight() * 2.4,
 			COLOR_BACKGROUND
 		);
@@ -30,7 +30,7 @@ void AboutPanel::render() {
 		} else {
 			TTGOClass::getWatch()->tft->drawString(
 			"plugged",
-			TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth("plugged") - 15,
+			RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth("plugged") - 15,
 			this->calculatePosY(3, true)
 	);
 		}
@@ -43,7 +43,7 @@ void AboutPanel::renderDateDiff(uint seconds, uint8_t row) {
 	this->secondsToString(seconds, str);
 	TTGOClass::getWatch()->tft->drawString(
 		str,
-		TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(str) - 15,
+		RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(str) - 15,
 		this->calculatePosY(row, true)
 	);
 }
@@ -51,17 +51,17 @@ void AboutPanel::renderDateDiff(uint seconds, uint8_t row) {
 void AboutPanel::renderCompilationData() {
 	TTGOClass::getWatch()->tft->drawString(
 		APP_VERSION,
-		(TTGOClass::getWatch()->tft->width() / 4) - (TTGOClass::getWatch()->tft->textWidth(APP_VERSION) / 2),
+		(RESOLUTION_WIDTH / 4) - (TTGOClass::getWatch()->tft->textWidth(APP_VERSION) / 2),
 		this->calculatePosY(0, false)
 	);
 	TTGOClass::getWatch()->tft->drawString(
 		compilationCommit,
-		(TTGOClass::getWatch()->tft->width() / 2) - 10,
+		(RESOLUTION_WIDTH / 2) - 10,
 		this->calculatePosY(0, false)
 	);
 	TTGOClass::getWatch()->tft->drawString(
 		compilationDate,
-		(TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(compilationDate)) / 2,
+		(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(compilationDate)) / 2,
 		this->calculatePosY(1, false)
 	);
 }

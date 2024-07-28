@@ -21,7 +21,7 @@ SettingsPanelButton::SettingsPanelButton(
 }
 
  uint8_t SettingsPanelButton::getX() {
-	return (this->col == (uint8_t) 1 ? 5 : 5 + (TTGOClass::getWatch()->tft->width() / 2));
+	return (this->col == (uint8_t) 1 ? 5 : 5 + (RESOLUTION_WIDTH / 2));
  }
 
  uint8_t SettingsPanelButton::getY() {
@@ -29,7 +29,7 @@ SettingsPanelButton::SettingsPanelButton(
  }
 
  uint8_t SettingsPanelButton::getWidth() {
-	return (TTGOClass::getWatch()->tft->width() / 2) - 10;
+	return (RESOLUTION_WIDTH / 2) - 10;
  }
 
  uint8_t SettingsPanelButton::getHeight() {

@@ -57,7 +57,7 @@ void SettingsPanel::handleTouchButtons(uint8_t x, uint8_t y) {
 }
 
 void SettingsPanel::handleTouchAdjustbar(uint8_t x) {
-	uint8_t adjustWidthFull = (TTGOClass::getWatch()->tft->width() - (10 * 2)) - (ADJUSTBAR_HEIGHT);
+	uint8_t adjustWidthFull = (RESOLUTION_WIDTH - (10 * 2)) - (ADJUSTBAR_HEIGHT);
 	int adjustPercent = (x - 20 - (ADJUSTBAR_HEIGHT)) * 100  / adjustWidthFull;
 	adjustPercent = max(0, adjustPercent);
 	Display::getInstance()->setAdjust(adjustPercent);
@@ -82,13 +82,13 @@ void SettingsPanel::renderAdjustBar() {
 	);
 
 	TTGOClass::getWatch()->tft->fillCircle(
-		TTGOClass::getWatch()->tft->width() - margin - (ADJUSTBAR_HEIGHT / 2),
+		RESOLUTION_WIDTH - margin - (ADJUSTBAR_HEIGHT / 2),
 		ADJUSTBAR_POSY + (ADJUSTBAR_HEIGHT / 2),
 		(ADJUSTBAR_HEIGHT / 2),
 		COLOR_MAIN_1
 	);
 
-	uint8_t adjustWidthFull = (TTGOClass::getWatch()->tft->width() - (margin * 2)) - (ADJUSTBAR_HEIGHT);
+	uint8_t adjustWidthFull = (RESOLUTION_WIDTH - (margin * 2)) - (ADJUSTBAR_HEIGHT);
 	uint8_t adjustWidth = (adjustWidthFull *Display::getInstance()->getAdjust()) / 100;
 	TTGOClass::getWatch()->tft->fillRect(
 		margin + (ADJUSTBAR_HEIGHT / 2),

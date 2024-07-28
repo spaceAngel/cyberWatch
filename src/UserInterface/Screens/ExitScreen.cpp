@@ -11,8 +11,8 @@ void ExitScreen::show() {
 	TTGOClass::getWatch()->tft->fillRect(
 		0,
 		0,
-		TTGOClass::getWatch()->tft->width(),
-		TTGOClass::getWatch()->tft->height(),
+		RESOLUTION_WIDTH,
+		RESOLUTION_HEIGHT,
 		COLOR_BACKGROUND
 	);
 
@@ -22,8 +22,8 @@ void ExitScreen::show() {
 	char message[20] = "leaving	 matrix";
 	TTGOClass::getWatch()->tft->drawString(
 		message,
-		(TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(message)) / 2,
-		TTGOClass::getWatch()->tft->height() - 60
+		(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(message)) / 2,
+		RESOLUTION_HEIGHT - 60
 	);
 }
 

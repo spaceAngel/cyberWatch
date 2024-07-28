@@ -21,7 +21,7 @@ void NotificationBar::renderDesign() {
 
 NotificationBar::NotificationBar() {
 	this->battery = new Battery(
-		TTGOClass::getWatch()->tft->width() - 45,
+		RESOLUTION_WIDTH - 45,
 		0,
 		false
 	);

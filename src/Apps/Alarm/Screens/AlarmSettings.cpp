@@ -16,7 +16,7 @@ void AlarmSettings::render() {
 	if (this->shouldReRender()) {
 		TTGOClass::getWatch()->tft->drawString(
 			"Alarm settings",
-			(TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth("Alarm settings")) / 2,
+			(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth("Alarm settings")) / 2,
 			25
 		);
 		Display::getInstance()->resetTypographySettings();
@@ -34,7 +34,7 @@ void AlarmSettings::render() {
 }
 
 void AlarmSettings::renderButtons() {
-	uint8_t btnLeft = TTGOClass::getWatch()->tft->width() - AlarmSettings::BTN_WIDTH - 10;
+	uint8_t btnLeft = RESOLUTION_WIDTH - AlarmSettings::BTN_WIDTH - 10;
 	TTGOClass::getWatch()->tft->drawRect(
 		btnLeft,
 		60,
@@ -106,7 +106,7 @@ bool AlarmSettings::handleTouch(uint8_t x, uint8_t y) {
 			this->setShouldReRender(true);
 		}
 	}
-	uint8_t btnLeft = TTGOClass::getWatch()->tft->width() - AlarmSettings::BTN_WIDTH - 10;
+	uint8_t btnLeft = RESOLUTION_WIDTH - AlarmSettings::BTN_WIDTH - 10;
 	if (x > btnLeft && x < btnLeft + AlarmSettings::BTN_WIDTH) {
 		if (y > 60 && y < 60 + AlarmSettings::BTN_HEIGHT) {
 			AlarmStorage::getInstance()->getAlarm(this->alarm)->setIsRunningOnce();

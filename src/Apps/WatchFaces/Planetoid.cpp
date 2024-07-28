@@ -26,7 +26,7 @@ void Planetoid::render() {
 
 void Planetoid::clear() {
 	TTGOClass::getWatch()->tft->fillCircle(
-		TTGOClass::getWatch()->tft->width() / 2,
+		RESOLUTION_WIDTH / 2,
 		POS_Y,
 		RADIUS + 10,
 		COLOR_BACKGROUND
@@ -40,7 +40,7 @@ void Planetoid::renderFace() {
 }
 
 void Planetoid::renderPoint(uint16_t angle, uint8_t radius, uint8_t size, int color) {
-	uint8_t x = TTGOClass::getWatch()->tft->width() / 2;
+	uint8_t x = RESOLUTION_WIDTH / 2;
 	uint8_t y = POS_Y;
 	int32_t calculatedX = Geometry::getCalculatedXPointOnCircle(x, angle, radius);
 	int32_t calculatedY = Geometry::getCalculatedYPointOnCircle(y, angle, radius);

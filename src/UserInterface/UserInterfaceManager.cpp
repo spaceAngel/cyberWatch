@@ -184,8 +184,8 @@ void UserInterfaceManager::clearScreen() {
 	TTGOClass::getWatch()->tft->fillRect(
 		0,
 		0,
-		TTGOClass::getWatch()->tft->width(),
-		TTGOClass::getWatch()->tft->height(),
+		RESOLUTION_WIDTH,
+		RESOLUTION_HEIGHT,
 		COLOR_BACKGROUND
 	);
 }
@@ -207,8 +207,8 @@ void UserInterfaceManager::setLongtouchOnSameCoords(uint8_t x, uint8_t y) {
 }
 
 bool UserInterfaceManager::isLongtouchOnSameCoords() {
-	uint8_t toleranceX = (TTGOClass::getWatch()->tft->width() * 5) / 100;
-	uint8_t toleranceY = (TTGOClass::getWatch()->tft->height() * 5) / 100;
+	uint8_t toleranceX = (RESOLUTION_WIDTH * 5) / 100;
+	uint8_t toleranceY = (RESOLUTION_HEIGHT * 5) / 100;
 
 	return (
 		(this->lastTouched + LONGTOUCH_INAPP > millis())

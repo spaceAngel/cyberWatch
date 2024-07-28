@@ -35,7 +35,7 @@ void AnalogClocks::render() {
 }
 
 void AnalogClocks::drawLine(int32_t time, uint8_t radius, uint32_t color) {
-	uint8_t x = TTGOClass::getWatch()->tft->width() / 2;
+	uint8_t x = RESOLUTION_WIDTH / 2;
 	uint8_t y = POS_Y;
 
 	int32_t x1 = Geometry::getCalculatedXPointOnCircle(x, (6 * time), radius);
@@ -48,7 +48,7 @@ void AnalogClocks::drawLine(int32_t time, uint8_t radius, uint32_t color) {
 
 void AnalogClocks::clear() {
 	TTGOClass::getWatch()->tft->fillCircle(
-		TTGOClass::getWatch()->tft->width() / 2,
+		RESOLUTION_WIDTH / 2,
 		POS_Y,
 		RADIUS - 10,
 		COLOR_BACKGROUND
@@ -57,10 +57,10 @@ void AnalogClocks::clear() {
 
 void AnalogClocks::renderFace() {
 	for (int32_t i = 1; i <= 60; i++) {
-		int32_t x1 = Geometry::getCalculatedXPointOnCircle(TTGOClass::getWatch()->tft->width() / 2, 6 * i, ((i % 5) == 0) ? RADIUS - 5 : RADIUS);
+		int32_t x1 = Geometry::getCalculatedXPointOnCircle(RESOLUTION_WIDTH / 2, 6 * i, ((i % 5) == 0) ? RADIUS - 5 : RADIUS);
 		int32_t y1 = Geometry::getCalculatedYPointOnCircle(POS_Y, 6 * i, ((i % 5) == 0) ? RADIUS - 5 : RADIUS);
 
-		int32_t x2 = Geometry::getCalculatedXPointOnCircle(TTGOClass::getWatch()->tft->width() / 2, 6 * i, RADIUS);
+		int32_t x2 = Geometry::getCalculatedXPointOnCircle(RESOLUTION_WIDTH / 2, 6 * i, RADIUS);
 		int32_t y2 = Geometry::getCalculatedYPointOnCircle(POS_Y, 6 * i, RADIUS);
 
 		TTGOClass::getWatch()->tft->drawLine(x1, y1, x2, y2, COLOR_MAIN_1);
@@ -69,7 +69,7 @@ void AnalogClocks::renderFace() {
 
 void AnalogClocks::renderDate(RTC_Date date) {
 	TTGOClass::getWatch()->tft->fillRect(
-		(TTGOClass::getWatch()->tft->width() - 100) / 2,
+		(RESOLUTION_WIDTH - 100) / 2,
 		POS_Y - 37,
 		100,
 		24,
@@ -82,7 +82,7 @@ void AnalogClocks::renderDate(RTC_Date date) {
 	(void)snprintf(dateStr, sizeof(dateStr), "%s %02d/%02d", dayInWeek, date.day, date.month);
 	TTGOClass::getWatch()->tft->drawString(
 		dateStr,
-		(TTGOClass::getWatch()->tft->width() - TTGOClass::getWatch()->tft->textWidth(dateStr)) / 2,
+		(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(dateStr)) / 2,
 		POS_Y - 36
 	);
 }
