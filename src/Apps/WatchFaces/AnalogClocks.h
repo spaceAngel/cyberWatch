@@ -13,7 +13,7 @@ class AnalogClocks : public WatchFace {
 		void render();
 
 		bool hasToolbar() {
-			return true;
+			return false;
 		}
 
 		bool runWithHighSpeed() {
@@ -22,7 +22,7 @@ class AnalogClocks : public WatchFace {
 
 	protected:
 
-		uint8_t prevSecond = 99;
+		uint8_t prevMinute = 99;
 
 		uint8_t const POS_Y = 136;
 		uint8_t const RADIUS = 95;

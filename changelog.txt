@@ -2,6 +2,7 @@ cyberWatch 1:2
 ========================
 - REFACTOR: moved all watch faces into apps directory from userinterface
 - REFACTOR: used defines for resolution width annd height instead tft->width() / height() calls
+- REDACTOR: redesign analog watch face
 
 cyberWatch 1.1
 ========================
