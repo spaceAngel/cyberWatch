@@ -13,23 +13,23 @@ void Lcars::render() {
 	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
 	if (
 		(this->prevMinute != currentTime.minute)
+		|| this->shouldReRender()
 	) {
-		this->setShouldReRender(true);
-	}
-	if (this->shouldReRender()) {
 		this->prevMinute = currentTime.minute;
-		TTGOClass::getWatch()->tft->setSwapBytes(true);
-		TTGOClass::getWatch()->tft->pushImage(0, 0, 240, 240, LcarsBackground.data);
+		if (this->shouldReRender()) {
+			TTGOClass::getWatch()->tft->setSwapBytes(true);
+			TTGOClass::getWatch()->tft->pushImage(0, 0, 240, 240, LcarsBackground.data);
+		} else {
+			TTGOClass::getWatch()->tft->fillRect(62, 37, 120, 100, TFT_BLACK);
+		}
 		TTGOClass::getWatch()->tft->setTextFont(4);
 		this->renderTime();
 		this->renderDate();
-		this->setShouldReRender(false);
-		this->battery->setShouldReRender(true);
-		this->watchState->setShouldReRender(true);
 	}
 	this->battery->render();
 	this->watchState->render();
 	Display::getInstance()->resetTypographySettings();
+	this->setShouldReRender(false);
 }
 
 void Lcars::renderDate() {
