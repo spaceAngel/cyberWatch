@@ -25,9 +25,11 @@ void Lcars::render() {
 		TTGOClass::getWatch()->tft->setTextFont(4);
 		this->renderTime();
 		this->renderDate();
+		this->steps->setShouldReRender(true);
 	}
 	this->battery->render();
 	this->watchState->render();
+	this->steps->render();
 	Display::getInstance()->resetTypographySettings();
 	this->setShouldReRender(false);
 }

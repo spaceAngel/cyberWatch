@@ -3,6 +3,7 @@
 #include "Apps/WatchFaces/WatchFace.h"
 #include "Lcars/LcarsBatteryIndicator.h"
 #include "Lcars/LcarsWatchStateIndicator.h"
+#include "Lcars/LcarsSteps.h"
 
 class Lcars : public WatchFace {
 
@@ -13,6 +14,7 @@ class Lcars : public WatchFace {
 		Lcars() {
 			this->battery = new LcarsBatteryIndicator();
 			this->watchState = new LcarsWatchStateIndicator();
+			this->steps = new LcarsSteps();
 		}
 
 		bool hasInfoPanel() {
@@ -23,6 +25,7 @@ class Lcars : public WatchFace {
 			this->shouldRerender = shouldReRender;
 			this->battery->setShouldReRender(shouldReRender);
 			this->watchState->setShouldReRender(shouldReRender);
+			this->steps->setShouldReRender(shouldRerender);
 		}
 
 		bool shouldReRender() {
@@ -37,6 +40,7 @@ class Lcars : public WatchFace {
 
 		LcarsBatteryIndicator *battery;
 		LcarsWatchStateIndicator *watchState;
+		LcarsSteps *steps;
 
 		void renderTime();
 		void renderDate();
