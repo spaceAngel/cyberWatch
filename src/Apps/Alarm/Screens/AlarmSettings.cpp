@@ -11,6 +11,7 @@
 #include "UserInterface/AppRunner.h"
 #include "Core/Hardware/MotorController.h"
 #include "Core/Hardware/RTC.h"
+#include "Apps/Alarm.h"
 
 void AlarmSettings::render() {
 	if (this->shouldReRender()) {
@@ -113,10 +114,10 @@ bool AlarmSettings::handleTouch(uint8_t x, uint8_t y) {
 			this->setShouldReRender(true);
 		}
 
-		if (y > 112 && y < 112 + AlarmSettings::BTN_HEIGHT) {
+		if (y > 112 && y < 112 + AlarmSettings::BTN_HEIGHT) { // delete
 			AlarmStorage::getInstance()->getAlarm(this->alarm)->setEnabled(false);
 			AlarmStorage::getInstance()->save();
-			AppRunner::getInstance()->removeAppOnTop();
+			AppRunner::getInstance()->setAppOnTop(new Alarm());
 		}
 	}
 	AlarmStorage::getInstance()->save();
@@ -124,7 +125,7 @@ bool AlarmSettings::handleTouch(uint8_t x, uint8_t y) {
 }
 
 bool AlarmSettings::handlePEKShort() {
-	AppRunner::getInstance()->removeAppOnTop();
+	AppRunner::getInstance()->setAppOnTop(new Alarm());
 	return false;
 }
 
