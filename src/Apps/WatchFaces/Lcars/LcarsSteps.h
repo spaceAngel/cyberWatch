@@ -11,6 +11,6 @@ class LcarsSteps : public Component {
 		LcarsSteps() {};
 
 	protected:
-		uint8_t prevSteps = 0;
+		uint16_t prevSteps = 0;
 
 };
