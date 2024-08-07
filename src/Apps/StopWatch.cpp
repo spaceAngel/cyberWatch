@@ -4,7 +4,6 @@
 
 #include <LilyGoWatch.h>
 
-#include "Core/AppsStatusMonitor.h"
 #include "Core/Hardware/Display.h"
 #include "StopWatch/StopWatchRegistry.h"
 

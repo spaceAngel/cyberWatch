@@ -6,6 +6,7 @@ cyberWatch 1:2
 - REFACTOR: used defines for resolution width annd height instead tft->width() / height() calls
 - REDACTOR: redesign analog watch face
 - BUGFIX:when pekshort on alarm setting on after delete alarm > go back to alarm overview screen (was back on watch face before)
+- REFACTOR: remove some unused classess
 
 cyberWatch 1.1
 ========================

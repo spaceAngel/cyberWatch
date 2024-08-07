@@ -1,7 +1,6 @@
 #pragma once
 
 #include "UserInterface/App.h"
-#include "Core/AppsStatusMonitor.h"
 #include "UserInterface/Components/NotificationBar/NotificationBar.h"
 
 class MainScreen {
