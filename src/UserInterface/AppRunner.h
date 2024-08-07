@@ -26,8 +26,6 @@ class AppRunner {
 
 		static AppRunner *inst;
 
-		int8_t currentApp = 0;
-
 		App *appOnTop = nullptr;
 		App *defaultApp = nullptr;
 

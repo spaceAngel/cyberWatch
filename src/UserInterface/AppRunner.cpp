@@ -17,12 +17,8 @@ AppRunner::AppRunner() {
 }
 
 void  AppRunner::setToDefaultApp() {
-	if (
-		this->currentApp != 0
-		|| this->appOnTop != nullptr
-	) {
+	if (this->appOnTop != nullptr) {
 		MainScreen::getInstance()->clear();
-		this->currentApp = 0;
 		this->defaultApp->setShouldReRender(true);
 		MainScreen::getInstance()->getNotificationBar()->setShouldReRender(true);
 		delete this->appOnTop;
