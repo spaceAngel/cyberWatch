@@ -50,10 +50,11 @@ void Vaporwave::renderDate() {
 	char dayInWeek[4];
 	DateUtil::weekdayNameShort(dayInWeek, currentDate.year,currentDate.month, currentDate.day);
 	(void)snprintf(dateStr, sizeof(dateStr), "%s%  02d",dayInWeek, currentDate.day);
+	uint8_t dateStringWidth = TTGOClass::getWatch()->tft->textWidth(dateStr);
 	TTGOClass::getWatch()->tft->drawString(
 		dateStr,
-		50,
-		102
+		(RESOLUTION_WIDTH - dateStringWidth) / 2,
+		110
 	);
 
 
