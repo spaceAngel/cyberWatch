@@ -4,26 +4,15 @@
 
 #include <LilyGoWatch.h>
 
-#include "UserInterface/Components/Logo.h"
+#include "SplashScreenImage.h"
 
 void ExitScreen::show() {
 
-	TTGOClass::getWatch()->tft->fillRect(
+	TTGOClass::getWatch()->tft->pushImage(
 		0,
 		0,
-		RESOLUTION_WIDTH,
-		RESOLUTION_HEIGHT,
-		COLOR_BACKGROUND
-	);
-
-	Logo *logo = new Logo();
-	logo->render();
-
-	char message[20] = "leaving	 matrix";
-	TTGOClass::getWatch()->tft->drawString(
-		message,
-		(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(message)) / 2,
-		RESOLUTION_HEIGHT - 60
+		240,
+		240,
+		SPLASHSCREEN_IMAGE
 	);
 }
-

@@ -1,5 +1,6 @@
 cyberWatch 1:2
 ========================
+- FEATURE: new graphical logo
 - FEATURE: vaporwave watch face
 - FEATURE: lcars watch face
 - REFACTOR: moved all watch faces into apps directory from userinterface

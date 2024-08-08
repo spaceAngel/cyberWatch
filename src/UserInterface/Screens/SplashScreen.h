@@ -8,7 +8,6 @@ class SplashScreen {
 
 	protected:
 
-		void renderLoadingBar();
 		void resetToDefault();
 
 };
