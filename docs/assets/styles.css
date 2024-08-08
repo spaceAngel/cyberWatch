@@ -3,23 +3,15 @@ body {
 	margin:0px;
 }
 
-@font-face {
-	font-family: 'Wellbutrin';
-	src: url('Wellbutrin.woff2') format('woff2'),
-		url('Wellbutrin.woff') format('woff');
-	font-weight: 500;
-	font-style: normal;
-	font-display: swap;
-}
-
 header {
-	background-color:#000000;
+	background-color:#000;
 	margin:0px;
 	clear: both;
-	color: #228811 !important;
+	color: #2EF986 !important;
 	height: 80px;
 	position: sticky;
 	top:0px;
+	padding-top: 0px;
 }
 
 
@@ -28,6 +20,7 @@ header h2 {
 }
 
 header h1 {
+	margin-top: 10px;
 	float:left;
 }
 
