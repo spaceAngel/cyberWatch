@@ -51,8 +51,8 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - shows battery status
  - step counter
  - 3-slot alarm
- - horizontal swipe - switching between mainPanel components/miniapps
- - vertical swipe - control components
+ - horizontal swipe - switching between watch faces
+ - launch app menu by longtouch on any watch face
  - calendar with prev/next month feature
  - simple stop watch
  - for full list of features, see [changelog.txt](changelog.txt)
