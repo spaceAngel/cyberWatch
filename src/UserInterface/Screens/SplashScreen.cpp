@@ -5,14 +5,13 @@
 #include "SplashScreen.h"
 #include "Core/Hardware/MotorController.h"
 #include "Core/Hardware/Display.h"
-#include "SplashScreenImage.h"
+#include "UserInterface/BackgroundRenderer.h"
 
 void SplashScreen::show() {
 	MotorController::vibrate(1);
 
-	TTGOClass::getWatch()->tft->setSwapBytes(true);
-	TTGOClass::getWatch()->tft->pushImage(0, 0, 240, 240, SPLASHSCREEN_IMAGE);
-	delay(7000);
+	BackgroundRenderer::renderImage(BACKGROUND_LOGO);
+	delay(3000);
 	this->resetToDefault();
 	MotorController::vibrate(1);
 	delay(200);

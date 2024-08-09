@@ -4,15 +4,8 @@
 
 #include <LilyGoWatch.h>
 
-#include "SplashScreenImage.h"
+#include "UserInterface/BackgroundRenderer.h"
 
 void ExitScreen::show() {
-
-	TTGOClass::getWatch()->tft->pushImage(
-		0,
-		0,
-		240,
-		240,
-		SPLASHSCREEN_IMAGE
-	);
+//	BackgroundRenderer::renderImage(BACKGROUND_LOGO);
 }

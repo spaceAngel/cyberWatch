@@ -1,0 +1,16 @@
+#pragma once
+
+#include <Arduino.h>
+
+#define BACKGROUND_LOGO 1
+#define BACKGROUND_WATCH_VAPORWAVE 2
+#define BACKGROUND_WATCH_LCARS 3
+#define BACKGROUND_WATCH_ANALOG 4
+
+class BackgroundRenderer {
+
+	public:
+
+		static void renderImage(uint8_t image);
+
+};

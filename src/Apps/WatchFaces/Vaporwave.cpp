@@ -5,9 +5,8 @@
 #include "Vaporwave.h"
 #include "Core/Hardware/RTC.h"
 #include "Core/Hardware/Display.h"
-#include "Images/VaporwaveSunset.h"
 #include "Utils/DateUtil.h"
-
+#include "UserInterface/BackgroundRenderer.h"
 
 void Vaporwave::render() {
 	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
@@ -16,8 +15,7 @@ void Vaporwave::render() {
 		|| (this->shouldReRender())
 	) {
 		this->prevMinute = currentTime.minute;
-		TTGOClass::getWatch()->tft->setSwapBytes(true);
-		TTGOClass::getWatch()->tft->pushImage(0, 0, 240, 240, VaporwaveSunset.data);
+		BackgroundRenderer::renderImage(BACKGROUND_WATCH_VAPORWAVE);
 		this->renderTime();
 		this->renderDate();
 		Display::getInstance()->resetTypographySettings();

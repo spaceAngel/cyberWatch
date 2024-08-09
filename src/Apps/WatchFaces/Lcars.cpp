@@ -5,9 +5,8 @@
 #include "Lcars.h"
 #include "Core/Hardware/RTC.h"
 #include "Core/Hardware/Display.h"
-#include "Images/LcarsBackground.h"
 #include "Utils/DateUtil.h"
-
+#include "UserInterface/BackgroundRenderer.h"
 
 void Lcars::render() {
 	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
@@ -17,8 +16,7 @@ void Lcars::render() {
 	) {
 		this->prevMinute = currentTime.minute;
 		if (this->shouldReRender()) {
-			TTGOClass::getWatch()->tft->setSwapBytes(true);
-			TTGOClass::getWatch()->tft->pushImage(0, 0, 240, 240, LcarsBackground.data);
+			BackgroundRenderer::renderImage(BACKGROUND_WATCH_LCARS);
 		} else {
 			TTGOClass::getWatch()->tft->fillRect(62, 37, 120, 100, TFT_BLACK);
 		}

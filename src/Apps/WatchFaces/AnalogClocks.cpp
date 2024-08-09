@@ -3,13 +3,11 @@
 #include "AnalogClocks.h"
 
 #include <LilyGoWatch.h>
-#include "Utils/Geometry.h"
 
-#include "UserInterface/Screens/MainScreen.h"
+#include "Utils/Geometry.h"
 #include "Core/Hardware/RTC.h"
-#include "Core/SystemTicker.h"
 #include "Utils/DateUtil.h"
-#include "Images/AnalogFace.h"
+#include "UserInterface/BackgroundRenderer.h"
 
 void AnalogClocks::render() {
 	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
@@ -19,7 +17,7 @@ void AnalogClocks::render() {
 
 	) {
 		if (this->shouldReRender() == true) {
-			this->renderFace();
+			BackgroundRenderer::renderImage(BACKGROUND_WATCH_ANALOG);
 		}
 		this->clear();
 		this->drawLine(
@@ -54,11 +52,6 @@ void AnalogClocks::clear() {
 		RADIUS - 10,
 		COLOR_BACKGROUND
 	);
-}
-
-void AnalogClocks::renderFace() {
-	TTGOClass::getWatch()->tft->setSwapBytes(true);
-	TTGOClass::getWatch()->tft->pushImage(0, 0, 240, 240, AnalogFace.data);
 }
 
 void AnalogClocks::renderDate(RTC_Date date) {
