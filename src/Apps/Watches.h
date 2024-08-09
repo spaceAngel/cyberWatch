@@ -5,7 +5,6 @@
 #include "UserInterface/App.h"
 #include "Apps/WatchFaces/WatchFace.h"
 #include "Apps/WatchFaces/AnalogClocks.h"
-#include "Apps/WatchFaces/Planetoid.h"
 #include "Apps/WatchFaces/DigitalClocks.h"
 #include "Apps/WatchFaces/ProgressBars.h"
 #include "Apps/WatchFaces/NeonCircles.h"
@@ -14,6 +13,7 @@
 #include "Apps/WatchFaces/Vaporwave.h"
 #include "Apps/WatchFaces/InfoPanel/InfoPanel.h"
 #include "Apps/WatchFaces/Lcars.h"
+#include "Apps/WatchFaces/LogoFace.h"
 
 class Watches : public App {
 
@@ -49,7 +49,7 @@ class Watches : public App {
 		void createFaces() {
 			clockFaces[0] = new DigitalClocks();
 			clockFaces[1] = new AnalogClocks();
-			clockFaces[2] = new Planetoid();
+			clockFaces[2] = new LogoFace();
 			clockFaces[3] = new ProgressBars();
 			clockFaces[4] = new NeonCircles();
 			clockFaces[5] = new SensorGrid();

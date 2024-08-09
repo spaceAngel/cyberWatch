@@ -3,11 +3,13 @@ cyberWatch 1:2
 - FEATURE: new graphical logo
 - FEATURE: vaporwave watch face
 - FEATURE: lcars watch face
+- FEATURE: logo watch face
 - REFACTOR: moved all watch faces into apps directory from userinterface
 - REFACTOR: used defines for resolution width annd height instead tft->width() / height() calls
 - REDACTOR: redesign analog watch face
 - BUGFIX:when pekshort on alarm setting on after delete alarm > go back to alarm overview screen (was back on watch face before)
 - REFACTOR: remove some unused classess
+- REFACTOR: remove planetoid watch face
 
 cyberWatch 1.1
 ========================
