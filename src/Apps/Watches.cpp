@@ -54,6 +54,9 @@ bool Watches::handleSwipeHorizontal(int8_t vector) {
 }
 
 WatchFace *Watches::getCurrentFace() {
+	if (this->currentFace > Watches::FACES) {
+		this->currentFace = 0;
+	}
 	return this->clockFaces[this->currentFace];
 }
 
