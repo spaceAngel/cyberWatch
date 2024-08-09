@@ -13,4 +13,6 @@ class BackgroundRenderer {
 
 		static void renderImage(uint8_t image);
 
+		static void renderImage(uint8_t image, uint8_t x,uint8_t y);
+
 };
