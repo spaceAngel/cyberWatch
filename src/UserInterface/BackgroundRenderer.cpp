@@ -17,16 +17,16 @@ void BackgroundRenderer::renderImage(uint8_t image, uint8_t x, uint8_t y) {
 	TTGOClass::getWatch()->tft->setSwapBytes(true);
 	switch (image) {
 		case BACKGROUND_LOGO:
-			TTGOClass::getWatch()->tft->pushImage(x, y, 240, 240, SPLASHSCREEN_IMAGE);
+			TTGOClass::getWatch()->tft->pushImage(x, y, 240, 240, DATA_SPLASHSCREEN_IMAGE);
 		break;
 		case BACKGROUND_WATCH_ANALOG:
-			TTGOClass::getWatch()->tft->pushImage(x, y, 240, 240, AnalogFace.data);
+			TTGOClass::getWatch()->tft->pushImage(x, y, 240, 240, DATA_WATCHFACE_ANALOG);
 		break;
 		case BACKGROUND_WATCH_LCARS:
-			TTGOClass::getWatch()->tft->pushImage(x, y, 240, 240, LcarsBackground.data);
+			TTGOClass::getWatch()->tft->pushImage(x, y, 240, 240, DATA_WATCHFACE_LCARS);
 		break;
 		case BACKGROUND_WATCH_VAPORWAVE:
-			TTGOClass::getWatch()->tft->pushImage(x, y, 240, 240, VaporwaveSunset.data);
+			TTGOClass::getWatch()->tft->pushImage(x, y, 240, 240, DATA_WATCHFACE_VAPORWAVE);
 		break;
 
 	}
