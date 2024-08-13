@@ -14,6 +14,7 @@
 #include "Apps/WatchFaces/InfoPanel/InfoPanel.h"
 #include "Apps/WatchFaces/Lcars.h"
 #include "Apps/WatchFaces/LogoFace.h"
+#include "Apps/WatchFaces/DeusEx.h"
 
 class Watches : public App {
 
@@ -39,9 +40,9 @@ class Watches : public App {
 
 	protected:
 
-		const int FACES = 8;
+		const int FACES = 9;
 
-		WatchFace *clockFaces[9];
+		WatchFace *clockFaces[10];
 		int8_t currentFace = 6;
 
 		InfoPanel *infoPanel;
@@ -56,7 +57,7 @@ class Watches : public App {
 			clockFaces[6] = new KnightRider();
 			clockFaces[7] = new Vaporwave();
 			clockFaces[8] = new Lcars();
-
+			clockFaces[9] = new DeusEx();
 		}
 
 };

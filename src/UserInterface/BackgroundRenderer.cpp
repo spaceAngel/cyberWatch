@@ -8,6 +8,7 @@
 #include "BackgroundImages/AnalogFace.h"
 #include "BackgroundImages/LcarsBackground.h"
 #include "BackgroundImages/VaporwaveSunset.h"
+#include "BackgroundImages/DeusEx.h"
 
 void BackgroundRenderer::renderImage(uint8_t image) {
 	BackgroundRenderer::renderImage(image, 0, 0);
@@ -27,6 +28,9 @@ void BackgroundRenderer::renderImage(uint8_t image, uint8_t x, uint8_t y) {
 		break;
 		case BACKGROUND_WATCH_VAPORWAVE:
 			TTGOClass::getWatch()->tft->pushImage(x, y, 240, 240, DATA_WATCHFACE_VAPORWAVE);
+		break;
+		case BACKGROUND_WATCH_DEUSEX:
+			TTGOClass::getWatch()->tft->pushImage(x, y, 240, 240, DATA_WATCHFACE_DEUSEX);
 		break;
 
 	}
