@@ -17,7 +17,7 @@ void MoveSensor::initIRQ() {
 	Acfg cfg;
 	cfg.odr = BMA4_OUTPUT_DATA_RATE_100HZ;
 	cfg.range = BMA4_ACCEL_RANGE_2G;
-	cfg.bandwidth = BMA4_ACCEL_NORMAL_AVG4;
+	cfg.bandwidth = BMA4_ACCEL_RES_AVG64;
 	cfg.perf_mode = BMA4_CONTINUOUS_MODE;
 	TTGOClass::getWatch()->bma->accelConfig(cfg);
 	TTGOClass::getWatch()->bma->enableAccel();
