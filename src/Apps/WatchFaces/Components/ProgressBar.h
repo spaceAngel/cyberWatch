@@ -13,7 +13,7 @@ class ProgressBar : public Component {
 	protected:
 
 		int32_t const BAR_START = 92;
-		int32_t const BAR_HEIGHT = 14;
+		int32_t const BAR_HEIGHT = 20;
 
 		int32_t y;
 		int32_t maxValue;
