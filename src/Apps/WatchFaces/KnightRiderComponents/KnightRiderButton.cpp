@@ -10,17 +10,14 @@ void KnightRiderButton::render(int32_t value) {
 		this->prevValue!= value
 		|| this->shouldReRender()
 	) {
-		uint8_t cellWidth = 48;
+		uint8_t cellWidth = 50;
 		uint8_t cellHeight = 29;
-		uint8_t posX = col == 1 ? 22 : RESOLUTION_WIDTH - (18 + cellWidth);
+		uint8_t posX = col == 1 ? 20 : RESOLUTION_WIDTH - (16 + cellWidth);
 
 		uint posY =  9 + (
 			(108 / 3) * (row - 1)
 		);
-
-		TTGOClass::getWatch()->tft->fillCircle(-4 + posX + cellHeight / 2, posY + cellHeight / 2, cellHeight / 2, this->color);
-		TTGOClass::getWatch()->tft->fillCircle(posX + cellWidth - (cellHeight / 2), posY + cellHeight / 2, cellHeight / 2, this->color);
-		TTGOClass::getWatch()->tft->fillRect(posX + cellHeight / 2, posY, cellWidth - cellHeight, cellHeight, this->color);
+		TTGOClass::getWatch()->tft->fillRoundRect(posX, posY, cellWidth, cellHeight, 10, this->color);
 
 		char str[3];
 		(void)snprintf(str, sizeof(str), "%02d", value);
@@ -30,7 +27,7 @@ void KnightRiderButton::render(int32_t value) {
 		TTGOClass::getWatch()->tft->setTextColor(COLOR_BACKGROUND);
 		TTGOClass::getWatch()->tft->drawString(
 			str,
-			posX + 5,
+			posX + 7,
 			posY + 4
 		);
 		Display::getInstance()->resetTypographySettings();
