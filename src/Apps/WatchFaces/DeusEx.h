@@ -5,6 +5,7 @@
 #include <LilyGoWatch.h>
 
 #include "Apps/WatchFaces/WatchFace.h"
+#include "UserInterface/Icons/IconStruct.h"
 
 #define DEUSEX_DEVICESTATE_LOCKED 1
 #define DEUSEX_DEVICESTATE_DISPLAYON 2;
@@ -40,6 +41,8 @@ class DeusEx : public WatchFace {
 		void renderBatteryInfo();
 
 		uint8_t getDeviceStateBitMask();
+
+		void renderIcon(uint8_t x, uint8_t y, IconStruct icon);
 
 
 };

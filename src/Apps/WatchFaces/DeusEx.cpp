@@ -13,10 +13,13 @@
 #include "Environment/AppSettings.h"
 #include "Environment/SystemInfo.h"
 
-#include "DeusEx/Lock.h"
-#include "DeusEx/Display.h"
-#include "DeusEx/Alarm.h"
-#include "DeusEx/Plug.h"
+#include "UserInterface/Icons/Lock.h"
+#include "UserInterface/Icons/LightBulb.h"
+#include "UserInterface/Icons/Bell.h"
+#include "UserInterface/Icons/Charging.h"
+
+
+#include "UserInterface/IconConverter.h"
 
 void DeusEx::render() {
 	RTC_Date currentTime = RTC::getInstance()->getCurrentDate();
@@ -53,7 +56,7 @@ void DeusEx::renderBatteryInfo() {
 		TTGOClass::getWatch()->tft->drawString(batteryStr, 104, 04);
 
 		if(SystemInfo::getInstance()->getPluggedIn()) {
-			TTGOClass::getWatch()->tft->pushImage(80, 02, iconPlug.width, iconPlug.heigth, iconPlug.data);
+			this->renderIcon(80, 02, iconCharging);
 		}
 	}
 	this->prevBattery = battery;
@@ -85,15 +88,15 @@ void DeusEx::renderDeviceStateIcons() {
 	) {
 		TTGOClass::getWatch()->tft->fillRect(120, ICONS_POS_Y, 100, 22, 0x2124);
 		if (UserInterfaceManager::getInstance()->isLocked()) {
-			TTGOClass::getWatch()->tft->pushImage(126, ICONS_POS_Y, iconLock.width, iconLock.heigth, iconLock.data);
+			this->renderIcon(126, ICONS_POS_Y, iconLock);
 		}
 
 		if (AppSettings::getInstance()->get(APPSETTINGS_ALWAYS_ON)) {
-			TTGOClass::getWatch()->tft->pushImage(148, ICONS_POS_Y, iconDisplay.width, iconDisplay.heigth, iconDisplay.data);
+			this->renderIcon(148, ICONS_POS_Y, iconLightBulb);
 		}
 
 		if (AlarmStorage::getInstance()->isActiveAlarm()) {
-			TTGOClass::getWatch()->tft->pushImage(170, ICONS_POS_Y, iconAlarm.width, iconAlarm.heigth, iconAlarm.data);
+			this->renderIcon(170, ICONS_POS_Y, iconBell);
 		}
 	}
 	this->prevBitMask = this->getDeviceStateBitMask();
@@ -125,5 +128,15 @@ void DeusEx::renderDate() {
 		dateStr,
 		1,
 		145
+	);
+}
+
+void DeusEx::renderIcon(uint8_t x, uint8_t y, IconStruct icon) {
+	TTGOClass::getWatch()->tft->pushImage(
+		x,
+		y,
+		icon.width,
+		icon.heigth,
+		IconConverter::convertIcon(icon, TFT_WHITE, 0x2124).data
 	);
 }
