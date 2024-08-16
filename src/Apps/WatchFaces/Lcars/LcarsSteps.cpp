@@ -11,14 +11,14 @@ void LcarsSteps::render() {
 		stepCount != this->prevSteps
 		|| this->shouldReRender()
 	) {
-		TTGOClass::getWatch()->tft->fillRect(142, 23, 80, 50, TFT_BLACK);
+		TTGOClass::getWatch()->tft->fillRect(149, 23, 80, 50, TFT_BLACK);
 		char steps[8];
 		(void)snprintf(steps, sizeof(steps), "%d", stepCount);
 		TTGOClass::getWatch()->tft->setTextSize(1);
 		TTGOClass::getWatch()->tft->setTextColor(TFT_DARKGREY);
-		TTGOClass::getWatch()->tft->drawString("STEPS", 142, 26);
+		TTGOClass::getWatch()->tft->drawString("STEPS", 149, 26);
 		TTGOClass::getWatch()->tft->setTextColor(TFT_PINK);
-		TTGOClass::getWatch()->tft->drawString(steps, 147, 52);
+		TTGOClass::getWatch()->tft->drawString(steps, 164, 52);
 		this->setShouldReRender(false);
 		this->prevSteps = stepCount;
 	}
