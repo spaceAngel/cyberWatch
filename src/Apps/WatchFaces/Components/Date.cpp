@@ -15,7 +15,7 @@ void Date::render() {
 		TTGOClass::getWatch()->tft->fillRect(
 			0,
 			POS_Y,
-			RESOLUTION_WIDTH,
+			TFT_WIDTH,
 			(TTGOClass::getWatch()->tft->fontHeight() - 1) * 2,
 			COLOR_BACKGROUND
 		);
@@ -32,7 +32,7 @@ void Date::renderDate(RTC_Date currentDate) {
 	(void)snprintf(dateStr, sizeof(dateStr), "%02d/%02d/%02d", currentDate.day, currentDate.month, currentDate.year);
 	TTGOClass::getWatch()->tft->drawString(
 		dateStr,
-		(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(dateStr)) / 2,
+		(TFT_WIDTH - TTGOClass::getWatch()->tft->textWidth(dateStr)) / 2,
 		POS_Y + 2 +(TTGOClass::getWatch()->tft->fontHeight())
 	);
 }
@@ -42,7 +42,7 @@ void Date::renderDayInWeek(RTC_Date currentDate) {
 	DateUtil::weekdayName(dayInWeek, currentDate.year,currentDate.month, currentDate.day);
 	TTGOClass::getWatch()->tft->drawString(
 		dayInWeek,
-		(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(dayInWeek)) / 2,
+		(TFT_WIDTH - TTGOClass::getWatch()->tft->textWidth(dayInWeek)) / 2,
 		POS_Y + 3
 	);
 }

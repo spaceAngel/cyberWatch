@@ -23,7 +23,7 @@ void StopWatch::render() {
 			TTGOClass::getWatch()->tft->fillRect(
 				0,
 				POS_Y,
-				RESOLUTION_WIDTH,
+				TFT_WIDTH,
 				70,
 				COLOR_BACKGROUND
 			);

@@ -20,12 +20,12 @@ void ChargingMode::switchedTo() {
 	TTGOClass::getWatch()->tft->drawRect(
 		26,
 		ChargingMode::POS_Y - 4,
-		RESOLUTION_WIDTH - 60,
+		TFT_WIDTH - 60,
 		ChargingMode::HEIGHT + 8,
 		COLOR_MAIN_1
 	);
 	TTGOClass::getWatch()->tft->fillRect(
-		RESOLUTION_WIDTH - 30,
+		TFT_WIDTH - 30,
 		POS_Y + (HEIGHT * 0.25),
 		6,
 		HEIGHT * 0.5,
@@ -39,7 +39,7 @@ void ChargingMode::loop() {
 
 	uint8_t batteryCharge = BatteryManager::getInstance()->getUpdatedCapacity();
 	uint8_t step = 10;
-	uint8_t widthStep = (RESOLUTION_WIDTH - 72) / (100 / step);
+	uint8_t widthStep = (TFT_WIDTH - 72) / (100 / step);
 	uint8_t xStart = widthStep * (((batteryCharge - (+ batteryCharge % step))) / step);
 
 	if (this->loops % step == 0 && batteryCharge != 100)  {
@@ -66,7 +66,7 @@ void ChargingMode::loop() {
 		TTGOClass::getWatch()->tft->fillRect(
 			31 + xStart,
 			1 + ChargingMode::POS_Y,
-			RESOLUTION_WIDTH - (xStart + 72),
+			TFT_WIDTH - (xStart + 72),
 			ChargingMode::HEIGHT - 2,
 			COLOR_BACKGROUND
 		);
@@ -85,7 +85,7 @@ void ChargingMode::renderDateTime() {
 		TTGOClass::getWatch()->tft->fillRect(
 			0,
 			ChargingMode::POS_Y + 55,
-			RESOLUTION_WIDTH,
+			TFT_WIDTH,
 			135,
 			COLOR_BACKGROUND
 		);

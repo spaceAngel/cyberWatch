@@ -32,7 +32,7 @@ void KnightRiderBatteryBar::render() {
 
 
 void KnightRiderBatteryBar::renderBar(uint8_t capacity) {
-	uint8_t barWidth = (RESOLUTION_WIDTH - 30);
+	uint8_t barWidth = (TFT_WIDTH - 30);
 	TTGOClass::getWatch()->tft->fillRect(
 		15,
 		POS_Y + 20,
@@ -80,7 +80,7 @@ void KnightRiderBatteryBar::renderBar(uint8_t capacity) {
 void KnightRiderBatteryBar::renderChargingIcon(bool chargingState) {
 	TTGOClass::getWatch()->tft->setTextSize(2);
 	TTGOClass::getWatch()->tft->fillRect(
-		RESOLUTION_WIDTH - 73,
+		TFT_WIDTH - 73,
 		POS_Y,
 		53,
 		19,
@@ -90,7 +90,7 @@ void KnightRiderBatteryBar::renderChargingIcon(bool chargingState) {
 		TTGOClass::getWatch()->tft->setTextColor(TFT_BLACK);
 		TTGOClass::getWatch()->tft->drawString(
 			"CHRG",
-			RESOLUTION_WIDTH - 70,
+			TFT_WIDTH - 70,
 			POS_Y + 2
 		);
 	}

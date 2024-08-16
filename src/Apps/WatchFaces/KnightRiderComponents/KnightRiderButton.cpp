@@ -12,7 +12,7 @@ void KnightRiderButton::render(int32_t value) {
 	) {
 		uint8_t cellWidth = 50;
 		uint8_t cellHeight = 29;
-		uint8_t posX = col == 1 ? 20 : RESOLUTION_WIDTH - (16 + cellWidth);
+		uint8_t posX = col == 1 ? 20 : TFT_WIDTH - (16 + cellWidth);
 
 		uint posY =  9 + (
 			(108 / 3) * (row - 1)

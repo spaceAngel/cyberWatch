@@ -23,8 +23,8 @@ void SplashScreen::resetToDefault() {
 	TTGOClass::getWatch()->tft->fillRect(
 		0,
 		0,
-		RESOLUTION_WIDTH,
-		RESOLUTION_HEIGHT,
+		TFT_WIDTH,
+		TFT_HEIGHT,
 		COLOR_BACKGROUND
 	);
 }

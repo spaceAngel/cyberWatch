@@ -32,12 +32,12 @@ void AlarmSettingsDayButton::render() {
 }
 
 uint8_t AlarmSettingsDayButton::getWidth() {
-	return RESOLUTION_WIDTH / 5;
+	return TFT_WIDTH / 5;
 }
 
 
 uint8_t AlarmSettingsDayButton::getPosX() {
-	return (RESOLUTION_WIDTH - (this->day >= 4 ? 3 : 4) * (this->getWidth() + 10) ) / 2
+	return (TFT_WIDTH - (this->day >= 4 ? 3 : 4) * (this->getWidth() + 10) ) / 2
 	+ ((this->day % 4) * (this->getWidth() + 10));
 }
 

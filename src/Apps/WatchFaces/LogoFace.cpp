@@ -28,8 +28,8 @@ void LogoFace::render() {
 }
 
 void LogoFace::drawLine(int32_t time, uint8_t radius, uint32_t color) {
-	uint8_t x = RESOLUTION_WIDTH / 2;
-	uint8_t y = 20 + RESOLUTION_HEIGHT / 2;
+	uint8_t x = TFT_WIDTH / 2;
+	uint8_t y = 20 + TFT_HEIGHT / 2;
 
 	int32_t x1 = Geometry::getCalculatedXPointOnCircle(x, (6 * time), radius);
 	int32_t y1 = 20 + Geometry::getCalculatedYPointOnCircle(y, (6 * time), radius);

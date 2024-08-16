@@ -25,7 +25,7 @@ void DeviceStatusIconBar::render() {
 		|| this->shouldReRender()
 	) {
 		TTGOClass::getWatch()->tft->fillRect(
-			RESOLUTION_WIDTH - 147,
+			TFT_WIDTH - 147,
 			0,
 			100,
 			24,
@@ -46,7 +46,7 @@ void DeviceStatusIconBar::renderIcon(IconStruct icon, uint8_t &pos) {
 
 	UserInterfaceManager::getInstance()->renderIcon(
 		icon,
-		RESOLUTION_WIDTH - 72 - (pos * 25),
+		TFT_WIDTH - 72 - (pos * 25),
 		2
 	);
 	pos++;

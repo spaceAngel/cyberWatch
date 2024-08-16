@@ -10,7 +10,7 @@ bool App::handlePEKShort() {
 void App::renderTitle(const char *title) {
 	TTGOClass::getWatch()->tft->drawString(
 		title,
-		(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(title)) / 2,
+		(TFT_WIDTH - TTGOClass::getWatch()->tft->textWidth(title)) / 2,
 		APP_POSITION_TOP
 	);
 }

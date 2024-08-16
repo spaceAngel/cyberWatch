@@ -19,15 +19,15 @@ void Locked::render() {
 		TTGOClass::getWatch()->tft->fillRect(
 			0,
 			0,
-			RESOLUTION_WIDTH,
-			RESOLUTION_HEIGHT,
+			TFT_WIDTH,
+			TFT_HEIGHT,
 			COLOR_BACKGROUND
 		);
 
 		TTGOClass::getWatch()->tft->drawRect(
 			10,
 			40,
-			RESOLUTION_WIDTH - 20,
+			TFT_WIDTH - 20,
 			160,
 			COLOR_MAIN_1
 		);
@@ -42,7 +42,7 @@ void Locked::render() {
 }
 
 void Locked::renderText(uint8_t line, const char* text) {
-	uint8_t posX = (RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(text)) / 2;
+	uint8_t posX = (TFT_WIDTH - TTGOClass::getWatch()->tft->textWidth(text)) / 2;
 	TTGOClass::getWatch()->tft->drawString(
 		text,
 		posX,

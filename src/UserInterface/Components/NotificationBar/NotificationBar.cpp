@@ -21,7 +21,7 @@ void NotificationBar::renderDesign() {
 
 NotificationBar::NotificationBar() {
 	this->battery = new Battery(
-		RESOLUTION_WIDTH - 45,
+		TFT_WIDTH - 45,
 		0,
 		false
 	);

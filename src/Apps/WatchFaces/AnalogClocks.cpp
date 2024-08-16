@@ -33,8 +33,8 @@ void AnalogClocks::render() {
 }
 
 void AnalogClocks::drawLine(int32_t time, uint8_t radius, uint32_t color) {
-	uint8_t x = RESOLUTION_WIDTH / 2;
-	uint8_t y = RESOLUTION_HEIGHT / 2;
+	uint8_t x = TFT_WIDTH / 2;
+	uint8_t y = TFT_HEIGHT / 2;
 
 	int32_t x1 = Geometry::getCalculatedXPointOnCircle(x, (6 * time), radius);
 	int32_t y1 = Geometry::getCalculatedYPointOnCircle(y, (6 * time), radius);
@@ -47,8 +47,8 @@ void AnalogClocks::drawLine(int32_t time, uint8_t radius, uint32_t color) {
 
 void AnalogClocks::clear() {
 	TTGOClass::getWatch()->tft->fillCircle(
-		RESOLUTION_WIDTH / 2,
-		RESOLUTION_HEIGHT / 2,
+		TFT_WIDTH / 2,
+		TFT_HEIGHT / 2,
 		RADIUS - 10,
 		COLOR_BACKGROUND
 	);
@@ -56,8 +56,8 @@ void AnalogClocks::clear() {
 
 void AnalogClocks::renderDate(RTC_Date date) {
 	TTGOClass::getWatch()->tft->fillRect(
-		(RESOLUTION_WIDTH - 100) / 2,
-		RESOLUTION_HEIGHT / 2 - 50,
+		(TFT_WIDTH - 100) / 2,
+		TFT_HEIGHT / 2 - 50,
 		100,
 		24,
 		COLOR_BACKGROUND
@@ -69,7 +69,7 @@ void AnalogClocks::renderDate(RTC_Date date) {
 	(void)snprintf(dateStr, sizeof(dateStr), "%s %02d/%02d", dayInWeek, date.day, date.month);
 	TTGOClass::getWatch()->tft->drawString(
 		dateStr,
-		(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(dateStr)) / 2,
-		RESOLUTION_HEIGHT / 2 - 50
+		(TFT_WIDTH - TTGOClass::getWatch()->tft->textWidth(dateStr)) / 2,
+		TFT_HEIGHT / 2 - 50
 	);
 }

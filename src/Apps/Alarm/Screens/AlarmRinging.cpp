@@ -34,13 +34,13 @@ void AlarmRinging::renderMsgBox() {
 	TTGOClass::getWatch()->tft->drawRect(
 		10,
 		30,
-		RESOLUTION_WIDTH - 20,
+		TFT_WIDTH - 20,
 		40 + TTGOClass::getWatch()->tft->fontHeight() * 2,
 		COLOR_MAIN_1
 	);
 	TTGOClass::getWatch()->tft->drawString(
 		"Alarm",
-		(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth("Alarm")) / 2,
+		(TFT_WIDTH - TTGOClass::getWatch()->tft->textWidth("Alarm")) / 2,
 		50
 	);
 
@@ -48,7 +48,7 @@ void AlarmRinging::renderMsgBox() {
 	(void)snprintf(timeStr, sizeof(timeStr), "%02d:%02d", this->alarmHour, this->alarmMinute);
 	TTGOClass::getWatch()->tft->drawString(
 		timeStr,
-		(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(timeStr)) / 2,
+		(TFT_WIDTH - TTGOClass::getWatch()->tft->textWidth(timeStr)) / 2,
 		50 + TTGOClass::getWatch()->tft->fontHeight()
 	);
 	Display::getInstance()->resetTypographySettings();

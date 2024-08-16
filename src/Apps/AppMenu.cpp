@@ -19,12 +19,12 @@
 
 void AppMenu::render() {
 	if (this->shouldReRender()) {
-		uint8_t width = RESOLUTION_WIDTH / 3;
-		uint8_t height = RESOLUTION_HEIGHT / 3;
-		TTGOClass::getWatch()->tft->drawLine(0, height, RESOLUTION_WIDTH , height, COLOR_MAIN_3);
-		TTGOClass::getWatch()->tft->drawLine(0, height * 2, RESOLUTION_WIDTH , height * 2, COLOR_MAIN_3);
-		TTGOClass::getWatch()->tft->drawLine(width, 0, width, RESOLUTION_HEIGHT , COLOR_MAIN_3);
-		TTGOClass::getWatch()->tft->drawLine(width * 2, 0, width *2, RESOLUTION_HEIGHT , COLOR_MAIN_3);
+		uint8_t width = TFT_WIDTH / 3;
+		uint8_t height = TFT_HEIGHT / 3;
+		TTGOClass::getWatch()->tft->drawLine(0, height, TFT_WIDTH , height, COLOR_MAIN_3);
+		TTGOClass::getWatch()->tft->drawLine(0, height * 2, TFT_WIDTH , height * 2, COLOR_MAIN_3);
+		TTGOClass::getWatch()->tft->drawLine(width, 0, width, TFT_HEIGHT , COLOR_MAIN_3);
+		TTGOClass::getWatch()->tft->drawLine(width * 2, 0, width *2, TFT_HEIGHT , COLOR_MAIN_3);
 
 		this->renderIcon(appIconAlarm, 1,1);
 		this->renderIcon(appIconStopwatch, 2,1);
@@ -35,8 +35,8 @@ void AppMenu::render() {
 }
 
 void AppMenu::renderIcon(AppIcon icon, uint8_t x, uint8_t y) {
-	uint8_t width = RESOLUTION_WIDTH / 3;
-	uint8_t height = RESOLUTION_HEIGHT / 3;
+	uint8_t width = TFT_WIDTH / 3;
+	uint8_t height = TFT_HEIGHT / 3;
 	TTGOClass::getWatch()->tft->setSwapBytes(true);
 	TTGOClass::getWatch()->tft->pushImage(
 		width * (x - 1) + ((width - icon.width) / 2),
@@ -48,8 +48,8 @@ void AppMenu::renderIcon(AppIcon icon, uint8_t x, uint8_t y) {
 }
 
 bool AppMenu::handleTouch(uint8_t x, uint8_t y) {
-	uint8_t cellWidth = RESOLUTION_WIDTH / 3;
-	uint8_t cellHeight = RESOLUTION_HEIGHT / 3;
+	uint8_t cellWidth = TFT_WIDTH / 3;
+	uint8_t cellHeight = TFT_HEIGHT / 3;
 	uint8_t posX = (x/cellWidth) + 1;
 	uint8_t posY = (y/cellHeight) + 1;
 	if (posX == 1 && posY == 1) {AppRunner::getInstance()->setAppOnTop(new Alarm());}

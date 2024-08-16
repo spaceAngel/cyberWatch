@@ -51,7 +51,7 @@ void Vaporwave::renderDate() {
 	uint8_t dateStringWidth = TTGOClass::getWatch()->tft->textWidth(dateStr);
 	TTGOClass::getWatch()->tft->drawString(
 		dateStr,
-		(RESOLUTION_WIDTH - dateStringWidth) / 2,
+		(TFT_WIDTH - dateStringWidth) / 2,
 		110
 	);
 

@@ -20,7 +20,7 @@ void ProgressBar::render(int32_t value) {
 		TTGOClass::getWatch()->tft->fillRect(
 			0,
 			this->y,
-			RESOLUTION_WIDTH,
+			TFT_WIDTH,
 			40,
 			COLOR_BACKGROUND
 		);
@@ -30,7 +30,7 @@ void ProgressBar::render(int32_t value) {
 		TTGOClass::getWatch()->tft->setTextSize(2);
 		TTGOClass::getWatch()->tft->drawString(txt, 15, this->y);
 		Display::getInstance()->resetTypographySettings();
-		int32_t width = RESOLUTION_WIDTH - BAR_START - 10;
+		int32_t width = TFT_WIDTH - BAR_START - 10;
 		TTGOClass::getWatch()->tft->fillRoundRect(
 			BAR_START,
 			this->y + 10,

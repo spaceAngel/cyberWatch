@@ -12,7 +12,7 @@ void KnightRiderSpeaker::render() {
 		this->ticks = 0;
 		uint8_t rows = MathUtil::getRandomUint8(4);
 		TTGOClass::getWatch()->tft->fillRect(
-			- 3 +  (RESOLUTION_WIDTH - 5 - CELL_WIDTH * 3) / 2,
+			- 3 +  (TFT_WIDTH - 5 - CELL_WIDTH * 3) / 2,
 			0,
 			18 + CELL_WIDTH * 3,
 			112,
@@ -36,7 +36,7 @@ void KnightRiderSpeaker::renderSpeakerCol(uint8_t col, uint8_t value) {
 }
 
 void KnightRiderSpeaker::renderSpeakerCell(int8_t row, uint8_t col) {
-	uint8_t posX = 3 + (RESOLUTION_WIDTH - CELL_WIDTH * 3.5) / 2;
+	uint8_t posX = 3 + (TFT_WIDTH - CELL_WIDTH * 3.5) / 2;
 	TTGOClass::getWatch()->tft->fillRect(
 		posX + (col  - 1) * CELL_WIDTH + (col - 1) * 3,
 		65 + row * (CELL_HEIGHT + 3),

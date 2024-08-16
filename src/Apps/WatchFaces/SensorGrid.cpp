@@ -36,14 +36,14 @@ void SensorGrid::renderTime() {
 	TTGOClass::getWatch()->tft->fillRect(
 		0,
 		50,
-		RESOLUTION_WIDTH,
+		TFT_WIDTH,
 		TTGOClass::getWatch()->tft->fontHeight() - 14,
 		COLOR_BACKGROUND
 	);
 
 	TTGOClass::getWatch()->tft->drawString(
 		timeStr,
-		(RESOLUTION_WIDTH - TTGOClass::getWatch()->tft->textWidth(timeStr)) / 2,
+		(TFT_WIDTH - TTGOClass::getWatch()->tft->textWidth(timeStr)) / 2,
 		50
 	);
 	Display::getInstance()->resetTypographySettings();
@@ -51,14 +51,14 @@ void SensorGrid::renderTime() {
 
 void SensorGrid::renderSensorGrid() {
 	TTGOClass::getWatch()->tft->fillRect(
-		0, 0, RESOLUTION_WIDTH, 50, COLOR_BACKGROUND
+		0, 0, TFT_WIDTH, 50, COLOR_BACKGROUND
 	);
 	for (uint8_t i = 0; i < this->getCellCount(); i++) {
 		this->renderSensorGridCell(0);
 	}
 
 	TTGOClass::getWatch()->tft->fillRect(
-		0, 95, RESOLUTION_WIDTH, 50, COLOR_BACKGROUND
+		0, 95, TFT_WIDTH, 50, COLOR_BACKGROUND
 	);
 	for (uint8_t i = 0; i < this->getCellCount(); i++) {
 		this->renderSensorGridCell(1);

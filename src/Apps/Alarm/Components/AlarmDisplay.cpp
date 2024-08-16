@@ -14,7 +14,7 @@ void AlarmDisplay::render() {
 		TTGOClass::getWatch()->tft->fillRect(
 			0,
 			posY,
-			RESOLUTION_WIDTH,
+			TFT_WIDTH,
 			50,
 			COLOR_BACKGROUND
 		);
