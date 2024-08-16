@@ -32,9 +32,10 @@ void Vaporwave::renderTime() {
 	TTGOClass::getWatch()->tft->setTextFont(7);
 	TTGOClass::getWatch()->tft->setTextColor(TFT_BLACK);
 
+	uint8_t timeStringWidth = TTGOClass::getWatch()->tft->textWidth(timeStr);
 	TTGOClass::getWatch()->tft->drawString(
 		timeStr,
-		50,
+		(TFT_WIDTH - timeStringWidth) / 2,
 		46
 	);
 }
