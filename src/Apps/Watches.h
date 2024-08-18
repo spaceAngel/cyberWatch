@@ -32,15 +32,10 @@ class Watches : public App {
 
 		bool hasNotificationBar();
 
+		bool onSwipeUp();
 		bool onSwipeLeft();
 		bool onSwipeRight();
 		bool changeFace(int8_t direction);
-
-		bool canHandleLongTouch() {
-			return true;
-		}
-
-		bool handleLongTouch(uint8_t x, uint8_t y);
 
 	protected:
 

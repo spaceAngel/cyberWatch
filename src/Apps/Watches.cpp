@@ -67,9 +67,7 @@ Watches::Watches() {
 	}
 }
 
-
-bool Watches::handleLongTouch(uint8_t x, uint8_t y) {
-	//AppRunner::getInstance()->setAppOnTop(new SettingsPanel());
+bool Watches::onSwipeUp() {
 	AppRunner::getInstance()->setAppOnTop(new AppMenu());
 	return true;
 }
