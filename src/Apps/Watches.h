@@ -21,7 +21,6 @@ class Watches : public App {
 
 	public:
 
-		bool handleSwipeHorizontal(int8_t vector);
 		void setShouldReRender(bool shouldReRender);
 		WatchFace *getCurrentFace();
 		void render();
@@ -32,6 +31,10 @@ class Watches : public App {
 		Watches();
 
 		bool hasNotificationBar();
+
+		bool onSwipeLeft();
+		bool onSwipeRight();
+		bool changeFace(int8_t direction);
 
 		bool canHandleLongTouch() {
 			return true;

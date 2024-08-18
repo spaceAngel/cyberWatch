@@ -14,3 +14,19 @@ void App::renderTitle(const char *title) {
 		APP_POSITION_TOP
 	);
 }
+
+bool App::handleSwipeVertical(int8_t vector) {
+	if (vector == -1) {
+		return this->onSwipeUp();
+	} else {
+		return this->onSwipeDown();
+	}
+}
+
+bool App::handleSwipeHorizontal(int8_t vector) {
+	if (vector == -1) {
+		return this->onSwipeLeft();
+	} else {
+		return this->onSwipeRight();
+	}
+}

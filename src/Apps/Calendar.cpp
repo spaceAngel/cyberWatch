@@ -115,12 +115,14 @@ void Calendar::nextMonth() {
 	setShouldReRender(true);
 }
 
-bool Calendar::handleSwipeVertical(int8_t vector) {
-	if (vector == -1) {
-		this->nextMonth();
-	} else {
-		this->prevMonth();
-	}
+bool Calendar::onSwipeUp() {
+	this->nextMonth();
+	this->setShouldReRender(true);
+	return true;
+}
+
+bool Calendar::onSwipeDown() {
+	this->nextMonth();
 	this->setShouldReRender(true);
 	return true;
 }

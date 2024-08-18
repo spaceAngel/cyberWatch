@@ -14,13 +14,25 @@ class App {
 			return true;
 		}
 
-		virtual bool handleSwipeVertical(int8_t vector) {
+		bool handleSwipeVertical(int8_t vector);
+
+		virtual bool onSwipeUp() {
 			return false;
 		}
 
-		virtual bool handleSwipeHorizontal(int8_t vector) {
+		virtual bool onSwipeDown() {
 			return false;
 		}
+
+		virtual bool onSwipeLeft() {
+			return false;
+		}
+
+		virtual bool onSwipeRight() {
+			return false;
+		}
+
+		virtual bool handleSwipeHorizontal(int8_t vector);
 
 		virtual bool controlModeIsTouch() {
 			return false;

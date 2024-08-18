@@ -37,22 +37,6 @@ void Watches::setShouldReRender(bool shouldReRender) {
 	this->infoPanel->setShouldReRender(shouldReRender);
 }
 
-bool Watches::handleSwipeHorizontal(int8_t vector) {
-	this->currentFace += vector;
-	if (this->currentFace > FACES) {
-		this->currentFace = 0;
-	}
-	if (this->currentFace < 0) {
-		this->currentFace = FACES;
-	}
-
-	Registry::getInstance()->setValue(Registry::NAME_WATCH_FACE, this->currentFace);
-	UserInterfaceManager::getInstance()->clearScreen();
-	this->getCurrentFace()->setShouldReRender(true);
-	this->infoPanel->setShouldReRender(true);
-	return true;
-}
-
 WatchFace *Watches::getCurrentFace() {
 	if (this->currentFace > Watches::FACES) {
 		this->currentFace = 0;
@@ -87,5 +71,29 @@ Watches::Watches() {
 bool Watches::handleLongTouch(uint8_t x, uint8_t y) {
 	//AppRunner::getInstance()->setAppOnTop(new SettingsPanel());
 	AppRunner::getInstance()->setAppOnTop(new AppMenu());
+	return true;
+}
+
+bool Watches::onSwipeLeft() {
+	return this->changeFace(-1);
+}
+
+bool Watches::onSwipeRight() {
+	return this->changeFace(1);
+}
+
+bool Watches::changeFace(int8_t direction) {
+	this->currentFace += direction;
+	if (this->currentFace > FACES) {
+		this->currentFace = 0;
+	}
+	if (this->currentFace < 0) {
+		this->currentFace = FACES;
+	}
+
+	Registry::getInstance()->setValue(Registry::NAME_WATCH_FACE, this->currentFace);
+	UserInterfaceManager::getInstance()->clearScreen();
+	this->getCurrentFace()->setShouldReRender(true);
+	this->infoPanel->setShouldReRender(true);
 	return true;
 }

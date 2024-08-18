@@ -1,6 +1,6 @@
 cyberWatch 1.3
 ========================
-
+REFACTOR: onSwipe(up|down|left|right) methods instead of handle SwipeVertical/horizontal in apps
 
 cyberWatch 1.2
 ========================

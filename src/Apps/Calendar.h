@@ -8,8 +8,10 @@ class Calendar : public App {
 
 	public:
 
-		bool handleSwipeVertical(int8_t vector);
 		bool canHandleLongTouch() {return true;};
+
+		bool onSwipeUp();
+		bool onSwipeDown();
 
 		bool handleLongTouch(uint8_t x, uint8_t y);
 
