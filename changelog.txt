@@ -1,4 +1,8 @@
-cyberWatch 1:2
+cyberWatch 1.3
+========================
+
+
+cyberWatch 1.2
 ========================
 - FEATURE: new graphical logo
 - FEATURE: vaporwave watch face
