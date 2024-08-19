@@ -1,5 +1,6 @@
 cyberWatch 1.3
 ========================
+REDESIGN: new set of app menu icons
 REFACTOR: onSwipe(up|down|left|right) methods instead of handle SwipeVertical/horizontal in apps
 REFACTOR: AppMenu launching from watch faces by swipe up
 

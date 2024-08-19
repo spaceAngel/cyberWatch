@@ -4,9 +4,6 @@
 
 #include <Arduino.h>
 
-#include "Alarm/Components/AlarmDisplay.h"
-#include "AppMenu/AppIcon.h"
-
 class AppMenu : public App {
 
 	public:
@@ -27,6 +24,6 @@ class AppMenu : public App {
 
 	protected:
 
-		void renderIcon(AppIcon icon, uint8_t x, uint8_t y);
+		void renderIcon(const uint16_t *icon, uint8_t x, uint8_t y);
 
 };
