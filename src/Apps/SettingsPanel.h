@@ -38,8 +38,6 @@ class SettingsPanel : public App {
 		bool handleTouch(uint8_t x, uint8_t y);
 		void setShouldReRender(bool shouldReRender);
 
-		bool handlePEKShort();
-
 	protected:
 
 		uint8_t lastMask;

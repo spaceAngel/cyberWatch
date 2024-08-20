@@ -21,6 +21,7 @@ class AppMenu : public App {
 		}
 
 		virtual bool handleTouch(uint8_t x, uint8_t y);
+		bool handlePEKShort();
 
 	protected:
 

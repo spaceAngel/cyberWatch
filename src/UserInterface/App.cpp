@@ -1,11 +1,8 @@
 #include "App.h"
 
 #include "UserInterface/AppRunner.h"
+#include "Apps/AppMenu.h"
 
-bool App::handlePEKShort() {
-	AppRunner::getInstance()->setToDefaultApp();
-	return true;
-}
 
 void App::renderTitle(const char *title) {
 	TTGOClass::getWatch()->tft->drawString(
@@ -29,4 +26,9 @@ bool App::handleSwipeHorizontal(int8_t vector) {
 	} else {
 		return this->onSwipeRight();
 	}
+}
+
+bool App::handlePEKShort() {
+	AppRunner::getInstance()->setAppOnTop(new AppMenu());
+	return true;
 }

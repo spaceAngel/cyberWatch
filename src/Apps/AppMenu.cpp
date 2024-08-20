@@ -54,3 +54,8 @@ bool AppMenu::handleTouch(uint8_t x, uint8_t y) {
 
 AppMenu::AppMenu() {
 }
+
+bool AppMenu:: handlePEKShort() {
+	AppRunner::getInstance()->setToDefaultApp();
+	return true;
+}

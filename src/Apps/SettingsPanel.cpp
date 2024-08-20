@@ -114,8 +114,3 @@ void SettingsPanel::renderAdjustBar() {
 		);
 	}
 }
-
-bool SettingsPanel::handlePEKShort() {
-	AppRunner::getInstance()->setToDefaultApp();
-	return true;
-}
