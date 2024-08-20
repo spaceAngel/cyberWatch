@@ -49,7 +49,7 @@ bool AppMenu::handleTouch(uint8_t x, uint8_t y) {
 	if (posX == 3 && posY == 1) {AppRunner::getInstance()->setAppOnTop(new Calendar());}
 	if (posX == 2 && posY == 3) {AppRunner::getInstance()->setAppOnTop(new AboutPanel());}
 	if (posX == 3 && posY == 3) {AppRunner::getInstance()->setAppOnTop(new SettingsPanel());}
-	return true;
+	return false;
 }
 
 AppMenu::AppMenu() {
