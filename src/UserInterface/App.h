@@ -3,6 +3,7 @@
 #define APP_POSITION_TOP 28
 
 #include <Arduino.h>
+#include "config.h"
 
 class App {
 
@@ -74,6 +75,10 @@ class App {
 
 		virtual bool isSystemSleepForbidden() {
 			return false;
+		}
+
+		virtual uint16_t getAllowedTimeWithoutActivity() {
+			return INACTIVITY_TRESHOLD;
 		}
 
 		virtual bool handlePEKShort();

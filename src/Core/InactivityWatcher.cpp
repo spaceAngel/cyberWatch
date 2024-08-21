@@ -1,13 +1,12 @@
 #include "config.h"
 
-#include "config.h"
-
 #include "InactivityWatcher.h"
 #include "Utils/TimeUtil.h"
 #include "Core/Hardware/MoveSensor.h"
 #include "Core/SystemTicker.h"
-
+#include "UserInterface/AppRunner.h"
 #include <LilyGoWatch.h>
+
 
 InactivityWatcher* InactivityWatcher::inst;
 
@@ -19,7 +18,7 @@ InactivityWatcher *InactivityWatcher::getInstance() {
 }
 
 bool InactivityWatcher:: isInactive() {
-	return (this->lastActivity + INACTIVITY_TRESHOLD) < TimeUtil::getCurrentTimeInSeconds();
+	return (this->lastActivity + AppRunner::getInstance()->getCurrentApp()->getAllowedTimeWithoutActivity()) < TimeUtil::getCurrentTimeInSeconds();
 }
 
 void InactivityWatcher::markActivity() {
