@@ -6,6 +6,7 @@
 
 #include "Core/Hardware/Display.h"
 #include "StopWatch/StopWatchRegistry.h"
+#include "UserInterface/AppRunner.h"
 
 void StopWatch::render() {
 	long stopTime;
@@ -35,6 +36,21 @@ void StopWatch::render() {
 		Display::getInstance()->resetTypographySettings();
 		this->prevTime = stopTime;
 		this->setShouldReRender(false);
+		TTGOClass::getWatch()->tft->drawRoundRect(
+			(TFT_WIDTH - 120) / 2,
+			160,
+			120,
+			50,
+			10,
+			COLOR_MAIN_1
+		);
+		TTGOClass::getWatch()->tft->setTextSize(2);
+		TTGOClass::getWatch()->tft->drawString(
+			"back",
+			(TFT_WIDTH - TTGOClass::getWatch()->tft->textWidth("back")) / 2,
+			162
+		);
+		Display::getInstance()->resetTypographySettings();
 	}
 }
 
@@ -120,4 +136,16 @@ void StopWatch::renderMillis(uint8_t millis) {
 
 bool StopWatch::isSystemSleepForbidden() {
 	return this->getIsActive();
+}
+
+
+bool StopWatch::handleTouch(uint8_t x, uint8_t y) {
+	if (
+		x > (TFT_WIDTH - 120) / 2 &&  x < ((TFT_WIDTH - 120) / 2) + 120
+		&& y > 160 && y < 210
+	) {
+		AppRunner::getInstance()->setToDefaultApp();
+		return true;
+	}
+	return false;
 }

@@ -2,6 +2,7 @@ cyberWatch 1.3
 ========================
 FEATURE: allow apps to define own time interval to lock
 FEATURE: app menu 20s to lock display
+FEATURE: stopwatch back button
 REDESIGN: new set of app menu icons
 REDESIGN: remove grasy tones from splash screen
 BUGFIX: touch on blank space in menu do nothing (sshow empty screen before)

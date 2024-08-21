@@ -13,6 +13,13 @@ class StopWatch : public App {
 		bool handlePEKShort();
 		bool isSystemSleepForbidden();
 
+		bool controlModeIsTouch() {
+			return true;
+		}
+
+		bool handleTouch(uint8_t x, uint8_t y);
+
+
 		StopWatch() {}
 
 		protected:
