@@ -11,9 +11,12 @@ class StopWatch : public App {
 
 		void render();
 		bool handlePEKShort();
-		bool isSystemSleepForbidden();
 
 		bool controlModeIsTouch() {
+			return true;
+		}
+
+		bool isSystemSleepForbidden() {
 			return true;
 		}
 

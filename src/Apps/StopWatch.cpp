@@ -134,11 +134,6 @@ void StopWatch::renderMillis(uint8_t millis) {
 	TTGOClass::getWatch()->tft->drawString(txt, 180, POS_Y);
 }
 
-bool StopWatch::isSystemSleepForbidden() {
-	return this->getIsActive();
-}
-
-
 bool StopWatch::handleTouch(uint8_t x, uint8_t y) {
 	if (
 		x > (TFT_WIDTH - 120) / 2 &&  x < ((TFT_WIDTH - 120) / 2) + 120
