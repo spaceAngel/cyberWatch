@@ -51,6 +51,5 @@ void AppRunner::setAppOnTop(App* appOnTop) {
 }
 
 bool AppRunner::isSleepForbidden() {
-	bool rslt = false;
-	return rslt;
+	return this->getCurrentApp()->isSystemSleepForbidden();
 }
