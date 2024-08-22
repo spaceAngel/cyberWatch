@@ -27,6 +27,8 @@ class AppMenu : public App {
 			return 20;
 		}
 
+		bool onSwipeDown();
+
 	protected:
 
 		void renderIcon(const uint16_t *icon, uint8_t x, uint8_t y);
