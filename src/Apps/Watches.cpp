@@ -58,7 +58,7 @@ bool Watches::hasNotificationBar() {
 Watches::Watches() {
 	this->infoPanel = new InfoPanel();
 	this->createFaces();
-	uint currentFace = Registry::getInstance()->getValue(Registry::NAME_WATCH_FACE);
+	uint currentFace = Registry::getInstance()->getValue(REGISTRY_WATCHFACE, 0);
 	if (
 		(currentFace >= 0)
 		&& (currentFace <= FACES)
@@ -89,7 +89,7 @@ bool Watches::changeFace(int8_t direction) {
 		this->currentFace = FACES;
 	}
 
-	Registry::getInstance()->setValue(Registry::NAME_WATCH_FACE, this->currentFace);
+	Registry::getInstance()->setValue(REGISTRY_WATCHFACE, this->currentFace);
 	UserInterfaceManager::getInstance()->clearScreen();
 	this->getCurrentFace()->setShouldReRender(true);
 	this->infoPanel->setShouldReRender(true);

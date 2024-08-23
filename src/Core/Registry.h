@@ -1,5 +1,11 @@
 #pragma once
 
+#include <Preferences.h>
+
+#define REGISTRY_WATCHFACE "watchface"
+#define REGISTRY_DISPLAY_ADJUST "adjust"
+#define REGISTRY_SETTINGS "settinngs"
+
 class Registry {
 
 	public:
@@ -10,15 +16,17 @@ class Registry {
 
 		static Registry *getInstance();
 
-		uint getValue(uint address);
+		uint getValue(const char* key, uint defaultValue);
 
-		void setValue(uint address, uint value);
+		void setValue(const char* key, uint value);
 
 	protected:
 
 		static const uint8_t REGISTRY_SIZE = 3;
 
 		static Registry *inst;
+
+		Preferences preferences;
 
 		Registry();
 };

@@ -2,7 +2,7 @@
 
 #include "Registry.h"
 
-#include <EEPROM.h>
+#include <Preferences.h>
 
 
 Registry* Registry::inst;
@@ -16,14 +16,16 @@ Registry *Registry::getInstance() {
 }
 
 Registry::Registry() {
-	EEPROM.begin(Registry::REGISTRY_SIZE);
+	this->preferences.begin(APP_NAME, false);
 }
 
-uint Registry::getValue(uint address) {
-	return EEPROM.read(address);
+uint Registry::getValue(const char* key, uint defaultValue) {
+	if (this->preferences.isKey(key)) {
+		return this->preferences.getUInt(key);
+	}
+	return defaultValue;
 }
 
-void Registry::setValue(uint address, uint value) {
-	EEPROM.write(address, value);
-	EEPROM.commit();
+void Registry::setValue(const char* key, uint value) {
+	this->preferences.putUInt(key, value);
 }

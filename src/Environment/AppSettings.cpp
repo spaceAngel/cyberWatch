@@ -4,7 +4,7 @@
 AppSettings *AppSettings::inst;
 
 AppSettings::AppSettings() {
-	uint value = Registry::getInstance()->getValue(Registry::NAME_SETTINGS);
+	uint value = Registry::getInstance()->getValue(REGISTRY_SETTINGS, 0);
 	this->bits = value;
 }
 
@@ -26,7 +26,7 @@ void AppSettings::set(uint8_t bit, bool value) {
 		this->bits &= ~bit;
 	}
 	Registry::getInstance()->setValue(
-		Registry::NAME_SETTINGS,
+		REGISTRY_SETTINGS,
 		this->bits
 	);
 }

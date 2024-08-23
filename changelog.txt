@@ -9,6 +9,7 @@ REDESIGN: new set of app menu icons
 REDESIGN: remove grasy tones from splash screen
 BUGFIX: touch on blank space in menu do nothing (sshow empty screen before)
 BUGFIX: correctly using of BMA423 irqs
+REFACTOR: using esp32 Preferences instead of deprecated EEPROM
 REFACTOR: PEKShort on apps return to app menu by default instead of watch face
 REFACTOR: onSwipe(up|down|left|right) methods instead of handle SwipeVertical/horizontal in apps
 REFACTOR: AppMenu launching from watch faces by swipe up
