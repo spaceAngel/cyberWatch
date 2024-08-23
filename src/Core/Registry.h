@@ -5,6 +5,7 @@
 #define REGISTRY_WATCHFACE "watchface"
 #define REGISTRY_DISPLAY_ADJUST "adjust"
 #define REGISTRY_SETTINGS "settinngs"
+#define REGISTRY_BUILD_TIMESTAMP "timestamp"
 
 class Registry {
 

@@ -15,6 +15,7 @@ f.write(
 	+ "#include <string.h> \n"
 	+ "char compilationTimestampChar[20] = \"" +  data + "\"; \n"
 	+ "String compilationTimestampStr = \"" +  data + "\"; \n"
+	+ "uint compilationTimestamp = " +  data + "; \n"
 )
 
 f.close()
