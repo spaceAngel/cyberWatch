@@ -31,9 +31,11 @@ void MoveSensor::initIRQ() {
 	); //It must be a rising edge
 	TTGOClass::getWatch()->bma->enableFeature(BMA423_STEP_CNTR, true);
 	TTGOClass::getWatch()->bma->enableFeature(BMA423_TILT, true);
+	TTGOClass::getWatch()->bma->enableFeature(BMA423_WAKEUP, true);
 	TTGOClass::getWatch()->bma->enableTiltInterrupt();
 	TTGOClass::getWatch()->bma->enableWakeupInterrupt();
-	}
+	esp_sleep_enable_ext1_wakeup(GPIO_SEL_39, ESP_EXT1_WAKEUP_ANY_HIGH);
+}
 
 void MoveSensor::cleanIRQ() {
 	this->IRQ = false;
