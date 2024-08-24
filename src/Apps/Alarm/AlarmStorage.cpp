@@ -1,18 +1,13 @@
 #include "AlarmStorage.h"
 #include "AlarmModel.h"
 
-#include <SPIFFS.h>
-#include <FS.h>
-#include <string.h>
 #include "Core/Hardware/MotorController.h"
 #include "config.h"
 #include <LilyGoWatch.h>
 #include "UserInterface/Screens/MainScreen.h"
-#include <string>
-#include <iostream>
-#include <sstream>
 
-#include "Utils/StringUtils.h"
+#include "Core/Registry.h"
+#include "Core/Hardware/MotorController.h"
 
 using namespace std;
 
@@ -39,58 +34,42 @@ AlarmModel *AlarmStorage::getAlarm(uint8_t alarm) {
 }
 
 void AlarmStorage::save() {
-	fs::File file = SPIFFS.open(AlarmStorage::FILENAME, FILE_WRITE);
 	char save[100];
+	uint8_t data[30] = {};
+
 	for (uint8_t i = 0; i < 3; i++) {
-
-		strcat(save, "A");
-		strcat(save, this->getAlarm(i)->getEnabled() ? "Y" : "N");
-		strcat(save, "E");
+		uint8_t shift = i * 10;
+		data[shift] = this->getAlarm(i)->getEnabled() ? 1 : 0;
 		for (int j = 0; j < 7; j++) {
-			strcat(save,  this->getAlarm(i)->getIsEnabledForDay(j) ? "Y" : "N");
+			data[shift + 1+ j] = this->getAlarm(i)->getIsEnabledForDay(j);
 		}
-		strcat(save, "W");
-		char hours[3];
-		(void)snprintf(hours, sizeof(hours), "%02d", this->getAlarm(i)->getHour());
-		strcat(save, hours);
-		strcat(save, "H");
-
-		char minutes[3];
-		(void)snprintf(minutes, sizeof(minutes), "%02d", this->getAlarm(i)->getMinute());
-		strcat(save, minutes);
-		strcat(save, "M");
+		data[shift + 8] = this->getAlarm(i)->getHour();
+		data[shift + 9] = this->getAlarm(i)->getMinute();
 
 	}
-	file.print(save);
-	file.close();
+	Registry::getInstance()->setValue(REGISTRY_ALARM, data, 30);
 
 }
 
 void AlarmStorage::load() {
-	fs::File file = SPIFFS.open(AlarmStorage::FILENAME, FILE_READ);
-	String fromFile;
-	String a = "Y";
+	char buffer[30];  // prepare a buffer for the data
+  	Registry::getInstance()->getBytes(REGISTRY_ALARM, buffer, 30);
+  	alarm_t *alarms = (alarm_t *)buffer;  // cast the bytes into a struct ptr
 	for (uint8_t i = 0; i< 3; i++) {
-		file.readStringUntil('A');
-		String enabled = file.readStringUntil('E');
-		if (enabled.substring(0, 1) == a)  {
-			this->getAlarm(i)->setEnabled(true);
-			String weekdays = file.readStringUntil('W');
-			for (uint8_t j = 0; j < 7; j++) {
-				if (weekdays.substring(j, j + 1) == a) {
-					this->getAlarm(i)->setIsEnabledForDay(j, true);
-				}
-			}
 
-			this->getAlarm(i)->setHour(
-				StringUtils::stringToUint(file.readStringUntil('H'))
-			);
-			this->getAlarm(i)->setMinute(
-				StringUtils::stringToUint(file.readStringUntil('M'))
-			);
+		if (alarms[i].enabled == 1)  {
+			this->getAlarm(i)->setEnabled(true);
+			this->getAlarm(i)->setIsEnabledForDay(0, alarms[i].enabledMo);
+			this->getAlarm(i)->setIsEnabledForDay(1, alarms[i].enabledTu);
+			this->getAlarm(i)->setIsEnabledForDay(2, alarms[i].enabledWe);
+			this->getAlarm(i)->setIsEnabledForDay(3, alarms[i].enabledTh);
+			this->getAlarm(i)->setIsEnabledForDay(4, alarms[i].enabledFr);
+			this->getAlarm(i)->setIsEnabledForDay(5, alarms[i].enabledSa);
+			this->getAlarm(i)->setIsEnabledForDay(6, alarms[i].enabledSu);
+			this->getAlarm(i)->setHour(alarms[i].hour);
+			this->getAlarm(i)->setMinute(alarms[i].minute);
 		}
 	}
-	file.close();
 }
 
 AlarmStorage::AlarmStorage() {

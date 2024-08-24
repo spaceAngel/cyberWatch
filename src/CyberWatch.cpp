@@ -1,7 +1,6 @@
 #include "config.h"
 
 #include <LilyGoWatch.h>
-#include <SPIFFS.h>
 
 #include "CyberWatch.h"
 
@@ -37,7 +36,6 @@ void CyberWatch::init() {
 		TTGOClass::getWatch()->motor_begin();
 	#endif
 
-	SPIFFS.begin();
 	bool isFirstRun = RunAfterCompilation::handle();
 	Display::getInstance()->init();
 	BatteryManager::getInstance()->energyConsumptionSavingsSettings();

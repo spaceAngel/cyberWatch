@@ -4,7 +4,6 @@
 
 #include <Preferences.h>
 
-
 Registry* Registry::inst;
 
 Registry *Registry::getInstance() {
@@ -26,6 +25,15 @@ uint Registry::getValue(const char* key, uint defaultValue) {
 	return defaultValue;
 }
 
+size_t Registry::getBytes(const char* key, void * buf, size_t maxLen) {
+	return this->preferences.getBytes(key, buf, maxLen);
+}
+
+
 void Registry::setValue(const char* key, uint value) {
 	this->preferences.putUInt(key, value);
+}
+
+void Registry::setValue(const char* key, const void* value, uint8_t size) {
+	  this->preferences.putBytes(key, value, size);
 }

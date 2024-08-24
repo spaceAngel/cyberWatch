@@ -29,3 +29,17 @@ class AlarmStorage {
 
 		AlarmStorage();
 };
+
+
+typedef struct {
+	uint8_t enabled;
+	uint8_t enabledMo;
+	uint8_t enabledTu;
+	uint8_t enabledWe;
+	uint8_t enabledTh;
+	uint8_t enabledFr;
+	uint8_t enabledSa;
+	uint8_t enabledSu;
+	uint8_t hour;
+	uint8_t minute;
+} alarm_t;

@@ -6,6 +6,7 @@
 #define REGISTRY_DISPLAY_ADJUST "adjust"
 #define REGISTRY_SETTINGS "settinngs"
 #define REGISTRY_BUILD_TIMESTAMP "timestamp"
+#define REGISTRY_ALARM "alarm"
 
 class Registry {
 
@@ -20,6 +21,11 @@ class Registry {
 		uint getValue(const char* key, uint defaultValue);
 
 		void setValue(const char* key, uint value);
+
+		void setValue(const char* key, const void* value, uint8_t size);
+		size_t getBytes(const char* key, void * buf, size_t maxLen);
+
+
 
 	protected:
 
