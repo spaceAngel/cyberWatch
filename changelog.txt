@@ -5,6 +5,7 @@ FEATURE: app menu 20s to lock display
 FEATURE: stopwatch back button
 FEATURE: allow apps to disable system lock after inactivity period (e.g. in stopwatch)
 FEATURE: flashlight
+FEATTURE: calculator
 REDESIGN: new set of app menu icons
 REDESIGN: remove grasy tones from splash screen
 BUGFIX: touch on blank space in menu do nothing (sshow empty screen before)
