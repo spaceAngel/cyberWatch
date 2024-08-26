@@ -13,6 +13,28 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
 
 <a href="https://www.buymeacoffee.com/cyberwatchos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
+## Features
+
+ - cool __cyberpunk / retrowave vibes__
+ - multiple __watchfaces__
+ - some __usefull apps__ (with cool app menu available by swipe up on watch face)
+	- 3slot alarm
+	- stopwatch
+	- flashlight
+	- simple calculator
+	- calendar
+ - for full list of features, see [changelog.txt](changelog.txt)
+ - synchronize date & time with computer during compile/upload
+
+## Screenshots
+
+![Watchface](docs/screenshots/watchfaces/01.png "Watchface")
+![Watchface](docs/screenshots/watchfaces/03.png "Watchface")
+![Watchface](docs/screenshots/watchfaces/06.png "Watchface")
+![Watchface](docs/screenshots/watchfaces/07.png "Watchface")
+![Watchface](docs/screenshots/watchfaces/08.png "Watchface")
+![Watchface](docs/screenshots/watchfaces/09.png "Watchface")
+![Watchface](docs/screenshots/watchfaces/10.png "Watchface")
 
 ## Installation
 
@@ -25,44 +47,17 @@ Free time project to create lightweight and simple OS for smartwatch, with only 
  - __have a fun!__
  - __screen is autolocked (prevention of random touch) - if there is a lock icon, press crown (button) to unlock it!__
 
-## Code quality & standards
- - [Misra C++ standards](https://www.misra.org.uk/) (98% and still improving)
-
-## Features
-
- - cool splashscreen and exit screen :-)
- - battery consumption saving
-   - turn off display after 5 seconds of inactivity
-   - use cpu light sleep mode cycles (100ms) in main loop
-   - turn off unused subcomponents (WI-FI chip)
-   - set CPU frequency to 20MHz
-   - activate by:
-     - touching display
-     - short press button
-     - "tilt up" maneuver (can be turn off on settings screen)
- - vibration can be disabled in settings screen
- - possibility of enabled "display always on" to show cool clockfaces
- - warns (vibrate, turn display on) when battery reach low levels(30% / 20%)
- - when screen goes sleep, always set to default datetimeapp (with previously selected face)
- - when screens wakeup by touch / PEKshort, is locked to prevent "accidentaly wakeup", could be unlocked by PEKshort
- - shows current time
- - shows current date
- - multiple clock faces - change by swipe vertical on datetime "miniapp"
- - shows battery status
- - step counter
- - 3-slot alarm
- - horizontal swipe - switching between watch faces
- - launch app menu by longtouch on any watch face
- - calendar with prev/next month feature
- - simple stop watch
- - for full list of features, see [changelog.txt](changelog.txt)
- - synchronize date & time with computer during compile/upload
 
 ## Known bugs
  - "tilt up" maneuver sometimes doesn't activate display (maybe will be solved by tuning BMA423 sensor)
- - activated by touch (when display is off) also do "touch event" on component on touch coords (e.g. when current screen is watch settings, activation also can activated display on, when display activation touch is at left top corner of display )
+
+## Code quality & standards
+ - [Misra C++ standards](https://www.misra.org.uk/) (98% and still improving)
+
 
 ## Future features :-)
+ - step counter app with steps walk/run, stats over last few days
+ - wifi netowrks scannner
  - conection vith phone via BT (require app for android)
    - SMS notification icon
    - missed call icon
