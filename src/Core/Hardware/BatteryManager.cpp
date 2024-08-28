@@ -68,6 +68,7 @@ bool BatteryManager::handleCabelPlugRemoveIRQ() {
 void BatteryManager::energyConsumptionSavingsSettings() {
 	WiFi.disconnect(true);	// Disconnect from the network
 	WiFi.mode(WIFI_OFF);			// Switch WiFi off //not need to wifi on -> power saving
+	TTGOClass::getWatch()->power->setPowerOutPut(AXP202_LDO4, false); // audio
 	setCpuFrequencyMhz(CPU_FREQUENCY_LOW);
 }
 
