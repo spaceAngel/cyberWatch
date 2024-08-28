@@ -41,6 +41,7 @@ void Display::turnDisplayOff() {
 		TTGOClass::getWatch()->displaySleep();
 		TTGOClass::getWatch()->bl->off();
 		this->lastOn = 0;
+		TTGOClass::getWatch()->power->setPowerOutPut(AXP202_LDO2, false);
 	}
 }
 
@@ -50,6 +51,7 @@ void Display::turnDisplayOn() {
 		TTGOClass::getWatch()->bl->on();
 		TTGOClass::getWatch()->displayWakeup();
 		this->lastOn = TimeUtil::getCurrentTimeInSeconds();
+		TTGOClass::getWatch()->power->setPowerOutPut(AXP202_LDO2, true);
 	}
 }
 
