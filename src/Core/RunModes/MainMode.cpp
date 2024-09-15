@@ -113,8 +113,9 @@ void MainMode::handleWakeupTick() {
 
 void MainMode::sleep() {
 	Display::getInstance()->turnDisplayOff();
-	esp_sleep_enable_timer_wakeup(SLEEPCYCLE_MS * 1000);
-	esp_light_sleep_start();
+	delay(SLEEPCYCLE_MS);
+	//esp_sleep_enable_timer_wakeup(SLEEPCYCLE_MS * 1000);
+	//esp_light_sleep_start();
 }
 
 void MainMode::handleCabelConnection() {

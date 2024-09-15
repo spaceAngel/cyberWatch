@@ -1,6 +1,7 @@
 cyberWatch 1.4
 ========================
-FEATURE: using gnu17++ instead if gnu11++
+FEATURE: using gnu17++ instead of gnu11++
+REFACTOR:using delay instead sleep in main cycle #refactor
 
 cyberWatch 1.3
 ========================
