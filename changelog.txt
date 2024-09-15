@@ -1,5 +1,6 @@
 cyberWatch 1.4
 ========================
+FEATURE: using gnu17++ instead if gnu11++
 
 cyberWatch 1.3
 ========================
