@@ -94,6 +94,15 @@
 	<a name="datetime-synchonisation"></a>
 	<h3>Date &amp; time synchronisation</h3>
 	<div>
+		<h4>Via NTP over wifi during build</h4>
+		To synchronize with NTP server, copy <i>NTPconf.h.example</i> to <i>NTPconf.h</i> and fill your network SSID, password and NTP offset.
+		After installation and first boot (and only then), TWatch will connect to your wifi network
+		and time will be synced with NTP server and after that, TWatch device will disconnect foor your network.
+		<br/>
+		If this process fails (e.g. bad wifi SSID/password or network connection problems), ttime wil be synced via bulld time (less accurated)
+	</div>
+	<div>
+		<h4>Via build time (less accurated)</h4>
 		Date &amp; time of TWatch is synchronised with build machine everytime CyberWatch OS is compiled &amp; uploaded.
 	</div>
 

@@ -1,0 +1,5 @@
+#pragma once
+#define WIFI_SSID "wifi_name"
+#define WIFI_PASSWORD "wifi_passwprd"
+#define NTP_OFFSET 7200
+#define NTP_OFFSET_DAYLIGHT 7200

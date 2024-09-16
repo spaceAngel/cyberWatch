@@ -1,4 +1,6 @@
 from datetime import datetime
+import os
+import shutil
 
 def trailingZero(value):
 	if (value  < 10):
@@ -20,7 +22,6 @@ f.write(
 
 f.close()
 
-import os
 stream = os.popen('git rev-parse --short HEAD')
 commit = stream.read()
 stream.close()
@@ -42,5 +43,10 @@ f.write(
 	)
 
 )
-
 f.close()
+
+if os.path.isfile("NTPconf.h"):
+	shutil.copy2('NTPconf.h', 'src/NTPconf.h')
+else:
+	if os.path.isfile("src/NTPconf.h"):
+		os.remove("src/NTPconf.h")

@@ -18,5 +18,6 @@ class RunAfterCompilation {
 		void afterFirstRunOperations();
 
 		void markFirstRunIsOver();
+		void configureRTCviaBuildTime();
 
 };

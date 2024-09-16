@@ -1,5 +1,6 @@
 cyberWatch 1.4
 ========================
+FEATURE: time sync via NTP over wifi after upload and first boot
 FEATURE: using gnu17++ instead of gnu11++
 REFACTOR:using delay instead sleep in main cycle #refactor
 
