@@ -55,13 +55,13 @@ void AboutPanel::renderCompilationData() {
 		this->calculatePosY(0, false)
 	);
 	TTGOClass::getWatch()->tft->drawString(
-		compilationCommit,
+		COMPILATION_COMMIT,
 		(TFT_WIDTH / 2) - 10,
 		this->calculatePosY(0, false)
 	);
 	TTGOClass::getWatch()->tft->drawString(
-		compilationDate,
-		(TFT_WIDTH - TTGOClass::getWatch()->tft->textWidth(compilationDate)) / 2,
+		COMPILATION_TIME,
+		(TFT_WIDTH - TTGOClass::getWatch()->tft->textWidth(COMPILATION_TIME)) / 2,
 		this->calculatePosY(1, false)
 	);
 }

@@ -5,7 +5,7 @@
 #include "RunAfterCompilation.h"
 #include "Environment/SystemInfo.h"
 
-#include "timestamp.h"
+#include "compilationdata.h"
 #include "BuildDateTime.h"
 #include "Core/Registry.h"
 
@@ -27,7 +27,7 @@ bool RunAfterCompilation::handle() {
 
 bool RunAfterCompilation::isFirstRun() {
 	if (
-		 Registry::getInstance()->getValue(REGISTRY_BUILD_TIMESTAMP, 0) == compilationTimestamp
+		 Registry::getInstance()->getValue(REGISTRY_BUILD_TIMESTAMP, 0) == COMPILATION_TIMESTAMP
 	) {
 		return false;
 	} else {
@@ -49,7 +49,7 @@ void RunAfterCompilation::afterFirstRunOperations() {
 }
 
 void RunAfterCompilation::markFirstRunIsOver() {
-	Registry::getInstance()->setValue(REGISTRY_BUILD_TIMESTAMP, compilationTimestamp);
+	Registry::getInstance()->setValue(REGISTRY_BUILD_TIMESTAMP, COMPILATION_TIMESTAMP);
 }
 
 void RunAfterCompilation::configureRTCviaBuildTime() {
